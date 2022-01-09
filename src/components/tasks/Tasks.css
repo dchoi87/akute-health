@@ -1,4 +1,4 @@
-.tasks-container {
+.tasks {
   padding: 15px;
 }
 .tasks-header h1 {
@@ -11,14 +11,95 @@
   grid-template-columns: auto;
   gap: 15px;
 }
-.tasks-cards.grid {
+.tasks-cards--grid {
   grid-template-columns: repeat(3, auto);
 }
 
 /* card */
-.card-container {
-  padding: 15px;
+.tasks-cards__item {
+  /* normalize */
+  /* note: maybe change this to a div and do type="button" */
+  font-size: 100%;
+  font-family: inherit;
+  text-align: inherit;
+  border: 0;
+  /* styling */
+  display: flex;
+  padding: 25px;
+  color: #494949;
   background: #fff;
   border-radius: 15px;
   box-shadow: 0px 5px 10px 2px #efefef73;
+  font-weight: 300;
+}
+.tasks-cards__checkbox {}
+.tasks-cards__content {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  margin-left: 15px;
+}
+.tasks-cards__section--top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.tasks-cards__section--middle {}
+.tasks-cards__section--bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.tasks-cards__subsection--left {
+  display: flex;
+  align-items: center;
+}
+.tasks-cards__subsection--left > div + div {
+  margin-left: 10px;
+}
+.tasks-cards__subsection--right {
+  display: flex;
+  align-items: center;
+}
+.tasks-cards__subsection--right > div + div {
+  margin-left: 5px;
+}
+.tasks-cards__title {
+  font-weight: 700;
+  /* color: #61b47b; */
+}
+.tasks-cards__priority {
+  font-weight: 500;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+.tasks-cards__priority--urgent {
+  color: #fff;
+  background: #ca0000;
+}
+.tasks-cards__priority--p2 {}
+.tasks-cards__priority--p3 {}
+.tasks-cards__duedate {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 5px;
+  align-items: center;
+  color: #999;
+}
+.tasks-cards__duedate svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+}
+.tasks-cards__duedate span {
+  font-size: 14px;
+}
+.tasks-cards__tag {
+  background: #efefef;
+  color: #555;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 400;
 }
