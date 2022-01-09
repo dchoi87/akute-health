@@ -1,8 +1,4 @@
-.app {
-  display: grid;
-  grid-template-columns: 240px 320px auto;
-  gap: 5px;
-}
+.app {}
 .app > div {
   height: 100vh;
   overflow: auto;
@@ -12,13 +8,28 @@
 }
 .nav {
   padding: 5px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
 .patient-info {
   padding: 5px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+}
+
+
+@media screen and (min-width: 960px) {
+  .app {
+    display: grid;
+    grid-template-columns: 240px 320px auto;
+    gap: 5px;
+  }
+  .nav {
+    display: flex;
+  }
+  .patient-info {
+    display: flex;
+  }
 }

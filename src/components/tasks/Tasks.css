@@ -1,8 +1,12 @@
 .tasks {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
   padding: 15px;
 }
 .tasks-header h1 {
   font-weight: 300;
+  margin: 0;
 }
 
 /* grid */
@@ -13,6 +17,25 @@
 }
 .tasks-cards--grid {
   grid-template-columns: repeat(3, auto);
+}
+.tasks-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* overview */
+.tasks-overview {
+  border: 1px dashed #494949;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+/* filters */
+.tasks-filters {
+  border: 1px dashed #494949;
+  padding: 15px;
+  border-radius: 15px;
 }
 
 /* card */
