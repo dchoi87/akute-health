@@ -1,8 +1,11 @@
 import Card from './Card';
+import useMediaQuery from './hooks';
 
 import './Tasks.css';
 
 const Tasks = () => {
+  const isDesktop = useMediaQuery('(min-width: 960px)');
+  
   return (
     <div className="tasks">
       <div className="tasks-header">

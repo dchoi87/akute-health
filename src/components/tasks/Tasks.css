@@ -156,3 +156,11 @@
   font-size: 12px;
   font-weight: 400;
 }
+.tasks-cards__tag--mobile {
+  padding: 5px;
+}
+.tasks-cards__tag--mobile svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+}
