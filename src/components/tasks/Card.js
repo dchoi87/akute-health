@@ -24,11 +24,10 @@ const Cards = () => {
           </div>
           <div className="tasks-cards__subsection--right">
             <div className="tasks-cards__priority tasks-cards__priority--urgent">Urgent</div>
-            {/* <div className="tasks-cards__menu"></div> */}
           </div>
         </div>
         <div className="tasks-cards__section--middle">
-          <div className="tasks-cards__description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          <div className="tasks-cards__description">No Description</div>
         </div>
         <div className="tasks-cards__section--bottom">
           <div className="tasks-cards__subsection--left">
@@ -39,12 +38,22 @@ const Cards = () => {
               </svg>
               <span>12-17-2021</span>
             </div>
-            <div className="tasks-cards__patient">Daniel Choi</div>
+            <div className="tasks-cards__patient">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
+              <span>Daniel Choi</span>
+            </div>
           </div>
           <div className="tasks-cards__subsection--right">
             <div className="tasks-cards__tag">Form Submission</div>
             <div className="tasks-cards__tag">Doc Review</div>
             <div className="tasks-cards__tag">+2</div>
+            <div className="tasks-cards__attachment">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-paperclip" viewBox="0 0 16 16">
+                <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+              </svg>
+            </div>
           </div>
         </div>
       </div>

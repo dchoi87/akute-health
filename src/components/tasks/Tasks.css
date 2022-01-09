@@ -25,6 +25,7 @@
   border: 0;
   /* styling */
   display: flex;
+  align-items: baseline;
   padding: 25px;
   color: #494949;
   background: #fff;
@@ -33,6 +34,9 @@
   font-weight: 300;
 }
 .tasks-cards__checkbox {}
+.tasks-cards__checkbox svg {
+  display: block;
+}
 .tasks-cards__content {
   display: grid;
   gap: 10px;
@@ -42,20 +46,20 @@
 .tasks-cards__section--top {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 }
 .tasks-cards__section--middle {}
 .tasks-cards__section--bottom {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
 .tasks-cards__subsection--left {
   display: flex;
   align-items: center;
 }
 .tasks-cards__subsection--left > div + div {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 .tasks-cards__subsection--right {
   display: flex;
@@ -80,6 +84,17 @@
 }
 .tasks-cards__priority--p2 {}
 .tasks-cards__priority--p3 {}
+.tasks-cards__attachment {
+  background: #efefef;
+  color: #555;
+  border-radius: 5px;
+  padding: 5px;
+}
+.tasks-cards__attachment svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+}
 .tasks-cards__duedate {
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -93,6 +108,21 @@
   height: 13px;
 }
 .tasks-cards__duedate span {
+  font-size: 14px;
+}
+.tasks-cards__patient {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 5px;
+  align-items: center;
+  color: #999;
+}
+.tasks-cards__patient svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+}
+.tasks-cards__patient span {
   font-size: 14px;
 }
 .tasks-cards__tag {
