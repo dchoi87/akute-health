@@ -1,13 +1,15 @@
+import React, { useRef } from 'react';
 import Card from './Card';
-import useMediaQuery from './hooks';
+import { useContainerQuery } from './hooks';
 
 import './Tasks.css';
 
 const Tasks = () => {
-  const isDesktop = useMediaQuery('(min-width: 960px)');
-  
+  const taskRef = useRef(null);
+  const showDesktopView = useContainerQuery(taskRef);
+
   return (
-    <div className="tasks">
+    <div className="tasks" ref={taskRef}>
       <div className="tasks-header">
         <h1>Tasks</h1>
       </div>
@@ -23,7 +25,7 @@ const Tasks = () => {
         {
           Array(15).fill().map((el, i) => {
             return (
-              <Card key={i} />
+              <Card key={i} showDesktopView={showDesktopView} />
             )
           })
         }

@@ -49,7 +49,7 @@
   /* styling */
   display: flex;
   align-items: baseline;
-  padding: 25px;
+  padding: 15px;
   color: #494949;
   background: #fff;
   border-radius: 15px;
@@ -69,7 +69,7 @@
 .tasks-cards__section--top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
 .tasks-cards__section--middle {}
 .tasks-cards__section--bottom {
@@ -93,13 +93,13 @@
 }
 .tasks-cards__title {
   font-weight: 700;
-  /* color: #61b47b; */
 }
 .tasks-cards__priority {
   font-weight: 500;
   font-size: 12px;
   padding: 5px 10px;
   border-radius: 15px;
+  margin-left: 5px;
 }
 .tasks-cards__priority--urgent {
   color: #fff;
@@ -107,6 +107,10 @@
 }
 .tasks-cards__priority--p2 {}
 .tasks-cards__priority--p3 {}
+.tasks-cards__description {
+  font-size: 14px;
+  color: #999;
+}
 .tasks-cards__attachment {
   background: #efefef;
   color: #555;
@@ -123,7 +127,7 @@
   grid-template-columns: repeat(2, auto);
   gap: 5px;
   align-items: center;
-  color: #999;
+  /* color: #999; */
 }
 .tasks-cards__duedate svg {
   display: block;
@@ -138,7 +142,7 @@
   grid-template-columns: repeat(2, auto);
   gap: 5px;
   align-items: center;
-  color: #999;
+  /* color: #999; */
 }
 .tasks-cards__patient svg {
   display: block;
@@ -157,10 +161,20 @@
   font-weight: 400;
 }
 .tasks-cards__tag--mobile {
+  display: flex;
   padding: 5px;
+}
+.tasks-cards__tag--mobile > * + * {
+  margin-left: 5px;
 }
 .tasks-cards__tag--mobile svg {
   display: block;
   width: 15px;
   height: 15px;
+}
+
+@media screen and (min-width: 640px) {
+  .tasks-cards__item {
+    padding: 25px;
+  }
 }
