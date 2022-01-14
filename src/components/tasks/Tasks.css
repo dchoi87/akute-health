@@ -9,6 +9,15 @@
   margin: 0;
 }
 
+/* normalize */
+.tasks__btn {
+  font-size: 100%;
+  font-family: inherit;
+  text-align: inherit;
+  border: 0;
+  cursor: pointer;
+}
+
 /* grid */
 .tasks-cards {
   display: grid;
@@ -20,33 +29,57 @@
 }
 .tasks-section {
   display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+}
+.tasks-section--desktop {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* summary */
+.tasks-summary {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
-
-/* overview */
-.tasks-overview {
-  border: 1px dashed #494949;
+.tasks-summary__status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 7px;
   padding: 15px;
-  border-radius: 15px;
+  font-weight: 500;
+  background: #efefef;
+}
+.tasks-summary__status--selected {
+  background: #61b47b;
+  color: #fafafa;
+}
+.tasks-summary__title {
+  display: flex;
+  align-items: center;
+}
+.tasks-summary__title > * + * {
+  margin-left: 10px;
+}
+.tasks-summary__number {
+  background: #fff;
+  color: #494949;
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 /* filters */
 .tasks-filters {
-  border: 1px dashed #494949;
+  background: #f4f4f4;
   padding: 15px;
-  border-radius: 15px;
+  border-radius: 7px;
 }
 
 /* card */
 .tasks-cards__item {
-  /* normalize */
-  /* note: maybe change this to a div and do type="button" */
-  font-size: 100%;
-  font-family: inherit;
-  text-align: inherit;
-  border: 0;
-  /* styling */
   display: flex;
   align-items: baseline;
   padding: 15px;

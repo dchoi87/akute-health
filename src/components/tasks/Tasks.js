@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import Summary from './Summary';
+import Filters from './Filters';
 import Card from './Card';
 import { useContainerQuery } from './hooks';
 
@@ -13,13 +15,9 @@ const Tasks = () => {
       <div className="tasks-header">
         <h1>Tasks</h1>
       </div>
-      <div className="tasks-section">
-        <div className="tasks-overview">
-          Overview
-        </div>
-        <div className="tasks-filters">
-          Filters
-        </div>
+      <div className={"tasks-section" + (showDesktopView ? ' tasks-section--desktop' : '')}>
+        <Summary />
+        <Filters />
       </div>
       <div className="tasks-cards">
         {

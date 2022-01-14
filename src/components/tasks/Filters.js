@@ -1,6 +1,8 @@
 const Filters = () => {
   return (
-    <div className="">Filters</div>
+    <div className="tasks-filters">
+      Filters
+    </div>
   )
 }
 
