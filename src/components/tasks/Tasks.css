@@ -17,6 +17,9 @@
   border: 0;
   cursor: pointer;
 }
+.tasks svg {
+  display: block;
+}
 
 /* grid */
 .tasks-cards {
@@ -73,9 +76,71 @@
 
 /* filters */
 .tasks-filters {
-  background: #f4f4f4;
-  padding: 15px;
+  /* background: #f4f4f4; */
+  /* padding: 15px; */
   border-radius: 7px;
+}
+.tasks-filters__section--top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tasks-filters__section--bottom {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+}
+.tasks-filters__title {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.tasks-filters__dropdown {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+  position: relative;
+}
+.tasks-filters__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 14px;
+  box-shadow: 0px 5px 10px 2px #efefef73;
+}
+.tasks-filters__label svg {
+  width: 10px;
+  height: 10px;
+  color: #494949;
+}
+.tasks-filters__select {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+  background: #fff;
+  padding: 5px 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+.tasks-filters__option {
+  display: flex;
+  align-items: center;
+}
+.tasks-filters__option svg {
+  width: 13px;
+  height: 13px;
+}
+.tasks-filters__option span {
+  margin-left: 10px;
 }
 
 /* card */
@@ -90,9 +155,6 @@
   font-weight: 300;
 }
 .tasks-cards__checkbox {}
-.tasks-cards__checkbox svg {
-  display: block;
-}
 .tasks-cards__content {
   display: grid;
   gap: 10px;
@@ -151,7 +213,6 @@
   padding: 5px;
 }
 .tasks-cards__attachment svg {
-  display: block;
   width: 15px;
   height: 15px;
 }
@@ -163,7 +224,6 @@
   /* color: #999; */
 }
 .tasks-cards__duedate svg {
-  display: block;
   width: 13px;
   height: 13px;
 }
@@ -178,7 +238,6 @@
   /* color: #999; */
 }
 .tasks-cards__patient svg {
-  display: block;
   width: 13px;
   height: 13px;
 }
@@ -201,7 +260,6 @@
   margin-left: 5px;
 }
 .tasks-cards__tag--mobile svg {
-  display: block;
   width: 15px;
   height: 15px;
 }

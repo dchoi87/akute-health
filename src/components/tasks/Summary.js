@@ -9,7 +9,7 @@ const Summary = () => {
           </svg>
           <span>Today</span>
         </div>
-        <span className="tasks-summary__number">9</span>
+        <span className="tasks-summary__number">5</span>
       </button>
       <button className="tasks-summary__status tasks__btn">
         <div className="tasks-summary__title">
