@@ -6,7 +6,6 @@ function App() {
   return (
     <div className="app">
       <div className="nav">Nav</div>
-      <div className="patient-info">Patient Info</div>
       <div className="container">
         <Tasks />
       </div>

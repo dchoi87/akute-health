@@ -1,8 +1,14 @@
 .tasks {
   display: grid;
+  grid-template-columns: 320px auto;
+}
+.tasks-container {
+  display: grid;
   grid-template-columns: auto;
   gap: 15px;
   padding: 15px;
+  height: 100vh;
+  overflow: auto;
 }
 .tasks-header h1 {
   font-weight: 300;
@@ -17,8 +23,41 @@
   border: 0;
   cursor: pointer;
 }
+.tasks__btn.tasks__btn--selected {
+  background: #61b47b;
+  color: #fafafa;
+}
 .tasks svg {
   display: block;
+}
+
+/* sidebar */
+.tasks-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 35px; /* change later */
+  padding: 15px;
+  border-right: 1px solid #efefef;
+  height: 100vh;
+  overflow: auto;
+}
+.tasks-sidebar__section {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+}
+.tasks-sidebar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.tasks-sidebar__header svg {
+  width: 10px;
+  height: 10px;
 }
 
 /* grid */
@@ -30,43 +69,30 @@
 .tasks-cards--grid {
   grid-template-columns: repeat(3, auto);
 }
-.tasks-section {
-  display: grid;
-  grid-template-columns: auto;
-  gap: 15px;
-}
-.tasks-section--desktop {
-  grid-template-columns: repeat(2, 1fr);
-}
 
 /* summary */
 .tasks-summary {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 10px;
 }
 .tasks-summary__status {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 7px;
-  padding: 15px;
+  padding: 10px;
   font-weight: 500;
   background: #efefef;
+  font-size: 14px;
 }
 .tasks-summary__status--selected {
   background: #61b47b;
   color: #fafafa;
 }
-.tasks-summary__title {
-  display: flex;
-  align-items: center;
-}
-.tasks-summary__title > * + * {
-  margin-left: 10px;
-}
-.tasks-summary__number {
-  background: #fff;
+.tasks-summary__title {}
+.tasks-summary__count {
+  background: #fafafa;
   color: #494949;
   border-radius: 7px;
   padding: 5px 10px;
@@ -74,10 +100,26 @@
   font-weight: 700;
 }
 
+/* view options */
+.tasks-view {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.tasks-view__option {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background: #efefef;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 /* filters */
 .tasks-filters {
-  /* background: #f4f4f4; */
-  /* padding: 15px; */
   border-radius: 7px;
 }
 .tasks-filters__section--top {
@@ -221,7 +263,6 @@
   grid-template-columns: repeat(2, auto);
   gap: 5px;
   align-items: center;
-  /* color: #999; */
 }
 .tasks-cards__duedate svg {
   width: 13px;
@@ -235,7 +276,6 @@
   grid-template-columns: repeat(2, auto);
   gap: 5px;
   align-items: center;
-  /* color: #999; */
 }
 .tasks-cards__patient svg {
   width: 13px;

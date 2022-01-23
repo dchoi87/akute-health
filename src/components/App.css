@@ -1,29 +1,20 @@
 .app {}
-.app > div {
-  height: 100vh;
-  overflow: auto;
-}
 .app > div + div {
   border-left: 1px dashed #ccc;
 }
 .nav {
+  height: 100vh;
+  overflow: auto;
   padding: 5px;
   display: none;
   align-items: center;
   justify-content: center;
 }
-.patient-info {
-  padding: 5px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
 
 @media screen and (min-width: 960px) {
   .app {
     display: grid;
-    grid-template-columns: 240px 320px auto;
+    grid-template-columns: 240px auto;
     gap: 5px;
   }
   .nav {
