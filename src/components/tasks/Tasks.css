@@ -86,10 +86,6 @@
   background: #efefef;
   font-size: 14px;
 }
-.tasks-summary__status--selected {
-  background: #61b47b;
-  color: #fafafa;
-}
 .tasks-summary__title {}
 .tasks-summary__count {
   background: #fafafa;
@@ -116,6 +112,58 @@
   border-radius: 7px;
   font-size: 14px;
   font-weight: 500;
+}
+
+/* priority */
+.tasks-priority {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.tasks-priority__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  background: #efefef;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+
+/* tags */
+.tasks-tags {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+}
+.tasks-tags__search {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+}
+.tasks-tags__search input {
+  border: 1px solid #efefef;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 12px;
+}
+.tasks-tags__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* change later */
+}
+.tasks-tags__tag {
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: capitalize;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #efefef;
 }
 
 /* filters */
