@@ -1,9 +1,10 @@
+import React from 'react';
 import Summary from './Summary';
 import ViewOptions from './ViewOptions';
 import Priority from './Priority';
 import Tags from './Tags';
 
-const SideBar = () => {
+const SideBar = ({handleViewOptions, viewOption}) => {
   return (
     <div className="tasks-sidebar">
       <div className="tasks-sidebar__section">
@@ -22,7 +23,7 @@ const SideBar = () => {
             <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
           </svg>
         </div>
-        <ViewOptions />
+        <ViewOptions handleViewOptions={handleViewOptions} viewOption={viewOption} />
       </div>
       <div className="tasks-sidebar__section">
         <div className="tasks-sidebar__header">

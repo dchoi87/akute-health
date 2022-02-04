@@ -9,7 +9,9 @@ Tags
 Attachment Indicator
 */
 
-const Cards = ({showDesktopView}) => {
+const Cards = ({showDesktopView, viewOption}) => {
+  const shouldShowFullTags = showDesktopView && viewOption !== 'grid';
+
   return (
     <button className="tasks-cards__item tasks__btn">
       <div className="tasks-cards__checkbox">
@@ -47,7 +49,7 @@ const Cards = ({showDesktopView}) => {
           </div>
           <div className="tasks-cards__subsection--right">
             {
-              showDesktopView ? (
+              shouldShowFullTags ? (
                 <>
                   <div className="tasks-cards__tag">Form Submission</div>
                   <div className="tasks-cards__tag">Doc Review</div>
