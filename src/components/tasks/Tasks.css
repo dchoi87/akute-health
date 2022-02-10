@@ -120,19 +120,21 @@
 /* priority */
 .tasks-priority {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(2, auto);
+  gap: 5px;
+  padding: 0 10px;
 }
 .tasks-priority__btn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   font-size: 14px;
-  font-weight: 500;
-  background: #efefef;
-  padding: 10px;
-  border-radius: 7px;
+}
+.tasks-priority__btn input {
+  width: 15px;
+  height: 15px;
+}
+.tasks-priority__btn span {
+  margin-left: 5px;
 }
 
 /* tags */
@@ -364,6 +366,9 @@
 }
 .tasks-cards--compact .tasks-cards__content {
   gap: 5px;
+}
+.tasks-cards--compact .tasks-cards__item {
+  border-radius: 7px;
 }
 
 @media screen and (min-width: 640px) {
