@@ -8,11 +8,10 @@
   overflow: auto;
 }
 .tasks-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
   margin-bottom: 15px;
-}
-.tasks-header h1 {
-  font-weight: 300;
-  margin: 0;
 }
 
 /* normalize */
@@ -29,6 +28,37 @@
 }
 .tasks svg {
   display: block;
+}
+
+/* add task btn & search */
+.tasks-header__add-btn {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px 10px 10px;
+  border-radius: 25px;
+  color: #fff;
+  background: #61b47b;
+  white-space: nowrap;
+  box-shadow: none;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 400;
+  line-height: unset;
+  letter-spacing: normal;
+}
+.tasks-header__add-btn svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.tasks-header__search input {
+  border: 1px solid #e5e5e5;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 12px;
+  min-width: 250px;
 }
 
 /* sidebar */
@@ -65,9 +95,6 @@
   display: grid;
   grid-template-columns: auto;
   gap: 15px;
-}
-.tasks-cards--grid {
-  grid-template-columns: repeat(3, auto);
 }
 
 /* summary */
@@ -124,16 +151,56 @@
   gap: 5px;
   padding: 0 10px;
 }
-.tasks-priority__btn {
+.tasks-priority__checkbox {
   display: flex;
   align-items: center;
   font-size: 14px;
 }
-.tasks-priority__btn input {
+.tasks-priority__checkbox input {
   width: 15px;
   height: 15px;
 }
-.tasks-priority__btn span {
+.tasks-priority__checkbox span {
+  margin-left: 5px;
+}
+
+/* owner */
+.tasks-owner {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+  padding: 0 10px;
+}
+.tasks-owner__checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.tasks-owner__checkbox input {
+  width: 15px;
+  height: 15px;
+}
+.tasks-owner__checkbox span {
+  margin-left: 5px;
+}
+
+/* status */
+.tasks-status {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+  padding: 0 10px;
+}
+.tasks-status__checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.tasks-status__checkbox input {
+  width: 15px;
+  height: 15px;
+}
+.tasks-status__checkbox span {
   margin-left: 5px;
 }
 
@@ -149,7 +216,7 @@
   gap: 5px;
 }
 .tasks-tags__search input {
-  border: 1px solid #efefef;
+  border: 1px solid #e5e5e5;
   border-radius: 15px;
   padding: 5px 10px;
   font-family: 'Roboto';
