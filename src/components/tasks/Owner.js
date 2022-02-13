@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Owner = () => {
   return (
     <div className="tasks-owner">

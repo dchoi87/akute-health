@@ -1,3 +1,5 @@
+import React from 'react';
+
 const tags = [
   'assessments',
   'create new',
@@ -7,6 +9,8 @@ const tags = [
   'fax',
   'form submission',
   'health maintenance',
+  'new patient signup',
+  'support',
 ];
 
 const Tags = () => {

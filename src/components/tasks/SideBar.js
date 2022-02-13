@@ -8,49 +8,53 @@ import Status from './Status';
 
 import { ChevronDown } from 'react-bootstrap-icons';
 
+// Features:
+// * expand / minimize all
+// * save settings (toggle?)
+
 const SideBar = ({handleViewOptions, viewOption}) => {
   return (
     <div className="tasks-sidebar">
       <div className="tasks-sidebar__section">
-        <div className="tasks-sidebar__header">
+        <button className="tasks-sidebar__header tasks__btn">
           <span>Overview</span>
           <ChevronDown />
-        </div>
+        </button>
         <Summary />
       </div>
       <div className="tasks-sidebar__section">
-        <div className="tasks-sidebar__header">
+        <button className="tasks-sidebar__header tasks__btn">
           <span>View Options</span>
           <ChevronDown />
-        </div>
+        </button>
         <ViewOptions handleViewOptions={handleViewOptions} viewOption={viewOption} />
       </div>
       <div className="tasks-sidebar__section">
-        <div className="tasks-sidebar__header">
+        <button className="tasks-sidebar__header tasks__btn">
           <span>By Priority</span>
           <ChevronDown />
-        </div>
+        </button>
         <Priority />
       </div>
       <div className="tasks-sidebar__section">
-        <div className="tasks-sidebar__header">
+        <button className="tasks-sidebar__header tasks__btn">
           <span>By Owner</span>
           <ChevronDown />
-        </div>
+        </button>
         <Owner />
       </div>
       <div className="tasks-sidebar__section">
-        <div className="tasks-sidebar__header">
+        <button className="tasks-sidebar__header tasks__btn">
           <span>By Status</span>
           <ChevronDown />
-        </div>
+        </button>
         <Status />
       </div>
       <div className="tasks-sidebar__section">
-        <div className="tasks-sidebar__header">
+        <button className="tasks-sidebar__header tasks__btn">
           <span>By Tags</span>
           <ChevronDown />
-        </div>
+        </button>
         <Tags />
       </div>
     </div>
