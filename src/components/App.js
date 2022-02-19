@@ -1,6 +1,6 @@
-import Tasks from './tasks/Tasks';
+import Tasks from "./tasks/Tasks";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   return (

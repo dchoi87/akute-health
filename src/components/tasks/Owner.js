@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Owner = () => {
   return (
@@ -32,7 +32,7 @@ const Owner = () => {
         <span>Marquez Valdes-Scantling</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Owner;

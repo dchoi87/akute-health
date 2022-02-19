@@ -1,18 +1,18 @@
-import React from 'react';
-import Summary from './Summary';
-import ViewOptions from './ViewOptions';
-import Priority from './Priority';
-import Tags from './Tags';
-import Owner from './Owner';
-import Status from './Status';
+import React from "react";
+import Summary from "./Summary";
+import ViewOptions from "./ViewOptions";
+import Priority from "./Priority";
+import Tags from "./Tags";
+import Owner from "./Owner";
+import Status from "./Status";
 
-import { ChevronDown } from 'react-bootstrap-icons';
+import { ChevronDown } from "react-bootstrap-icons";
 
 // Features:
 // * expand / minimize all
 // * save settings (toggle?)
 
-const SideBar = ({handleViewOptions, viewOption}) => {
+const SideBar = ({ handleViewOptions, viewOption }) => {
   return (
     <div className="tasks-sidebar">
       <div className="tasks-sidebar__section">
@@ -27,7 +27,10 @@ const SideBar = ({handleViewOptions, viewOption}) => {
           <span>View Options</span>
           <ChevronDown />
         </button>
-        <ViewOptions handleViewOptions={handleViewOptions} viewOption={viewOption} />
+        <ViewOptions
+          handleViewOptions={handleViewOptions}
+          viewOption={viewOption}
+        />
       </div>
       <div className="tasks-sidebar__section">
         <button className="tasks-sidebar__header tasks__btn">
@@ -58,7 +61,7 @@ const SideBar = ({handleViewOptions, viewOption}) => {
         <Tags />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default SideBar;

@@ -1,20 +1,20 @@
-import React, { useState, useRef } from 'react';
-import SideBar from './SideBar';
-import Card from './Card';
-import { useContainerQuery } from './hooks';
+import React, { useState, useRef } from "react";
+import SideBar from "./SideBar";
+import Card from "./Card";
+import { useContainerQuery } from "./hooks";
 
-import { PlusLg } from 'react-bootstrap-icons';
+import { PlusLg } from "react-bootstrap-icons";
 
-import './Tasks.css';
+import "./Tasks.css";
 
 const Tasks = () => {
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
-  const [viewOption, setViewOption] = useState('comfortable');
+  const [viewOption, setViewOption] = useState("comfortable");
 
-  const handleViewOptions = ({target}) => {
+  const handleViewOptions = ({ target }) => {
     setViewOption(target.dataset.id);
-  }
+  };
 
   return (
     <div className="tasks">
@@ -26,21 +26,30 @@ const Tasks = () => {
             Add Task
           </button>
           <div className="tasks-header__search">
-            <input type="search" name="tasks-search" id="tasks-search" placeholder="Search Tasks" />
+            <input
+              type="search"
+              name="tasks-search"
+              id="tasks-search"
+              placeholder="Search Tasks"
+            />
           </div>
         </div>
         <div className={`tasks-cards tasks-cards--${viewOption}`}>
-          {
-            Array(25).fill().map((el, i) => {
+          {Array(25)
+            .fill()
+            .map((el, i) => {
               return (
-                <Card key={i} showDesktopView={showDesktopView} viewOption={viewOption} />
-              )
-            })
-          }
+                <Card
+                  key={i}
+                  showDesktopView={showDesktopView}
+                  viewOption={viewOption}
+                />
+              );
+            })}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Tasks;

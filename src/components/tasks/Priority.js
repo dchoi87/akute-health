@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Priority = () => {
   return (
@@ -20,7 +20,7 @@ const Priority = () => {
         <span>Urgent</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Priority;

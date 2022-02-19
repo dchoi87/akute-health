@@ -6,12 +6,12 @@ export const useContainerQuery = (ref) => {
   useEffect(() => {
     const handleResize = () => {
       setMatch(ref.current.clientWidth >= 640);
-    }
+    };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return match;
-}
+};

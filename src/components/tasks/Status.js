@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Status = () => {
   return (
@@ -20,7 +20,7 @@ const Status = () => {
         <span>Not Started</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Status;

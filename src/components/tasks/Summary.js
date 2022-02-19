@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Summary = () => {
   return (
@@ -20,7 +20,7 @@ const Summary = () => {
         <span className="tasks-summary__count">57</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export default Summary;
