@@ -2,17 +2,6 @@ import React from "react";
 
 import { Alarm, PersonCircle, Tag, Paperclip } from "react-bootstrap-icons";
 
-/*
-What to show:
-Task name
-Description (Not all will have this)
-Priority
-Due Date
-Patient
-Tags
-Attachment Indicator
-*/
-
 const Cards = ({ showDesktopView, viewOption }) => {
   const shouldShowFullTags = showDesktopView && viewOption !== "grid";
 

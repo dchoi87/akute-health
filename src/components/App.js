@@ -1,4 +1,4 @@
-import Tasks from "./tasks/Tasks";
+import Tasks from "./tasks";
 
 import "./App.css";
 

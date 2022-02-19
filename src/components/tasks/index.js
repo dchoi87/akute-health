@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import SideBar from "./SideBar";
-import Card from "./Card";
+import SideBar from "./sidebar";
+import Card from "./card";
 import { useContainerQuery } from "./hooks";
 
 import { PlusLg } from "react-bootstrap-icons";
