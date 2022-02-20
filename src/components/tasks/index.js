@@ -29,12 +29,7 @@ const Tasks = () => {
             <PlusLg /> Add Task
           </Button>
           <div className="tasks-header__search">
-            <Input
-              type="search"
-              name="tasks-search"
-              id="tasks-search"
-              placeholder="Search Tasks"
-            />
+            <Input type="search" id="tasks-search" placeholder="Search Tasks" />
           </div>
         </div>
         <div className={styles.cards}>

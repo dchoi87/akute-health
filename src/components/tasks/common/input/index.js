@@ -3,11 +3,11 @@ import classNames from "classnames";
 
 import styles from "./index.module.css";
 
-const Input = ({ type, name, id, placeholder }) => {
+const Input = ({ type, id, placeholder }) => {
   return (
     <input
       type={type}
-      name={name}
+      name={id}
       id={id}
       className={styles[type]}
       placeholder={placeholder}

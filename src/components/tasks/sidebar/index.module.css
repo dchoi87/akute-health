@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* change later */
+  padding: 0 15px 15px;
+  border-right: 1px solid #efefef;
+  height: 100vh;
+  overflow: auto;
+}
+.section {
+  display: grid;
+  grid-template-columns: auto;
+}
+.overview,
+.view {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.overviewCount {
+  background: #fafafa;
+  color: #494949;
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.priority {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 5px;
+  padding: 0 10px;
+}
+.owner,
+.status {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+  padding: 0 10px;
+}
+.tags {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+}
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* change later */
+}

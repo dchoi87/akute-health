@@ -4,6 +4,7 @@
   text-align: inherit;
   border: 0;
   cursor: pointer;
+  text-transform: capitalize;
 }
 .add {
   display: flex;
@@ -25,4 +26,52 @@
   width: 20px;
   height: 20px;
   margin-right: 5px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: 15px 0;
+  background: transparent;
+}
+.header svg {
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+.overview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 7px;
+  padding: 10px;
+  font-weight: 500;
+  background: #efefef;
+  font-size: 14px;
+}
+.view {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background: #efefef;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.view * {
+  pointer-events: none;
+}
+.tag {
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: capitalize;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #efefef;
 }
