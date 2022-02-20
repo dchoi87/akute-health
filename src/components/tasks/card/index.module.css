@@ -71,6 +71,7 @@
   align-items: center;
 }
 .duedate svg {
+  display: block;
   width: 13px;
   height: 13px;
 }
@@ -84,6 +85,7 @@
   align-items: center;
 }
 .patient svg {
+  display: block;
   width: 13px;
   height: 13px;
 }
@@ -106,6 +108,7 @@
   margin-left: 5px;
 }
 .consolidated svg {
+  display: block;
   width: 15px;
   height: 15px;
 }
@@ -116,6 +119,7 @@
   padding: 5px;
 }
 .attachment svg {
+  display: block;
   width: 15px;
   height: 15px;
 }

@@ -1,10 +1,14 @@
 import React, { useState, useRef } from "react";
+import classNames from "classnames";
+import { PlusLg } from "react-bootstrap-icons";
 import SideBar from "./sidebar";
 import Card from "./card";
+import Button from "./common/button";
+import Input from "./common/input";
+
 import { useContainerQuery } from "./hooks";
 
-import { PlusLg } from "react-bootstrap-icons";
-
+import styles from "./index.module.css";
 import "./Tasks.css";
 
 const Tasks = () => {
@@ -17,16 +21,15 @@ const Tasks = () => {
   };
 
   return (
-    <div className="tasks">
+    <div className={styles.tasks}>
       <SideBar handleViewOptions={handleViewOptions} viewOption={viewOption} />
-      <div className="tasks-container" ref={taskRef}>
-        <div className="tasks-header">
-          <button className="tasks-header__add-btn tasks__btn">
-            <PlusLg />
-            Add Task
-          </button>
+      <div className={styles.container} ref={taskRef}>
+        <div className={styles.utility}>
+          <Button type="add">
+            <PlusLg /> Add Task
+          </Button>
           <div className="tasks-header__search">
-            <input
+            <Input
               type="search"
               name="tasks-search"
               id="tasks-search"
@@ -34,7 +37,7 @@ const Tasks = () => {
             />
           </div>
         </div>
-        <div className={`tasks-cards tasks-cards--${viewOption}`}>
+        <div className={styles.cards}>
           {Array(25)
             .fill()
             .map((el, i) => {

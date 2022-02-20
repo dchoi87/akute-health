@@ -1,0 +1,20 @@
+.tasks {
+  display: grid;
+  grid-template-columns: 320px auto;
+}
+.container {
+  padding: 15px;
+  height: 100vh;
+  overflow: auto;
+}
+.utility {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+}

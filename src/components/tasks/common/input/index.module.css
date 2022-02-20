@@ -1,0 +1,10 @@
+/* add task btn & search */
+.search {
+  border: 1px solid #e5e5e5;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: 12px;
+  min-width: 250px;
+}
