@@ -9,7 +9,6 @@ import Input from "./common/input";
 import { useContainerQuery } from "./hooks";
 
 import styles from "./index.module.css";
-import "./Tasks.css";
 
 const Tasks = () => {
   const taskRef = useRef(null);
