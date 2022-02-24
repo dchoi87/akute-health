@@ -39,7 +39,13 @@ const SideBar = ({ handleViewOptions, viewOption }) => {
         <div className={styles.view}>
           {view.map((item, i) => {
             return (
-              <Button key={i} type="view">
+              <Button
+                key={i}
+                type="view"
+                id={item.label}
+                isActive={viewOption === item.label}
+                onClick={handleViewOptions}
+              >
                 {item.svg}
                 <span>{item.label}</span>
               </Button>
@@ -47,28 +53,31 @@ const SideBar = ({ handleViewOptions, viewOption }) => {
           })}
         </div>
       </Section>
-      <Section title="By Priority">
+      <Section title="Priority">
         <div className={styles.priority}>
           {priority.map((item, i) => {
             return <Checkbox key={i} id={item} label={item} />;
           })}
         </div>
       </Section>
-      <Section title="By Owner">
+      <Section title="Owner">
         <div className={styles.owner}>
-          {owner.map((item, i) => {
-            return <Checkbox key={i} id={item} label={item} />;
-          })}
+          <Input type="search" id="owner-search" placeholder="Search Owner" />
+          <div className={styles.ownerWrapper}>
+            {owner.map((item, i) => {
+              return <Checkbox key={i} id={item} label={item} />;
+            })}
+          </div>
         </div>
       </Section>
-      <Section title="By Status">
+      <Section title="Status">
         <div className={styles.status}>
           {status.map((item, i) => {
             return <Checkbox key={i} id={item} label={item} />;
           })}
         </div>
       </Section>
-      <Section title="By Tags">
+      <Section title="Tags">
         <div className={styles.tags}>
           <Input type="search" id="tags-search" placeholder="Search Tags" />
           <div className={styles.tagsWrapper}>

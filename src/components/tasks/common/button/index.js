@@ -1,11 +1,14 @@
 import React from "react";
-import classNames from "classnames";
+import classNames from "classnames/bind";
 
 import styles from "./index.module.css";
 
-const Button = ({ children, type }) => {
+const cx = classNames.bind(styles);
+
+const Button = ({ children, id, type, isActive, onClick }) => {
+  const className = cx("normalize", [type], { active: isActive });
   return (
-    <button className={classNames(styles.normalize, styles[type])}>
+    <button id={id} className={className} onClick={onClick}>
       {children}
     </button>
   );

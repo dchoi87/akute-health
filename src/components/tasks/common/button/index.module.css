@@ -35,7 +35,7 @@
   letter-spacing: 2px;
   font-weight: 300;
   text-transform: uppercase;
-  padding: 15px 0;
+  padding: 20px 0;
   background: transparent;
 }
 .header svg {
@@ -74,4 +74,8 @@
   padding: 5px 10px;
   border-radius: 5px;
   background: #efefef;
+}
+.active {
+  background: #61b47b;
+  color: #fff;
 }

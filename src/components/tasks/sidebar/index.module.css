@@ -1,7 +1,4 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 25px; /* change later */
   padding: 0 15px 15px;
   border-right: 1px solid #efefef;
   height: 100vh;
@@ -10,6 +7,10 @@
 .section {
   display: grid;
   grid-template-columns: auto;
+}
+.section + .section {
+  border-top: 1px solid #efefef;
+  margin-top: 20px;
 }
 .overview,
 .view {
@@ -31,7 +32,7 @@
   gap: 5px;
   padding: 0 10px;
 }
-.owner,
+.ownerWrapper,
 .status {
   display: grid;
   grid-template-columns: auto;
@@ -43,6 +44,7 @@
   grid-template-columns: auto;
   gap: 15px;
 }
+.owner,
 .tagsWrapper {
   display: flex;
   flex-wrap: wrap;
