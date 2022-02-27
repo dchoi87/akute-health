@@ -1,19 +1,23 @@
 import React from "react";
-import { ChevronDown } from "react-bootstrap-icons";
+import { ChevronDown, Calendar3 } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
 import Input from "../common/input";
 
 import styles from "./index.module.css";
 
-import { tags, overview, priority, owner, status } from "../data";
+import { tags, overview, priority, owner, status, sectionSvg } from "../data";
 
 const Section = ({ children, title }) => {
+  const svg = sectionSvg[title.toLowerCase()];
   return (
     <div className={styles.section}>
       <Button type="header">
-        <span>{title}</span>
-        <ChevronDown />
+        {svg}
+        <div className={styles.header}>
+          <span>{title}</span>
+          <ChevronDown />
+        </div>
       </Button>
       {children}
     </div>
@@ -27,9 +31,9 @@ const SideBar = () => {
         <div className={styles.overview}>
           {overview.map((item, i) => {
             return (
-              <Button key={i} type="overview">
-                <span>{item.label}</span>
+              <Button key={i} type="overview" isActive={i === 0}>
                 <span className={styles.overviewCount}>{item.value}</span>
+                <span>{item.label}</span>
               </Button>
             );
           })}

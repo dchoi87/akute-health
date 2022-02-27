@@ -1,3 +1,11 @@
+import {
+  Calendar3,
+  ExclamationDiamond,
+  Person,
+  Check2Square,
+  Tag,
+} from "react-bootstrap-icons";
+
 export const overview = [
   { label: "today", value: 5 },
   { label: "next 5 days", value: 9 },
@@ -36,3 +44,11 @@ export const tags = [
   "new patient signup",
   "support",
 ];
+
+export const sectionSvg = {
+  overview: <Calendar3 />,
+  priority: <ExclamationDiamond />,
+  owner: <Person />,
+  status: <Check2Square />,
+  tags: <Tag />,
+};

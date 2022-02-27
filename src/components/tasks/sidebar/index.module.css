@@ -19,11 +19,8 @@
   gap: 10px;
 }
 .overviewCount {
-  background: #fafafa;
-  color: #494949;
   border-radius: 7px;
-  padding: 5px 10px;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 700;
 }
 .priority {
@@ -49,4 +46,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px; /* change later */
+}
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.header svg {
+  display: block;
+  width: 10px;
+  height: 10px;
 }
