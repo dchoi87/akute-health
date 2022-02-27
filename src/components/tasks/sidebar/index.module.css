@@ -29,10 +29,15 @@
   gap: 5px;
   padding: 0 10px;
 }
-.ownerWrapper,
-.status {
+.ownerWrapper {
   display: grid;
   grid-template-columns: auto;
+  gap: 5px;
+  padding: 0 10px;
+}
+.status {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
   gap: 5px;
   padding: 0 10px;
 }

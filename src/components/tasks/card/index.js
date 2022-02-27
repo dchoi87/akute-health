@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import classNames from "classnames/bind";
 import {
   Alarm,
   PersonCircle,
@@ -10,11 +10,13 @@ import {
 
 import styles from "./index.module.css";
 
-const Cards = ({ showDesktopView, viewOption }) => {
-  const shouldShowFullTags = showDesktopView && viewOption !== "grid";
+const cx = classNames.bind(styles);
+
+const Cards = ({ showDesktopView, isCompactView }) => {
+  const shouldShowFullTags = showDesktopView;
 
   return (
-    <button className={styles.container}>
+    <button className={cx("container", { compact: isCompactView })}>
       <div className="select">
         <Circle />
       </div>
@@ -31,7 +33,7 @@ const Cards = ({ showDesktopView, viewOption }) => {
             </div>
           </div>
         </div>
-        <div className="sectionMiddle">
+        <div className={styles.sectionMiddle}>
           <div className={styles.description}>Some Description Text</div>
         </div>
         <div className={styles.sectionBottom}>
@@ -53,7 +55,7 @@ const Cards = ({ showDesktopView, viewOption }) => {
                 <div className={styles.tag}>+2</div>
               </>
             ) : (
-              <div className={classNames(styles.tag, styles.consolidated)}>
+              <div className={cx("tag", "consolidated")}>
                 <Tag />
                 <span>+3</span>
               </div>
