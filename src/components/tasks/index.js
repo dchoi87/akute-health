@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames";
-import { PlusLg } from "react-bootstrap-icons";
+import { PlusLg, ViewStacked, ViewList } from "react-bootstrap-icons";
 import SideBar from "./sidebar";
 import Card from "./card";
 import Button from "./common/button";
@@ -22,14 +22,20 @@ const Tasks = () => {
 
   return (
     <div className={styles.tasks}>
-      <SideBar handleViewOptions={handleViewOptions} viewOption={viewOption} />
+      <SideBar />
       <div className={styles.container} ref={taskRef}>
         <div className={styles.utility}>
           <Button type="add">
             <PlusLg /> Add Task
           </Button>
-          <div className="tasks-header__search">
+          <div className={styles.search}>
             <Input type="search" id="tasks-search" placeholder="Search Tasks" />
+            <Button type="view" isActive={true}>
+              <ViewStacked />
+            </Button>
+            <Button type="view">
+              <ViewList />
+            </Button>
           </div>
         </div>
         <div className={styles.cards}>

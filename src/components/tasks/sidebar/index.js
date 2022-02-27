@@ -6,7 +6,7 @@ import Input from "../common/input";
 
 import styles from "./index.module.css";
 
-import { tags, overview, view, priority, owner, status } from "../data";
+import { tags, overview, priority, owner, status } from "../data";
 
 const Section = ({ children, title }) => {
   return (
@@ -20,7 +20,7 @@ const Section = ({ children, title }) => {
   );
 };
 
-const SideBar = ({ handleViewOptions, viewOption }) => {
+const SideBar = () => {
   return (
     <div className={styles.container}>
       <Section title="Overview">
@@ -30,24 +30,6 @@ const SideBar = ({ handleViewOptions, viewOption }) => {
               <Button key={i} type="overview">
                 <span>{item.label}</span>
                 <span className={styles.overviewCount}>{item.value}</span>
-              </Button>
-            );
-          })}
-        </div>
-      </Section>
-      <Section title="View Options">
-        <div className={styles.view}>
-          {view.map((item, i) => {
-            return (
-              <Button
-                key={i}
-                type="view"
-                id={item.label}
-                isActive={viewOption === item.label}
-                onClick={handleViewOptions}
-              >
-                {item.svg}
-                <span>{item.label}</span>
               </Button>
             );
           })}

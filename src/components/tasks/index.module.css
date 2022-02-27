@@ -18,3 +18,7 @@
   grid-template-columns: auto;
   gap: 15px;
 }
+.search {
+  display: flex;
+  align-items: center;
+}

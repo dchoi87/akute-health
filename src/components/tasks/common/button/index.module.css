@@ -54,18 +54,17 @@
   font-size: 14px;
 }
 .view {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-  background: #efefef;
-  border-radius: 7px;
-  font-size: 14px;
-  font-weight: 500;
+  background: transparent;
+  padding: 7px;
+  border-radius: 5px;
 }
-.view * {
-  pointer-events: none;
+.view + .view {
+  margin-left: 5px;
+}
+.view svg {
+  display: block;
+  width: 13px;
+  height: 13px;
 }
 .tag {
   font-size: 12px;
@@ -76,6 +75,6 @@
   background: #efefef;
 }
 .active {
-  background: #61b47b;
+  background: #494949;
   color: #fff;
 }

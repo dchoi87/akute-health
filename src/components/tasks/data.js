@@ -1,15 +1,8 @@
-import { ArrowsExpand, ArrowsCollapse } from "react-bootstrap-icons";
-
 export const overview = [
   { label: "today", value: 5 },
   { label: "next 5 days", value: 9 },
   { label: "incomplete", value: 25 },
   { label: "complete", value: 57 },
-];
-
-export const view = [
-  { label: "comfortable", svg: <ArrowsExpand /> },
-  { label: "compact", svg: <ArrowsCollapse /> },
 ];
 
 export const priority = ["urgent", "p2", "p3", "no priority"];
