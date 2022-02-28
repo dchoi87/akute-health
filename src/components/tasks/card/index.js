@@ -2,7 +2,8 @@ import React from "react";
 import classNames from "classnames/bind";
 import {
   Alarm,
-  PersonCircle,
+  ClipboardPlus,
+  PersonWorkspace,
   Tag,
   Paperclip,
   Circle,
@@ -43,7 +44,11 @@ const Cards = ({ showDesktopView, isCompactView }) => {
               <span>12-17-2021</span>
             </div>
             <div className={styles.patient}>
-              <PersonCircle />
+              <ClipboardPlus />
+              <span>Ronit Ghosh</span>
+            </div>
+            <div className={styles.owner}>
+              <PersonWorkspace />
               <span>Daniel Choi</span>
             </div>
           </div>

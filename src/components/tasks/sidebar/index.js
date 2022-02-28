@@ -66,6 +66,9 @@ const SideBar = () => {
               return <Checkbox key={i} id={item} label={item} />;
             })}
           </div>
+          <div className={styles.more}>
+            <Button type="more">Show More</Button>
+          </div>
         </div>
       </Section>
       <Section title="Status">
@@ -86,6 +89,9 @@ const SideBar = () => {
                 </Button>
               );
             })}
+          </div>
+          <div className={styles.more}>
+            <Button type="more">Show More</Button>
           </div>
         </div>
       </Section>

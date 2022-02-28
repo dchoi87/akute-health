@@ -34,11 +34,20 @@
   gap: 5px;
   padding: 0 10px;
 }
+.owner {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+}
 .ownerWrapper {
   display: grid;
   grid-template-columns: auto;
   gap: 5px;
   padding: 0 10px;
+}
+.more {
+  padding: 0 10px;
+  text-align: center;
 }
 .status {
   display: grid;
@@ -51,7 +60,6 @@
   grid-template-columns: auto;
   gap: 15px;
 }
-.owner,
 .tagsWrapper {
   display: flex;
   flex-wrap: wrap;

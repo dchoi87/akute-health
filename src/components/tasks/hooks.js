@@ -5,7 +5,7 @@ export const useContainerQuery = (ref) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setMatch(ref.current.clientWidth >= 640);
+      setMatch(ref.current.clientWidth >= 768);
     };
 
     handleResize();

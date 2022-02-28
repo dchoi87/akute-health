@@ -78,17 +78,20 @@
 .duedate span {
   font-size: 14px;
 }
+.owner,
 .patient {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 5px;
   align-items: center;
 }
+.owner svg,
 .patient svg {
   display: block;
   width: 13px;
   height: 13px;
 }
+.owner span,
 .patient span {
   font-size: 14px;
 }
