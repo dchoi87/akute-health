@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronDown, Calendar3 } from "react-bootstrap-icons";
+import { ChevronDown, SortDown, SortUp } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
 import Input from "../common/input";
@@ -37,6 +37,18 @@ const SideBar = () => {
               </Button>
             );
           })}
+        </div>
+      </Section>
+      <Section title="Sort">
+        <div className={styles.sort}>
+          <Button type="sort">
+            <SortDown />
+            <span>By Priority</span>
+          </Button>
+          <Button type="sort">
+            <SortDown />
+            <span>By Due Date</span>
+          </Button>
         </div>
       </Section>
       <Section title="Priority">

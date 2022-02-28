@@ -23,6 +23,11 @@
   font-size: 18px;
   font-weight: 700;
 }
+.sort {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
 .priority {
   display: grid;
   grid-template-columns: repeat(2, auto);

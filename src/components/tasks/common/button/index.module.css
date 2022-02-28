@@ -78,6 +78,25 @@
   border-radius: 5px;
   background: #efefef;
 }
+.sort {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 300;
+  background: #fff;
+  box-shadow: 0px 5px 10px 2px #efefef73;
+}
+.sort svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  margin-bottom: 10px;
+}
 .active {
   background: #494949;
   color: #fff;

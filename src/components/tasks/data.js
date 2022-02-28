@@ -1,6 +1,7 @@
 import {
   Calendar3,
   ExclamationDiamond,
+  Funnel,
   Person,
   Check2Square,
   Tag,
@@ -47,6 +48,7 @@ export const tags = [
 
 export const sectionSvg = {
   overview: <Calendar3 />,
+  sort: <Funnel />,
   priority: <ExclamationDiamond />,
   owner: <Person />,
   status: <Check2Square />,

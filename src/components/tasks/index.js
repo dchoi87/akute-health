@@ -18,7 +18,6 @@ const Tasks = () => {
   const [viewOption, setViewOption] = useState("comfortable");
 
   const handleViewOptions = ({ target }) => {
-    console.log(target.id);
     setViewOption(target.id);
   };
 
