@@ -41,8 +41,8 @@ const SideBar = () => {
       </Section>
       <Section title="Sort">
         <div className={styles.sort}>
-          <Button type="sort">
-            <SortDown />
+          <Button type="sort" isActive={true}>
+            <SortUp />
             <span>By Priority</span>
           </Button>
           <Button type="sort">
@@ -84,7 +84,7 @@ const SideBar = () => {
           <div className={styles.tagsWrapper}>
             {tags.map((item, i) => {
               return (
-                <Button key={i} type="tag">
+                <Button key={i} type="tag" isActive={i < 3}>
                   {item}
                 </Button>
               );

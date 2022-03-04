@@ -7,52 +7,65 @@
   cursor: pointer;
   /* container */
   display: flex;
-  align-items: baseline;
-  padding: 15px;
+  align-items: flex-start;
+  padding: 20px;
   color: #494949;
   background: #fff;
   border-radius: 15px;
   box-shadow: 0px 5px 10px 2px #efefef73;
   font-weight: 300;
 }
+.select {
+  margin-right: 15px;
+}
 .content {
   display: grid;
+  grid-template-columns: auto;
   gap: 10px;
   width: 100%;
-  margin-left: 15px;
 }
 .sectionTop {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 10px;
 }
 .sectionBottom {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
-.subsectionLeft {
+.headingWrapper {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+  margin-right: 15px;
+}
+.subHeading {
   display: flex;
   align-items: center;
-}
-.subsectionLeft > div + div {
-  margin-left: 15px;
-}
-.subsectionRight {
-  display: flex;
-  align-items: center;
-}
-.subsectionRight > div + div {
-  margin-left: 5px;
+  gap: 15px;
+  font-size: 14px;
 }
 .title {
+  display: flex;
+  align-items: center;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
+}
+.title svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+}
+.owner {
+  /* font-size: 12px; */
+  font-weight: 300;
 }
 .priority {
   font-weight: 500;
-  font-size: 12px;
-  padding: 5px 10px;
+  font-size: 11px;
+  padding: 4px 8px;
   border-radius: 15px;
   margin-left: 5px;
 }
@@ -65,79 +78,60 @@
   color: #999;
 }
 .duedate {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 5px;
+  display: flex;
   align-items: center;
+  /* font-size: 12px; */
+}
+.patient {
+  display: flex;
+  align-items: center;
+  /* font-size: 12px; */
 }
 .duedate svg {
   display: block;
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
 }
-.duedate span {
-  font-size: 14px;
-}
-.owner,
-.patient {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 5px;
-  align-items: center;
-}
-.owner svg,
 .patient svg {
   display: block;
   width: 13px;
   height: 13px;
+  margin-right: 5px;
 }
-.owner span,
-.patient span {
-  font-size: 14px;
+.tagsWrapper {
+  display: flex;
 }
 .tag {
   background: #efefef;
-  color: #555;
-  padding: 5px 10px;
   border-radius: 5px;
-  font-size: 12px;
+  padding: 4px 8px;
+  font-size: 11px;
   font-weight: 400;
 }
-.consolidated {
-  display: flex;
-  padding: 5px;
-}
-.consolidated > * + * {
+.tag + .tag {
   margin-left: 5px;
 }
-.consolidated svg {
-  display: block;
-  width: 15px;
-  height: 15px;
-}
-.attachment {
-  background: #efefef;
-  color: #555;
-  border-radius: 5px;
-  padding: 5px;
-}
-.attachment svg {
-  display: block;
-  width: 15px;
-  height: 15px;
-}
 /* modifiers */
+.compact.container {
+  padding: 15px;
+}
 .compact {
   border-radius: 0;
 }
-.compact .sectionMiddle {
+.compact .subHeading {
+  font-size: 12px;
+}
+.compact .title {
+  font-size: 15px;
+}
+.compact .sectionMid {
   display: none;
 }
+.compact .sectionTop {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
 @media screen and (min-width: 640px) {
-  .container {
-    padding: 25px;
-  }
-  .compact {
-    padding: 15px 25px;
-  }
+  
 }
