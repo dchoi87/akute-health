@@ -5,6 +5,7 @@
   border: 0;
   cursor: pointer;
   text-transform: capitalize;
+  position: relative;
 }
 .add {
   display: flex;
@@ -65,6 +66,15 @@
   margin-left: 5px;
 }
 .view svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+  pointer-events: none;
+}
+.collection {
+  background: transparent;
+}
+.collection svg {
   display: block;
   width: 13px;
   height: 13px;

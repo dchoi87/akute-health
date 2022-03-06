@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames/bind";
-import { PlusLg, ViewStacked, ViewList } from "react-bootstrap-icons";
+import { PlusLg, ViewStacked, ViewList, Table } from "react-bootstrap-icons";
 import SideBar from "./sidebar";
 import Card from "./card";
 import Button from "./common/button";
@@ -46,6 +46,14 @@ const Tasks = () => {
               onClick={handleViewOptions}
             >
               <ViewList />
+            </Button>
+            <Button
+              type="view"
+              id="table"
+              isActive={viewOption === "table"}
+              onClick={handleViewOptions}
+            >
+              <Table />
             </Button>
           </div>
         </div>

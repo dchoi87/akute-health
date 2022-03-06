@@ -28,6 +28,13 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
+.sortPriority {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 12px;
+  font-weight: 300;
+}
 .priority {
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -75,4 +82,7 @@
   display: block;
   width: 10px;
   height: 10px;
+}
+.toolbar {
+  display: flex;
 }

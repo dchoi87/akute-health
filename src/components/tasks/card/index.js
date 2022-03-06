@@ -55,6 +55,7 @@ const Cards = ({ showDesktopView, isCompactView }) => {
             <div className={styles.tag}>Diagnostic Reports</div>
             <div className={styles.tag}>+2</div>
           </div>
+          <div className={styles.appointedState}>No State</div>
         </div>
       </div>
     </button>
