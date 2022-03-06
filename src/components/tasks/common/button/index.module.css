@@ -113,7 +113,32 @@
   font-size: 12px;
   font-weight: 300;
 }
+.filter {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 300;
+  background: transparent;
+  padding: 0;
+}
+.filter svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+}
+.clear {
+  font-size: 12px;
+  font-weight: 300;
+  text-decoration: underline;
+  background: transparent;
+}
 .active {
   background: #494949;
   color: #fff;
+}
+.filter.active {
+  background: transparent;
+  color: #000;
+  font-weight: 500;
 }

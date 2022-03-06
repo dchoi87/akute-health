@@ -5,6 +5,7 @@ import {
   Person,
   Check2Square,
   Tag,
+  Heart,
 } from "react-bootstrap-icons";
 
 export const overview = [
@@ -49,6 +50,7 @@ export const tags = [
 export const sectionSvg = {
   overview: <Calendar3 />,
   sort: <Funnel />,
+  filters: <Heart />,
   priority: <ExclamationDiamond />,
   owner: <Person />,
   status: <Check2Square />,

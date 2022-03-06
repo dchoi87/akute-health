@@ -35,6 +35,23 @@
   font-size: 12px;
   font-weight: 300;
 }
+.filters {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+  padding: 0 10px;
+}
+.filtersWrapper {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+  margin: 0;
+  padding-left: 25px;
+}
+.clear {
+  padding: 0 10px;
+  text-align: center;
+}
 .priority {
   display: grid;
   grid-template-columns: repeat(2, auto);
