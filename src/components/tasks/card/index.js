@@ -49,11 +49,24 @@ const Cards = ({ showDesktopView, isCompactView }) => {
         </div>
         <div className={styles.sectionBottom}>
           <div className={styles.tagsWrapper}>
-            <div className={styles.tag}>Form Submission</div>
-            <div className={styles.tag}>Doc Review</div>
-            <div className={styles.tag}>Assessments</div>
-            <div className={styles.tag}>Diagnostic Reports</div>
-            <div className={styles.tag}>+2</div>
+            {
+              showDesktopView ? (
+                <>
+                  <div className={styles.tag}>Form Submission</div>
+                  <div className={styles.tag}>Doc Review</div>
+                  <div className={styles.tag}>Assessments</div>
+                  <div className={styles.tag}>Diagnostic Reports</div>
+                  <div className={styles.tag}>+2</div>
+                </>
+              ) : (
+                <>
+                  <div className={styles.tag}>Form Submission</div>
+                  <div className={styles.tag}>Doc Review</div>
+                  <div className={styles.tag}>+4</div>
+                </>
+              )
+            }
+            
           </div>
           <div className={styles.appointedState}>No State</div>
         </div>

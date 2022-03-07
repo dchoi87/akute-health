@@ -31,6 +31,7 @@ const Tasks = () => {
           </Button>
           <div className={styles.search}>
             <Input type="search" id="tasks-search" placeholder="Search Tasks" />
+            {/* todo: data & iterate */}
             <Button
               type="view"
               id="comfortable"

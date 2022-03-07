@@ -1,6 +1,6 @@
 .tasks {
   display: grid;
-  grid-template-columns: 320px auto;
+  grid-template-columns: 100%;
 }
 .container {
   padding: 15px;
@@ -27,4 +27,9 @@
   gap: 2px;
   border-radius: 15px;
   overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  .tasks {
+    grid-template-columns: 320px auto;
+  }
 }

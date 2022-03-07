@@ -1,4 +1,5 @@
 .container {
+  display: none;
   padding: 0 15px 15px;
   border-right: 1px solid #efefef;
   height: 100vh;
@@ -102,4 +103,9 @@
 }
 .toolbar {
   display: flex;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    display: block;
+  }
 }
