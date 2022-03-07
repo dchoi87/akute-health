@@ -63,16 +63,29 @@
 .owner {
   font-weight: 300;
 }
+.priorityWrapper {
+  margin-left: 10px;
+}
 .priority {
   font-weight: 500;
   font-size: 11px;
+  text-transform: capitalize;
   padding: 4px 8px;
   border-radius: 15px;
-  margin-left: 5px;
+  white-space: nowrap;
+  background: #efefef;
 }
 .urgent {
   color: #fff;
   background: #ca0000;
+}
+.p2 {
+  color: #fff;
+  background: #ED8936;
+}
+.p3 {
+  color: #b57300;
+  background: #FBD38D;
 }
 .description {
   font-size: 14px;
@@ -110,6 +123,7 @@
   padding: 4px 8px;
   font-size: 11px;
   font-weight: 400;
+  text-transform: capitalize;
 }
 .tag + .tag {
   margin-left: 5px;

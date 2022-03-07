@@ -7,6 +7,7 @@ import Button from "./common/button";
 import Input from "./common/input";
 
 import { useContainerQuery } from "./hooks";
+import { mockData } from "./data";
 
 import styles from "./index.module.css";
 
@@ -71,12 +72,11 @@ const Tasks = () => {
           </div>
         </div>
         <div className={cx("cards", { compact: viewOption === "compact" })}>
-          {Array(25)
-            .fill()
-            .map((el, i) => {
+          {mockData.map((task, i) => {
               return (
                 <Card
                   key={i}
+                  task={task}
                   showDesktopView={showDesktopView}
                   isCompactView={viewOption === "compact"}
                 />

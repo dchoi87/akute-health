@@ -9,10 +9,11 @@ import {
 } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
+import { tags } from "../data";
 
 const cx = classNames.bind(styles);
 
-const Cards = ({ showDesktopView, isCompactView }) => {
+const Cards = ({ task, showDesktopView, isCompactView }) => {
 
   return (
     <button className={cx("container", {compact: isCompactView})}>
@@ -23,52 +24,70 @@ const Cards = ({ showDesktopView, isCompactView }) => {
         <div className={styles.sectionTop}>
           <div className={styles.headingWrapper}>
             <div className={styles.title}>
-              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-              <Paperclip />
+              <span>{task.title}</span>
+              {
+                task.attachment &&
+                <Paperclip />
+              }
             </div>
-            <div className="">
-              <div className={cx("priority", "urgent")}>Urgent</div>
+            <div className={styles.priorityWrapper}>
+              <div className={cx("priority", styles[task.priority])}>{task.priority}</div>
             </div>
           </div>
           <div className={styles.subHeading}>
-            <div className={styles.owner}>Cooper Kupp</div>
+            <div className={styles.owner}>{task.owner}</div>
             <div className={styles.duedate}>
               <Alarm />
-              <span>12-07-2022</span>
+              <span>{task.duedate}</span>
             </div>
             <div className={styles.patient}>
               <Person />
-              <span>Ronit Ghosh</span>
+              <span>{task.patient}</span>
             </div>
           </div>
         </div>
         <div className={styles.sectionMid}>
           <div className={styles.description}>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            {task.description}
           </div>
         </div>
         <div className={styles.sectionBottom}>
           <div className={styles.tagsWrapper}>
+            {/* todo: dry this */}
             {
               showDesktopView ? (
                 <>
-                  <div className={styles.tag}>Form Submission</div>
-                  <div className={styles.tag}>Doc Review</div>
-                  <div className={styles.tag}>Assessments</div>
-                  <div className={styles.tag}>Diagnostic Reports</div>
-                  <div className={styles.tag}>+2</div>
+                  {
+                    task.tags.slice(0, 4).map((tag, i) => {
+                      return (
+                        <div key={i} className={styles.tag}>{tag}</div>
+                      )
+                    })
+                  }
+                  {
+                    task.tags.length > 4 &&
+                    <div className={styles.tag}>+{task.tags.length - 4}</div>
+                  }
                 </>
               ) : (
                 <>
-                  <div className={styles.tag}>Form Submission</div>
-                  <div className={styles.tag}>Doc Review</div>
-                  <div className={styles.tag}>+4</div>
+                  {
+                    task.tags.slice(0, 2).map((tag, i) => {
+                      return (
+                        <div key={i} className={styles.tag}>{tag}</div>
+                      )
+                    })
+                  }
+                  {
+                    task.tags.length > 4 &&
+                    <div className={styles.tag}>+{task.tags.length - 2}</div>
+                  }
                 </>
               )
             }
             
           </div>
-          <div className={styles.appointedState}>No State</div>
+          <div className={styles.appointedState}>{task.state}</div>
         </div>
       </div>
     </button>
