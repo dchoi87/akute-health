@@ -9,7 +9,7 @@
 }
 .utility {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 15px;
 }
@@ -28,7 +28,7 @@
   border-radius: 15px;
   overflow: hidden;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 960px) {
   .tasks {
     grid-template-columns: 320px auto;
   }

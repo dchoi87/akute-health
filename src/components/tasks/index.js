@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames/bind";
-import { PlusLg, ViewStacked, ViewList, Table } from "react-bootstrap-icons";
+import { PlusLg, ViewStacked, ViewList, Table, Search, Filter } from "react-bootstrap-icons";
 import SideBar from "./sidebar";
 import Card from "./card";
 import Button from "./common/button";
@@ -27,10 +27,22 @@ const Tasks = () => {
       <div className={styles.container} ref={taskRef}>
         <div className={styles.utility}>
           <Button type="add">
-            <PlusLg /> Add Task
+            <PlusLg />
+            <span>Add Task</span>
+          </Button>
+          <Button type="menu">
+            <Filter />
           </Button>
           <div className={styles.search}>
-            <Input type="search" id="tasks-search" placeholder="Search Tasks" />
+            {
+              showDesktopView ? (
+                <Input type="search" id="tasks-search" placeholder="Search Tasks" />
+              ) : (
+                <Button type="search">
+                  <Search />
+                </Button>
+              )
+            }
             {/* todo: data & iterate */}
             <Button
               type="view"

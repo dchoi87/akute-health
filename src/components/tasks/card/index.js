@@ -26,20 +26,20 @@ const Cards = ({ showDesktopView, isCompactView }) => {
               <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
               <Paperclip />
             </div>
-            <div className={styles.subHeading}>
-              <div className={styles.owner}>Cooper Kupp</div>
-              <div className={styles.duedate}>
-                <Alarm />
-                <span>12-07-2022</span>
-              </div>
-              <div className={styles.patient}>
-                <Person />
-                <span>Ronit Ghosh</span>
-              </div>
+            <div className="">
+              <div className={cx("priority", "urgent")}>Urgent</div>
             </div>
           </div>
-          <div className="">
-            <div className={cx("priority", "urgent")}>Urgent</div>
+          <div className={styles.subHeading}>
+            <div className={styles.owner}>Cooper Kupp</div>
+            <div className={styles.duedate}>
+              <Alarm />
+              <span>12-07-2022</span>
+            </div>
+            <div className={styles.patient}>
+              <Person />
+              <span>Ronit Ghosh</span>
+            </div>
           </div>
         </div>
         <div className={styles.sectionMid}>

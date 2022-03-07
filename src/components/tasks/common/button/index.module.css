@@ -8,25 +8,31 @@
   position: relative;
 }
 .add {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px 10px 10px;
-  border-radius: 25px;
+  padding: 15px;
+  border-radius: 50%;
   color: #fff;
   background: #61b47b;
-  white-space: nowrap;
-  box-shadow: none;
-  font-size: 16px;
-  text-transform: capitalize;
-  font-weight: 400;
-  line-height: unset;
-  letter-spacing: normal;
+  position: fixed;
+  bottom: 30px;
+  right: 45px;
+  box-shadow: 0px 5px 10px 2px #a4a4a473;
+}
+.add span {
+  display: none;
 }
 .add svg {
   display: block;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+}
+.menu {
+  padding: 5px;
+  border-radius: 5px;
+}
+.menu svg {
+  display: block;
+  width: 25px;
+  height: 25px;
 }
 .header {
   display: flex;
@@ -133,6 +139,16 @@
   text-decoration: underline;
   background: transparent;
 }
+.search {
+  background: transparent;
+  margin-right: 5px;
+}
+.search svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+  pointer-events: none;
+}
 /* modifiers */
 .active {
   background: #494949;
@@ -142,4 +158,34 @@
   background: transparent;
   color: #000;
   font-weight: 500;
+}
+@media screen and (min-width: 960px) {
+  .add {
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    padding: 10px 15px 10px 10px;
+    border-radius: 25px;
+    white-space: nowrap;
+    box-shadow: none;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 400;
+    line-height: unset;
+    letter-spacing: normal;
+    box-shadow: none;
+  }
+  .add span {
+    display: block;
+  }
+  .add svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  .menu {
+    display: none;
+  }
 }
