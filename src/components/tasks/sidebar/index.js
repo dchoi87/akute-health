@@ -71,12 +71,14 @@ const SideBar = () => {
             </li>
             <li>
               <Button type="filter">
-                <span>Superbowl Champs (11-22-22)</span>
+                <span>Some Filter Name (11-22-22)</span>
               </Button>
             </li>
           </ul>
-          <div className={styles.clear}>
-            <Button type="clear">Clear Presets</Button>
+          <div className={styles.options}>
+            <Button type="clear">
+              <span>Clear Presets</span>
+            </Button>
           </div>
         </div>
       </Section>

@@ -133,6 +133,7 @@
   text-decoration: underline;
   background: transparent;
 }
+/* modifiers */
 .active {
   background: #494949;
   color: #fff;
