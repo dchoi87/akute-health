@@ -57,6 +57,12 @@ export const sectionSvg = {
   tags: <Tag />,
 };
 
+export const savedFilters = [
+  { label: "saved filter 1", date: "10-12-22" },
+  { label: "my custom filter", date: "10-31-22" },
+  { label: "some filter name", date: "11-22-22" },
+];
+
 export const mockData = [
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",

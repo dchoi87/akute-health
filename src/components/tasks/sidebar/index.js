@@ -3,10 +3,11 @@ import { ChevronDown, SortDown, SortUp, Collection, CheckLg } from "react-bootst
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
 import Input from "../common/input";
+import Radio from "../common/radio";
 
 import styles from "./index.module.css";
 
-import { tags, overview, priority, owner, status, sectionSvg } from "../data";
+import { tags, overview, priority, owner, status, sectionSvg, savedFilters } from "../data";
 
 const Section = ({ children, title, id }) => {
   const svg = sectionSvg[id];
@@ -31,50 +32,22 @@ const SideBar = () => {
         <div className={styles.overview}>
           {overview.map((item, i) => {
             return (
-              <Button key={i} type="overview" isActive={i === 0}>
-                <span className={styles.overviewCount}>{item.value}</span>
-                <span>{item.label}</span>
-              </Button>
+              <Radio key={i}  idx={i} id={item.label} label={item.label} name="overview" />
             );
           })}
         </div>
       </Section>
-      <Section title="Sort" id="sort">
-        <div className={styles.sort}>
-          {/* todo: create data */}
-          <Button type="sort" isActive={true}>
-            <div className={styles.sortPriority}>1</div>
-            <SortUp />
-            <span>By Priority</span>
-          </Button>
-          <Button type="sort">
-            <div className={styles.sortPriority}>2</div>
-            <SortDown />
-            <span>By Due Date</span>
-          </Button>
-        </div>
-      </Section>
       <Section title="Saved Filters" id="filters">
         <div className={styles.filters}>
-          <ul className={styles.filtersWrapper}>
-            {/* todo: create data */}
-            <li>
-              <Button type="filter" isActive={true}>
-                <span>Saved Filter 1 (10-12-22)</span>
-                <CheckLg />
-              </Button>
-            </li>
-            <li>
-              <Button type="filter">
-                <span>My Custom Filter (10-14-22)</span>
-              </Button>
-            </li>
-            <li>
-              <Button type="filter">
-                <span>Some Filter Name (11-22-22)</span>
-              </Button>
-            </li>
-          </ul>
+          <div className={styles.filtersWrapper}>
+            {
+              savedFilters.map((item, i) => {
+                return (
+                  <Radio key={i} idx={i} id={item.label} label={item.label} name="filters" />
+                )
+              })
+            }
+          </div>
           <div className={styles.options}>
             <Button type="clear">
               <span>Clear Presets</span>

@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: flex-end;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.container input {
+  width: 15px;
+  height: 15px;
+}
+.container label {
+  margin-left: 5px;
+}
+
+@media screen and (min-width: 960px) {
+  
+}
