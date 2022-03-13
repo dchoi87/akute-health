@@ -1,5 +1,11 @@
 import React from "react";
-import { ChevronDown, SortDown, SortUp, Collection, CheckLg } from "react-bootstrap-icons";
+import {
+  ChevronDown,
+  SortDown,
+  SortUp,
+  Collection,
+  CheckLg,
+} from "react-bootstrap-icons";
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
 import Input from "../common/input";
@@ -7,7 +13,15 @@ import Radio from "../common/radio";
 
 import styles from "./index.module.css";
 
-import { tags, overview, priority, owner, status, sectionSvg, savedFilters } from "../data";
+import {
+  tags,
+  overview,
+  priority,
+  owner,
+  status,
+  sectionSvg,
+  savedFilters,
+} from "../data";
 
 const Section = ({ children, title, id }) => {
   const svg = sectionSvg[id];
@@ -32,7 +46,13 @@ const SideBar = () => {
         <div className={styles.overview}>
           {overview.map((item, i) => {
             return (
-              <Radio key={i}  idx={i} id={item.label} label={item.label} name="overview" />
+              <Radio
+                key={i}
+                idx={i}
+                id={item.label}
+                label={item.label}
+                name="overview"
+              />
             );
           })}
         </div>
@@ -40,13 +60,17 @@ const SideBar = () => {
       <Section title="Saved Filters" id="filters">
         <div className={styles.filters}>
           <div className={styles.filtersWrapper}>
-            {
-              savedFilters.map((item, i) => {
-                return (
-                  <Radio key={i} idx={i} id={item.label} label={item.label} name="filters" />
-                )
-              })
-            }
+            {savedFilters.map((item, i) => {
+              return (
+                <Radio
+                  key={i}
+                  idx={i}
+                  id={item.label}
+                  label={item.label}
+                  name="filters"
+                />
+              );
+            })}
           </div>
           <div className={styles.options}>
             <Button type="clear">

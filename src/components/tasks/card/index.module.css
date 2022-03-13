@@ -81,11 +81,11 @@
 }
 .p2 {
   color: #fff;
-  background: #ED8936;
+  background: #ed8936;
 }
 .p3 {
   color: #b57300;
-  background: #FBD38D;
+  background: #fbd38d;
 }
 .description {
   font-size: 14px;
@@ -159,5 +159,4 @@
   padding-bottom: 0;
 }
 @media screen and (min-width: 960px) {
-  
 }

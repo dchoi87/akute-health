@@ -4,7 +4,7 @@ import classNames from "classnames";
 import styles from "./index.module.css";
 // note: will probably have to develop custom dropdown
 // due to lack of styling available for default select
-const Select = ({  }) => {
+const Select = ({}) => {
   return (
     <div className={styles.container}>
       <label htmlFor="sort-select">Sort</label>

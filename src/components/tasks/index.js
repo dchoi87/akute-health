@@ -1,18 +1,15 @@
 import React, { useState, useRef } from "react";
-import classNames from "classnames/bind";
-import { PlusLg, Search, Filter, SortDown, SortUp } from "react-bootstrap-icons";
+import classNames from "classnames";
+import { PlusLg, Filter, SortDown, SortUp } from "react-bootstrap-icons";
 import SideBar from "./sidebar";
 import Card from "./card";
 import Button from "./common/button";
-import Input from "./common/input";
 import Select from "./common/select";
 
 import { useContainerQuery } from "./hooks";
 import { mockData, view } from "./data";
 
 import styles from "./index.module.css";
-
-const cx = classNames.bind(styles);
 
 const Tasks = () => {
   const taskRef = useRef(null);
@@ -26,7 +23,7 @@ const Tasks = () => {
 
   const handleSortOrder = () => {
     setSortOrder(!isDesc);
-  }
+  };
 
   return (
     <div className={styles.tasks}>
@@ -44,39 +41,41 @@ const Tasks = () => {
             <div className={styles.priority}>
               <Select />
               <Button type="sort" onClick={handleSortOrder}>
-                { isDesc ? <SortDown /> : <SortUp /> }
+                {isDesc ? <SortDown /> : <SortUp />}
               </Button>
             </div>
             <div className={styles.view}>
-              {
-                view.map((item, i) => {
-                  return (
-                    <Button
-                      key={i}
-                      type="view"
-                      id={item.id}
-                      isActive={viewOption === item.id}
-                      onClick={handleViewOptions}
-                    >
-                      {item.svg}
-                    </Button>
-                  )
-                })
-              }
+              {view.map((item, i) => {
+                return (
+                  <Button
+                    key={i}
+                    type="view"
+                    id={item.id}
+                    isActive={viewOption === item.id}
+                    onClick={handleViewOptions}
+                  >
+                    {item.svg}
+                  </Button>
+                );
+              })}
             </div>
           </div>
         </div>
-        <div className={cx("cards", { compact: viewOption === "compact" })}>
+        <div
+          className={classNames(styles.cards, {
+            [styles.compact]: viewOption === "compact",
+          })}
+        >
           {mockData.map((task, i) => {
-              return (
-                <Card
-                  key={i}
-                  task={task}
-                  showDesktopView={showDesktopView}
-                  isCompactView={viewOption === "compact"}
-                />
-              );
-            })}
+            return (
+              <Card
+                key={i}
+                task={task}
+                showDesktopView={showDesktopView}
+                isCompactView={viewOption === "compact"}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

@@ -7,7 +7,13 @@ const Radio = ({ label, id, name, idx }) => {
   const _id = id.toLowerCase().replace(" ", "-");
   return (
     <div className={styles.container}>
-      <input type="radio" id={_id} name={name} value={_id} defaultChecked={idx === 0} />
+      <input
+        type="radio"
+        id={_id}
+        name={name}
+        value={_id}
+        defaultChecked={idx === 0}
+      />
       <label htmlFor={_id}>{label}</label>
     </div>
   );
