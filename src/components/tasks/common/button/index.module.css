@@ -79,6 +79,7 @@
 }
 .collection {
   background: transparent;
+  margin-left: 5px;
 }
 .collection svg {
   display: block;
@@ -147,6 +148,17 @@
   display: block;
   width: 13px;
   height: 13px;
+  pointer-events: none;
+}
+.priority {
+  padding: 8px;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+.priority svg {
+  display: block;
+  width: 20px;
+  height: 20px;
   pointer-events: none;
 }
 /* modifiers */

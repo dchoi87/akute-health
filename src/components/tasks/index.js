@@ -1,13 +1,14 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames/bind";
-import { PlusLg, ViewStacked, ViewList, Table, Search, Filter } from "react-bootstrap-icons";
+import { PlusLg, Search, Filter, SortDown, SortUp } from "react-bootstrap-icons";
 import SideBar from "./sidebar";
 import Card from "./card";
 import Button from "./common/button";
 import Input from "./common/input";
+import Select from "./common/select";
 
 import { useContainerQuery } from "./hooks";
-import { mockData } from "./data";
+import { mockData, view } from "./data";
 
 import styles from "./index.module.css";
 
@@ -34,41 +35,28 @@ const Tasks = () => {
           <Button type="menu">
             <Filter />
           </Button>
-          <div className={styles.search}>
+          <div className={styles.tools}>
+            <div className={styles.priority}>
+              <Select />
+              <Button type="priority">
+                <SortDown />
+              </Button>
+            </div>
             {
-              showDesktopView ? (
-                <Input type="search" id="tasks-search" placeholder="Search Tasks" />
-              ) : (
-                <Button type="search">
-                  <Search />
-                </Button>
-              )
+              view.map((item, i) => {
+                return (
+                  <Button
+                    key={i}
+                    type="view"
+                    id={item.id}
+                    isActive={viewOption === item.id}
+                    onClick={handleViewOptions}
+                  >
+                    {item.svg}
+                  </Button>
+                )
+              })
             }
-            {/* todo: data & iterate */}
-            <Button
-              type="view"
-              id="comfortable"
-              isActive={viewOption === "comfortable"}
-              onClick={handleViewOptions}
-            >
-              <ViewStacked />
-            </Button>
-            <Button
-              type="view"
-              id="compact"
-              isActive={viewOption === "compact"}
-              onClick={handleViewOptions}
-            >
-              <ViewList />
-            </Button>
-            <Button
-              type="view"
-              id="table"
-              isActive={viewOption === "table"}
-              onClick={handleViewOptions}
-            >
-              <Table />
-            </Button>
           </div>
         </div>
         <div className={cx("cards", { compact: viewOption === "compact" })}>

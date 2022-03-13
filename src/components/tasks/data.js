@@ -6,6 +6,9 @@ import {
   Check2Square,
   Tag,
   Heart,
+  ViewList,
+  ViewStacked,
+  Table
 } from "react-bootstrap-icons";
 
 export const overview = [
@@ -61,6 +64,12 @@ export const savedFilters = [
   { label: "saved filter 1", date: "10-12-22" },
   { label: "my custom filter", date: "10-31-22" },
   { label: "some filter name", date: "11-22-22" },
+];
+
+export const view = [
+  { id: "comfortable", svg: <ViewStacked />},
+  { id: "compact", svg: <ViewList />},
+  { id: "table", svg: <Table />},
 ];
 
 export const mockData = [

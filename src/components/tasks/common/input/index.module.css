@@ -1,4 +1,15 @@
-/* add task btn & search */
+.container {
+  flex: 1;
+}
+.container label {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
 .search {
   border: 1px solid #e5e5e5;
   border-radius: 15px;
