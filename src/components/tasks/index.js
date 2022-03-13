@@ -18,10 +18,15 @@ const Tasks = () => {
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
   const [viewOption, setViewOption] = useState("comfortable");
+  const [isDesc, setSortOrder] = useState(true);
 
   const handleViewOptions = ({ target }) => {
     setViewOption(target.id);
   };
+
+  const handleSortOrder = () => {
+    setSortOrder(!isDesc);
+  }
 
   return (
     <div className={styles.tasks}>
@@ -38,25 +43,27 @@ const Tasks = () => {
           <div className={styles.tools}>
             <div className={styles.priority}>
               <Select />
-              <Button type="priority">
-                <SortDown />
+              <Button type="sort" onClick={handleSortOrder}>
+                { isDesc ? <SortDown /> : <SortUp /> }
               </Button>
             </div>
-            {
-              view.map((item, i) => {
-                return (
-                  <Button
-                    key={i}
-                    type="view"
-                    id={item.id}
-                    isActive={viewOption === item.id}
-                    onClick={handleViewOptions}
-                  >
-                    {item.svg}
-                  </Button>
-                )
-              })
-            }
+            <div className={styles.view}>
+              {
+                view.map((item, i) => {
+                  return (
+                    <Button
+                      key={i}
+                      type="view"
+                      id={item.id}
+                      isActive={viewOption === item.id}
+                      onClick={handleViewOptions}
+                    >
+                      {item.svg}
+                    </Button>
+                  )
+                })
+              }
+            </div>
           </div>
         </div>
         <div className={cx("cards", { compact: viewOption === "compact" })}>

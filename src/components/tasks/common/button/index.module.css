@@ -6,6 +6,9 @@
   cursor: pointer;
   text-transform: capitalize;
   position: relative;
+  transition: 
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
 }
 .add {
   padding: 15px;
@@ -13,9 +16,12 @@
   color: #fff;
   background: #61b47b;
   position: fixed;
-  bottom: 30px;
-  right: 45px;
+  bottom: 20px;
+  right: 20px;
   box-shadow: 0px 5px 10px 2px #a4a4a473;
+}
+.add:hover {
+  background-color: #437d56;
 }
 .add span {
   display: none;
@@ -68,6 +74,10 @@
   padding: 7px;
   border-radius: 5px;
 }
+.view:hover {
+  background-color: #61b47b;
+  color: #fff;
+}
 .view + .view {
   margin-left: 5px;
 }
@@ -79,7 +89,12 @@
 }
 .collection {
   background: transparent;
+  border-radius: 5px;
   margin-left: 5px;
+}
+.collection:hover {
+  background-color: #61b47b;
+  color: #fff;
 }
 .collection svg {
   display: block;
@@ -95,44 +110,15 @@
   border-radius: 5px;
   background: #efefef;
 }
-.sort {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  border-radius: 7px;
-  font-size: 14px;
-  font-weight: 300;
-  background: #fff;
-  box-shadow: 0px 5px 10px 2px #efefef73;
-}
-.sort svg {
-  display: block;
-  width: 20px;
-  height: 20px;
-  pointer-events: none;
-  margin-bottom: 10px;
+.tag:hover {
+  background-color: #61b47b;
+  color: #fff;
 }
 .more {
   background: transparent;
   text-decoration: underline;
   font-size: 12px;
   font-weight: 300;
-}
-.filter {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 300;
-  background: transparent;
-  padding: 0;
-}
-.filter svg {
-  display: block;
-  width: 15px;
-  height: 15px;
-  margin-left: 5px;
 }
 .clear {
   font-size: 12px;
@@ -150,12 +136,18 @@
   height: 13px;
   pointer-events: none;
 }
-.priority {
+.sort {
   padding: 8px;
   margin-left: 5px;
   border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 5px 10px 2px #efefef73;
 }
-.priority svg {
+.sort:hover {
+  background-color: #61b47b;
+  color: #fff;
+}
+.sort svg {
   display: block;
   width: 20px;
   height: 20px;
@@ -166,10 +158,8 @@
   background: #61b47b;
   color: #fff;
 }
-.filter.active {
-  background: transparent;
-  color: #000;
-  font-weight: 500;
+.active:hover {
+  background: #437d56;
 }
 @media screen and (min-width: 960px) {
   .add {
