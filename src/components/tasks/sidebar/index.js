@@ -1,11 +1,5 @@
-import React from "react";
-import {
-  ChevronDown,
-  SortDown,
-  SortUp,
-  Collection,
-  CheckLg,
-} from "react-bootstrap-icons";
+import React, { useState } from "react";
+import { ChevronDown, ChevronRight, Collection } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
 import Input from "../common/input";
@@ -24,17 +18,23 @@ import {
 } from "../data";
 
 const Section = ({ children, title, id }) => {
+  const [isOpen, setToggle] = useState(true);
   const svg = sectionSvg[id];
+
+  const handleSectionToggle = () => {
+    setToggle(!isOpen);
+  };
+
   return (
     <div className={styles.section}>
-      <Button type="header">
+      <Button type="header" onClick={handleSectionToggle}>
         {svg}
         <div className={styles.header}>
           <span>{title}</span>
-          <ChevronDown />
+          {isOpen ? <ChevronDown /> : <ChevronRight />}
         </div>
       </Button>
-      {children}
+      {isOpen && children}
     </div>
   );
 };

@@ -11,19 +11,19 @@
 }
 .section + .section {
   border-top: 1px solid #efefef;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .overview {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 5px;
-  padding: 0 10px;
+  padding: 0 10px 20px;
 }
 .filters {
   display: grid;
   grid-template-columns: auto;
   gap: 10px;
-  padding: 0 10px;
+  padding: 0 10px 20px;
 }
 .filtersWrapper {
   display: grid;
@@ -38,12 +38,13 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 5px;
-  padding: 0 10px;
+  padding: 0 10px 20px;
 }
 .owner {
   display: grid;
   grid-template-columns: auto;
   gap: 10px;
+  padding-bottom: 20px;
 }
 .ownerWrapper {
   display: grid;
@@ -59,12 +60,13 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 5px;
-  padding: 0 10px;
+  padding: 0 10px 20px;
 }
 .tags {
   display: grid;
   grid-template-columns: auto;
   gap: 15px;
+  padding-bottom: 20px;
 }
 .tagsWrapper {
   display: flex;

@@ -34,7 +34,7 @@ const Tasks = () => {
             <PlusLg />
             <span>Add Task</span>
           </Button>
-          <Button type="menu">
+          <Button type="filters">
             <Filter />
           </Button>
           <div className={styles.tools}>

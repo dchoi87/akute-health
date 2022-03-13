@@ -30,11 +30,17 @@
   width: 30px;
   height: 30px;
 }
-.menu {
+.filters {
   padding: 5px;
   border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 5px 10px 2px #efefef73;
 }
-.menu svg {
+.filters:hover {
+  background-color: #61b47b;
+  color: #fff;
+}
+.filters svg {
   display: block;
   width: 25px;
   height: 25px;
@@ -186,7 +192,7 @@
     height: 20px;
     margin-right: 5px;
   }
-  .menu {
+  .filters {
     display: none;
   }
 }
