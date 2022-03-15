@@ -8,7 +8,7 @@ import {
   Heart,
   ViewList,
   ViewStacked,
-  Table
+  Table,
 } from "react-bootstrap-icons";
 
 export const overview = [
@@ -67,175 +67,247 @@ export const savedFilters = [
 ];
 
 export const view = [
-  { id: "comfortable", svg: <ViewStacked />},
-  { id: "compact", svg: <ViewList />},
-  { id: "table", svg: <Table />},
+  { id: "comfortable", svg: <ViewStacked /> },
+  { id: "compact", svg: <ViewList /> },
+  { id: "table", svg: <Table /> },
+];
+
+export const sort = [
+  { id: "priority", label: "Sort by Priority" },
+  { id: "date", label: "Sort by Due Date" },
+];
+
+export const cardsPerPage = [
+  { id: "10", label: "10" },
+  { id: "20", label: "20" },
+  { id: "50", label: "50" },
+  { id: "100", label: "100" },
 ];
 
 export const mockData = [
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    description:
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     owner: "Cooper Kupp",
     patient: "Eli Apple",
     duedate: "03-25-22",
-    tags: ["form submission", "doc review", "assessments", "diagnostic reports", "health maintenance", "new patient signup"],
+    tags: [
+      "form submission",
+      "doc review",
+      "assessments",
+      "diagnostic reports",
+      "health maintenance",
+      "new patient signup",
+    ],
     priority: "urgent",
     state: "no state",
-    attachment: true
+    attachment: true,
   },
   {
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    description:
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     owner: "Aaron Donald",
     patient: "Joe Burrow",
     duedate: "05-21-22",
     tags: ["form submission", "doc review", "assessments"],
     priority: "p2",
     state: "PA",
-    attachment: false
+    attachment: false,
   },
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Matthew Stafford",
     patient: "Von Bell",
     duedate: "12-15-22",
-    tags: ["form submission", "doc review", "assessments", "diagnostic reports", "health maintenance"],
+    tags: [
+      "form submission",
+      "doc review",
+      "assessments",
+      "diagnostic reports",
+      "health maintenance",
+    ],
     priority: "no priority",
     state: "FL",
-    attachment: true
+    attachment: true,
   },
   {
-    title: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    title:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Von Miller",
     patient: "Joe Burrow",
     duedate: "12-15-22",
     tags: ["form submission", "doc review"],
     priority: "urgent",
     state: "TX",
-    attachment: false
+    attachment: false,
   },
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Cooper Kupp",
     patient: "Von Bell",
     duedate: "12-15-22",
     tags: ["form submission"],
     priority: "p3",
     state: "WA",
-    attachment: true
+    attachment: true,
   },
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    description:
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     owner: "Cooper Kupp",
     patient: "Eli Apple",
     duedate: "03-25-22",
-    tags: ["form submission", "doc review", "assessments", "diagnostic reports", "health maintenance", "new patient signup"],
+    tags: [
+      "form submission",
+      "doc review",
+      "assessments",
+      "diagnostic reports",
+      "health maintenance",
+      "new patient signup",
+    ],
     priority: "urgent",
     state: "no state",
-    attachment: true
+    attachment: true,
   },
   {
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    description:
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     owner: "Aaron Donald",
     patient: "Joe Burrow",
     duedate: "05-21-22",
     tags: ["form submission", "doc review", "assessments"],
     priority: "p2",
     state: "PA",
-    attachment: true
+    attachment: true,
   },
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Matthew Stafford",
     patient: "Von Bell",
     duedate: "12-15-22",
-    tags: ["form submission", "doc review", "assessments", "diagnostic reports", "health maintenance"],
+    tags: [
+      "form submission",
+      "doc review",
+      "assessments",
+      "diagnostic reports",
+      "health maintenance",
+    ],
     priority: "no priority",
     state: "FL",
-    attachment: false
+    attachment: false,
   },
   {
-    title: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    title:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Von Miller",
     patient: "Joe Burrow",
     duedate: "12-15-22",
     tags: ["form submission", "doc review"],
     priority: "urgent",
     state: "TX",
-    attachment: true
+    attachment: true,
   },
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Cooper Kupp",
     patient: "Von Bell",
     duedate: "12-15-22",
     tags: ["form submission"],
     priority: "p3",
     state: "WA",
-    attachment: false
+    attachment: false,
   },
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    description:
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     owner: "Cooper Kupp",
     patient: "Eli Apple",
     duedate: "03-25-22",
-    tags: ["form submission", "doc review", "assessments", "diagnostic reports", "health maintenance", "new patient signup"],
+    tags: [
+      "form submission",
+      "doc review",
+      "assessments",
+      "diagnostic reports",
+      "health maintenance",
+      "new patient signup",
+    ],
     priority: "urgent",
     state: "no state",
-    attachment: true
+    attachment: true,
   },
   {
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    description:
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     owner: "Aaron Donald",
     patient: "Joe Burrow",
     duedate: "05-21-22",
     tags: ["form submission", "doc review", "assessments"],
     priority: "p2",
     state: "PA",
-    attachment: true
+    attachment: true,
   },
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Matthew Stafford",
     patient: "Von Bell",
     duedate: "12-15-22",
-    tags: ["form submission", "doc review", "assessments", "diagnostic reports", "health maintenance"],
+    tags: [
+      "form submission",
+      "doc review",
+      "assessments",
+      "diagnostic reports",
+      "health maintenance",
+    ],
     priority: "no priority",
     state: "FL",
-    attachment: false
+    attachment: false,
   },
   {
-    title: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    title:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Von Miller",
     patient: "Joe Burrow",
     duedate: "12-15-22",
     tags: ["form submission", "doc review"],
     priority: "urgent",
     state: "TX",
-    attachment: true
+    attachment: true,
   },
   {
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Cooper Kupp",
     patient: "Von Bell",
     duedate: "12-15-22",
     tags: ["form submission"],
     priority: "p3",
     state: "WA",
-    attachment: false
+    attachment: false,
   },
-]
+];

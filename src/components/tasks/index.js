@@ -8,7 +8,7 @@ import Button from "./common/button";
 import Select from "./common/select";
 
 import { useContainerQuery } from "./hooks";
-import { mockData, view } from "./data";
+import { mockData, view, sort } from "./data";
 
 import styles from "./index.module.css";
 
@@ -41,7 +41,7 @@ const Tasks = () => {
             </Button>
             <div className={styles.tools}>
               <div className={styles.priority}>
-                <Select />
+                <Select options={sort} id="sort" />
                 <Button type="sort" onClick={handleSortOrder}>
                   {isDesc ? <SortDown /> : <SortUp />}
                 </Button>

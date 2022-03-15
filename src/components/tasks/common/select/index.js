@@ -4,16 +4,18 @@ import classNames from "classnames";
 import styles from "./index.module.css";
 // note: will probably have to develop custom dropdown
 // due to lack of styling available for default select
-
-// make this into dynamic component
-
-const Select = ({}) => {
+const Select = ({ options, id }) => {
   return (
     <div className={styles.container}>
-      <label htmlFor="sort-select">Sort</label>
-      <select name="sort" id="sort-select">
-        <option value="priority">Sort by Priority</option>
-        <option value="date">Sort by Due Date</option>
+      <label htmlFor={`select-${id}`}>{id}</label>
+      <select name={id} id={`select-${id}`} className={styles[id]}>
+        {options.map((item, i) => {
+          return (
+            <option key={i} value={item.id}>
+              {item.label}
+            </option>
+          );
+        })}
       </select>
     </div>
   );
