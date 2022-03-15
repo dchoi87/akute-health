@@ -6,7 +6,6 @@
 .pagination {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-size: 12px;
   padding: 5px 10px 5px 15px;
   background: #fff;
@@ -14,10 +13,17 @@
   box-shadow: 0px 5px 10px 2px #efefef73;
   font-weight: 700;
 }
-.pagination > div + div {
-  margin-left: 20px;
-}
-.navigation {
+.pagination div {
   display: flex;
   align-items: center;
+  flex: 1;
+}
+.count {
+  justify-content: flex-start;
+}
+.page {
+  justify-content: center;
+}
+.navigation {
+  justify-content: flex-end;
 }
