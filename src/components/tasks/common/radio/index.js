@@ -4,14 +4,14 @@ import classNames from "classnames";
 import styles from "./index.module.css";
 
 const Radio = ({ label, id, name, idx }) => {
-  const _id = id.toLowerCase().replace(" ", "-");
+  const _id = `radio-${id.toLowerCase().replace(" ", "-")}`;
   return (
     <div className={styles.container}>
       <input
         type="radio"
         id={_id}
         name={name}
-        value={_id}
+        value={label}
         defaultChecked={idx === 0}
       />
       <label htmlFor={_id}>{label}</label>

@@ -31,7 +31,7 @@
   height: 30px;
 }
 .filters {
-  padding: 5px;
+  padding: 6px;
   border-radius: 5px;
   background: #fff;
   box-shadow: 0px 5px 10px 2px #efefef73;
@@ -42,8 +42,8 @@
 }
 .filters svg {
   display: block;
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
 }
 .header {
   display: flex;
@@ -88,8 +88,8 @@
 }
 .view svg {
   display: block;
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   pointer-events: none;
 }
 .collection {
@@ -142,7 +142,7 @@
   pointer-events: none;
 }
 .sort {
-  padding: 8px;
+  padding: 10px;
   margin-left: 5px;
   border-radius: 5px;
   background: #fff;
@@ -156,6 +156,24 @@
   display: block;
   width: 20px;
   height: 20px;
+  pointer-events: none;
+}
+.pagination {
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+}
+.pagination + .pagination {
+  margin-left: 10px;
+}
+.pagination:hover {
+  background-color: #61b47b;
+  color: #fff;
+}
+.pagination svg {
+  display: block;
+  width: 15px;
+  height: 15px;
   pointer-events: none;
 }
 /* modifiers */

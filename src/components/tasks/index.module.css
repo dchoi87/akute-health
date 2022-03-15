@@ -3,9 +3,11 @@
   grid-template-columns: 100%;
 }
 .container {
-  padding: 15px;
   height: 100vh;
   overflow: auto;
+}
+.content {
+  padding: 15px;
 }
 .utility {
   display: flex;
