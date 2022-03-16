@@ -35,6 +35,9 @@ const Tasks = () => {
     <div className={styles.tasks}>
       <SideBar isOpen={isOpen} />
       <div className={styles.container} ref={taskRef}>
+        {isOpen && (
+          <div className={styles.overlay} onClick={handleFilterMenu}></div>
+        )}
         <div className={styles.content}>
           <div className={styles.utility}>
             <Button type="add">

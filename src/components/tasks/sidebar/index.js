@@ -19,11 +19,11 @@ import {
 } from "../data";
 
 const Section = ({ children, title, id }) => {
-  const [isOpen, setToggle] = useState(true);
+  const [isExpanded, setToggle] = useState(true);
   const svg = sectionSvg[id];
 
   const handleSectionToggle = () => {
-    setToggle(!isOpen);
+    setToggle(!isExpanded);
   };
 
   return (
@@ -32,10 +32,10 @@ const Section = ({ children, title, id }) => {
         {svg}
         <div className={styles.header}>
           <span>{title}</span>
-          {isOpen ? <ChevronDown /> : <ChevronRight />}
+          {isExpanded ? <ChevronDown /> : <ChevronRight />}
         </div>
       </Button>
-      {isOpen && children}
+      {isExpanded && children}
     </div>
   );
 };
