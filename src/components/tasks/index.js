@@ -17,6 +17,7 @@ const Tasks = () => {
   const showDesktopView = useContainerQuery(taskRef);
   const [viewOption, setViewOption] = useState("comfortable");
   const [isDesc, setSortOrder] = useState(true);
+  const [isOpen, setFilterVisibility] = useState(false);
 
   const handleViewOptions = ({ target }) => {
     setViewOption(target.id);
@@ -26,9 +27,13 @@ const Tasks = () => {
     setSortOrder(!isDesc);
   };
 
+  const handleFilterMenu = () => {
+    setFilterVisibility(!isOpen);
+  };
+
   return (
     <div className={styles.tasks}>
-      <SideBar />
+      <SideBar isOpen={isOpen} />
       <div className={styles.container} ref={taskRef}>
         <div className={styles.content}>
           <div className={styles.utility}>
@@ -36,7 +41,7 @@ const Tasks = () => {
               <PlusLg />
               <span>Add Task</span>
             </Button>
-            <Button type="filters">
+            <Button type="filters" onClick={handleFilterMenu}>
               <Filter />
             </Button>
             <div className={styles.tools}>

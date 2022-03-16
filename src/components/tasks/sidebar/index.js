@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classNames from "classnames";
 import { ChevronDown, ChevronRight, Collection } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
@@ -39,9 +40,13 @@ const Section = ({ children, title, id }) => {
   );
 };
 
-const SideBar = () => {
+const SideBar = ({ isOpen }) => {
   return (
-    <div className={styles.container}>
+    <div
+      className={classNames(styles.container, {
+        [styles.open]: isOpen,
+      })}
+    >
       <Section title="Overview" id="overview">
         <div className={styles.overview}>
           {overview.map((item, i) => {

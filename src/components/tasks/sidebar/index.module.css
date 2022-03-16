@@ -4,6 +4,8 @@
   border-right: 1px solid #efefef;
   height: 100vh;
   overflow: auto;
+  background: #fafafa;
+  z-index: 1;
 }
 .section {
   display: grid;
@@ -11,7 +13,6 @@
 }
 .section + .section {
   border-top: 1px solid #efefef;
-  /* margin-top: 20px; */
 }
 .overview {
   display: grid;
@@ -86,6 +87,15 @@
 }
 .toolbar {
   display: flex;
+}
+/* modifiers */
+.open.container {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 85%;
+  box-shadow: 5px 0px 20px 3px #b9b9b973;
 }
 @media screen and (min-width: 960px) {
   .container {
