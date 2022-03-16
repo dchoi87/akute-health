@@ -176,6 +176,48 @@
   height: 15px;
   pointer-events: none;
 }
+.trash {
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+}
+.trash:hover {
+  background-color: #61b47b;
+  color: #fff;
+}
+.trash svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+}
+.complete {
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+}
+.complete:hover {
+  background-color: #61b47b;
+  color: #fff;
+}
+.complete svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+}
+.deselect {
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+}
+.deselect:hover {
+  background-color: #61b47b;
+  color: #fff;
+}
+.deselect svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+}
 /* modifiers */
 .active {
   background: #61b47b;

@@ -1,6 +1,15 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames";
-import { PlusLg, Filter, SortDown, SortUp } from "react-bootstrap-icons";
+import {
+  PlusLg,
+  Filter,
+  SortDown,
+  SortUp,
+  CardChecklist,
+  CheckLg,
+  XLg,
+  Trash,
+} from "react-bootstrap-icons";
 import SideBar from "./sidebar";
 import Pagination from "./pagination";
 import Card from "./card";
@@ -18,6 +27,7 @@ const Tasks = () => {
   const [viewOption, setViewOption] = useState("comfortable");
   const [isDesc, setSortOrder] = useState(true);
   const [isOpen, setFilterVisibility] = useState(false);
+  const [selectedItems, setSelected] = useState([]);
 
   const handleViewOptions = ({ target }) => {
     setViewOption(target.id);
@@ -29,6 +39,16 @@ const Tasks = () => {
 
   const handleFilterMenu = () => {
     setFilterVisibility(!isOpen);
+  };
+
+  const handleSelectItem = ({ currentTarget }) => {
+    const id = currentTarget.dataset.id;
+
+    if (selectedItems.includes(id)) {
+      setSelected(selectedItems.filter((item) => item !== id));
+    } else {
+      setSelected([...selectedItems, id]);
+    }
   };
 
   return (
@@ -71,6 +91,28 @@ const Tasks = () => {
               </div>
             </div>
           </div>
+          {!!selectedItems.length && (
+            <div className={styles.selected}>
+              <div className={styles.selectedCount}>
+                <CardChecklist />
+                <span>
+                  {selectedItems.length} Task{selectedItems.length > 1 && "s"}{" "}
+                  Selected
+                </span>
+              </div>
+              <div className={styles.selectedUtility}>
+                <Button type="complete">
+                  <CheckLg />
+                </Button>
+                <Button type="deselect">
+                  <XLg />
+                </Button>
+                <Button type="trash">
+                  <Trash />
+                </Button>
+              </div>
+            </div>
+          )}
           <div
             className={classNames(styles.cards, {
               [styles.compact]: viewOption === "compact",
@@ -83,6 +125,8 @@ const Tasks = () => {
                   task={task}
                   showDesktopView={showDesktopView}
                   isCompactView={viewOption === "compact"}
+                  isSelected={selectedItems.includes(task.id)}
+                  handleSelectItem={handleSelectItem}
                 />
               );
             })}

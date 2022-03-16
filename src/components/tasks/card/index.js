@@ -1,19 +1,33 @@
 import React from "react";
 import classNames from "classnames";
-import { Alarm, Person, Tag, Paperclip, Circle } from "react-bootstrap-icons";
+import {
+  Alarm,
+  Person,
+  Paperclip,
+  Circle,
+  CheckCircleFill,
+} from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
-import { tags } from "../data";
 
-const Cards = ({ task, showDesktopView, isCompactView }) => {
+const Cards = ({
+  task,
+  showDesktopView,
+  isCompactView,
+  isSelected,
+  handleSelectItem,
+}) => {
   return (
     <button
       className={classNames(styles.container, {
         [styles.compact]: isCompactView,
+        [styles.selected]: isSelected,
       })}
+      onClick={handleSelectItem}
+      data-id={task.id}
     >
       <div className={styles.select}>
-        <Circle />
+        {isSelected ? <CheckCircleFill /> : <Circle />}
       </div>
       <div className={styles.content}>
         <div className={styles.sectionTop}>
