@@ -1,4 +1,6 @@
 .container {
+  display: flex;
+  justify-content: center;
   color: #494949;
   width: 100%;
   padding: 0 15px 15px;
@@ -7,11 +9,11 @@
   display: flex;
   align-items: center;
   font-size: 12px;
-  padding: 5px 10px 5px 15px;
-  background: #fff;
-  border-radius: 5px;
+  padding: 5px 0;
+  border-radius: 7px;
   box-shadow: 0px 5px 10px 2px #efefef73;
   font-weight: 700;
+  width: 70%;
 }
 .pagination div {
   display: flex;
@@ -26,4 +28,9 @@
 }
 .navigation {
   justify-content: flex-end;
+}
+@media screen and (min-width: 960px) {
+  .pagination {
+    width: 100%;
+  }
 }

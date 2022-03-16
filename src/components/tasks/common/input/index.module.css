@@ -1,5 +1,6 @@
 .container {
   flex: 1;
+  position: relative;
 }
 .container label {
   clip: rect(0 0 0 0);
