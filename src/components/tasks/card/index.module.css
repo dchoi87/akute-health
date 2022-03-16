@@ -167,5 +167,8 @@
 .selected .select {
   color: #494949;
 }
+.selected .sectionTop {
+  border-color: #e0e0e0;
+}
 @media screen and (min-width: 960px) {
 }
