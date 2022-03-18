@@ -15,6 +15,7 @@ import Pagination from "./pagination";
 import Card from "./card";
 import Button from "./common/button";
 import Select from "./common/select";
+import Table from "./table";
 
 import { useContainerQuery } from "./hooks";
 import { mockData, view, sort } from "./data";
@@ -113,24 +114,28 @@ const Tasks = () => {
               </div>
             </div>
           )}
-          <div
-            className={classNames(styles.cards, {
-              [styles.compact]: viewOption === "compact",
-            })}
-          >
-            {mockData.map((task, i) => {
-              return (
-                <Card
-                  key={i}
-                  task={task}
-                  showDesktopView={showDesktopView}
-                  isCompactView={viewOption === "compact"}
-                  isSelected={selectedItems.includes(task.id)}
-                  handleSelectItem={handleSelectItem}
-                />
-              );
-            })}
-          </div>
+          {viewOption === "table" ? (
+            <Table data={mockData} />
+          ) : (
+            <div
+              className={classNames(styles.cards, {
+                [styles.compact]: viewOption === "compact",
+              })}
+            >
+              {mockData.map((task, i) => {
+                return (
+                  <Card
+                    key={i}
+                    task={task}
+                    showDesktopView={showDesktopView}
+                    isCompactView={viewOption === "compact"}
+                    isSelected={selectedItems.includes(task.id)}
+                    handleSelectItem={handleSelectItem}
+                  />
+                );
+              })}
+            </div>
+          )}
         </div>
         <Pagination />
       </div>
