@@ -7,28 +7,38 @@ import styles from "./index.module.css";
 const Table = ({ data }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.table}>
-        <div className={classNames(styles.row, styles.heading)}>
-          <div className={styles.column}></div>
-          <div className={styles.column}>Task</div>
-          <div className={styles.column}>Priority</div>
-          <div className={styles.column}>Due Date</div>
-          <div className={styles.column}>Patient</div>
-        </div>
-        {data.map((item, i) => {
-          return (
-            <div key={i} className={styles.row}>
-              <div className={classNames(styles.column, styles.checkbox)}>
-                <Square />
-              </div>
-              <div className={styles.column}>{item.title}</div>
-              <div className={styles.column}>{item.priority}</div>
-              <div className={styles.column}>{item.duedate}</div>
-              <div className={styles.column}>{item.patient}</div>
-            </div>
-          );
-        })}
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Patient</th>
+            <th>Tags</th>
+            <th>Owner</th>
+            <th>Appointed State</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, i) => {
+            return (
+              <tr key={i}>
+                <td>
+                  <Square />
+                </td>
+                <td>{item.title}</td>
+                <td>{item.priority}</td>
+                <td>{item.duedate}</td>
+                <td>{item.patient}</td>
+                <td>Tags</td>
+                <td>{item.owner}</td>
+                <td>{item.state}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
