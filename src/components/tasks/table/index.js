@@ -24,16 +24,16 @@ const Table = ({ data }) => {
           {data.map((item, i) => {
             return (
               <tr key={i}>
-                <td>
+                <td className={styles.checkbox}>
                   <Square />
                 </td>
-                <td>{item.title}</td>
-                <td>{item.priority}</td>
-                <td>{item.duedate}</td>
-                <td>{item.patient}</td>
-                <td>Tags</td>
-                <td>{item.owner}</td>
-                <td>{item.state}</td>
+                <td className={styles.title}>{item.title}</td>
+                <td className={styles.priority}>{item.priority}</td>
+                <td className={styles.duedate}>{item.duedate}</td>
+                <td className={styles.patient}>{item.patient}</td>
+                <td className={styles.tags}>Tags</td>
+                <td className={styles.owner}>{item.owner}</td>
+                <td className={styles.state}>{item.state}</td>
               </tr>
             );
           })}
