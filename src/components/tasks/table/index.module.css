@@ -1,13 +1,14 @@
 .container::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 16px;
+  height: 16px;
 }
 .container::-webkit-scrollbar-track {
   background: transparent;
 }
 .container::-webkit-scrollbar-thumb {
   background: #ccc;
-  border-radius: 7px;
+  border-radius: 15px;
+  border: 5px solid #fff;
 }
 .container::-webkit-scrollbar-thumb:hover {
   background: #999;
@@ -32,13 +33,13 @@
   min-width: 100%;
   grid-template-columns:
     50px
-    minmax(50%, 1.67fr)
+    minmax(45%, 1.67fr)
     minmax(100px, 1.67fr)
-    minmax(100px, 1.67fr)
-    minmax(100px, 3.33fr)
-    minmax(100px, 1.67fr)
-    minmax(100px, 3.33fr)
-    minmax(100px, 1.67fr);
+    minmax(110px, 1.67fr)
+    minmax(130px, 3.33fr)
+    minmax(300px, 1.67fr)
+    minmax(130px, 3.33fr)
+    minmax(150px, 1.67fr);
 }
 .container thead,
 .container tbody,
@@ -51,20 +52,27 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border-bottom: 2px solid #efefef;
+  border-bottom: 2px solid #fafafa;
 }
 .container th {
+  display: flex;
+  align-items: center;
   position: sticky;
   top: 0;
   text-align: left;
   background: #fff;
   color: #494949;
 }
+.container th span {
+  margin-right: 5px;
+}
 .container td {
-  color: #808080;
+  color: #494949;
   background: #fff;
 }
-.priority,
+.container tr:last-child td {
+  border-bottom: 0;
+}
 .patient,
 .owner,
 .state {
@@ -76,4 +84,42 @@
 }
 .container .title {
   padding-left: 0;
+}
+.pill {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: capitalize;
+  padding: 4px 8px;
+  border-radius: 15px;
+  white-space: nowrap;
+  background: #efefef;
+}
+.urgent {
+  color: #fff;
+  background: #ca0000;
+}
+.p2 {
+  color: #fff;
+  background: #ed8936;
+}
+.p3 {
+  color: #b57300;
+  background: #fbd38d;
+}
+.container .tags {
+  text-overflow: initial;
+  white-space: normal;
+}
+.tag {
+  display: inline-block;
+  background: #efefef;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.tag + .tag {
+  margin-left: 5px;
 }
