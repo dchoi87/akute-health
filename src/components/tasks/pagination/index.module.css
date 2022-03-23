@@ -12,7 +12,7 @@
   padding: 5px 0;
   border-radius: 7px;
   font-weight: 700;
-  width: 60%;
+  width: 215px;
 }
 .pagination div {
   display: flex;
@@ -30,6 +30,6 @@
 }
 @media screen and (min-width: 960px) {
   .pagination {
-    width: 100%;
+    width: 300px;
   }
 }

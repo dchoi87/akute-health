@@ -17,7 +17,7 @@
   overflow: auto;
   box-shadow: 0px 5px 10px 2px #efefef73;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 500;
   border-radius: 15px;
   height: calc(100vh - 137px);
   background: #fff;
@@ -34,7 +34,7 @@
   grid-template-columns:
     50px
     minmax(45%, 1.67fr)
-    minmax(100px, 1.67fr)
+    minmax(120px, 1.67fr)
     minmax(110px, 1.67fr)
     minmax(130px, 3.33fr)
     minmax(300px, 1.67fr)
@@ -85,27 +85,24 @@
 .container .title {
   padding-left: 0;
 }
-.pill {
-  display: inline-block;
-  font-weight: 500;
-  font-size: 11px;
+.priority {
+  display: flex;
+  align-items: center;
   text-transform: capitalize;
-  padding: 4px 8px;
-  border-radius: 15px;
-  white-space: nowrap;
-  background: #efefef;
 }
-.urgent {
-  color: #fff;
-  background: #ca0000;
+.priority svg {
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
 }
-.p2 {
-  color: #fff;
-  background: #ed8936;
+.urgent svg {
+  color: #ca0000;
 }
-.p3 {
-  color: #b57300;
-  background: #fbd38d;
+.p2 svg {
+  color: #ed8936;
+}
+.p3 svg {
+  color: #fbd38d;
 }
 .container .tags {
   text-overflow: initial;

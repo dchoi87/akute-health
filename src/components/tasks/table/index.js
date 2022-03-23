@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { Square, CaretDownFill } from "react-bootstrap-icons";
+import { Square, CaretDownFill, CircleFill } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
 
@@ -46,12 +46,9 @@ const Table = ({ data }) => {
                   <Square />
                 </td>
                 <td className={styles.title}>{item.title}</td>
-                <td className={styles.priority}>
-                  <div
-                    className={classNames(styles.pill, styles[item.priority])}
-                  >
-                    {item.priority}
-                  </div>
+                <td className={classNames(styles.priority, styles[item.priority])}>
+                  <CircleFill />
+                  <span>{item.priority}</span>
                 </td>
                 <td className={styles.duedate}>{item.duedate}</td>
                 <td className={styles.patient}>{item.patient}</td>
