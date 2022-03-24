@@ -6,6 +6,8 @@ import {
   Paperclip,
   Circle,
   CheckCircleFill,
+  Tag,
+  GeoAlt
 } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
@@ -45,15 +47,29 @@ const Cards = ({
             </div>
           </div>
           <div className={styles.subHeading}>
-            <div className={styles.owner}>{task.owner}</div>
-            <div className={styles.duedate}>
+            <div className={styles.info}>{task.owner}</div>
+            <div className={styles.info}>
               <Alarm />
               <span>{task.duedate}</span>
             </div>
-            <div className={styles.patient}>
+            <div className={styles.info}>
               <Person />
               <span>{task.patient}</span>
             </div>
+            {
+              isCompactView && (
+                <>
+                  <div className={styles.info}>
+                    <Tag />
+                    <span>{task.tags.length} Tags</span>
+                  </div>
+                  <div className={styles.info}>
+                    <GeoAlt />
+                    <span>{task.state}</span>
+                  </div>
+                </>
+              )
+            }
           </div>
         </div>
         <div className={styles.sectionMid}>

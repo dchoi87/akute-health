@@ -44,9 +44,11 @@
   justify-content: space-between;
 }
 .subHeading {
-  display: flex;
+  display: grid;
   align-items: center;
-  gap: 15px;
+  column-gap: 15px;
+  row-gap: 5px;
+  grid-template-columns: repeat(3, minmax(0, max-content));
   font-size: 14px;
 }
 .title {
@@ -59,9 +61,6 @@
   width: 15px;
   height: 15px;
   margin-left: 5px;
-}
-.owner {
-  font-weight: 300;
 }
 .priorityWrapper {
   margin-left: 10px;
@@ -94,21 +93,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.duedate {
+.info {
   display: flex;
   align-items: center;
+  text-transform: capitalize;
 }
-.patient {
-  display: flex;
-  align-items: center;
-}
-.duedate svg {
-  display: block;
-  width: 12px;
-  height: 12px;
-  margin-right: 5px;
-}
-.patient svg {
+.info svg {
   display: block;
   width: 13px;
   height: 13px;
@@ -150,7 +140,8 @@
 .compact .title {
   font-size: 15px;
 }
-.compact .sectionMid {
+.compact .sectionMid,
+.compact .sectionBottom {
   display: none;
 }
 .compact .sectionTop {
@@ -170,5 +161,12 @@
 .selected .sectionTop {
   border-color: #e0e0e0;
 }
+@media screen and (min-width: 768px) {
+  .subHeading {
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+  }
+}
 @media screen and (min-width: 960px) {
+  
 }
