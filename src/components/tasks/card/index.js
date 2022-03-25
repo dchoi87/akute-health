@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import {
   Alarm,
+  Bell,
   Person,
   Paperclip,
   Circle,
@@ -49,7 +50,7 @@ const Cards = ({
           <div className={styles.subHeading}>
             <div className={styles.info}>{task.owner}</div>
             <div className={styles.info}>
-              <Alarm />
+              <Bell />
               <span>{task.duedate}</span>
             </div>
             <div className={styles.info}>

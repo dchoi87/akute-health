@@ -1,9 +1,25 @@
+.container::-webkit-scrollbar {
+  width: 10px;
+}
+.container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.container::-webkit-scrollbar-thumb {
+  background: #fafafa;
+  border-radius: 15px;
+  border: 2px solid #fafafa;
+}
+.container:hover::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+.container::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
 .container {
   display: none;
-  padding: 0 15px 15px;
-  border-right: 1px solid #efefef;
+  padding: 0 5px 15px 15px;
   height: 100vh;
-  overflow: auto;
+  overflow-y: scroll;
   background: #fafafa;
   z-index: 2;
 }
