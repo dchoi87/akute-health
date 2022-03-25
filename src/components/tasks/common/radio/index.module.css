@@ -10,6 +10,7 @@
 }
 .container label {
   margin-left: 5px;
+  color: #383838;
 }
 
 @media screen and (min-width: 960px) {

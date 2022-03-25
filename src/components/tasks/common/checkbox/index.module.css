@@ -5,9 +5,37 @@
   text-transform: capitalize;
 }
 .container input {
-  width: 15px;
-  height: 15px;
+  display: grid;
+  place-content: center;
+  margin: 0;
+  width: 17px;
+  height: 17px;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #bababa;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  border-radius: 3px;
+}
+.container input::before {
+  content: "";
+  width: 0.80em;
+  height: 0.80em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #fff;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+.container input:checked {
+  background: #61b47b;
+  border: 0;
+}
+.container input:checked::before {
+  transform: scale(1);
 }
 .container label {
-  margin-left: 5px;
+  margin-left: 10px;
+  color: #383838;
 }
