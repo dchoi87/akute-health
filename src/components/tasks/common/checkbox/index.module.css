@@ -3,6 +3,9 @@
   align-items: center;
   font-size: 14px;
   text-transform: capitalize;
+  color: #4e4e4e;
+  font-weight: 400;
+  letter-spacing: .25px;
 }
 .container input {
   display: grid;
@@ -11,8 +14,8 @@
   width: 17px;
   height: 17px;
   appearance: none;
-  background-color: #fff;
-  border: 1px solid #bababa;
+  background-color: #ededed;
+  border: 1px solid #dedede;
   margin: 0;
   font: inherit;
   color: currentColor;
@@ -37,5 +40,4 @@
 }
 .container label {
   margin-left: 10px;
-  color: #383838;
 }

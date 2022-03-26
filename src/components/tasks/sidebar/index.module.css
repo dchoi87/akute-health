@@ -17,7 +17,7 @@
 }
 .container {
   display: none;
-  padding: 0 5px 15px 15px;
+  padding: 0 20px 20px 20px;
   height: 100vh;
   overflow-y: scroll;
   background: #fafafa;
@@ -28,28 +28,25 @@
   grid-template-columns: auto;
 }
 .section + .section {
-  border-top: 1px solid #efefef;
+  border-top: 1px solid #e8e8e8;
 }
 .overview {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  gap: 5px;
+  gap: 10px;
   padding: 0 10px 20px;
 }
 .filters {
   display: grid;
   grid-template-columns: auto;
-  gap: 10px;
-  padding: 0 10px 20px;
+  gap: 15px;
+  padding-bottom: 20px;
 }
 .filtersWrapper {
   display: grid;
   grid-template-columns: auto;
-  gap: 5px;
-}
-.options {
+  gap: 10px;
   padding: 0 10px;
-  text-align: center;
 }
 .priority {
   display: grid;
@@ -60,7 +57,7 @@
 .owner {
   display: grid;
   grid-template-columns: auto;
-  gap: 10px;
+  gap: 15px;
   padding-bottom: 20px;
 }
 .ownerWrapper {
@@ -68,10 +65,6 @@
   grid-template-columns: auto;
   gap: 10px;
   padding: 0 10px;
-}
-.more {
-  padding: 0 10px;
-  text-align: center;
 }
 .status {
   display: grid;
@@ -89,6 +82,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px; /* change later */
+  padding: 0 10px;
 }
 .header {
   display: flex;

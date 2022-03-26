@@ -48,20 +48,12 @@
 .header {
   display: flex;
   align-items: center;
-  font-size: 12px;
-  letter-spacing: 2px;
+  font-size: 22px;
+  color: #383838;
   font-weight: 300;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 20px 0;
   background: transparent;
-}
-.header span {
-  margin: 0 10px;
-}
-.header svg {
-  display: block;
-  width: 14px;
-  height: 14px;
 }
 .overview {
   display: grid;
@@ -121,17 +113,12 @@
   background-color: #61b47b;
   color: #fff;
 }
-.more {
-  font-size: 12px;
-  font-weight: 300;
-  color: #383838;
-  background: transparent;
-  text-decoration: underline;
-}
+.more,
 .clear {
-  font-size: 12px;
-  font-weight: 300;
-  color: #383838;
+  font-size: 11px;
+  letter-spacing: .25px;
+  padding: 5px 10px;
+  color: #888;
   text-decoration: underline;
   background: transparent;
 }

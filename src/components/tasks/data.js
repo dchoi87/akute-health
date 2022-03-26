@@ -1,11 +1,4 @@
 import {
-  Calendar3,
-  ExclamationDiamond,
-  Funnel,
-  Person,
-  Check2Square,
-  Tag,
-  Heart,
   ViewList,
   ViewStacked,
   Table,
@@ -49,16 +42,6 @@ export const tags = [
   "new patient signup",
   "support",
 ];
-
-export const sectionSvg = {
-  overview: <Calendar3 />,
-  sort: <Funnel />,
-  filters: <Heart />,
-  priority: <ExclamationDiamond />,
-  owner: <Person />,
-  status: <Check2Square />,
-  tags: <Tag />,
-};
 
 export const savedFilters = [
   { label: "saved filter 1", date: "10-12-22" },

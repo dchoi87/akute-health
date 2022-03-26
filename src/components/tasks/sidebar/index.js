@@ -14,13 +14,11 @@ import {
   priority,
   owner,
   status,
-  sectionSvg,
   savedFilters,
 } from "../data";
 
 const Section = ({ children, title, id }) => {
   const [isExpanded, setToggle] = useState(true);
-  const svg = sectionSvg[id];
 
   const handleSectionToggle = () => {
     setToggle(!isExpanded);
@@ -29,7 +27,6 @@ const Section = ({ children, title, id }) => {
   return (
     <div className={styles.section}>
       <Button type="header" onClick={handleSectionToggle}>
-        {svg}
         <div className={styles.header}>
           <span>{title}</span>
           {isExpanded ? <ChevronDown /> : <ChevronRight />}

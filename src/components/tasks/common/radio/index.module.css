@@ -3,14 +3,17 @@
   align-items: flex-end;
   font-size: 14px;
   text-transform: capitalize;
+  color: #4e4e4e;
+  font-weight: 400;
+  letter-spacing: .25px;
 }
 .container input {
   width: 15px;
   height: 15px;
+  margin: 0;
 }
 .container label {
   margin-left: 5px;
-  color: #383838;
 }
 
 @media screen and (min-width: 960px) {
