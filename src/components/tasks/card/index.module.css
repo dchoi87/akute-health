@@ -72,7 +72,8 @@
   padding: 4px 8px;
   border-radius: 15px;
   white-space: nowrap;
-  background: #efefef;
+  background: #4e4e4e;
+  color: #fff;
 }
 .urgent {
   color: #fff;
@@ -168,5 +169,4 @@
   }
 }
 @media screen and (min-width: 960px) {
-  
 }

@@ -84,7 +84,7 @@ const SideBar = ({ isOpen }) => {
       <Section title="Priority" id="priority">
         <div className={styles.priority}>
           {priority.map((item, i) => {
-            return <Checkbox key={i} id={item} label={item} />;
+            return <Checkbox key={i} id={item} label={item} section="priority" />;
           })}
         </div>
       </Section>

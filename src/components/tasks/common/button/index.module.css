@@ -87,13 +87,15 @@
   pointer-events: none;
 }
 .collection {
-  background: transparent;
+  background: #fff;
+  border: 1px solid #e5e5e5;
   border-radius: 5px;
   margin-left: 5px;
 }
 .collection:hover {
   background-color: #61b47b;
   color: #fff;
+  border-color: #61b47b;
 }
 .collection svg {
   display: block;

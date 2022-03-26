@@ -5,7 +5,7 @@
   text-transform: capitalize;
   color: #4e4e4e;
   font-weight: 400;
-  letter-spacing: .25px;
+  letter-spacing: 0.25px;
 }
 .container input {
   display: grid;
@@ -23,8 +23,8 @@
 }
 .container input::before {
   content: "";
-  width: 0.80em;
-  height: 0.80em;
+  width: 0.8em;
+  height: 0.8em;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
   box-shadow: inset 1em 1em #fff;
@@ -40,4 +40,18 @@
 }
 .container label {
   margin-left: 10px;
+}
+.container svg {
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+}
+.urgent svg {
+  color: #ca0000;
+}
+.p2 svg {
+  color: #ed8936;
+}
+.p3 svg {
+  color: #fbd38d;
 }

@@ -13,7 +13,7 @@
 }
 .search {
   border: 1px solid #e5e5e5;
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 5px 10px;
   font-family: "Roboto";
   font-weight: 300;
@@ -21,4 +21,5 @@
   min-width: 200px;
   width: 100%;
   margin-right: 10px;
+  letter-spacing: .25px;
 }
