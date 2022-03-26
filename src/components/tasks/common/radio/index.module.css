@@ -8,12 +8,32 @@
   letter-spacing: .25px;
 }
 .container input {
-  width: 15px;
-  height: 15px;
+  display: grid;
+  place-content: center;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
   margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+}
+.container input::before {
+  content: "";
+  width: 0.80em;
+  height: 0.80em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #61b47b;
+}
+.container input:checked::before {
+  transform: scale(1);
 }
 .container label {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 @media screen and (min-width: 960px) {
