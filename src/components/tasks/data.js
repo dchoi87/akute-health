@@ -1,8 +1,4 @@
-import {
-  ViewList,
-  ViewStacked,
-  Table,
-} from "react-bootstrap-icons";
+import { ViewList, ViewStacked, Table } from "react-bootstrap-icons";
 
 export const overview = [
   { label: "today", value: 5 },
@@ -85,7 +81,7 @@ export const mockData = [
       "new patient signup",
     ],
     priority: "urgent",
-    state: "no state",
+    state: "N/A",
     attachment: true,
   },
   {
@@ -165,7 +161,7 @@ export const mockData = [
       "new patient signup",
     ],
     priority: "urgent",
-    state: "no state",
+    state: "N/A",
     attachment: true,
   },
   {
@@ -245,7 +241,7 @@ export const mockData = [
       "new patient signup",
     ],
     priority: "urgent",
-    state: "no state",
+    state: "N/A",
     attachment: true,
   },
   {

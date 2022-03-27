@@ -8,7 +8,7 @@ import {
   Circle,
   CheckCircleFill,
   Tag,
-  GeoAlt
+  GeoAlt,
 } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
@@ -34,43 +34,44 @@ const Cards = ({
       </div>
       <div className={styles.content}>
         <div className={styles.sectionTop}>
-          <div className={styles.headingWrapper}>
+          <div className={styles.heading}>
             <div className={styles.title}>
-              <span>{task.title}</span>
-              {task.attachment && <Paperclip />}
-            </div>
-            <div className={styles.priorityWrapper}>
               <div
                 className={classNames(styles.priority, styles[task.priority])}
               >
                 {task.priority}
               </div>
+              <span>{task.title}</span>
+              {task.attachment && <Paperclip />}
+            </div>
+            <div className={styles.owner}>
+              <div>
+                {task.owner
+                  .split(" ")
+                  .map((name) => name[0])
+                  .join("")}
+              </div>
             </div>
           </div>
           <div className={styles.subHeading}>
-            <div className={styles.info}>{task.owner}</div>
+            <div className={styles.info}>
+              <Person />
+              <span>{task.patient}</span>
+            </div>
             <div className={styles.info}>
               <Bell />
               <span>{task.duedate}</span>
             </div>
             <div className={styles.info}>
-              <Person />
-              <span>{task.patient}</span>
+              <GeoAlt />
+              <span>{task.state}</span>
             </div>
-            {
-              isCompactView && (
-                <>
-                  <div className={styles.info}>
-                    <Tag />
-                    <span>{task.tags.length} Tags</span>
-                  </div>
-                  <div className={styles.info}>
-                    <GeoAlt />
-                    <span>{task.state}</span>
-                  </div>
-                </>
-              )
-            }
+            {isCompactView && (
+              <div className={styles.info}>
+                <Tag />
+                <span>+{task.tags.length}</span>
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.sectionMid}>
@@ -107,7 +108,6 @@ const Cards = ({
               </>
             )}
           </div>
-          <div className={styles.appointedState}>{task.state}</div>
         </div>
       </div>
     </button>
