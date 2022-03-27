@@ -50,6 +50,8 @@
   row-gap: 5px;
   grid-template-columns: repeat(4, minmax(0, max-content));
   font-size: 14px;
+  font-weight: 500;
+  color: #888;
 }
 .owner {
   margin-left: 10px;
@@ -69,7 +71,7 @@
 }
 .title {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
 }
 .title span {
   vertical-align: top;
@@ -84,7 +86,7 @@
 }
 .priority {
   display: inline-block;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 10px;
   letter-spacing: 0.25px;
   text-transform: capitalize;
@@ -124,7 +126,7 @@
   display: block;
   width: 13px;
   height: 13px;
-  margin-right: 5px;
+  margin-right: 3px;
 }
 .tagsWrapper {
   display: flex;
@@ -160,11 +162,13 @@
 .compact .sectionTop {
   border-bottom: 0;
   padding-bottom: 0;
+  gap: 7px;
 }
 .selected.container {
   background: #efefef;
 }
-.selected .tag {
+.selected .tag,
+.selected .owner div {
   background: #999;
   color: #fff;
 }

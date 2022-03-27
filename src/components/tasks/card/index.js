@@ -1,14 +1,13 @@
 import React from "react";
 import classNames from "classnames";
 import {
-  Alarm,
-  Bell,
-  Person,
+  BellFill,
   Paperclip,
   Circle,
   CheckCircleFill,
-  Tag,
-  GeoAlt,
+  TagFill,
+  GeoAltFill,
+  PersonFill,
 } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
@@ -55,23 +54,23 @@ const Cards = ({
           </div>
           <div className={styles.subHeading}>
             <div className={styles.info}>
-              <Person />
-              <span>{task.patient}</span>
-            </div>
-            <div className={styles.info}>
-              <Bell />
+              <BellFill />
               <span>{task.duedate}</span>
             </div>
             <div className={styles.info}>
-              <GeoAlt />
+              <GeoAltFill />
               <span>{task.state}</span>
             </div>
             {isCompactView && (
               <div className={styles.info}>
-                <Tag />
-                <span>+{task.tags.length}</span>
+                <TagFill />
+                <span>{task.tags.length}</span>
               </div>
             )}
+            <div className={styles.info}>
+              <PersonFill />
+              <span>{task.patient}</span>
+            </div>
           </div>
         </div>
         <div className={styles.sectionMid}>
