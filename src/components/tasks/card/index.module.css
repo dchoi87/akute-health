@@ -46,7 +46,7 @@
 .subHeading {
   display: grid;
   align-items: center;
-  column-gap: 15px;
+  column-gap: 10px;
   row-gap: 5px;
   grid-template-columns: repeat(4, minmax(0, max-content));
   font-size: 14px;
@@ -54,7 +54,7 @@
   color: #888;
 }
 .owner {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 .owner div {
   width: 25px;
@@ -127,6 +127,12 @@
   width: 13px;
   height: 13px;
   margin-right: 3px;
+  flex-shrink: 0;
+}
+.info span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .tagsWrapper {
   display: flex;

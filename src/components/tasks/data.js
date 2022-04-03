@@ -70,7 +70,7 @@ export const mockData = [
     description:
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     owner: "Cooper Kupp",
-    patient: "Eli Apple",
+    patient: "Trayvon Henderson",
     duedate: "03-25-22",
     tags: [
       "form submission",
@@ -91,7 +91,7 @@ export const mockData = [
     description:
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     owner: "Aaron Donald",
-    patient: "Joe Burrow",
+    patient: "Akeem Davis-Gaither",
     duedate: "05-21-22",
     tags: ["form submission", "doc review", "assessments"],
     priority: "p2",
@@ -104,7 +104,7 @@ export const mockData = [
     description:
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     owner: "Matthew Stafford",
-    patient: "Von Bell",
+    patient: "Marquez Valdes-Scantling",
     duedate: "12-15-22",
     tags: [
       "form submission",

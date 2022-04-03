@@ -41,12 +41,12 @@ const Table = ({ data }) => {
         <tbody>
           {data.map((item, i) => {
             return (
-              <tr key={i}>
+              <tr key={i} className={styles[item.priority]}>
                 <td className={styles.checkbox}>
                   <Square />
                 </td>
                 <td className={styles.title}>{item.title}</td>
-                <td className={classNames(styles.priority, styles[item.priority])}>
+                <td className={classNames(styles.priority)}>
                   <CircleFill />
                   <span>{item.priority}</span>
                 </td>
