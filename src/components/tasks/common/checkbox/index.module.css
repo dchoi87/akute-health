@@ -55,3 +55,11 @@
 .p3 svg {
   color: #fbd38d;
 }
+.group {
+  font-weight: 700;
+}
+.group svg {
+  width: 13px;
+  height: 13px;
+  margin-left: 7px;
+}

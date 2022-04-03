@@ -184,6 +184,10 @@
 .selected .sectionTop {
   border-color: #e0e0e0;
 }
+.pastDue.info {
+  color: #ca0000;
+  font-weight: 700;
+}
 @media screen and (min-width: 768px) {
   .subHeading {
     gap: 15px;

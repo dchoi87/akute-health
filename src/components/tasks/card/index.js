@@ -8,6 +8,7 @@ import {
   TagFill,
   GeoAltFill,
   PersonFill,
+  ExclamationTriangleFill,
 } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
@@ -19,6 +20,7 @@ const Cards = ({
   isSelected,
   handleSelectItem,
 }) => {
+  const isPastDue = task.duedate === "03-25-22";
   return (
     <button
       className={classNames(styles.container, {
@@ -53,8 +55,12 @@ const Cards = ({
             </div>
           </div>
           <div className={styles.subHeading}>
-            <div className={styles.info}>
-              <BellFill />
+            <div
+              className={classNames(styles.info, {
+                [styles.pastDue]: isPastDue,
+              })}
+            >
+              {isPastDue ? <ExclamationTriangleFill /> : <BellFill />}
               <span>{task.duedate}</span>
             </div>
             <div className={styles.info}>
