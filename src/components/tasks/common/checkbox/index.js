@@ -16,7 +16,14 @@ const Checkbox = ({ label, id, section, customClass }) => {
     >
       <input type="checkbox" id={_id} />
       {section === "priority" && <CircleFill />}
-      <label htmlFor={_id}>{label}</label>
+      <label
+        htmlFor={_id}
+        className={classNames({
+          [styles.visuallyhidden]: !label,
+        })}
+      >
+        {label}
+      </label>
       {customClass === "group" && <PeopleFill />}
     </div>
   );

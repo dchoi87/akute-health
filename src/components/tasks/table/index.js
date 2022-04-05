@@ -1,6 +1,11 @@
 import React from "react";
 import classNames from "classnames";
-import { Square, CaretDownFill, CircleFill } from "react-bootstrap-icons";
+import {
+  CaretDownFill,
+  CircleFill,
+  ExclamationTriangleFill,
+} from "react-bootstrap-icons";
+import Checkbox from "../common/checkbox";
 
 import styles from "./index.module.css";
 
@@ -11,7 +16,7 @@ const Table = ({ data }) => {
         <thead>
           <tr>
             <th className={styles.checkbox}>
-              <Square />
+              <Checkbox id="row-all" label="" />
             </th>
             <th className={styles.title}>
               <span>Task</span>
@@ -34,23 +39,27 @@ const Table = ({ data }) => {
               <span>Owner</span>
             </th>
             <th>
-              <span>Appointed State</span>
+              <span>State</span>
             </th>
           </tr>
         </thead>
         <tbody>
           {data.map((item, i) => {
+            const isPastDue = item.duedate === "03-25-22";
             return (
               <tr key={i} className={styles[item.priority]}>
                 <td className={styles.checkbox}>
-                  <Square />
+                  <Checkbox id={`row-${i + 1}`} label="" />
                 </td>
                 <td className={styles.title}>{item.title}</td>
                 <td className={classNames(styles.priority)}>
                   <CircleFill />
                   <span>{item.priority}</span>
                 </td>
-                <td className={styles.duedate}>{item.duedate}</td>
+                <td className={styles.duedate}>
+                  {isPastDue && <ExclamationTriangleFill />}
+                  {item.duedate}
+                </td>
                 <td className={styles.patient}>{item.patient}</td>
                 <td className={styles.tags}>
                   {item.tags.slice(0, 2).map((tag, i) => {
