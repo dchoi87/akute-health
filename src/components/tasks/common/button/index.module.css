@@ -176,9 +176,10 @@
   background: transparent;
   padding: 5px;
   border-radius: 5px;
+  color: #ca0000;
 }
 .trash:hover {
-  background-color: #61b47b;
+  background-color: #ca0000;
   color: #fff;
 }
 .trash svg {

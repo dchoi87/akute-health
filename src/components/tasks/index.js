@@ -136,8 +136,8 @@ const Tasks = () => {
               })}
             </div>
           )}
+          <Pagination />
         </div>
-        <Pagination />
       </div>
     </div>
   );
