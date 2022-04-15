@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/akute-health/static/css/main.7b01c8fa.css",
-    "main.js": "/akute-health/static/js/main.48bf8f80.js",
+    "main.css": "/akute-health/static/css/main.c0974a6d.css",
+    "main.js": "/akute-health/static/js/main.c7b31369.js",
     "static/js/787.9635673f.chunk.js": "/akute-health/static/js/787.9635673f.chunk.js",
     "index.html": "/akute-health/index.html",
-    "main.7b01c8fa.css.map": "/akute-health/static/css/main.7b01c8fa.css.map",
-    "main.48bf8f80.js.map": "/akute-health/static/js/main.48bf8f80.js.map",
+    "main.c0974a6d.css.map": "/akute-health/static/css/main.c0974a6d.css.map",
+    "main.c7b31369.js.map": "/akute-health/static/js/main.c7b31369.js.map",
     "787.9635673f.chunk.js.map": "/akute-health/static/js/787.9635673f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b01c8fa.css",
-    "static/js/main.48bf8f80.js"
+    "static/css/main.c0974a6d.css",
+    "static/js/main.c7b31369.js"
   ]
 }
