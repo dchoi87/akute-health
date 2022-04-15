@@ -3,8 +3,11 @@
   grid-template-columns: 100%;
 }
 .container {
+  height: 100%;
+}
+.overflowHidden {
   height: 100vh;
-  overflow: auto;
+  overflow: hidden;
 }
 .content {
   padding: 15px;
@@ -86,5 +89,9 @@
 @media screen and (min-width: 960px) {
   .tasks {
     grid-template-columns: 320px auto;
+  }
+  .container {
+    height: 100vh;
+    overflow: auto;
   }
 }

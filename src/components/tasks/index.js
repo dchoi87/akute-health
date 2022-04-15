@@ -55,7 +55,12 @@ const Tasks = () => {
   return (
     <div className={styles.tasks}>
       <SideBar isOpen={isOpen} />
-      <div className={styles.container} ref={taskRef}>
+      <div
+        className={classNames(styles.container, {
+          [styles.overflowHidden]: isOpen,
+        })}
+        ref={taskRef}
+      >
         {isOpen && (
           <div className={styles.overlay} onClick={handleFilterMenu}></div>
         )}

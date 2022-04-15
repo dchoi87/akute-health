@@ -18,7 +18,7 @@
 .container {
   display: none;
   padding: 0 20px 20px 20px;
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   background: #fafafa;
   z-index: 2;
@@ -109,5 +109,6 @@
 @media screen and (min-width: 960px) {
   .container {
     display: block;
+    height: 100vh;
   }
 }
