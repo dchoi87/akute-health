@@ -6,23 +6,21 @@
 .nav {
   height: 100vh;
   overflow: auto;
-  padding: 5px;
   display: none;
   align-items: center;
   justify-content: center;
   font-size: 14px;
+  width: 240px;
+  flex-shrink: 0;
 }
 
 @media screen and (min-width: 960px) {
-  .app {
-    display: grid;
-    grid-template-columns: 240px auto;
-    gap: 5px;
-  }
-  .nav {
-    display: flex;
-  }
+  .app,
+  .nav,
   .patient-info {
     display: flex;
+  }
+  .container {
+    flex-grow: 1;
   }
 }
