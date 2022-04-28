@@ -3,7 +3,10 @@ import classNames from "classnames";
 import {
   BellFill,
   Paperclip,
+  Square,
+  CheckSquareFill,
   Circle,
+  CircleFill,
   CheckCircleFill,
   TagFill,
   GeoAltFill,
@@ -31,17 +34,28 @@ const Cards = ({
       data-id={task.id}
     >
       <div className={styles.select}>
-        {isSelected ? <CheckCircleFill /> : <Circle />}
+        {isSelected ? <CheckSquareFill /> : <Square />}
       </div>
       <div className={styles.content}>
         <div className={styles.sectionTop}>
           <div className={styles.heading}>
             <div className={styles.title}>
-              <div
-                className={classNames(styles.priority, styles[task.priority])}
-              >
-                {task.priority}
-              </div>
+              {isCompactView ? (
+                <div
+                  className={classNames(
+                    styles.priorityCompact,
+                    styles[task.priority]
+                  )}
+                >
+                  <CircleFill />
+                </div>
+              ) : (
+                <div
+                  className={classNames(styles.priority, styles[task.priority])}
+                >
+                  {task.priority}
+                </div>
+              )}
               <span>{task.title}</span>
               {task.attachment && <Paperclip />}
             </div>

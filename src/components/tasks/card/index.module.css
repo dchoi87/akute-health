@@ -16,7 +16,12 @@
   font-weight: 300;
 }
 .select {
-  margin-right: 15px;
+  margin: 2px 15px 0 0;
+  color: #c1c1c1;
+}
+.select svg {
+  width: 16px;
+  height: 16px;
 }
 .content {
   display: grid;
@@ -76,13 +81,13 @@
 .title span {
   vertical-align: top;
   line-height: 22px;
+  margin: 0 5px 0 10px;
 }
 .title svg {
   display: inline-block;
   vertical-align: middle;
   width: 15px;
   height: 15px;
-  margin-left: 5px;
 }
 .priority {
   display: inline-block;
@@ -95,7 +100,6 @@
   white-space: nowrap;
   background: #4e4e4e;
   color: #fff;
-  margin-right: 10px;
 }
 .urgent {
   color: #fff;
@@ -108,6 +112,23 @@
 .p3 {
   color: #b57300;
   background: #fbd38d;
+}
+.priorityCompact {
+  display: inline-block;
+  background: transparent;
+}
+.priorityCompact svg {
+  width: 10px;
+  height: 10px;
+}
+.priorityCompact.urgent {
+  color: #ca0000;
+}
+.priorityCompact.p2 {
+  color: #ed8936;
+}
+.priorityCompact.p3 {
+  color: #fbd38d;
 }
 .description {
   font-size: 14px;
@@ -150,7 +171,7 @@
 }
 /* modifiers */
 .compact.container {
-  padding: 15px;
+  padding: 15px 20px;
 }
 .compact {
   border-radius: 0;
