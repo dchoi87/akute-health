@@ -16,7 +16,7 @@
   font-weight: 300;
 }
 .select {
-  margin: 2px 15px 0 0;
+  margin: 3px 15px 0 0;
   color: #c1c1c1;
 }
 .select svg {
@@ -115,6 +115,7 @@
 }
 .priorityCompact {
   display: inline-block;
+  vertical-align: middle;
   background: transparent;
 }
 .priorityCompact svg {
