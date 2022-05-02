@@ -5,13 +5,12 @@ import {
   Paperclip,
   Square,
   CheckSquareFill,
-  Circle,
   CircleFill,
-  CheckCircleFill,
   TagFill,
   GeoAltFill,
   PersonFill,
   ExclamationTriangleFill,
+  HeartPulseFill,
 } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
@@ -59,16 +58,24 @@ const Cards = ({
               <span>{task.title}</span>
               {task.attachment && <Paperclip />}
             </div>
-            <div className={styles.owner}>
-              <div>
-                {task.owner
-                  .split(" ")
-                  .map((name) => name[0])
-                  .join("")}
+            {!showDesktopView && (
+              <div className={styles.owner}>
+                <div>
+                  {task.owner
+                    .split(" ")
+                    .map((name) => name[0])
+                    .join("")}
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className={styles.subHeading}>
+            {showDesktopView && (
+              <div className={styles.info}>
+                <PersonFill />
+                {task.owner}
+              </div>
+            )}
             <div
               className={classNames(styles.info, {
                 [styles.pastDue]: isPastDue,
@@ -88,7 +95,7 @@ const Cards = ({
               </div>
             )}
             <div className={styles.info}>
-              <PersonFill />
+              <HeartPulseFill />
               <span>{task.patient}</span>
             </div>
           </div>
