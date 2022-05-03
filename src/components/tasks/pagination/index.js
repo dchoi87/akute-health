@@ -1,6 +1,5 @@
 import React from "react";
 import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
-import classNames from "classnames";
 import Button from "../common/button";
 import Select from "../common/select";
 
@@ -8,7 +7,7 @@ import { cardsPerPage } from "../data";
 
 import styles from "./index.module.css";
 
-const Pagination = ({}) => {
+const Pagination = () => {
   return (
     <div className={styles.container}>
       <div className={styles.pagination}>

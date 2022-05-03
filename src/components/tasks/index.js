@@ -7,7 +7,6 @@ import {
   SortUp,
   CardChecklist,
   CheckLg,
-  XLg,
   Trash,
 } from "react-bootstrap-icons";
 import SideBar from "./sidebar";
