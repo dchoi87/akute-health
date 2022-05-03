@@ -21,7 +21,8 @@ const Row = ({ item, idx }) => {
         <CircleFill />
         <span>{item.priority}</span>
       </td>
-      <td className={styles.duedate}>
+      <td className={styles.owner}>{item.owner}</td>
+      <td className={classNames(styles.duedate, {[styles.pastDue]: isPastDue})}>
         {isPastDue && <ExclamationTriangleFill />}
         {item.duedate}
       </td>
@@ -38,7 +39,6 @@ const Row = ({ item, idx }) => {
           <div className={styles.tag}>+{item.tags.length - 2}</div>
         )}
       </td>
-      <td className={styles.owner}>{item.owner}</td>
       <td className={styles.state}>{item.state}</td>
     </tr>
   );
@@ -61,6 +61,9 @@ const Table = ({ data }) => {
               <CaretDownFill />
             </th>
             <th>
+              <span>Owner</span>
+            </th>
+            <th>
               <span>Due Date</span>
               <CaretDownFill />
             </th>
@@ -69,9 +72,6 @@ const Table = ({ data }) => {
             </th>
             <th>
               <span>Tags</span>
-            </th>
-            <th>
-              <span>Owner</span>
             </th>
             <th>
               <span>State</span>

@@ -101,6 +101,9 @@
   height: 13px;
   margin-right: 5px;
 }
+.duedate.pastDue {
+  color: #ca0000;
+}
 .urgent td {
   color: #ca0000;
 }

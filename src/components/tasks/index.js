@@ -1,10 +1,9 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames";
+// import Select from "react-select";
 import {
   PlusLg,
   Filter,
-  SortDown,
-  SortUp,
   CardChecklist,
   CheckLg,
   Trash,
@@ -75,12 +74,13 @@ const Tasks = () => {
               <Filter />
             </Button>
             <div className={styles.tools}>
-              <div className={styles.priority}>
-                <Select options={sort} id="sort" />
-                <Button type="sort" onClick={handleSortOrder}>
-                  {isDesc ? <SortDown /> : <SortUp />}
-                </Button>
-              </div>
+              {!isTableView && (
+                <Select
+                  options={sort}
+                  handleSortOrder={handleSortOrder}
+                  isDesc={isDesc}
+                />
+              )}
               <div className={styles.view}>
                 {view.map((item, i) => {
                   return (

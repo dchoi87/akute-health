@@ -1,23 +1,37 @@
 import React from "react";
+import Select from "react-select";
+import { SortDown, SortUp } from "react-bootstrap-icons";
+
+import Button from "..//button";
 
 import styles from "./index.module.css";
-// note: will probably have to develop custom dropdown
-// due to lack of styling available for default select
-const Select = ({ options, id }) => {
+
+const customStyles = {
+  container: (provided, state) => ({
+    ...provided,
+    fontWeight: 500,
+    fontSize: "14px",
+  }),
+  control: (provided, state) => ({
+    ...provided,
+    border: 0,
+  }),
+};
+
+const SelectContainer = ({ options, handleSortOrder, isDesc }) => {
   return (
     <div className={styles.container}>
-      <label htmlFor={`select-${id}`}>{id}</label>
-      <select name={id} id={`select-${id}`} className={styles[id]}>
-        {options.map((item, i) => {
-          return (
-            <option key={i} value={item.id}>
-              {item.label}
-            </option>
-          );
-        })}
-      </select>
+      <Select
+        styles={customStyles}
+        options={options}
+        className="tasks-select-container"
+        classNamePrefix="tasks-select"
+      />
+      <Button type="sort" onClick={handleSortOrder}>
+        {isDesc ? <SortDown /> : <SortUp />}
+      </Button>
     </div>
   );
 };
 
-export default Select;
+export default SelectContainer;

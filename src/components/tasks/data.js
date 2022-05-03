@@ -52,8 +52,8 @@ export const view = [
 ];
 
 export const sort = [
-  { id: "priority", label: "Sort by Priority" },
-  { id: "date", label: "Sort by Due Date" },
+  { value: "priority", label: "Sort by Priority" },
+  { value: "date", label: "Sort by Due Date" },
 ];
 
 export const cardsPerPage = [
