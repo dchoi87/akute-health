@@ -15,6 +15,23 @@ import {
 
 import styles from "./index.module.css";
 
+const Tags = ({ tags, count }) => {
+  return (
+    <>
+      {tags.slice(0, count).map((tag, i) => {
+        return (
+          <div key={i} className={styles.tag}>
+            {tag}
+          </div>
+        );
+      })}
+      {tags.length > 4 && (
+        <div className={styles.tag}>+{tags.length - count}</div>
+      )}
+    </>
+  );
+};
+
 const Cards = ({
   task,
   showDesktopView,
@@ -105,34 +122,7 @@ const Cards = ({
         </div>
         <div className={styles.sectionBottom}>
           <div className={styles.tagsWrapper}>
-            {/* todo: dry this */}
-            {showDesktopView ? (
-              <>
-                {task.tags.slice(0, 4).map((tag, i) => {
-                  return (
-                    <div key={i} className={styles.tag}>
-                      {tag}
-                    </div>
-                  );
-                })}
-                {task.tags.length > 4 && (
-                  <div className={styles.tag}>+{task.tags.length - 4}</div>
-                )}
-              </>
-            ) : (
-              <>
-                {task.tags.slice(0, 2).map((tag, i) => {
-                  return (
-                    <div key={i} className={styles.tag}>
-                      {tag}
-                    </div>
-                  );
-                })}
-                {task.tags.length > 4 && (
-                  <div className={styles.tag}>+{task.tags.length - 2}</div>
-                )}
-              </>
-            )}
+            <Tags tags={task.tags} count={showDesktopView ? 4 : 2} />
           </div>
         </div>
       </div>

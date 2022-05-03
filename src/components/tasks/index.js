@@ -29,6 +29,8 @@ const Tasks = () => {
   const [isDesc, setSortOrder] = useState(true);
   const [isOpen, setFilterVisibility] = useState(false);
   const [selectedItems, setSelected] = useState([]);
+  const isCompactView = viewOption === "compact";
+  const isTableView = viewOption === "table";
 
   const handleViewOptions = ({ target }) => {
     setViewOption(target.id);
@@ -110,21 +112,18 @@ const Tasks = () => {
                 <Button type="complete">
                   <CheckLg />
                 </Button>
-                <Button type="deselect">
-                  <XLg />
-                </Button>
                 <Button type="trash">
                   <Trash />
                 </Button>
               </div>
             </div>
           )}
-          {viewOption === "table" ? (
+          {isTableView ? (
             <Table data={mockData} />
           ) : (
             <div
               className={classNames(styles.cards, {
-                [styles.compact]: viewOption === "compact",
+                [styles.compact]: isCompactView,
               })}
             >
               {mockData.map((task, i) => {
@@ -133,7 +132,7 @@ const Tasks = () => {
                     key={i}
                     task={task}
                     showDesktopView={showDesktopView}
-                    isCompactView={viewOption === "compact"}
+                    isCompactView={isCompactView}
                     isSelected={selectedItems.includes(task.id)}
                     handleSelectItem={handleSelectItem}
                   />

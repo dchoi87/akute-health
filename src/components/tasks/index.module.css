@@ -70,12 +70,16 @@
   align-items: center;
   font-size: 14px;
   font-weight: 500;
+  letter-spacing: .25px;
 }
 .selectedCount svg {
   display: block;
   width: 17px;
   height: 17px;
   margin-right: 10px;
+}
+.selectedUtility {
+  display: flex;
 }
 .selectedUtility button + button {
   margin-left: 5px;

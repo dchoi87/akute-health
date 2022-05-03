@@ -189,7 +189,7 @@
 }
 .complete {
   background: transparent;
-  padding: 5px;
+  padding: 3px;
   border-radius: 5px;
 }
 .complete:hover {
@@ -198,22 +198,8 @@
 }
 .complete svg {
   display: block;
-  width: 17px;
-  height: 17px;
-}
-.deselect {
-  background: transparent;
-  padding: 5px;
-  border-radius: 5px;
-}
-.deselect:hover {
-  background-color: #61b47b;
-  color: #fff;
-}
-.deselect svg {
-  display: block;
-  width: 17px;
-  height: 17px;
+  width: 21px;
+  height: 21px;
 }
 .group {
   display: flex;
