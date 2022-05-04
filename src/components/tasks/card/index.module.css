@@ -175,6 +175,14 @@
 .compact.container {
   padding: 15px 20px;
 }
+.compact.container:first-child {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.compact.container:last-child {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 .compact {
   border-radius: 0;
 }
