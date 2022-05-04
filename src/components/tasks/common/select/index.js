@@ -14,6 +14,7 @@ const SelectContainer = ({
   placeholder,
   handleSortOrder,
   isDesc,
+  menuPlacement,
   defaultValue,
 }) => {
   return (
@@ -24,7 +25,7 @@ const SelectContainer = ({
         classNamePrefix="tasks-select"
         placeholder={placeholder}
         isSearchable={false}
-        menuPlacement="auto"
+        menuPlacement={menuPlacement || "auto"}
         defaultValue={defaultValue}
       />
       {type === "sort" && (

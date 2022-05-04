@@ -13,7 +13,7 @@
   color: #494949;
 }
 .select .tasks-select__value-container {
-  padding: 0 8px;
+  padding: 0 5px;
 }
 .select .tasks-select__input-container {
   padding: 0;
@@ -26,4 +26,8 @@
 }
 .select .tasks-select__indicator-separator {
   display: none;
+}
+.select .tasks-select__single-value {
+  text-overflow: inherit;
+  margin: 0;
 }

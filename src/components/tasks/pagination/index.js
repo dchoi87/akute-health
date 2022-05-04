@@ -16,6 +16,7 @@ const Pagination = () => {
             type="cards"
             options={cardsPerPage}
             defaultValue={{ label: "10", value: "10" }}
+            menuPlacement="top"
           />
         </div>
         <div className={styles.page}>Page 1 of 48</div>

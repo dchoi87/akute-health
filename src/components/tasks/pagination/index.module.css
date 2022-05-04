@@ -12,7 +12,7 @@
   padding: 5px 0;
   border-radius: 7px;
   font-weight: 700;
-  width: 215px;
+  width: 250px;
 }
 .pagination > div {
   display: flex;
@@ -24,6 +24,7 @@
 }
 .page {
   justify-content: center;
+  margin: 0 10px;
 }
 .navigation {
   justify-content: flex-start;
