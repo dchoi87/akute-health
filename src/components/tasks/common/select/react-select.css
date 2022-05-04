@@ -31,3 +31,19 @@
   text-overflow: inherit;
   margin: 0;
 }
+.select .tasks-select__menu {
+  min-width: 100%;
+  width: max-content;
+  overflow: hidden;
+}
+.select .tasks-select__menu-list {
+  padding: 0;
+}
+.select .tasks-select__option--is-focused,
+.select .tasks-select__option--is-focused:active {
+  background-color: #cde7d5;
+}
+.select .tasks-select__option--is-selected,
+.select .tasks-select__option--is-selected:active {
+  background-color: #61b47b;
+}
