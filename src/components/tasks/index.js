@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames";
-// import Select from "react-select";
 import {
   PlusLg,
   Filter,
@@ -76,7 +75,9 @@ const Tasks = () => {
             <div className={styles.tools}>
               {!isTableView && (
                 <Select
+                  type="sort"
                   options={sort}
+                  placeholder="Sort By"
                   handleSortOrder={handleSortOrder}
                   isDesc={isDesc}
                 />

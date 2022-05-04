@@ -12,7 +12,11 @@ const Pagination = () => {
     <div className={styles.container}>
       <div className={styles.pagination}>
         <div className={styles.count}>
-          <Select options={cardsPerPage} id="cards" />
+          <Select
+            type="cards"
+            options={cardsPerPage}
+            defaultValue={{ label: "10", value: "10" }}
+          />
         </div>
         <div className={styles.page}>Page 1 of 48</div>
         <div className={styles.navigation}>

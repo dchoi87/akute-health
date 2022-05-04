@@ -90,7 +90,7 @@ const Cards = ({
             {showDesktopView && (
               <div className={styles.info}>
                 <PersonFill />
-                {task.owner}
+                <span>{task.owner}</span>
               </div>
             )}
             <div

@@ -138,11 +138,9 @@
   pointer-events: none;
 }
 .sort {
-  padding: 10px;
-  margin-left: 5px;
+  padding: 5px;
+  background: transparent;
   border-radius: 5px;
-  background: #fff;
-  box-shadow: 0px 5px 10px 2px #efefef73;
 }
 .sort:hover {
   background-color: #61b47b;
@@ -150,8 +148,8 @@
 }
 .sort svg {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   pointer-events: none;
 }
 .pagination {

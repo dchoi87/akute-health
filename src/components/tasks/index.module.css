@@ -33,6 +33,7 @@
   align-items: center;
   background: #fff;
   padding: 6px;
+  margin-left: 15px;
   border-radius: 5px;
   box-shadow: 0px 5px 10px 2px #efefef73;
 }
@@ -57,7 +58,7 @@
   margin-bottom: 15px;
   border-radius: 7px;
   background: #fff;
-  box-shadow: 0px 5px 10px 2px #efefef73;
+  box-shadow: 0px 5px 10px 2px #e2e2e273;
 }
 .selectedCount {
   display: flex;

@@ -150,6 +150,7 @@
   height: 13px;
   margin-right: 3px;
   flex-shrink: 0;
+  color: #aaa;
 }
 .info span {
   overflow: hidden;
@@ -195,6 +196,8 @@
 .selected.container {
   background: #f1f1f1;
   outline: 1px solid #ccc;
+  /* background: #f5f9f6; */
+  /* outline: 1px solid #61b47b; */
 }
 .selected.container.compact {
   outline-offset: -1px;
@@ -222,6 +225,9 @@
 .pastDue.info {
   color: #ca0000;
   font-weight: 700;
+}
+.pastDue.info svg {
+  color: #ca0000;
 }
 @media screen and (min-width: 768px) {
   .subHeading {

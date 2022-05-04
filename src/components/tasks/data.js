@@ -52,15 +52,15 @@ export const view = [
 ];
 
 export const sort = [
-  { value: "priority", label: "Sort by Priority" },
-  { value: "date", label: "Sort by Due Date" },
+  { value: "priority", label: "Priority" },
+  { value: "date", label: "Due Date" },
 ];
 
 export const cardsPerPage = [
-  { id: "10", label: "10" },
-  { id: "20", label: "20" },
-  { id: "50", label: "50" },
-  { id: "100", label: "100" },
+  { value: "10", label: "10" },
+  { value: "20", label: "20" },
+  { value: "50", label: "50" },
+  { value: "100", label: "100" },
 ];
 
 export const mockData = [

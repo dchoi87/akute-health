@@ -14,19 +14,19 @@
   font-weight: 700;
   width: 215px;
 }
-.pagination div {
+.pagination > div {
   display: flex;
   align-items: center;
   flex: 1;
 }
 .count {
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 .page {
   justify-content: center;
 }
 .navigation {
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 @media screen and (min-width: 960px) {
   .pagination {
