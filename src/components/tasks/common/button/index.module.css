@@ -15,6 +15,7 @@
   color: #fff;
   background: #61b47b;
   position: fixed;
+  z-index: 1;
   bottom: 20px;
   right: 20px;
   box-shadow: 0px 5px 10px 2px #a4a4a473;

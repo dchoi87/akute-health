@@ -3,7 +3,11 @@
   justify-content: center;
   color: #494949;
   width: 100%;
-  padding: 15px 15px 0;
+  padding: 5px;
+  margin-top: 15px;
+  position: sticky;
+  bottom: 0;
+  background: #fafafa;
 }
 .pagination {
   display: flex;
