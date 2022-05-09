@@ -6,6 +6,7 @@ import {
   ExclamationTriangleFill,
 } from "react-bootstrap-icons";
 import Checkbox from "../common/checkbox";
+import { useWindowHeight } from "../hooks";
 
 import styles from "./index.module.css";
 
@@ -22,7 +23,9 @@ const Row = ({ item, idx }) => {
         <span>{item.priority}</span>
       </td>
       <td className={styles.owner}>{item.owner}</td>
-      <td className={classNames(styles.duedate, {[styles.pastDue]: isPastDue})}>
+      <td
+        className={classNames(styles.duedate, { [styles.pastDue]: isPastDue })}
+      >
         {isPastDue && <ExclamationTriangleFill />}
         {item.duedate}
       </td>
@@ -45,8 +48,9 @@ const Row = ({ item, idx }) => {
 };
 
 const Table = ({ data }) => {
+  const tableHeight = useWindowHeight() - 147;
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ height: tableHeight }}>
       <table>
         <thead>
           <tr>

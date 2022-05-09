@@ -19,8 +19,8 @@
   font-size: 14px;
   font-weight: 500;
   border-radius: 15px;
-  height: calc(100vh - 152px);
   background: #fff;
+  margin: 15px;
 }
 .container svg {
   display: block;
