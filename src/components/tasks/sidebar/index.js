@@ -108,7 +108,12 @@ const SideBar = ({ isOpen }) => {
         <div className={styles.owner}>
           <div className={styles.toolbar}>
             <Input type="search" id="owner-search" placeholder="Search Owner" />
-            <Button type="collection" id="owner-group" onClick={handleGroup}>
+            <Button
+              type="collection"
+              id="owner-group"
+              onClick={handleGroup}
+              isActive={showOwnerGroup}
+            >
               <PeopleFill />
             </Button>
           </div>
@@ -146,7 +151,12 @@ const SideBar = ({ isOpen }) => {
         <div className={styles.tags}>
           <div className={styles.toolbar}>
             <Input type="search" id="tags-search" placeholder="Search Tags" />
-            <Button type="collection" id="tag-group" onClick={handleGroup}>
+            <Button
+              type="collection"
+              id="tag-group"
+              onClick={handleGroup}
+              isActive={showTagGroup}
+            >
               <TagsFill />
             </Button>
           </div>
