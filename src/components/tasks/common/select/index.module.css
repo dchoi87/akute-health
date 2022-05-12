@@ -6,3 +6,6 @@
   box-shadow: 0px 5px 10px 2px #efefef73;
   padding: 6px;
 }
+.filters {
+  flex: 1;
+}

@@ -15,7 +15,7 @@ const Pagination = () => {
           <Select
             type="cards"
             options={cardsPerPage}
-            defaultValue={{ label: "10", value: "10" }}
+            defaultValue={cardsPerPage[0]}
             menuPlacement="top"
           />
         </div>

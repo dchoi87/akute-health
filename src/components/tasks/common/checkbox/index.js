@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { CircleFill, PeopleFill } from "react-bootstrap-icons";
+import { CircleFill, Collection } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
 
@@ -24,7 +24,7 @@ const Checkbox = ({ label, id, section, customClass }) => {
       >
         {label}
       </label>
-      {customClass === "group" && <PeopleFill />}
+      {customClass === "group" && <Collection />}
     </div>
   );
 };

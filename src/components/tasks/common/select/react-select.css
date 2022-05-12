@@ -1,4 +1,5 @@
 .select .tasks-select-container {
+  flex: 1;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: .25px;
@@ -28,6 +29,7 @@
   display: none;
 }
 .select .tasks-select__single-value {
+  text-transform: capitalize;
   text-overflow: inherit;
   margin: 0;
 }
@@ -35,6 +37,7 @@
   min-width: 100%;
   width: max-content;
   overflow: hidden;
+  text-transform: capitalize;
 }
 .select .tasks-select__menu-list {
   padding: 0;

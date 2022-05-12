@@ -3,13 +3,15 @@ import classNames from "classnames";
 import {
   ChevronDown,
   ChevronRight,
-  PeopleFill,
-  TagsFill,
+  ArrowClockwise,
+  CloudArrowUp,
+  Collection
 } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
 import Input from "../common/input";
 import Radio from "../common/radio";
+import Select from "../common/select";
 
 import styles from "./index.module.css";
 
@@ -74,24 +76,33 @@ const SideBar = ({ isOpen }) => {
         </div>
       </Section>
       <Section title="Saved Filters" id="filters">
-        <div className={styles.filters}>
-          <div className={styles.filtersWrapper}>
-            {savedFilters.map((item, i) => {
-              return (
-                <Radio
-                  key={i}
-                  idx={i}
-                  id={item.label}
-                  label={item.label}
-                  name="filters"
-                />
-              );
-            })}
+        <div className={styles.filter}>
+          <div className={styles.filterSection}>
+            <div className={styles.filterLabel}>
+              Select a Filter Preset
+            </div>
+            <div className={styles.filterInput}>
+              <Select
+                type="filters"
+                options={savedFilters}
+                customClass="filters"
+                defaultValue={savedFilters[0]}
+              />
+              <Button type="overwrite" id="filters-overwrite">
+                <ArrowClockwise />
+              </Button>
+            </div>
           </div>
-          <div className={styles.options}>
-            <Button type="clear">
-              <span>Clear Presets</span>
-            </Button>
+          <div className={styles.filterSection}>
+            <div className={styles.filterLabel}>
+              Create a New Filter
+            </div>
+            <div className={styles.filterInput}>
+              <Input type="text" id="create-filter" placeholder="Filter Name" />
+              <Button type="save" id="filters-save">
+                <CloudArrowUp />
+              </Button>
+            </div>
           </div>
         </div>
       </Section>
@@ -114,7 +125,7 @@ const SideBar = ({ isOpen }) => {
               onClick={handleGroup}
               isActive={showOwnerGroup}
             >
-              <PeopleFill />
+              <Collection />
             </Button>
           </div>
           <div className={styles.ownerWrapper}>
@@ -157,7 +168,7 @@ const SideBar = ({ isOpen }) => {
               onClick={handleGroup}
               isActive={showTagGroup}
             >
-              <TagsFill />
+              <Collection />
             </Button>
           </div>
           <div className={styles.tagsWrapper}>
@@ -168,7 +179,7 @@ const SideBar = ({ isOpen }) => {
                   return (
                     <Button key={i} type="tag" customClass="group">
                       Tag Group {i + 1}
-                      <TagsFill />
+                      <Collection />
                     </Button>
                   );
                 })}

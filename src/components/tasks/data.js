@@ -40,9 +40,9 @@ export const tags = [
 ];
 
 export const savedFilters = [
-  { label: "saved filter 1", date: "10-12-22" },
-  { label: "my custom filter", date: "10-31-22" },
-  { label: "some filter name", date: "11-22-22" },
+  { value: "filter1", label: "saved filter 1" },
+  { value: "filter2", label: "my custom filter" },
+  { value: "filter3", label: "some filter name" },
 ];
 
 export const view = [
