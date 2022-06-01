@@ -67,7 +67,12 @@ const Table = ({ data, selectedItems, handleSelectItem }) => {
         <thead>
           <tr>
             <th className={styles.checkbox}>
-              <Checkbox id="row-all" label="" />
+              <Checkbox
+                id="row-all"
+                label=""
+                dataId="all"
+                onChange={handleSelectItem}
+              />
             </th>
             <th className={styles.title}>
               <span>Task</span>

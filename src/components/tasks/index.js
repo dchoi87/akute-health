@@ -44,6 +44,18 @@ const Tasks = () => {
   const handleSelectItem = ({ currentTarget }) => {
     const id = currentTarget.dataset.id;
 
+    // note: logic will need to change to be tasks visible per page
+    if (id === "all") {
+      const tasks = mockData.map((item) => item.id);
+
+      if (selectedItems.length !== tasks.length) {
+        setSelected(tasks);
+      } else {
+        setSelected([]);
+      }
+      return;
+    }
+
     if (selectedItems.includes(id)) {
       setSelected(selectedItems.filter((item) => item !== id));
     } else {
