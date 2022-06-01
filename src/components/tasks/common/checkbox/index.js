@@ -4,7 +4,15 @@ import { CircleFill, Collection } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
 
-const Checkbox = ({ label, id, section, customClass }) => {
+const Checkbox = ({
+  label,
+  id,
+  dataId,
+  section,
+  customClass,
+  onChange,
+  checked,
+}) => {
   const _id = `checkbox-${id.toLowerCase().replace(" ", "-")}`;
   return (
     <div
@@ -14,7 +22,13 @@ const Checkbox = ({ label, id, section, customClass }) => {
         styles[customClass]
       )}
     >
-      <input type="checkbox" id={_id} />
+      <input
+        type="checkbox"
+        id={_id}
+        data-id={dataId}
+        onChange={onChange}
+        checked={checked}
+      />
       {section === "priority" && <CircleFill />}
       <label
         htmlFor={_id}

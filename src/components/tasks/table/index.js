@@ -10,12 +10,23 @@ import { useWindowHeight } from "../hooks";
 
 import styles from "./index.module.css";
 
-const Row = ({ item, idx }) => {
+const Row = ({ item, idx, isSelected, handleSelectItem }) => {
   const isPastDue = item.duedate === "03-25-22";
+
   return (
-    <tr className={styles[item.priority]}>
+    <tr
+      className={classNames(styles[item.priority], {
+        [styles.selected]: isSelected,
+      })}
+    >
       <td className={styles.checkbox}>
-        <Checkbox id={`row-${idx + 1}`} label="" />
+        <Checkbox
+          id={`row-${idx + 1}`}
+          dataId={item.id}
+          label=""
+          onChange={handleSelectItem}
+          checked={isSelected}
+        />
       </td>
       <td className={styles.title}>{item.title}</td>
       <td className={classNames(styles.priority)}>
@@ -47,8 +58,9 @@ const Row = ({ item, idx }) => {
   );
 };
 
-const Table = ({ data }) => {
-  const tableHeight = useWindowHeight() - 147;
+const Table = ({ data, selectedItems, handleSelectItem }) => {
+  const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
+
   return (
     <div className={styles.container} style={{ height: tableHeight }}>
       <table>
@@ -84,7 +96,15 @@ const Table = ({ data }) => {
         </thead>
         <tbody>
           {data.map((item, i) => {
-            return <Row key={i} idx={i} item={item} />;
+            return (
+              <Row
+                key={i}
+                idx={i}
+                item={item}
+                isSelected={selectedItems.includes(item.id)}
+                handleSelectItem={handleSelectItem}
+              />
+            );
           })}
         </tbody>
       </table>

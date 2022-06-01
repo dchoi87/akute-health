@@ -119,7 +119,11 @@ const Tasks = () => {
             </div>
           )}
           {isTableView ? (
-            <Table data={mockData} />
+            <Table
+              data={mockData}
+              selectedItems={selectedItems}
+              handleSelectItem={handleSelectItem}
+            />
           ) : (
             <div
               className={classNames(styles.cards, {

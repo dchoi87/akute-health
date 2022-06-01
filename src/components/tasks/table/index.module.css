@@ -139,3 +139,6 @@
 .tag + .tag {
   margin-left: 5px;
 }
+.container .selected td {
+  background: #f1f1f1;
+}
