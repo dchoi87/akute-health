@@ -58,7 +58,7 @@ const Row = ({ item, idx, isSelected, handleSelectItem }) => {
   );
 };
 
-const Table = ({ data, selectedItems, handleSelectItem }) => {
+const Table = ({ data, selectedItems, handleSelectItem, allSelected }) => {
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
 
   return (
@@ -72,6 +72,7 @@ const Table = ({ data, selectedItems, handleSelectItem }) => {
                 label=""
                 dataId="all"
                 onChange={handleSelectItem}
+                checked={allSelected}
               />
             </th>
             <th className={styles.title}>

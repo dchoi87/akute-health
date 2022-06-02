@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classNames from "classnames";
 import {
   PlusLg,
@@ -26,8 +26,14 @@ const Tasks = () => {
   const [isDesc, setSortOrder] = useState(true);
   const [isOpen, setFilterVisibility] = useState(false);
   const [selectedItems, setSelected] = useState([]);
+  const [visibleTasks, setVisibleTasks] = useState([]);
   const isCompactView = viewOption === "compact";
   const isTableView = viewOption === "table";
+
+  useEffect(() => {
+    const tasks = mockData.map((item) => item.id);
+    setVisibleTasks(tasks);
+  }, []);
 
   const handleViewOptions = ({ target }) => {
     setViewOption(target.id);
@@ -44,12 +50,10 @@ const Tasks = () => {
   const handleSelectItem = ({ currentTarget }) => {
     const id = currentTarget.dataset.id;
 
-    // note: logic will need to change to be tasks visible per page
     if (id === "all") {
-      const tasks = mockData.map((item) => item.id);
-
-      if (selectedItems.length !== tasks.length) {
-        setSelected(tasks);
+      // note: logic will need to change to be tasks visible per page
+      if (selectedItems.length !== visibleTasks.length) {
+        setSelected(visibleTasks);
       } else {
         setSelected([]);
       }
@@ -135,6 +139,7 @@ const Tasks = () => {
               data={mockData}
               selectedItems={selectedItems}
               handleSelectItem={handleSelectItem}
+              allSelected={selectedItems.length === visibleTasks.length}
             />
           ) : (
             <div
