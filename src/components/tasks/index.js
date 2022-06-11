@@ -17,6 +17,9 @@ import Table from "./table";
 import { useContainerQuery } from "./hooks";
 import { mockData, view, sort } from "./data";
 
+import { useTasks } from "./context";
+import { getTasks } from "./actions";
+
 import styles from "./index.module.css";
 
 const Tasks = () => {
@@ -30,7 +33,11 @@ const Tasks = () => {
   const isCompactView = viewOption === "compact";
   const isTableView = viewOption === "table";
 
+  const { state, dispatch } = useTasks();
+
   useEffect(() => {
+    getTasks(dispatch);
+
     const tasks = mockData.map((item) => item.id);
     setVisibleTasks(tasks);
   }, []);
@@ -136,7 +143,7 @@ const Tasks = () => {
           )}
           {isTableView ? (
             <Table
-              data={mockData}
+              data={state.tasks.data}
               selectedItems={selectedItems}
               handleSelectItem={handleSelectItem}
               allSelected={selectedItems.length === visibleTasks.length}
@@ -147,7 +154,7 @@ const Tasks = () => {
                 [styles.compact]: isCompactView,
               })}
             >
-              {mockData.map((task, i) => {
+              {state.tasks.data.map((task, i) => {
                 return (
                   <Card
                     key={i}
