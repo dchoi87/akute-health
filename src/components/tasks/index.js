@@ -15,7 +15,7 @@ import Select from "./common/select";
 import Table from "./table";
 
 import { useContainerQuery } from "./hooks";
-import { mockData, view, sort } from "./data";
+import { view, sort } from "./data";
 
 import { useTasks } from "./context";
 import { getTasks } from "./actions";
@@ -25,21 +25,19 @@ import styles from "./index.module.css";
 const Tasks = () => {
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
+  // view
   const [viewOption, setViewOption] = useState("comfortable");
-  const [isDesc, setSortOrder] = useState(true);
-  const [isOpen, setFilterVisibility] = useState(false);
-  const [selectedItems, setSelected] = useState([]);
-  const [visibleTasks, setVisibleTasks] = useState([]);
   const isCompactView = viewOption === "compact";
   const isTableView = viewOption === "table";
+  // order
+  const [isDesc, setSortOrder] = useState(true);
+  // sidebar
+  const [isOpen, setFilterVisibility] = useState(false);
 
   const { state, dispatch } = useTasks();
 
   useEffect(() => {
     getTasks(dispatch);
-
-    const tasks = mockData.map((item) => item.id);
-    setVisibleTasks(tasks);
   }, []);
 
   const handleViewOptions = ({ target }) => {
@@ -52,26 +50,6 @@ const Tasks = () => {
 
   const handleFilterMenu = () => {
     setFilterVisibility(!isOpen);
-  };
-
-  const handleSelectItem = ({ currentTarget }) => {
-    const id = currentTarget.dataset.id;
-
-    if (id === "all") {
-      // note: logic will need to change to be tasks visible per page
-      if (selectedItems.length !== visibleTasks.length) {
-        setSelected(visibleTasks);
-      } else {
-        setSelected([]);
-      }
-      return;
-    }
-
-    if (selectedItems.includes(id)) {
-      setSelected(selectedItems.filter((item) => item !== id));
-    } else {
-      setSelected([...selectedItems, id]);
-    }
   };
 
   return (
@@ -122,13 +100,13 @@ const Tasks = () => {
               </div>
             </div>
           </div>
-          {!!selectedItems.length && (
+          {!!state.tasks.selected.length && (
             <div className={styles.selected}>
               <div className={styles.selectedCount}>
                 <CardChecklist />
                 <span>
-                  {selectedItems.length} Task{selectedItems.length > 1 && "s"}{" "}
-                  Selected
+                  {state.tasks.selected.length} Task
+                  {state.tasks.selected.length > 1 && "s"} Selected
                 </span>
               </div>
               <div className={styles.selectedUtility}>
@@ -143,10 +121,8 @@ const Tasks = () => {
           )}
           {isTableView ? (
             <Table
-              data={state.tasks.data}
-              selectedItems={selectedItems}
-              handleSelectItem={handleSelectItem}
-              allSelected={selectedItems.length === visibleTasks.length}
+              tasks={state.tasks.data}
+              selectedItems={state.tasks.selected}
             />
           ) : (
             <div
@@ -161,8 +137,7 @@ const Tasks = () => {
                     task={task}
                     showDesktopView={showDesktopView}
                     isCompactView={isCompactView}
-                    isSelected={selectedItems.includes(task.id)}
-                    handleSelectItem={handleSelectItem}
+                    isSelected={state.tasks.selected.includes(task.id)}
                   />
                 );
               })}

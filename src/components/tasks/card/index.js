@@ -13,6 +13,8 @@ import {
   HeartPulseFill,
 } from "react-bootstrap-icons";
 
+import { useTasks } from "../context";
+
 import styles from "./index.module.css";
 
 const Tags = ({ tags, count }) => {
@@ -32,21 +34,21 @@ const Tags = ({ tags, count }) => {
   );
 };
 
-const Cards = ({
-  task,
-  showDesktopView,
-  isCompactView,
-  isSelected,
-  handleSelectItem,
-}) => {
+const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
+  const { dispatch } = useTasks();
   const isPastDue = task.duedate === "03-25-22";
+
+  const handleClick = () => {
+    dispatch({ type: "select", task: task.id });
+  };
+
   return (
     <button
       className={classNames(styles.container, {
         [styles.compact]: isCompactView,
         [styles.selected]: isSelected,
       })}
-      onClick={handleSelectItem}
+      onClick={handleClick}
       data-id={task.id}
     >
       <div className={styles.select}>

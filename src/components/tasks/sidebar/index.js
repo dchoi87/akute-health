@@ -5,7 +5,7 @@ import {
   ChevronRight,
   ArrowClockwise,
   CloudArrowUp,
-  Collection
+  Collection,
 } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
@@ -78,9 +78,7 @@ const SideBar = ({ isOpen }) => {
       <Section title="Saved Filters" id="filters">
         <div className={styles.filter}>
           <div className={styles.filterSection}>
-            <div className={styles.filterLabel}>
-              Select a Filter Preset
-            </div>
+            <div className={styles.filterLabel}>Select a Filter Preset</div>
             <div className={styles.filterInput}>
               <Select
                 type="filters"
@@ -94,9 +92,7 @@ const SideBar = ({ isOpen }) => {
             </div>
           </div>
           <div className={styles.filterSection}>
-            <div className={styles.filterLabel}>
-              Create a New Filter
-            </div>
+            <div className={styles.filterLabel}>Create a New Filter</div>
             <div className={styles.filterInput}>
               <Input type="text" id="create-filter" placeholder="Filter Name" />
               <Button type="save" id="filters-save">

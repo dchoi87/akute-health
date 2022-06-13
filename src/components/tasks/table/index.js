@@ -7,10 +7,11 @@ import {
 } from "react-bootstrap-icons";
 import Checkbox from "../common/checkbox";
 import { useWindowHeight } from "../hooks";
+import { useTasks } from "../context";
 
 import styles from "./index.module.css";
 
-const Row = ({ item, idx, isSelected, handleSelectItem }) => {
+const Row = ({ item, idx, isSelected, handleClick }) => {
   const isPastDue = item.duedate === "03-25-22";
 
   return (
@@ -24,7 +25,7 @@ const Row = ({ item, idx, isSelected, handleSelectItem }) => {
           id={`row-${idx + 1}`}
           dataId={item.id}
           label=""
-          onChange={handleSelectItem}
+          onChange={handleClick}
           checked={isSelected}
         />
       </td>
@@ -58,8 +59,14 @@ const Row = ({ item, idx, isSelected, handleSelectItem }) => {
   );
 };
 
-const Table = ({ data, selectedItems, handleSelectItem, allSelected }) => {
+const Table = ({ tasks, selectedItems }) => {
+  const { state, dispatch } = useTasks();
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
+
+  const handleClick = ({ target }) => {
+    const id = target.dataset.id;
+    dispatch({ type: "select", task: id });
+  };
 
   return (
     <div className={styles.container} style={{ height: tableHeight }}>
@@ -71,8 +78,7 @@ const Table = ({ data, selectedItems, handleSelectItem, allSelected }) => {
                 id="row-all"
                 label=""
                 dataId="all"
-                onChange={handleSelectItem}
-                checked={allSelected}
+                onChange={handleClick}
               />
             </th>
             <th className={styles.title}>
@@ -101,14 +107,14 @@ const Table = ({ data, selectedItems, handleSelectItem, allSelected }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, i) => {
+          {tasks.map((item, i) => {
             return (
               <Row
                 key={i}
                 idx={i}
                 item={item}
                 isSelected={selectedItems.includes(item.id)}
-                handleSelectItem={handleSelectItem}
+                handleClick={handleClick}
               />
             );
           })}
