@@ -1,0 +1,15 @@
+.owner {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+  padding-bottom: 20px;
+}
+.ownerWrapper {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+  padding: 0 10px;
+}
+.toolbar {
+  display: flex;
+}

@@ -1,0 +1,14 @@
+.filter {
+  padding-bottom: 20px;
+}
+.filterLabel {
+  font-size: 14px;
+  letter-spacing: .25px;
+  margin: 0 0 5px 5px;
+}
+.filterInput {
+  display: flex;
+}
+.filterSection + .filterSection {
+  margin-top: 20px;
+}

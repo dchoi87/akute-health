@@ -4,7 +4,7 @@ const getMockData = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(mockData);
-    }, 1000);
+    }, 500);
   });
 };
 
