@@ -1,8 +1,3 @@
-/**
- * 1. Tasks
- * 2.
- */
-
 export const tasks = {
   state: { data: [], selected: [] },
   reducer: function (state, action) {
@@ -18,7 +13,27 @@ export const tasks = {
         return { ...state, selected: selectedTasks };
       }
       default: {
-        throw new Error(`Unhandled action type: ${action.type}`);
+        return state;
+      }
+    }
+  },
+};
+
+export const settings = {
+  state: { sort: "desc", view: "comfortable", sidebar: false },
+  reducer: function (state, action) {
+    switch (action.type) {
+      case "change_sort": {
+        return { ...state, sort: action.payload };
+      }
+      case "change_view": {
+        return { ...state, view: action.payload };
+      }
+      case "show_sidebar": {
+        return { ...state, sidebar: action.payload };
+      }
+      default: {
+        return state;
       }
     }
   },

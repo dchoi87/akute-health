@@ -16,10 +16,12 @@ const SelectContainer = ({
   isDesc,
   menuPlacement,
   defaultValue,
-  customClass
+  customClass,
 }) => {
   return (
-    <div className={classNames("select", styles.container, styles[customClass])}>
+    <div
+      className={classNames("select", styles.container, styles[customClass])}
+    >
       <Select
         options={options}
         className="tasks-select-container"
