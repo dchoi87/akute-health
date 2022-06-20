@@ -8,13 +8,16 @@ import Owner from "./owner";
 import Status from "./status";
 import Tags from "./tags";
 
+import { useTasks } from "../context";
+
 import styles from "./index.module.css";
 
-const SideBar = ({ isOpen }) => {
+const SideBar = () => {
+  const { state } = useTasks();
   return (
     <div
       className={classNames(styles.container, {
-        [styles.open]: isOpen,
+        [styles.open]: state.settings.sidebar,
       })}
     >
       <Overview />

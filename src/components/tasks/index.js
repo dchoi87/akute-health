@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
-import { CardChecklist, CheckLg, Trash } from "react-bootstrap-icons";
 
 import SideBar from "./sidebar";
 import Header from "./header";
-import Pagination from "./pagination";
+import SelectionBar from "./selection-bar";
 import Card from "./card";
-import Button from "./common/button";
+import Pagination from "./pagination";
+
 import Table from "./table";
 
 import { useContainerQuery } from "./hooks";
@@ -27,7 +27,7 @@ const Tasks = () => {
 
   return (
     <div className={styles.tasks}>
-      <SideBar isOpen={state.settings.sidebar} />
+      <SideBar />
       <div
         className={classNames(styles.container, {
           [styles.overflowHidden]: state.settings.sidebar,
@@ -37,23 +37,7 @@ const Tasks = () => {
         <div className={styles.content}>
           <Header />
           {!!state.tasks.selected.length && (
-            <div className={styles.selected}>
-              <div className={styles.selectedCount}>
-                <CardChecklist />
-                <span>
-                  {state.tasks.selected.length} Task
-                  {state.tasks.selected.length > 1 && "s"} Selected
-                </span>
-              </div>
-              <div className={styles.selectedUtility}>
-                <Button type="complete">
-                  <CheckLg />
-                </Button>
-                <Button type="trash">
-                  <Trash />
-                </Button>
-              </div>
-            </div>
+            <SelectionBar selectedCount={state.tasks.selected.length} />
           )}
           {state.settings.view === "table" ? (
             <Table
