@@ -18,7 +18,7 @@ const Owner = () => {
 
   return (
     <Section title="Owner" id="owner">
-      <div className={styles.owner}>
+      <div className={styles.container}>
         <div className={styles.toolbar}>
           <Input type="search" id="owner-search" placeholder="Search Owner" />
           <Button
@@ -30,7 +30,7 @@ const Owner = () => {
             <Collection />
           </Button>
         </div>
-        <div className={styles.ownerWrapper}>
+        <div className={styles.owners}>
           {showGroup &&
             Array(2)
               .fill()

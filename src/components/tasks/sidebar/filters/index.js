@@ -12,10 +12,10 @@ import { savedFilters } from "../../data";
 const Filters = () => {
   return (
     <Section title="Saved Filters" id="filters">
-      <div className={styles.filter}>
-        <div className={styles.filterSection}>
-          <div className={styles.filterLabel}>Select a Filter Preset</div>
-          <div className={styles.filterInput}>
+      <div className={styles.container}>
+        <div className={styles.section}>
+          <div className={styles.label}>Select a Filter Preset</div>
+          <div className={styles.input}>
             <Select
               type="filters"
               options={savedFilters}
@@ -27,9 +27,9 @@ const Filters = () => {
             </Button>
           </div>
         </div>
-        <div className={styles.filterSection}>
-          <div className={styles.filterLabel}>Create a New Filter</div>
-          <div className={styles.filterInput}>
+        <div className={styles.section}>
+          <div className={styles.label}>Create a New Filter</div>
+          <div className={styles.input}>
             <Input type="text" id="create-filter" placeholder="Filter Name" />
             <Button type="save" id="filters-save">
               <CloudArrowUp />

@@ -6,7 +6,6 @@ import Header from "./header";
 import SelectionBar from "./selection-bar";
 import Card from "./card";
 import Pagination from "./pagination";
-
 import Table from "./table";
 
 import { useContainerQuery } from "./hooks";

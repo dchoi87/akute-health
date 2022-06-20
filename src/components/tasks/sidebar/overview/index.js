@@ -9,7 +9,7 @@ import { overview } from "../../data";
 const Overview = () => {
   return (
     <Section title="Overview" id="overview">
-      <div className={styles.overview}>
+      <div className={styles.container}>
         {overview.map((item, i) => {
           return (
             <Radio

@@ -12,7 +12,7 @@ const Section = ({ children, title }) => {
   };
 
   return (
-    <div className={styles.section}>
+    <div className={styles.container}>
       <Button type="header" onClick={handleSectionToggle}>
         <div className={styles.header}>
           <span>{title}</span>

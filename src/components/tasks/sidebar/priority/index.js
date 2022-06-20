@@ -9,7 +9,7 @@ import { priority } from "../../data";
 const Priority = () => {
   return (
     <Section title="Priority" id="priority">
-      <div className={styles.priority}>
+      <div className={styles.container}>
         {priority.map((item, i) => {
           return <Checkbox key={i} id={item} label={item} section="priority" />;
         })}

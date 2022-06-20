@@ -17,7 +17,7 @@ const Tags = () => {
 
   return (
     <Section title="Tags" id="tags">
-      <div className={styles.tags}>
+      <div className={styles.container}>
         <div className={styles.toolbar}>
           <Input type="search" id="tags-search" placeholder="Search Tags" />
           <Button
@@ -29,7 +29,7 @@ const Tags = () => {
             <Collection />
           </Button>
         </div>
-        <div className={styles.tagsWrapper}>
+        <div className={styles.tags}>
           {showGroup &&
             Array(2)
               .fill()

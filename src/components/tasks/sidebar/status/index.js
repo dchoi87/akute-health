@@ -10,7 +10,7 @@ import { status } from "../../data";
 const Status = () => {
   return (
     <Section title="Status" id="status">
-      <div className={styles.status}>
+      <div className={styles.container}>
         {status.map((item, i) => {
           return <Checkbox key={i} id={item} label={item} />;
         })}
