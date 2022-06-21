@@ -16,7 +16,7 @@ import { getTasks } from "./actions";
 import styles from "./index.module.css";
 
 const Tasks = () => {
-  const { state, dispatch } = useTasks();
+  const [state, dispatch] = useTasks();
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
 

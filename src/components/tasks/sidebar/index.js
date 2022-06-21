@@ -13,7 +13,7 @@ import { useTasks } from "../context";
 import styles from "./index.module.css";
 
 const SideBar = () => {
-  const { state } = useTasks();
+  const [state, dispatch] = useTasks();
   return (
     <div
       className={classNames(styles.container, {

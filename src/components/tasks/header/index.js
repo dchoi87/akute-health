@@ -10,7 +10,7 @@ import { view, sort } from "../data";
 import styles from "./index.module.css";
 
 const Header = () => {
-  const { state, dispatch } = useTasks();
+  const [state, dispatch] = useTasks();
 
   const handleViewOptions = ({ target }) => {
     dispatch({ type: "change_view", payload: target.id });

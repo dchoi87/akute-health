@@ -10,7 +10,7 @@ import { useTasks } from "../context";
 import styles from "./index.module.css";
 
 const Table = ({ tasks, selectedItems }) => {
-  const { state, dispatch } = useTasks();
+  const [state, dispatch] = useTasks();
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
 
   const handleClick = ({ target }) => {
