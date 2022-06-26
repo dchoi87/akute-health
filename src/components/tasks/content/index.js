@@ -14,13 +14,10 @@ import styles from "./index.module.css";
 
 const Content = () => {
   const [state] = useTasks();
-  const [view, setView] = useState();
+  const [view, setView] = useState("comfortable");
+  const [sort, setSort] = useState("desc");
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
-
-  const handleView = (value) => {
-    setView(value);
-  };
 
   return (
     <div
@@ -30,7 +27,7 @@ const Content = () => {
       ref={taskRef}
     >
       <div className={styles.content}>
-        <Header view={view} handleView={handleView} />
+        <Header view={view} setView={setView} sort={sort} setSort={setSort} />
         {!!state.tasks.selected.length && (
           <SelectionBar selectedCount={state.tasks.selected.length} />
         )}

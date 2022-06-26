@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import { PlusLg, Filter } from "react-bootstrap-icons";
+import { PlusLg, Filter, SortDown, SortUp } from "react-bootstrap-icons";
 
 import Button from "../common/button";
 import Select from "../common/select";
 import { useTasks } from "../context";
 
-import { viewOptions, sort } from "../data";
+import { viewOptions, sortOptions } from "../data";
 
 import styles from "./index.module.css";
 
-const Header = ({ view, handleView }) => {
+const Header = ({ view, setView, sort, setSort }) => {
   const [state, dispatch] = useTasks();
 
+  const handleView = (value) => {
+    setView(value);
+  };
+
   const handleSortOrder = () => {
-    const sort = state.settings.sort === "desc" ? "asc" : "desc";
-    dispatch({ type: "change_sort", payload: sort });
+    const value = sort === "desc" ? "asc" : "desc";
+    setSort(value);
   };
 
   const handleFilterMenu = () => {
@@ -36,13 +40,12 @@ const Header = ({ view, handleView }) => {
         </Button>
         <div className={styles.tools}>
           {view !== "table" && (
-            <Select
-              type="sort"
-              options={sort}
-              placeholder="Sort By"
-              handleSortOrder={handleSortOrder}
-              isDesc={state.settings.sort === "desc"}
-            />
+            <div className={styles.select}>
+              <Select options={sortOptions} placeholder="Sort By" />
+              <Button type="sort" onClick={handleSortOrder}>
+                {sort === "desc" ? <SortDown /> : <SortUp />}
+              </Button>
+            </div>
           )}
           <div className={styles.view}>
             {viewOptions.map((item, i) => {

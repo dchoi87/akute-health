@@ -1,19 +1,13 @@
 import React from "react";
 import Select from "react-select";
-import { SortDown, SortUp } from "react-bootstrap-icons";
 import classNames from "classnames";
-
-import Button from "..//button";
 
 import styles from "./index.module.css";
 import "./react-select.css";
 
 const SelectContainer = ({
-  type,
   options,
   placeholder,
-  handleSortOrder,
-  isDesc,
   menuPlacement,
   defaultValue,
   customClass,
@@ -31,11 +25,6 @@ const SelectContainer = ({
         menuPlacement={menuPlacement || "auto"}
         defaultValue={defaultValue}
       />
-      {type === "sort" && (
-        <Button type="sort" onClick={handleSortOrder}>
-          {isDesc ? <SortDown /> : <SortUp />}
-        </Button>
-      )}
     </div>
   );
 };

@@ -20,12 +20,9 @@ export const tasks = {
 };
 
 export const settings = {
-  state: { sort: "desc", sidebar: false },
+  state: { sidebar: false },
   reducer: function (state, action) {
     switch (action.type) {
-      case "change_sort": {
-        return { ...state, sort: action.payload };
-      }
       case "show_sidebar": {
         return { ...state, sidebar: action.payload };
       }

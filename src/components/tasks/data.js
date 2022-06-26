@@ -51,7 +51,7 @@ export const viewOptions = [
   { id: "table", svg: <Table /> },
 ];
 
-export const sort = [
+export const sortOptions = [
   { value: "priority", label: "Priority" },
   { value: "date", label: "Due Date" },
 ];
