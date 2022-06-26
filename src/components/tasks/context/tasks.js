@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer, useMemo } from "react";
-import useCombinedReducers from "use-combined-reducers";
 
 const TasksContext = createContext();
 
@@ -25,9 +24,7 @@ const tasks = {
 };
 
 const TasksProvider = ({ children }) => {
-  const [state, dispatch] = useCombinedReducers({
-    tasks: useReducer(tasks.reducer, tasks.state),
-  });
+  const [state, dispatch] = useReducer(tasks.reducer, tasks.state);
   const value = useMemo(() => [state, dispatch], [state]);
   return (
     <TasksContext.Provider value={value}>{children}</TasksContext.Provider>

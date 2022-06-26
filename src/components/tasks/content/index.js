@@ -14,7 +14,7 @@ import { useContainerQuery } from "../hooks";
 import styles from "./index.module.css";
 
 const Content = ({ sidebar, setSidebar }) => {
-  const [state, dispatch] = useTasks();
+  const [tasks, dispatch] = useTasks();
   const [view, setView] = useState("comfortable");
   const [sort, setSort] = useState("desc");
   const taskRef = useRef(null);
@@ -41,28 +41,25 @@ const Content = ({ sidebar, setSidebar }) => {
           sidebar={sidebar}
           setSidebar={setSidebar}
         />
-        {!!state.tasks.selected.length && (
-          <SelectionBar selectedCount={state.tasks.selected.length} />
+        {!!tasks.selected.length && (
+          <SelectionBar selectedCount={tasks.selected.length} />
         )}
         {view === "table" ? (
-          <Table
-            tasks={state.tasks.data}
-            selectedItems={state.tasks.selected}
-          />
+          <Table tasks={tasks.data} selectedItems={tasks.selected} />
         ) : (
           <div
             className={classNames(styles.cards, {
               [styles.compact]: view === "compact",
             })}
           >
-            {state.tasks.data.map((task, i) => {
+            {tasks.data.map((task, i) => {
               return (
                 <Card
                   key={i}
                   task={task}
                   showDesktopView={showDesktopView}
                   isCompactView={view === "compact"}
-                  isSelected={state.tasks.selected.includes(task.id)}
+                  isSelected={tasks.selected.includes(task.id)}
                 />
               );
             })}
