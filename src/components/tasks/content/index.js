@@ -12,7 +12,7 @@ import { useContainerQuery } from "../hooks";
 
 import styles from "./index.module.css";
 
-const Content = () => {
+const Content = ({ sidebar, setSidebar }) => {
   const [state] = useTasks();
   const [view, setView] = useState("comfortable");
   const [sort, setSort] = useState("desc");
@@ -22,12 +22,19 @@ const Content = () => {
   return (
     <div
       className={classNames(styles.container, {
-        [styles.overflowHidden]: state.settings.sidebar,
+        [styles.overflowHidden]: sidebar,
       })}
       ref={taskRef}
     >
       <div className={styles.content}>
-        <Header view={view} setView={setView} sort={sort} setSort={setSort} />
+        <Header
+          view={view}
+          setView={setView}
+          sort={sort}
+          setSort={setSort}
+          sidebar={sidebar}
+          setSidebar={setSidebar}
+        />
         {!!state.tasks.selected.length && (
           <SelectionBar selectedCount={state.tasks.selected.length} />
         )}

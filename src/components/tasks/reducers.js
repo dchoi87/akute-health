@@ -18,17 +18,3 @@ export const tasks = {
     }
   },
 };
-
-export const settings = {
-  state: { sidebar: false },
-  reducer: function (state, action) {
-    switch (action.type) {
-      case "show_sidebar": {
-        return { ...state, sidebar: action.payload };
-      }
-      default: {
-        return state;
-      }
-    }
-  },
-};

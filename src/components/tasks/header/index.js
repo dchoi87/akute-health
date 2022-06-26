@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { PlusLg, Filter, SortDown, SortUp } from "react-bootstrap-icons";
 
 import Button from "../common/button";
 import Select from "../common/select";
-import { useTasks } from "../context";
 
 import { viewOptions, sortOptions } from "../data";
 
 import styles from "./index.module.css";
 
-const Header = ({ view, setView, sort, setSort }) => {
-  const [state, dispatch] = useTasks();
-
+const Header = ({ view, setView, sort, setSort, sidebar, setSidebar }) => {
   const handleView = (value) => {
     setView(value);
   };
@@ -22,12 +19,12 @@ const Header = ({ view, setView, sort, setSort }) => {
   };
 
   const handleFilterMenu = () => {
-    dispatch({ type: "show_sidebar", payload: !state.settings.sidebar });
+    setSidebar(!sidebar);
   };
 
   return (
     <>
-      {state.settings.sidebar && (
+      {sidebar && (
         <div className={styles.overlay} onClick={handleFilterMenu}></div>
       )}
       <div className={styles.header}>

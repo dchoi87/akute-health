@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import SideBar from "./sidebar";
 import Content from "./content";
@@ -10,6 +10,7 @@ import styles from "./index.module.css";
 
 const Tasks = () => {
   const [, dispatch] = useTasks();
+  const [sidebar, setSidebar] = useState(false);
 
   useEffect(() => {
     console.log("fetching data...");
@@ -18,8 +19,8 @@ const Tasks = () => {
 
   return (
     <div className={styles.container}>
-      <SideBar />
-      <Content />
+      <SideBar sidebar={sidebar} />
+      <Content sidebar={sidebar} setSidebar={setSidebar} />
     </div>
   );
 };
