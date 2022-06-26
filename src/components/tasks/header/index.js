@@ -5,16 +5,12 @@ import Button from "../common/button";
 import Select from "../common/select";
 import { useTasks } from "../context";
 
-import { view, sort } from "../data";
+import { viewOptions, sort } from "../data";
 
 import styles from "./index.module.css";
 
-const Header = () => {
+const Header = ({ view, handleView }) => {
   const [state, dispatch] = useTasks();
-
-  const handleViewOptions = ({ target }) => {
-    dispatch({ type: "change_view", payload: target.id });
-  };
 
   const handleSortOrder = () => {
     const sort = state.settings.sort === "desc" ? "asc" : "desc";
@@ -39,7 +35,7 @@ const Header = () => {
           <Filter />
         </Button>
         <div className={styles.tools}>
-          {state.settings.view !== "table" && (
+          {view !== "table" && (
             <Select
               type="sort"
               options={sort}
@@ -49,14 +45,14 @@ const Header = () => {
             />
           )}
           <div className={styles.view}>
-            {view.map((item, i) => {
+            {viewOptions.map((item, i) => {
               return (
                 <Button
                   key={i}
                   type="view"
                   id={item.id}
-                  isActive={state.settings.view === item.id}
-                  onClick={handleViewOptions}
+                  isActive={view === item.id}
+                  onClick={() => handleView(item.id)}
                 >
                   {item.svg}
                 </Button>

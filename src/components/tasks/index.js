@@ -9,9 +9,10 @@ import { getTasks } from "./actions";
 import styles from "./index.module.css";
 
 const Tasks = () => {
-  const [state, dispatch] = useTasks();
+  const [, dispatch] = useTasks();
 
   useEffect(() => {
+    console.log("fetching data...");
     getTasks(dispatch);
   }, []);
 

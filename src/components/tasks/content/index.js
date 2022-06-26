@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import classNames from "classnames";
 
 import Header from "../header";
@@ -13,9 +13,14 @@ import { useContainerQuery } from "../hooks";
 import styles from "./index.module.css";
 
 const Content = () => {
-  const [state, dispatch] = useTasks();
+  const [state] = useTasks();
+  const [view, setView] = useState();
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
+
+  const handleView = (value) => {
+    setView(value);
+  };
 
   return (
     <div
@@ -25,11 +30,11 @@ const Content = () => {
       ref={taskRef}
     >
       <div className={styles.content}>
-        <Header />
+        <Header view={view} handleView={handleView} />
         {!!state.tasks.selected.length && (
           <SelectionBar selectedCount={state.tasks.selected.length} />
         )}
-        {state.settings.view === "table" ? (
+        {view === "table" ? (
           <Table
             tasks={state.tasks.data}
             selectedItems={state.tasks.selected}
@@ -37,7 +42,7 @@ const Content = () => {
         ) : (
           <div
             className={classNames(styles.cards, {
-              [styles.compact]: state.settings.view === "compact",
+              [styles.compact]: view === "compact",
             })}
           >
             {state.tasks.data.map((task, i) => {
@@ -46,7 +51,7 @@ const Content = () => {
                   key={i}
                   task={task}
                   showDesktopView={showDesktopView}
-                  isCompactView={state.settings.view === "compact"}
+                  isCompactView={view === "compact"}
                   isSelected={state.tasks.selected.includes(task.id)}
                 />
               );
