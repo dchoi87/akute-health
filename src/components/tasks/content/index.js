@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classNames from "classnames";
 
 import Header from "../header";
@@ -7,17 +7,23 @@ import Card from "../card";
 import Pagination from "../pagination";
 import Table from "../table";
 
-import { useTasks } from "../context";
+import { useTasks } from "../context/tasks";
+import { getTasks } from "../actions";
 import { useContainerQuery } from "../hooks";
 
 import styles from "./index.module.css";
 
 const Content = ({ sidebar, setSidebar }) => {
-  const [state] = useTasks();
+  const [state, dispatch] = useTasks();
   const [view, setView] = useState("comfortable");
   const [sort, setSort] = useState("desc");
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
+
+  useEffect(() => {
+    console.log("fetching data...");
+    getTasks(dispatch);
+  }, []);
 
   return (
     <div

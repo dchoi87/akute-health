@@ -15,7 +15,7 @@ import {
 
 import Tags from "./tags";
 
-import { useTasks } from "../context";
+import { useTasks } from "../context/tasks";
 
 import styles from "./index.module.css";
 
