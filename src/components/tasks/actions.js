@@ -11,8 +11,8 @@ const getMockData = () => {
 export const getTasks = async (dispatch) => {
   try {
     const tasks = await getMockData();
-    dispatch({ type: "fetch", tasks });
+    dispatch({ type: "FETCH_DATA", payload: tasks });
   } catch (error) {
-    dispatch({ type: "error", error });
+    dispatch({ type: "SHOW_ERROR", payload: error });
   }
 };

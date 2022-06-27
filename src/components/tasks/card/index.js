@@ -20,11 +20,11 @@ import { useTasks } from "../context/tasks";
 import styles from "./index.module.css";
 
 const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
-  const [state, dispatch] = useTasks();
+  const [, dispatch] = useTasks();
   const isPastDue = task.duedate === "03-25-22";
 
   const handleClick = () => {
-    dispatch({ type: "select", task: task.id });
+    dispatch({ type: "SELECT_TASK", task: task.id });
   };
 
   return (

@@ -3,18 +3,21 @@ import React, { createContext, useContext, useReducer, useMemo } from "react";
 const TasksContext = createContext();
 
 const tasks = {
-  state: { data: [], selected: [] },
+  state: { data: [], selected: [], error: "" },
   reducer: function (state, action) {
     switch (action.type) {
-      case "fetch": {
-        return { ...state, data: action.tasks };
+      case "FETCH_DATA": {
+        return { ...state, data: action.payload };
       }
-      case "select": {
+      case "SELECT_TASK": {
         const selectedTasks = state.selected.includes(action.task)
           ? state.selected.filter((task) => task !== action.task)
           : [...state.selected, action.task];
 
         return { ...state, selected: selectedTasks };
+      }
+      case "SHOW_ERROR": {
+        return { ...state, error: action.payload };
       }
       default: {
         return state;
