@@ -1,9 +1,10 @@
 import React from "react";
+import { ArrowClockwise, CloudArrowUp } from "react-bootstrap-icons";
+
 import Section from "../section";
 import Select from "../../common/select";
 import Button from "../../common/button";
 import Input from "../../common/input";
-import { ArrowClockwise, CloudArrowUp } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
 
