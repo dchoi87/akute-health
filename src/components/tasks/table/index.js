@@ -14,8 +14,9 @@ const Table = ({ tasks, selectedItems }) => {
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
 
   const handleClick = ({ target }) => {
-    const id = target.dataset.id;
-    dispatch({ type: "select", task: id });
+    const payload = target.dataset.id;
+    const type = payload === "all" ? "SELECT_ALL" : "SELECT_TASK";
+    dispatch({ type, payload });
   };
 
   return (
@@ -29,6 +30,7 @@ const Table = ({ tasks, selectedItems }) => {
                 label=""
                 dataId="all"
                 onChange={handleClick}
+                checked={tasks.length === selectedItems.length}
               />
             </th>
             <th className={styles.title}>

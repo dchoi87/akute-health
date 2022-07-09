@@ -24,7 +24,7 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
   const isPastDue = task.duedate === "03-25-22";
 
   const handleClick = () => {
-    dispatch({ type: "SELECT_TASK", task: task.id });
+    dispatch({ type: "SELECT_TASK", payload: task.id });
   };
 
   return (

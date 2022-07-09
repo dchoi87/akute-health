@@ -25,7 +25,7 @@ const Row = ({ item, idx, isSelected, handleClick }) => {
         />
       </td>
       <td className={styles.title}>{item.title}</td>
-      <td className={classNames(styles.priority)}>
+      <td className={styles.priority}>
         <CircleFill />
         <span>{item.priority}</span>
       </td>

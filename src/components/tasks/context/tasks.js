@@ -10,11 +10,18 @@ const tasks = {
         return { ...state, data: action.payload };
       }
       case "SELECT_TASK": {
-        const selectedTasks = state.selected.includes(action.task)
-          ? state.selected.filter((task) => task !== action.task)
-          : [...state.selected, action.task];
+        const isSelected = state.selected.includes(action.payload);
+        const tasks = isSelected
+          ? state.selected.filter((task) => task !== action.payload)
+          : [...state.selected, action.payload];
 
-        return { ...state, selected: selectedTasks };
+        return { ...state, selected: tasks };
+      }
+      case "SELECT_ALL": {
+        const isSelected = state.selected.length !== state.data.length;
+        const tasks = isSelected ? state.data.map((task) => task.id) : [];
+        
+        return { ...state, selected: tasks };
       }
       case "SHOW_ERROR": {
         return { ...state, error: action.payload };
