@@ -8,7 +8,7 @@ import Pagination from "../pagination";
 import Table from "../table";
 
 import { useTasks } from "../context/tasks";
-import { getTasks } from "../actions";
+import { getTasks, getTemp } from "../actions";
 import { useContainerQuery } from "../hooks";
 
 import styles from "./index.module.css";
@@ -23,6 +23,8 @@ const Content = ({ sidebar, setSidebar }) => {
   useEffect(() => {
     console.log("fetching data...");
     getTasks(dispatch);
+    // send global dispatch
+    getTemp(dispatch);
   }, []);
 
   return (

@@ -20,7 +20,7 @@ const tasks = {
       case "SELECT_ALL": {
         const isSelected = state.selected.length !== state.data.length;
         const tasks = isSelected ? state.data.map((task) => task.id) : [];
-        
+
         return { ...state, selected: tasks };
       }
       case "SHOW_ERROR": {
