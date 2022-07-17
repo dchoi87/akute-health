@@ -33,8 +33,6 @@
   display: grid;
   grid-template-columns: auto;
   gap: 5px;
-  border-bottom: 1px solid #efefef;
-  padding-bottom: 10px;
 }
 .sectionMid {
   min-width: 0;

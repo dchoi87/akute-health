@@ -56,13 +56,13 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
                 <div
                   className={classNames(styles.priority, styles[task.priority])}
                 >
-                  {task.priority}
+                  {task.priority || "No Priority"}
                 </div>
               )}
               <span>{task.title}</span>
               {task.attachment && <Paperclip />}
             </div>
-            {!showDesktopView && (
+            {!showDesktopView && task.owner && (
               <div className={styles.owner}>
                 <div>
                   {task.owner
@@ -104,16 +104,18 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
             </div>
           </div>
         </div>
-        <div className={styles.sectionMid}>
-          <div className={styles.description}>{task.description}</div>
-        </div>
-        <div className={styles.sectionBottom}>
-          <div className={styles.tagsWrapper}>
-            {task.tags && (
-              <Tags tags={task.tags} count={showDesktopView ? 4 : 2} />
-            )}
+        {task.description && (
+          <div className={styles.sectionMid}>
+            <div className={styles.description}>{task.description}</div>
           </div>
-        </div>
+        )}
+        {task.tags && (
+          <div className={styles.sectionBottom}>
+            <div className={styles.tagsWrapper}>
+              <Tags tags={task.tags} count={showDesktopView ? 4 : 2} />
+            </div>
+          </div>
+        )}
       </div>
     </button>
   );

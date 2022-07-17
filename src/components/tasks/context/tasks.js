@@ -15,8 +15,8 @@ const tasks = {
         return { ...state, selected: tasks };
       }
       case "SELECT_ALL": {
-        const isSelected = state.selected.length !== state.data.length;
-        const tasks = isSelected ? state.data.map((task) => task.id) : [];
+        const isSelected = state.selected.length !== action.payload.length;
+        const tasks = isSelected ? action.payload.map((task) => task.id) : [];
 
         return { ...state, selected: tasks };
       }

@@ -14,8 +14,10 @@ const Table = ({ tasks, selectedItems }) => {
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
 
   const handleClick = ({ target }) => {
-    const payload = target.dataset.id;
-    const type = payload === "all" ? "SELECT_ALL" : "SELECT_TASK";
+    const id = target.dataset.id;
+    const type = id === "all" ? "SELECT_ALL" : "SELECT_TASK";
+    const payload = id === "all" ? tasks : id;
+
     dispatch({ type, payload });
   };
 
