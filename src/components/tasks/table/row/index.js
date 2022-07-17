@@ -38,14 +38,15 @@ const Row = ({ item, idx, isSelected, handleClick }) => {
       </td>
       <td className={styles.patient}>{item.patient}</td>
       <td className={styles.tags}>
-        {item.tags.slice(0, 2).map((tag, i) => {
-          return (
-            <div key={i} className={styles.tag}>
-              {tag}
-            </div>
-          );
-        })}
-        {item.tags.length > 4 && (
+        {item.tags &&
+          item.tags.slice(0, 2).map((tag, i) => {
+            return (
+              <div key={i} className={styles.tag}>
+                {tag}
+              </div>
+            );
+          })}
+        {item.tags && item.tags.length > 4 && (
           <div className={styles.tag}>+{item.tags.length - 2}</div>
         )}
       </td>

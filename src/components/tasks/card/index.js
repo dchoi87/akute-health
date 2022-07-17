@@ -92,7 +92,7 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
               <GeoAltFill />
               <span>{task.state}</span>
             </div>
-            {isCompactView && (
+            {isCompactView && task.tags && (
               <div className={styles.info}>
                 <TagFill />
                 <span>{task.tags.length}</span>
@@ -109,7 +109,9 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
         </div>
         <div className={styles.sectionBottom}>
           <div className={styles.tagsWrapper}>
-            <Tags tags={task.tags} count={showDesktopView ? 4 : 2} />
+            {task.tags && (
+              <Tags tags={task.tags} count={showDesktopView ? 4 : 2} />
+            )}
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ const getMockData = () => {
 export const getTasks = async (dispatch) => {
   try {
     const tasks = await getMockData();
-    dispatch({ type: "FETCH_DATA", payload: tasks });
+    dispatch({ type: "GET_TASKS", payload: tasks });
   } catch (error) {
     dispatch({ type: "SHOW_ERROR", payload: error });
   }
@@ -36,37 +36,12 @@ export const getTasks = async (dispatch) => {
  * 10. status => ???
  */
 
-// patient name example
-// temp1.find(function(el) {
-//   return el.resource.id === "8aacfafc-bbc2-4b16-95cc-90040397fc85"
-// }).resource.name[0].text;
-
-// owner name example
-// temp2.reduce(function(acc, curr) {
-//   if (curr._id === "5e35ef3e7c213e47b9d2c6c7") {
-//     acc += `${curr.firstName} ${curr.lastName}`
-//   }
-//   return acc;
-// }, "");
-
-// note:
-// might be better to create hashmap for names & ids
-// temp1.reduce(function(acc, curr) {
-//   acc[curr.resource.id] = curr.resource.name[0].text;
-//   return acc;
-// }, {});
-
-// temp2.reduce(function(acc, curr) {
-//   acc[curr._id] = `${curr.firstName} ${curr.lastName}`;
-//   return acc;
-// }, {});
-
-export const getTemp = async (dispatch) => {
+export const getData = async (dispatch) => {
   try {
     const patients = await axios
       .get("http://localhost:3001/patient")
       .then((response) => {
-        return response.data.entry.reduce(function (acc, curr) {
+        return response.data.entry.reduce((acc, curr) => {
           acc[curr.resource.id] = curr.resource.name[0].text;
           return acc;
         }, {});
@@ -74,28 +49,38 @@ export const getTemp = async (dispatch) => {
     const owners = await axios
       .get("http://localhost:3001/getTeam")
       .then((response) => {
-        return response.data.reduce(function (acc, curr) {
+        return response.data.reduce((acc, curr) => {
           acc[curr._id] = `${curr.firstName} ${curr.lastName}`;
           return acc;
         }, {});
       });
 
-    console.log("patient", patients);
-    console.log("owners", owners);
+    dispatch({ type: "GET_PATIENTS", payload: patients });
+    dispatch({ type: "GET_OWNERS", payload: owners });
 
-    dispatch({ type: "GET_USERS", payload: { patients: "hi", owners: "bye" } });
+    const tasks = await axios
+      .get("http://localhost:3001/tasks")
+      .then((response) => {
+        return response.data.map((el) => {
+          return {
+            id: el._id,
+            title: el.task,
+            description: el.comments,
+            owner: owners[el.ownerId],
+            patient: patients[el.patientId],
+            duedate: el.dueDate,
+            tags: el.tags,
+            priority: el.priority,
+            state: "N/A",
+            attachment: el.attachments ? !!el.attachments.length : false,
+          };
+        });
+      });
 
-    const tasks = await axios.get("http://localhost:3001/tasks");
-    const group = await axios.get("http://localhost:3001/group");
-    const tags = await axios.get("http://localhost:3001/all");
+    dispatch({ type: "GET_TASKS", payload: tasks });
 
-    // console.log("team", team.data);
-    // console.log("patient", patient.data);
-    // console.log("group", group.data);
-    // console.log("tags", tags.data);
-    // console.log("tasks", tasks.data);
-
-    // dispatch({ type: "FETCH_DATA", payload: tasks });
+    // const group = await axios.get("http://localhost:3001/group");
+    // const tags = await axios.get("http://localhost:3001/all");
   } catch (error) {
     console.error(error);
     dispatch({ type: "SHOW_ERROR", payload: error });
