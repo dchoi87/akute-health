@@ -64,12 +64,14 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
             </div>
             {!showDesktopView && task.owner && (
               <div className={styles.owner}>
-                <div>
-                  {task.owner
-                    .split(" ")
-                    .map((name) => name[0])
-                    .join("")}
-                </div>
+                {task.owner !== "N/A" && (
+                  <div>
+                    {task.owner
+                      .split(" ")
+                      .map((name) => name[0])
+                      .join("")}
+                  </div>
+                )}
               </div>
             )}
           </div>
