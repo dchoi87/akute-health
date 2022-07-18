@@ -35,7 +35,7 @@ const fetchOwners = () => {
 
 const fetchTasks = (patients, owners) => {
   return axios.get("http://localhost:3001/tasks").then((response) => {
-    return response.data.map((el) => {
+    return response.data.map((el, i) => {
       return {
         id: el._id,
         title: el.task,
@@ -44,9 +44,11 @@ const fetchTasks = (patients, owners) => {
         patient: patients[el.patientId] || "N/A",
         duedate: el.dueDate,
         tags: el.tags && el.tags.length ? el.tags : null,
-        priority: el.priority === "p1" ? "urgent" : el.priority,
+        priority:
+          el.priority === "p1" ? "urgent" : el.priority || "no priority",
         state: "N/A",
         attachment: el.attachments ? !!el.attachments.length : false,
+        status: el.status,
       };
     });
   });
