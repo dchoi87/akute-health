@@ -1,0 +1,64 @@
+.row .priority,
+.row .duedate {
+  display: flex;
+  align-items: center;
+}
+.row .priority svg {
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+}
+.row .duedate svg {
+  width: 13px;
+  height: 13px;
+  margin-right: 5px;
+}
+.row .duedate.pastDue {
+  color: #ca0000;
+}
+.row.urgent td {
+  color: #ca0000;
+}
+.row.urgent .title {
+  font-weight: 700;
+}
+.row.urgent .tag {
+  background: #f9e4e4;
+}
+.row.urgent .priority svg {
+  color: #ca0000;
+}
+.row.p2 .priority svg {
+  color: #ed8936;
+}
+.row.p3 .priority svg {
+  color: #fbd38d;
+}
+.row .tags {
+  text-overflow: initial;
+  white-space: normal;
+}
+.row .tag {
+  display: inline-block;
+  background: #efefef;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+.row .tag + .tag {
+  margin-left: 5px;
+}
+.row .title {
+  padding-left: 0;
+  white-space: normal;
+}
+.row .checkbox {
+  display: flex;
+  justify-content: center;
+}
+.row.selected td {
+  background: #f1f1f1;
+}

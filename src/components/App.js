@@ -1,5 +1,7 @@
 import Tasks from "./tasks";
 
+import { GlobalProvider } from "./tasks/context/global";
+
 import "./App.css";
 
 function App() {
@@ -7,7 +9,9 @@ function App() {
     <div className="app">
       <div className="nav">Navigation</div>
       <div className="container">
-        <Tasks />
+        <GlobalProvider>
+          <Tasks />
+        </GlobalProvider>
       </div>
     </div>
   );

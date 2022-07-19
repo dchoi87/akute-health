@@ -13,40 +13,27 @@ import {
   HeartPulseFill,
 } from "react-bootstrap-icons";
 
+import Tags from "./tags";
+
+import { useTasks } from "../context/tasks";
+
 import styles from "./index.module.css";
 
-const Tags = ({ tags, count }) => {
-  return (
-    <>
-      {tags.slice(0, count).map((tag, i) => {
-        return (
-          <div key={i} className={styles.tag}>
-            {tag}
-          </div>
-        );
-      })}
-      {tags.length > 4 && (
-        <div className={styles.tag}>+{tags.length - count}</div>
-      )}
-    </>
-  );
-};
-
-const Cards = ({
-  task,
-  showDesktopView,
-  isCompactView,
-  isSelected,
-  handleSelectItem,
-}) => {
+const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
+  const [, dispatch] = useTasks();
   const isPastDue = task.duedate === "03-25-22";
+
+  const handleClick = () => {
+    dispatch({ type: "SELECT_TASK", payload: task.id });
+  };
+
   return (
     <button
       className={classNames(styles.container, {
         [styles.compact]: isCompactView,
         [styles.selected]: isSelected,
       })}
-      onClick={handleSelectItem}
+      onClick={handleClick}
       data-id={task.id}
     >
       <div className={styles.select}>
@@ -75,14 +62,16 @@ const Cards = ({
               <span>{task.title}</span>
               {task.attachment && <Paperclip />}
             </div>
-            {!showDesktopView && (
+            {!showDesktopView && task.owner && (
               <div className={styles.owner}>
-                <div>
-                  {task.owner
-                    .split(" ")
-                    .map((name) => name[0])
-                    .join("")}
-                </div>
+                {task.owner !== "N/A" && (
+                  <div>
+                    {task.owner
+                      .split(" ")
+                      .map((name) => name[0])
+                      .join("")}
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -105,7 +94,7 @@ const Cards = ({
               <GeoAltFill />
               <span>{task.state}</span>
             </div>
-            {isCompactView && (
+            {isCompactView && task.tags && (
               <div className={styles.info}>
                 <TagFill />
                 <span>{task.tags.length}</span>
@@ -117,14 +106,18 @@ const Cards = ({
             </div>
           </div>
         </div>
-        <div className={styles.sectionMid}>
-          <div className={styles.description}>{task.description}</div>
-        </div>
-        <div className={styles.sectionBottom}>
-          <div className={styles.tagsWrapper}>
-            <Tags tags={task.tags} count={showDesktopView ? 4 : 2} />
+        {task.description && (
+          <div className={styles.sectionMid}>
+            <div className={styles.description}>{task.description}</div>
           </div>
-        </div>
+        )}
+        {task.tags && (
+          <div className={styles.sectionBottom}>
+            <div className={styles.tagsWrapper}>
+              <Tags tags={task.tags} count={showDesktopView ? 4 : 2} />
+            </div>
+          </div>
+        )}
       </div>
     </button>
   );

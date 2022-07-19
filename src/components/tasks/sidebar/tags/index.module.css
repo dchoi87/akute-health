@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+  padding-bottom: 20px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+.toolbar {
+  display: flex;
+}

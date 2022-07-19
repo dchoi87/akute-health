@@ -45,13 +45,13 @@ export const savedFilters = [
   { value: "filter3", label: "some filter name" },
 ];
 
-export const view = [
+export const viewOptions = [
   { id: "comfortable", svg: <ViewStacked /> },
   { id: "compact", svg: <ViewList /> },
   { id: "table", svg: <Table /> },
 ];
 
-export const sort = [
+export const sortOptions = [
   { value: "priority", label: "Priority" },
   { value: "date", label: "Due Date" },
 ];

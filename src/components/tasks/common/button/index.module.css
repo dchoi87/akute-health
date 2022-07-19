@@ -123,7 +123,7 @@
 }
 .sort {
   padding: 5px;
-  background: transparent;
+  background: #fff;
   border-radius: 5px;
 }
 .sort:hover {
