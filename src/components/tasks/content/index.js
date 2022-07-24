@@ -8,11 +8,13 @@ import Pagination from "../pagination";
 import Table from "../table";
 
 import { useTasks } from "../context/tasks";
-import { useContainerQuery } from "../hooks";
+import { useContainerQuery } from "../hooks/useResize";
+import { useTasksData } from "../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Content = ({ tasks, sidebar, setSidebar }) => {
+const Content = ({ sidebar, setSidebar }) => {
+  const { data: tasks } = useTasksData();
   const [state] = useTasks();
   const [view, setView] = useState("comfortable");
   const [sort, setSort] = useState("desc");
@@ -46,17 +48,18 @@ const Content = ({ tasks, sidebar, setSidebar }) => {
               [styles.compact]: view === "compact",
             })}
           >
-            {tasks.map((task, i) => {
-              return (
-                <Card
-                  key={i}
-                  task={task}
-                  showDesktopView={showDesktopView}
-                  isCompactView={view === "compact"}
-                  isSelected={state.selected.includes(task.id)}
-                />
-              );
-            })}
+            {tasks &&
+              tasks.map((task, i) => {
+                return (
+                  <Card
+                    key={i}
+                    task={task}
+                    showDesktopView={showDesktopView}
+                    isCompactView={view === "compact"}
+                    isSelected={state.selected.includes(task.id)}
+                  />
+                );
+              })}
           </div>
         )}
         <Pagination />

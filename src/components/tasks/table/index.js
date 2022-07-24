@@ -4,7 +4,7 @@ import { CaretDownFill } from "react-bootstrap-icons";
 import Checkbox from "../common/checkbox";
 import Row from "./row";
 
-import { useWindowHeight } from "../hooks";
+import { useWindowHeight } from "../hooks/useResize";
 import { useTasks } from "../context/tasks";
 
 import styles from "./index.module.css";
