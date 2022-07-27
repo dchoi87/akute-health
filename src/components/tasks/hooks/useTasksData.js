@@ -36,6 +36,19 @@ const fetchTasks = async (patients, owners) => {
   });
 };
 
+// (async () => {
+//   const response = await axios.get("http://localhost:3001/task", {
+//     params: {
+//       query: {
+//         status: { $ne: "complete" },
+//         ownerId: ["5d50e5cd3560d100085664e7"],
+//       },
+//     },
+//   });
+//   console.log(response.data);
+//   return response.data;
+// })();
+
 export const useTasksData = () => {
   const { data: patients } = useQuery("patients", fetchPatients, {
     refetchOnWindowFocus: false,

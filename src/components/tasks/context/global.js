@@ -3,21 +3,9 @@ import React, { createContext, useContext, useReducer, useMemo } from "react";
 const GlobalContext = createContext();
 
 const global = {
-  state: { tasks: [], patients: {}, owners: {}, error: null },
+  state: {},
   reducer: function (state, action) {
     switch (action.type) {
-      case "GET_TASKS": {
-        return { ...state, tasks: action.payload };
-      }
-      case "GET_PATIENTS": {
-        return { ...state, patients: action.payload };
-      }
-      case "GET_OWNERS": {
-        return { ...state, owners: action.payload };
-      }
-      case "SHOW_ERROR": {
-        return { ...state, error: action.payload };
-      }
       default: {
         return state;
       }
