@@ -5,12 +5,12 @@ import Checkbox from "../common/checkbox";
 import Row from "./row";
 
 import { useWindowHeight } from "../hooks/useResize";
-import { useTasks } from "../context/tasks";
+import { useTasksContext } from "../context/tasks";
 
 import styles from "./index.module.css";
 
 const Table = ({ tasks, selectedItems }) => {
-  const [, dispatch] = useTasks();
+  const [, dispatch] = useTasksContext();
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
 
   const handleClick = ({ target }) => {

@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 import Tasks from "./tasks";
 
-import { GlobalProvider } from "./tasks/context/global";
+import { FiltersProvider } from "./tasks/context/filters";
 
 import "./App.css";
 
@@ -15,9 +15,9 @@ function App() {
       <div className="nav">Navigation</div>
       <div className="container">
         <QueryClientProvider client={queryClient}>
-          <GlobalProvider>
+          <FiltersProvider>
             <Tasks />
-          </GlobalProvider>
+          </FiltersProvider>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </div>

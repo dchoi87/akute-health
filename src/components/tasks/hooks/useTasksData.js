@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 
+import { queryBuilder } from "../helpers";
+
 const fetchPatients = async () => {
   const response = await axios.get("http://localhost:3001/patient");
   return response.data.entry.reduce((acc, curr) => {
@@ -17,15 +19,17 @@ const fetchOwners = async () => {
   }, {});
 };
 
-const fetchTasks = async (patients, owners) => {
-  const response = await axios.get("http://localhost:3001/tasks");
+const fetchTasks = async (data, filters) => {
+  const config = queryBuilder(filters);
+  console.log("config", config.params.query);
+  const response = await axios.get("http://localhost:3001/tasks", config);
   return response.data.map((el, i) => {
     return {
       id: el._id,
       title: el.task,
       description: el.comments,
-      owner: owners[el.ownerId] || "N/A",
-      patient: patients[el.patientId] || "N/A",
+      owner: data.owners[el.ownerId] || "N/A",
+      patient: data.patients[el.patientId] || "N/A",
       duedate: el.dueDate,
       tags: el.tags && el.tags.length ? el.tags : null,
       priority: el.priority === "p1" ? "urgent" : el.priority || "no priority",
@@ -36,32 +40,21 @@ const fetchTasks = async (patients, owners) => {
   });
 };
 
-// (async () => {
-//   const response = await axios.get("http://localhost:3001/task", {
-//     params: {
-//       query: {
-//         status: { $ne: "complete" },
-//         ownerId: ["5d50e5cd3560d100085664e7"],
-//       },
-//     },
-//   });
-//   console.log(response.data);
-//   return response.data;
-// })();
-
-export const useTasksData = () => {
+export const useTasksData = (filters) => {
   const { data: patients } = useQuery("patients", fetchPatients, {
     refetchOnWindowFocus: false,
   });
-
   const { data: owners } = useQuery("owners", fetchOwners, {
     refetchOnWindowFocus: false,
   });
-
-  const tasks = useQuery("tasks", () => fetchTasks(patients, owners), {
-    refetchOnWindowFocus: false,
-    enabled: !!patients && !!owners,
-  });
+  const tasks = useQuery(
+    ["tasks", filters],
+    () => fetchTasks({ patients, owners }, filters),
+    {
+      refetchOnWindowFocus: false,
+      enabled: !!patients && !!owners,
+    }
+  );
 
   return tasks;
 };

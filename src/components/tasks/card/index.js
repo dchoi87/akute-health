@@ -15,12 +15,12 @@ import {
 
 import Tags from "./tags";
 
-import { useTasks } from "../context/tasks";
+import { useTasksContext } from "../context/tasks";
 
 import styles from "./index.module.css";
 
 const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
-  const [, dispatch] = useTasks();
+  const [, dispatch] = useTasksContext();
   const isPastDue = task.duedate === "03-25-22";
 
   const handleClick = () => {

@@ -35,12 +35,12 @@ const TasksProvider = ({ children }) => {
   );
 };
 
-const useTasks = () => {
+const useTasksContext = () => {
   const context = useContext(TasksContext);
   if (context === undefined) {
-    throw new Error("useTasks must be used within a TasksProvider");
+    throw new Error("useTasksContext must be used within a TasksProvider");
   }
   return context;
 };
 
-export { TasksProvider, useTasks };
+export { TasksProvider, useTasksContext };

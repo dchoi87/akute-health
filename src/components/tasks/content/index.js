@@ -7,15 +7,17 @@ import Card from "../card";
 import Pagination from "../pagination";
 import Table from "../table";
 
-import { useTasks } from "../context/tasks";
+import { useFiltersContext } from "../context/filters";
+import { useTasksContext } from "../context/tasks";
 import { useContainerQuery } from "../hooks/useResize";
 import { useTasksData } from "../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
 const Content = ({ sidebar, setSidebar }) => {
-  const { data: tasks } = useTasksData();
-  const [state] = useTasks();
+  const [filters] = useFiltersContext();
+  const [{ selected }] = useTasksContext();
+  const { data: tasks } = useTasksData(filters);
   const [view, setView] = useState("comfortable");
   const [sort, setSort] = useState("desc");
   const taskRef = useRef(null);
@@ -37,11 +39,9 @@ const Content = ({ sidebar, setSidebar }) => {
           sidebar={sidebar}
           setSidebar={setSidebar}
         />
-        {!!state.selected.length && (
-          <SelectionBar selectedCount={state.selected.length} />
-        )}
+        {!!selected.length && <SelectionBar selectedCount={selected.length} />}
         {view === "table" ? (
-          <Table tasks={tasks} selectedItems={state.selected} />
+          <Table tasks={tasks} selectedItems={selected} />
         ) : (
           <div
             className={classNames(styles.cards, {
@@ -56,7 +56,7 @@ const Content = ({ sidebar, setSidebar }) => {
                     task={task}
                     showDesktopView={showDesktopView}
                     isCompactView={view === "compact"}
-                    isSelected={state.selected.includes(task.id)}
+                    isSelected={selected.includes(task.id)}
                   />
                 );
               })}

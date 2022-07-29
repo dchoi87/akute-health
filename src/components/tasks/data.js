@@ -7,7 +7,12 @@ export const overview = [
   { label: "complete", value: 57 },
 ];
 
-export const priority = ["urgent", "p2", "p3", "no priority"];
+export const priority = [
+  { id: "p1", label: "urgent" },
+  { id: "p2", label: "p2" },
+  { id: "p3", label: "p3" },
+  { id: "p4", label: "no priority" },
+];
 
 export const owner = [
   "matthew stafford",
