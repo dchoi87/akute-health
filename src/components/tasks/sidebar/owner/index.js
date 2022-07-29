@@ -6,15 +6,13 @@ import Button from "../../common/button";
 import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
-import { useFiltersContext } from "../../context/filters";
 import { useOwnersData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Owner = () => {
+const Owner = ({ dispatch }) => {
   const { data: owners } = useOwnersData();
   const [showGroup, setGroup] = useState(false);
-  const [, dispatch] = useFiltersContext();
 
   const handleFilter = ({ target }) => {
     dispatch({ type: "FILTER_OWNER", payload: target.dataset.id });

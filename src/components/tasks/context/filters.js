@@ -5,7 +5,7 @@ import { addRemoveFromArray } from "../helpers";
 const FiltersContext = createContext();
 
 const filters = {
-  state: { priority: [], ownerId: [] },
+  state: { priority: [], ownerId: [], status: [], tags: [] },
   reducer: function (state, action) {
     switch (action.type) {
       case "FILTER_PRIORITY": {
@@ -15,6 +15,14 @@ const filters = {
       case "FILTER_OWNER": {
         const value = addRemoveFromArray(state.ownerId, action.payload);
         return { ...state, ownerId: value };
+      }
+      case "FILTER_STATUS": {
+        const value = addRemoveFromArray(state.status, action.payload);
+        return { ...state, status: value };
+      }
+      case "FILTER_TAGS": {
+        const value = addRemoveFromArray(state.tags, action.payload);
+        return { ...state, tags: value };
       }
       default: {
         return state;

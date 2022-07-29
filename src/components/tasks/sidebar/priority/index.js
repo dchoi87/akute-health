@@ -3,14 +3,11 @@ import React from "react";
 import Section from "../section";
 import Checkbox from "../../common/checkbox";
 
-import { useFiltersContext } from "../../context/filters";
 import { priority } from "../../constants";
 
 import styles from "./index.module.css";
 
-const Priority = () => {
-  const [, dispatch] = useFiltersContext();
-
+const Priority = ({ dispatch }) => {
   const handleFilter = ({ target }) => {
     dispatch({ type: "FILTER_PRIORITY", payload: target.dataset.id });
   };

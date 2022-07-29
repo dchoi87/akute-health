@@ -7,7 +7,11 @@ import styles from "./index.module.css";
 
 import { status } from "../../constants";
 
-const Status = () => {
+const Status = ({ dispatch }) => {
+  const handleFilter = ({ target }) => {
+    dispatch({ type: "FILTER_STATUS", payload: target.dataset.id });
+  };
+
   return (
     <Section title="Status" id="status">
       <div className={styles.container}>
@@ -18,6 +22,7 @@ const Status = () => {
               id={`status-${i}`}
               dataId={item.id}
               label={item.label}
+              onChange={handleFilter}
             />
           );
         })}

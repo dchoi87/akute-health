@@ -9,9 +9,13 @@ import { useTagsData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Tags = () => {
+const Tags = ({ dispatch }) => {
   const { data: tags } = useTagsData();
   const [showGroup, setGroup] = useState(false);
+
+  const handleFilter = ({ target }) => {
+    dispatch({ type: "FILTER_TAGS", payload: target.dataset.id });
+  };
 
   const handleGroup = () => {
     setGroup(!showGroup);
