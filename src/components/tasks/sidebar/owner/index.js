@@ -46,7 +46,7 @@ const Owner = () => {
                 return (
                   <Checkbox
                     key={i}
-                    id={`group-${i + 1}`}
+                    id={`owner-group-${i}`}
                     label={`owner group ${i + 1}`}
                     customClass="group"
                   />
@@ -57,7 +57,7 @@ const Owner = () => {
               return (
                 <Checkbox
                   key={i}
-                  id={owner}
+                  id={`owner-${i}`}
                   dataId={owner}
                   label={owners[owner]}
                   onChange={handleFilter}

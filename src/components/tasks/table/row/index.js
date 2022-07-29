@@ -17,9 +17,8 @@ const Row = ({ item, idx, isSelected, handleClick }) => {
     >
       <td className={styles.checkbox}>
         <Checkbox
-          id={`row-${idx + 1}`}
+          id={`row-${idx}`}
           dataId={item.id}
-          label=""
           onChange={handleClick}
           checked={isSelected}
         />

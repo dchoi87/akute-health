@@ -4,14 +4,14 @@ export const priority = [
   { id: "p1", label: "urgent" },
   { id: "p2", label: "p2" },
   { id: "p3", label: "p3" },
-  { id: "p4", label: "no priority" },
+  { id: "", label: "no priority" },
 ];
 
 export const status = [
   { id: "complete", label: "complete" },
   { id: "in-progress", label: "in progress" },
   { id: "not-started", label: "not started" },
-  { id: "no-status", label: "no status" },
+  { id: "", label: "no status" },
 ];
 
 export const cardsPerPage = [

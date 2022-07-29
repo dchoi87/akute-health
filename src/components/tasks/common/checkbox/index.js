@@ -13,25 +13,24 @@ const Checkbox = ({
   onChange,
   checked,
 }) => {
-  const _id = `checkbox-${id.toLowerCase().replace(" ", "-")}`;
   return (
     <div
       className={classNames(
         styles.container,
-        styles[label.toLowerCase()],
+        styles[label && label.toLowerCase()],
         styles[customClass]
       )}
     >
       <input
         type="checkbox"
-        id={_id}
+        id={id}
         data-id={dataId}
         onChange={onChange}
         checked={checked}
       />
       {section === "priority" && <CircleFill />}
       <label
-        htmlFor={_id}
+        htmlFor={id}
         className={classNames({
           [styles.visuallyhidden]: !label,
         })}

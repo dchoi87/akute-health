@@ -12,7 +12,14 @@ const Status = () => {
     <Section title="Status" id="status">
       <div className={styles.container}>
         {status.map((item, i) => {
-          return <Checkbox key={i} id={item.id} label={item.label} />;
+          return (
+            <Checkbox
+              key={i}
+              id={`status-${i}`}
+              dataId={item.id}
+              label={item.label}
+            />
+          );
         })}
       </div>
     </Section>

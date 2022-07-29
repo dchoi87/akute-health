@@ -16,7 +16,7 @@ const Overview = () => {
             <Radio
               key={i}
               idx={i}
-              id={item.label}
+              id={`overview-${i}`}
               label={item.label}
               name="overview"
             />

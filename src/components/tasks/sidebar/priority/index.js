@@ -22,7 +22,7 @@ const Priority = () => {
           return (
             <Checkbox
               key={i}
-              id={item.id}
+              id={`priority-${i}`}
               dataId={item.id}
               label={item.label}
               section="priority"
