@@ -4,7 +4,7 @@ import { PlusLg, Filter, SortDown, SortUp } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Select from "../common/select";
 
-import { viewOptions, sortOptions } from "../data";
+import { viewOptions, sortOptions } from "../constants";
 
 import styles from "./index.module.css";
 

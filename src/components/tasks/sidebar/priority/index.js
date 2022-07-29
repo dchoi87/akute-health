@@ -4,10 +4,9 @@ import Section from "../section";
 import Checkbox from "../../common/checkbox";
 
 import { useFiltersContext } from "../../context/filters";
+import { priority } from "../../constants";
 
 import styles from "./index.module.css";
-
-import { priority } from "../../data";
 
 const Priority = () => {
   const [, dispatch] = useFiltersContext();

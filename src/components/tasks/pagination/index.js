@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Select from "../common/select";
 
-import { cardsPerPage } from "../data";
+import { cardsPerPage } from "../constants";
 
 import styles from "./index.module.css";
 

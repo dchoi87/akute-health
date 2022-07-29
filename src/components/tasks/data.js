@@ -1,19 +1,3 @@
-import { ViewList, ViewStacked, Table } from "react-bootstrap-icons";
-
-export const overview = [
-  { label: "today", value: 5 },
-  { label: "next 5 days", value: 9 },
-  { label: "incomplete", value: 25 },
-  { label: "complete", value: 57 },
-];
-
-export const priority = [
-  { id: "p1", label: "urgent" },
-  { id: "p2", label: "p2" },
-  { id: "p3", label: "p3" },
-  { id: "p4", label: "no priority" },
-];
-
 export const owner = [
   "matthew stafford",
   "cooper kupp",
@@ -28,8 +12,6 @@ export const owner = [
   "jalen ramsey",
   "johnny hecker",
 ];
-
-export const status = ["complete", "in progress", "no status", "not started"];
 
 export const tags = [
   "assessments",
@@ -48,24 +30,6 @@ export const savedFilters = [
   { value: "filter1", label: "saved filter 1" },
   { value: "filter2", label: "my custom filter" },
   { value: "filter3", label: "some filter name" },
-];
-
-export const viewOptions = [
-  { id: "comfortable", svg: <ViewStacked /> },
-  { id: "compact", svg: <ViewList /> },
-  { id: "table", svg: <Table /> },
-];
-
-export const sortOptions = [
-  { value: "priority", label: "Priority" },
-  { value: "date", label: "Due Date" },
-];
-
-export const cardsPerPage = [
-  { value: "10", label: "10" },
-  { value: "20", label: "20" },
-  { value: "50", label: "50" },
-  { value: "100", label: "100" },
 ];
 
 export const mockData = [

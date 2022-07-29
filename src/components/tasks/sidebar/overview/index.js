@@ -5,7 +5,7 @@ import Radio from "../../common/radio";
 
 import styles from "./index.module.css";
 
-import { overview } from "../../data";
+import { overview } from "../../constants";
 
 const Overview = () => {
   return (
