@@ -5,7 +5,8 @@ import { queryBuilder } from "../helpers";
 
 // patients
 const fetchPatients = async () => {
-  const response = await axios.get("http://localhost:3001/3_0_1/patient");
+  const url = "http://localhost:3001/3_0_1/patient";
+  const response = await axios.get(url);
   return response.data.entry.reduce((acc, curr) => {
     acc[curr.resource.id] = curr.resource.name[0].text;
     return acc;
@@ -20,9 +21,8 @@ export const usePatientsData = () => {
 
 // owners
 const fetchOwners = async () => {
-  const response = await axios.get(
-    "http://localhost:3001/.netlify/functions/user/getTeam"
-  );
+  const url = "http://localhost:3001/.netlify/functions/user/getTeam";
+  const response = await axios.get(url);
   return response.data.reduce((acc, curr) => {
     acc[curr._id] = `${curr.firstName} ${curr.lastName}`;
     return acc;
@@ -37,7 +37,8 @@ export const useOwnersData = () => {
 
 // tags
 const fetchTags = async () => {
-  const response = await axios.get("http://localhost:3001/tag/all");
+  const url = "http://localhost:3001/tag/all";
+  const response = await axios.get(url);
   return response.data;
 };
 
@@ -49,9 +50,10 @@ export const useTagsData = () => {
 
 // tasks
 const fetchTasks = async (data, filters) => {
+  const url = "http://localhost:3001/tasks";
   const config = queryBuilder(filters);
   console.log("config", config.params.query);
-  const response = await axios.get("http://localhost:3001/tasks", config);
+  const response = await axios.get(url, config);
   return response.data.map((el, i) => {
     return {
       id: el._id,
@@ -72,15 +74,24 @@ const fetchTasks = async (data, filters) => {
 export const useTasksData = (filters) => {
   const { data: patients } = usePatientsData();
   const { data: owners } = useOwnersData();
+  const key = ["tasks", filters];
+  const data = { patients, owners };
 
-  const tasks = useQuery(
-    ["tasks", filters],
-    () => fetchTasks({ patients, owners }, filters),
-    {
-      refetchOnWindowFocus: false,
-      enabled: !!patients && !!owners,
-    }
-  );
+  return useQuery(key, () => fetchTasks(data, filters), {
+    refetchOnWindowFocus: false,
+    enabled: !!patients && !!owners,
+  });
+};
 
-  return tasks;
+// saved filters
+const fetchPresets = async () => {
+  const url = "http://localhost:3001/filters";
+  const response = await axios.get(url);
+  return response.data;
+};
+
+export const usePresetsData = () => {
+  return useQuery("presets", fetchPresets, {
+    refetchOnWindowFocus: false,
+  });
 };

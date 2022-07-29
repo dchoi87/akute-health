@@ -5,11 +5,12 @@ import Section from "../section";
 import Button from "../../common/button";
 import Input from "../../common/input";
 
+import { useTagsData } from "../../hooks/useTasksData";
+
 import styles from "./index.module.css";
 
-import { tags } from "../../data";
-
 const Tags = () => {
+  const { data: tags } = useTagsData();
   const [showGroup, setGroup] = useState(false);
 
   const handleGroup = () => {
@@ -42,13 +43,14 @@ const Tags = () => {
                   </Button>
                 );
               })}
-          {tags.map((item, i) => {
-            return (
-              <Button key={i} type="tag" isActive={i < 3}>
-                {item}
-              </Button>
-            );
-          })}
+          {tags &&
+            tags.tasks.map((item, i) => {
+              return (
+                <Button key={i} type="tag" isActive={i < 3}>
+                  {item}
+                </Button>
+              );
+            })}
         </div>
         <div>
           <Button type="more">Show More</Button>

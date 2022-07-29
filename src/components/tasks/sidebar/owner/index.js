@@ -6,11 +6,12 @@ import Button from "../../common/button";
 import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
+import { useOwnersData } from "../../hooks/useTasksData";
+
 import styles from "./index.module.css";
 
-import { owner } from "../../data";
-
 const Owner = () => {
+  const { data: owners } = useOwnersData();
   const [showGroup, setGroup] = useState(false);
 
   const handleGroup = () => {
@@ -45,9 +46,10 @@ const Owner = () => {
                   />
                 );
               })}
-          {owner.map((item, i) => {
-            return <Checkbox key={i} id={item} label={item} />;
-          })}
+          {owners &&
+            Object.keys(owners).map((owner, i) => {
+              return <Checkbox key={i} id={owner} label={owners[owner]} />;
+            })}
         </div>
         <div>
           <Button type="more">Show More</Button>

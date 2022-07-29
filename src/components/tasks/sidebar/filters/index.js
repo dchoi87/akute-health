@@ -6,11 +6,13 @@ import Select from "../../common/select";
 import Button from "../../common/button";
 import Input from "../../common/input";
 
+import { usePresetsData } from "../../hooks/useTasksData";
+
 import styles from "./index.module.css";
 
-import { savedFilters } from "../../data";
-
 const Filters = () => {
+  const { data: presets } = usePresetsData();
+
   return (
     <Section title="Saved Filters" id="filters">
       <div className={styles.container}>
@@ -19,9 +21,9 @@ const Filters = () => {
           <div className={styles.input}>
             <Select
               type="filters"
-              options={savedFilters}
+              options={presets && presets}
               customClass="filters"
-              defaultValue={savedFilters[0]}
+              defaultValue={presets && presets[0]}
             />
             <Button type="overwrite" id="filters-overwrite">
               <ArrowClockwise />
