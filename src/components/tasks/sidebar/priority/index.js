@@ -11,8 +11,8 @@ import styles from "./index.module.css";
 const Priority = () => {
   const [, dispatch] = useFiltersContext();
 
-  const handleSelect = ({ target }) => {
-    dispatch({ type: "SELECT_PRIORITY", payload: target.dataset.id });
+  const handleFilter = ({ target }) => {
+    dispatch({ type: "FILTER_PRIORITY", payload: target.dataset.id });
   };
 
   return (
@@ -26,7 +26,7 @@ const Priority = () => {
               dataId={item.id}
               label={item.label}
               section="priority"
-              onChange={handleSelect}
+              onChange={handleFilter}
             />
           );
         })}

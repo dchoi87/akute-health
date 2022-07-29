@@ -6,6 +6,7 @@ import Button from "../../common/button";
 import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
+import { useFiltersContext } from "../../context/filters";
 import { useOwnersData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
@@ -13,6 +14,11 @@ import styles from "./index.module.css";
 const Owner = () => {
   const { data: owners } = useOwnersData();
   const [showGroup, setGroup] = useState(false);
+  const [, dispatch] = useFiltersContext();
+
+  const handleFilter = ({ target }) => {
+    dispatch({ type: "FILTER_OWNER", payload: target.dataset.id });
+  };
 
   const handleGroup = () => {
     setGroup(!showGroup);
@@ -48,7 +54,15 @@ const Owner = () => {
               })}
           {owners &&
             Object.keys(owners).map((owner, i) => {
-              return <Checkbox key={i} id={owner} label={owners[owner]} />;
+              return (
+                <Checkbox
+                  key={i}
+                  id={owner}
+                  dataId={owner}
+                  label={owners[owner]}
+                  onChange={handleFilter}
+                />
+              );
             })}
         </div>
         <div>

@@ -13,8 +13,10 @@ export const queryBuilder = (filters) => {
   };
 
   for (let key in filters) {
-    params.query[key] =
-      key === "ownerId" ? filters[key] : { $in: filters[key] };
+    if (filters[key].length) {
+      params.query[key] =
+        key === "ownerId" ? filters[key] : { $in: filters[key] };
+    }
   }
 
   return { params };

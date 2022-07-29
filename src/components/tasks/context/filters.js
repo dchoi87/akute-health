@@ -1,15 +1,20 @@
 import React, { createContext, useContext, useReducer, useMemo } from "react";
+
 import { addRemoveFromArray } from "../helpers";
 
 const FiltersContext = createContext();
 
 const filters = {
-  state: { priority: [] },
+  state: { priority: [], ownerId: [] },
   reducer: function (state, action) {
     switch (action.type) {
-      case "SELECT_PRIORITY": {
+      case "FILTER_PRIORITY": {
         const value = addRemoveFromArray(state.priority, action.payload);
         return { ...state, priority: value };
+      }
+      case "FILTER_OWNER": {
+        const value = addRemoveFromArray(state.ownerId, action.payload);
+        return { ...state, ownerId: value };
       }
       default: {
         return state;
