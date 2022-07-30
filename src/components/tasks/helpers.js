@@ -6,16 +6,35 @@
 export const queryBuilder = (filters) => {
   const params = {
     query: {},
-    userId: "616620c0df1f010009ea4a94",
+    userId: "616620c0df1f010009ea4a94", // need to get this from redux store
     page: 0,
     limit: 100,
-    allPatients: false,
+    allPatients: false, // is this always false?
   };
+  const queries = ["priority", "ownerId", "status", "tags", "dueDate"];
 
   for (let key in filters) {
-    if (filters[key].length) {
-      params.query[key] =
-        key === "ownerId" ? filters[key] : { $in: filters[key] };
+    if (queries.includes(key)) {
+      if (filters[key].length) {
+        switch (key) {
+          case "ownerId": {
+            params.query[key] = filters[key];
+            break;
+          }
+          case "dueDate": {
+            params.query[key] = { $lte: filters[key] };
+            break;
+          }
+          default: {
+            params.query[key] = { $in: filters[key] };
+            break;
+          }
+        }
+      }
+    } else {
+      if (filters[key]) {
+        params[key] = filters[key];
+      }
     }
   }
 

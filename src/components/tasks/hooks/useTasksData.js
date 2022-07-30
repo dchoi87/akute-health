@@ -52,7 +52,7 @@ export const useTagsData = () => {
 const fetchTasks = async (data, filters) => {
   const url = "http://localhost:3001/tasks";
   const config = queryBuilder(filters);
-  console.log("config", config);
+  console.log("config", config.params);
   const response = await axios.get(url, config);
   return response.data.map((el, i) => {
     return {
@@ -74,8 +74,8 @@ const fetchTasks = async (data, filters) => {
 export const useTasksData = (filters) => {
   const { data: patients } = usePatientsData();
   const { data: owners } = useOwnersData();
-  const key = ["tasks", filters];
   const data = { patients, owners };
+  const key = ["tasks", filters];
 
   return useQuery(key, () => fetchTasks(data, filters), {
     refetchOnWindowFocus: false,

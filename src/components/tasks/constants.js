@@ -33,8 +33,8 @@ export const sortOptions = [
 ];
 
 export const overview = [
-  { label: "today" },
-  { label: "next 5 days" },
-  { label: "incomplete" },
-  { label: "complete" },
+  { id: "today", label: "today" },
+  { id: "next-5-days", label: "next 5 days" },
+  { id: "incomplete", label: "incomplete" },
+  { id: "complete", label: "complete" },
 ];
