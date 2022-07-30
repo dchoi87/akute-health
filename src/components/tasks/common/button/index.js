@@ -3,18 +3,13 @@ import classNames from "classnames";
 
 import styles from "./index.module.css";
 
-const Button = ({ children, id, type, isActive, onClick, customClass }) => {
+const Button = ({ children, id, type, isActive, onClick, className }) => {
   return (
     <button
       id={id}
-      className={classNames(
-        styles.normalize,
-        styles[type],
-        styles[customClass],
-        {
-          [styles.active]: isActive,
-        }
-      )}
+      className={classNames(styles.normalize, styles[type], className, {
+        [styles.active]: isActive,
+      })}
       onClick={onClick}
     >
       {children}

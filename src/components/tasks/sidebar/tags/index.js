@@ -3,6 +3,7 @@ import { Collection } from "react-bootstrap-icons";
 
 import Section from "../section";
 import Button from "../../common/button";
+import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
 import { useTagsData } from "../../hooks/useTasksData";
@@ -41,7 +42,7 @@ const Tags = ({ dispatch }) => {
               .fill()
               .map((item, i) => {
                 return (
-                  <Button key={i} type="tag" customClass="group">
+                  <Button key={i} type="tag" className={styles.group}>
                     Tag Group {i + 1}
                     <Collection />
                   </Button>
@@ -50,9 +51,16 @@ const Tags = ({ dispatch }) => {
           {tags &&
             tags.tasks.map((item, i) => {
               return (
-                <Button key={i} type="tag" isActive={i < 3}>
-                  {item}
-                </Button>
+                <Checkbox
+                  key={i}
+                  id={`tags-${i}`}
+                  dataId={item}
+                  label={item}
+                  onChange={handleFilter}
+                />
+                // <Button key={i} type="tag" isActive={i < 3}>
+                //   {item}
+                // </Button>
               );
             })}
         </div>

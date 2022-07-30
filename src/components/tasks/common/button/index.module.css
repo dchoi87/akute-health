@@ -183,15 +183,6 @@
   width: 21px;
   height: 21px;
 }
-.group {
-  display: flex;
-  align-items: center;
-  background: #4e4e4e;
-  color: #fff;
-}
-.group svg {
-  margin-left: 7px;
-}
 .collection,
 .save,
 .overwrite {

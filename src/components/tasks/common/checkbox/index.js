@@ -9,16 +9,16 @@ const Checkbox = ({
   id,
   dataId,
   section,
-  customClass,
   onChange,
   checked,
+  className,
 }) => {
   return (
     <div
       className={classNames(
         styles.container,
         styles[label && label.toLowerCase()],
-        styles[customClass]
+        className
       )}
     >
       <input
@@ -37,7 +37,7 @@ const Checkbox = ({
       >
         {label}
       </label>
-      {customClass === "group" && <Collection />}
+      {section === "group" && <Collection />}
     </div>
   );
 };

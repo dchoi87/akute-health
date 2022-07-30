@@ -10,12 +10,10 @@ const SelectContainer = ({
   placeholder,
   menuPlacement,
   defaultValue,
-  customClass,
+  className,
 }) => {
   return (
-    <div
-      className={classNames("select", styles.container, styles[customClass])}
-    >
+    <div className={classNames("select", styles.container, className)}>
       <Select
         options={options}
         className="tasks-select-container"

@@ -46,7 +46,8 @@ const Owner = ({ dispatch }) => {
                     key={i}
                     id={`owner-group-${i}`}
                     label={`owner group ${i + 1}`}
-                    customClass="group"
+                    className={styles.group}
+                    section="group"
                   />
                 );
               })}

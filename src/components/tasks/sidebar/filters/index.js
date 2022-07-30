@@ -22,7 +22,7 @@ const Filters = () => {
             <Select
               type="filters"
               options={presets && presets}
-              customClass="filters"
+              className={styles.filters}
               defaultValue={presets && presets[0]}
             />
             <Button type="overwrite" id="filters-overwrite">
