@@ -88,21 +88,6 @@
   height: 14px;
   pointer-events: none;
 }
-.tag {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: .25px;
-  text-transform: capitalize;
-  padding: 4px 8px;
-  border-radius: 5px;
-  background: #efefef;
-  color: #4e4e4e;
-  margin: 5px;
-}
-.tag:hover {
-  background-color: #61b47b;
-  color: #fff;
-}
 .more {
   font-size: 11px;
   letter-spacing: .25px;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Collection } from "react-bootstrap-icons";
+import classNames from "classnames";
 
 import Section from "../section";
 import Button from "../../common/button";
@@ -38,16 +39,18 @@ const Tags = ({ dispatch }) => {
         </div>
         <div className={styles.tags}>
           {showGroup &&
-            Array(2)
-              .fill()
-              .map((item, i) => {
-                return (
-                  <Button key={i} type="tag" className={styles.group}>
-                    Tag Group {i + 1}
-                    <Collection />
-                  </Button>
-                );
-              })}
+            ["Some Group", "Another Group"].map((item, i) => {
+              return (
+                <Checkbox
+                  key={i}
+                  id={`tags-group-${i}`}
+                  dataId={item}
+                  label={item}
+                  onChange={handleFilter}
+                  className={classNames(styles.tag, styles.group)}
+                />
+              );
+            })}
           {tags &&
             tags.tasks.map((item, i) => {
               return (
@@ -57,10 +60,8 @@ const Tags = ({ dispatch }) => {
                   dataId={item}
                   label={item}
                   onChange={handleFilter}
+                  className={styles.tag}
                 />
-                // <Button key={i} type="tag" isActive={i < 3}>
-                //   {item}
-                // </Button>
               );
             })}
         </div>
