@@ -12,7 +12,7 @@ const filters = {
     tags: [],
     dueDate: "",
     page: 0,
-    limit: 100,
+    limit: 10,
   },
   reducer: function (state, action) {
     switch (action.type) {

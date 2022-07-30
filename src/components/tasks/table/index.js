@@ -9,7 +9,7 @@ import { useTasksContext } from "../context/tasks";
 
 import styles from "./index.module.css";
 
-const Table = ({ tasks, selectedItems }) => {
+const Table = ({ tasks, selectedItems, limit }) => {
   const [, dispatch] = useTasksContext();
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
 
@@ -32,7 +32,7 @@ const Table = ({ tasks, selectedItems }) => {
                 label=""
                 dataId="all"
                 onChange={handleClick}
-                checked={tasks.length === selectedItems.length}
+                checked={selectedItems.length === limit}
               />
             </th>
             <th className={styles.title}>
@@ -61,17 +61,18 @@ const Table = ({ tasks, selectedItems }) => {
           </tr>
         </thead>
         <tbody>
-          {tasks.map((item, i) => {
-            return (
-              <Row
-                key={i}
-                idx={i}
-                item={item}
-                isSelected={selectedItems.includes(item.id)}
-                handleClick={handleClick}
-              />
-            );
-          })}
+          {tasks &&
+            tasks.map((item, i) => {
+              return (
+                <Row
+                  key={i}
+                  idx={i}
+                  item={item}
+                  isSelected={selectedItems.includes(item.id)}
+                  handleClick={handleClick}
+                />
+              );
+            })}
         </tbody>
       </table>
     </div>
