@@ -3,7 +3,15 @@ import classNames from "classnames";
 
 import styles from "./index.module.css";
 
-const Button = ({ children, id, type, isActive, onClick, className }) => {
+const Button = ({
+  children,
+  id,
+  type,
+  isActive,
+  onClick,
+  className,
+  disabled,
+}) => {
   return (
     <button
       id={id}
@@ -11,6 +19,7 @@ const Button = ({ children, id, type, isActive, onClick, className }) => {
         [styles.active]: isActive,
       })}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

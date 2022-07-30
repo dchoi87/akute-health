@@ -3,11 +3,22 @@ import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Select from "../common/select";
 
+import { useFiltersContext } from "../context/filters";
 import { cardsPerPage } from "../constants";
 
 import styles from "./index.module.css";
 
 const Pagination = () => {
+  const [filters, dispatch] = useFiltersContext();
+
+  const handlePageLimit = ({ value }) => {
+    dispatch({ type: "CHANGE_LIMIT", payload: value });
+  };
+
+  const handleChangePage = (value) => {
+    dispatch({ type: "CHANGE_PAGE", payload: filters.page + value });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.pagination}>
@@ -17,14 +28,25 @@ const Pagination = () => {
             options={cardsPerPage}
             defaultValue={cardsPerPage[0]}
             menuPlacement="top"
+            onChange={handlePageLimit}
           />
         </div>
         <div className={styles.page}>Page 1 of 48</div>
         <div className={styles.navigation}>
-          <Button type="pagination">
+          <Button
+            type="pagination"
+            id="previous"
+            onClick={() => handleChangePage(-1)}
+            disabled={filters.page === 0}
+          >
             <ChevronLeft />
           </Button>
-          <Button type="pagination">
+          <Button
+            type="pagination"
+            id="next"
+            onClick={() => handleChangePage(1)}
+            disabled={false} // TODO
+          >
             <ChevronRight />
           </Button>
         </div>

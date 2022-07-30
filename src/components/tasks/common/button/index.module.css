@@ -133,6 +133,15 @@
   background-color: #61b47b;
   color: #fff;
 }
+.pagination:disabled {
+  background-color: transparent;
+  color: #ccc;
+  cursor: inherit;
+}
+.pagination:disabled:hover {
+  background-color: transparent;
+  color: #ccc;
+}
 .pagination svg {
   display: block;
   width: 15px;
