@@ -16,10 +16,9 @@ import styles from "./index.module.css";
 
 const Content = ({ sidebar, setSidebar }) => {
   const [filters] = useFiltersContext();
-  const [{ selected }] = useTasksContext();
+  const [{ selected, sort }, dispatch] = useTasksContext();
   const { data: tasks } = useTasksData(filters);
   const [view, setView] = useState("comfortable");
-  const [sort, setSort] = useState("desc");
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
 
@@ -35,9 +34,9 @@ const Content = ({ sidebar, setSidebar }) => {
           view={view}
           setView={setView}
           sort={sort}
-          setSort={setSort}
           sidebar={sidebar}
           setSidebar={setSidebar}
+          dispatch={dispatch}
         />
         {!!selected.length && <SelectionBar selectedCount={selected.length} />}
         {view === "table" ? (

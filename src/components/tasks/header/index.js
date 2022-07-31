@@ -8,14 +8,18 @@ import { viewOptions, sortOptions } from "../constants";
 
 import styles from "./index.module.css";
 
-const Header = ({ view, setView, sort, setSort, sidebar, setSidebar }) => {
+const Header = ({ view, setView, sort, sidebar, setSidebar, dispatch }) => {
   const handleView = (value) => {
     setView(value);
   };
 
   const handleSortOrder = () => {
     const value = sort === "desc" ? "asc" : "desc";
-    setSort(value);
+    dispatch({ type: "SET_SORT_ORDER", payload: value });
+  };
+
+  const handleSortPriority = ({ value }) => {
+    dispatch({ type: "SET_SORT_TYPE", payload: value });
   };
 
   const handleFilterMenu = () => {
@@ -38,7 +42,11 @@ const Header = ({ view, setView, sort, setSort, sidebar, setSidebar }) => {
         <div className={styles.tools}>
           {view !== "table" && (
             <div className={styles.select}>
-              <Select options={sortOptions} placeholder="Sort By" />
+              <Select
+                options={sortOptions}
+                placeholder="Sort By"
+                onChange={handleSortPriority}
+              />
               <Button type="sort" onClick={handleSortOrder}>
                 {sort === "desc" ? <SortDown /> : <SortUp />}
               </Button>
