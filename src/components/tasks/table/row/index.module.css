@@ -16,16 +16,16 @@
 .row .duedate.pastDue {
   color: #ca0000;
 }
-.row.urgent td {
+.row.p1 td {
   color: #ca0000;
 }
-.row.urgent .title {
+.row.p1 .title {
   font-weight: 700;
 }
-.row.urgent .tag {
+.row.p1 .tag {
   background: #f9e4e4;
 }
-.row.urgent .priority svg {
+.row.p1 .priority svg {
   color: #ca0000;
 }
 .row.p2 .priority svg {

@@ -56,7 +56,9 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
                 <div
                   className={classNames(styles.priority, styles[task.priority])}
                 >
-                  {task.priority}
+                  {task.priority === "p1"
+                    ? "urgent"
+                    : task.priority || "no priority"}
                 </div>
               )}
               <span>{task.title}</span>

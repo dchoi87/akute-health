@@ -99,7 +99,7 @@
   background: #4e4e4e;
   color: #fff;
 }
-.urgent {
+.p1 {
   color: #fff;
   background: #ca0000;
 }
@@ -120,7 +120,7 @@
   width: 10px;
   height: 10px;
 }
-.priorityCompact.urgent {
+.priorityCompact.p1 {
   color: #ca0000;
 }
 .priorityCompact.p2 {
