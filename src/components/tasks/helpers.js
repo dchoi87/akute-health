@@ -1,3 +1,5 @@
+import moment from "moment";
+
 /**
  * queryBuilder
  * @param {obj} filters
@@ -54,5 +56,29 @@ export const addRemoveFromArray = (array, value) => {
     });
   } else {
     return [...array, value];
+  }
+};
+
+/**
+ * sorter
+ * @param {obj} a
+ * @param {obj} b
+ * @param {str} sort
+ * @param {str} type
+ * @returns sort logic
+ */
+export const sorter = (a, b, sort, type) => {
+  const isDesc = sort === "desc";
+
+  if (!a[type]) return isDesc ? 1 : -1;
+  if (!b[type]) return isDesc ? -1 : 1;
+  if (type === "priority") {
+    return isDesc
+      ? a.priority.localeCompare(b[type])
+      : b.priority.localeCompare(a[type]);
+  } else {
+    return isDesc
+      ? moment(b[type]).format("YYYYMMDD") - moment(a[type]).format("YYYYMMDD")
+      : moment(a[type]).format("YYYYMMDD") - moment(b[type]).format("YYYYMMDD");
   }
 };
