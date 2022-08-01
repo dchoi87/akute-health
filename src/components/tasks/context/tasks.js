@@ -3,7 +3,7 @@ import React, { createContext, useContext, useReducer, useMemo } from "react";
 const TasksContext = createContext();
 
 const tasks = {
-  state: { selected: [], sort: "desc", type: "priority" },
+  state: { selected: [] },
   reducer: function (state, action) {
     switch (action.type) {
       case "SELECT_TASK": {
@@ -19,12 +19,6 @@ const tasks = {
         const tasks = isSelected ? action.payload.map((task) => task.id) : [];
 
         return { ...state, selected: tasks };
-      }
-      case "SET_SORT_ORDER": {
-        return { ...state, sort: action.payload };
-      }
-      case "SET_SORT_TYPE": {
-        return { ...state, type: action.payload };
       }
       default: {
         return state;

@@ -13,6 +13,7 @@ const filters = {
     dueDate: "",
     page: 0,
     limit: 10,
+    sort: null,
   },
   reducer: function (state, action) {
     switch (action.type) {
@@ -40,6 +41,9 @@ const filters = {
       }
       case "CHANGE_LIMIT": {
         return { ...state, limit: action.payload };
+      }
+      case "CHANGE_SORT": {
+        return { ...state, sort: action.payload };
       }
       default: {
         return state;

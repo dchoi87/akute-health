@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PlusLg, Filter, SortDown, SortUp } from "react-bootstrap-icons";
 
 import Button from "../common/button";
@@ -8,18 +8,23 @@ import { viewOptions, sortOptions } from "../constants";
 
 import styles from "./index.module.css";
 
-const Header = ({ view, setView, sort, sidebar, setSidebar, dispatch }) => {
+const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
+  const [sort, setSort] = useState("desc");
+  const [type, setType] = useState("priority");
+
   const handleView = (value) => {
     setView(value);
   };
 
   const handleSortOrder = () => {
     const value = sort === "desc" ? "asc" : "desc";
-    dispatch({ type: "SET_SORT_ORDER", payload: value });
+    setSort(value);
+    dispatch({ type: "CHANGE_SORT", payload: { [type]: value } });
   };
 
   const handleSortPriority = ({ value }) => {
-    dispatch({ type: "SET_SORT_TYPE", payload: value });
+    setType(value);
+    dispatch({ type: "CHANGE_SORT", payload: { [value]: sort } });
   };
 
   const handleFilterMenu = () => {

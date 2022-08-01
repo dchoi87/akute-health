@@ -29,7 +29,7 @@ export const viewOptions = [
 
 export const sortOptions = [
   { value: "priority", label: "Priority" },
-  { value: "duedate", label: "Due Date" },
+  { value: "dueDate", label: "Due Date" },
 ];
 
 export const overview = [

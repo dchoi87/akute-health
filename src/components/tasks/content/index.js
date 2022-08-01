@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames";
-import moment from "moment";
 
 import Header from "../header";
 import SelectionBar from "../selection-bar";
@@ -12,13 +11,12 @@ import { useFiltersContext } from "../context/filters";
 import { useTasksContext } from "../context/tasks";
 import { useContainerQuery } from "../hooks/useResize";
 import { useTasksData } from "../hooks/useTasksData";
-import { sorter } from "../helpers";
 
 import styles from "./index.module.css";
 
 const Content = ({ sidebar, setSidebar }) => {
-  const [filters] = useFiltersContext();
-  const [{ selected, sort, type }, dispatch] = useTasksContext();
+  const [filters, dispatch] = useFiltersContext();
+  const [{ selected }] = useTasksContext();
   const { data: tasks } = useTasksData(filters);
   const [view, setView] = useState("comfortable");
   const taskRef = useRef(null);
@@ -35,7 +33,6 @@ const Content = ({ sidebar, setSidebar }) => {
         <Header
           view={view}
           setView={setView}
-          sort={sort}
           sidebar={sidebar}
           setSidebar={setSidebar}
           dispatch={dispatch}
@@ -50,21 +47,17 @@ const Content = ({ sidebar, setSidebar }) => {
             })}
           >
             {tasks &&
-              tasks
-                .sort((a, b) => {
-                  return sorter(a, b, sort, type);
-                })
-                .map((task, i) => {
-                  return (
-                    <Card
-                      key={i}
-                      task={task}
-                      showDesktopView={showDesktopView}
-                      isCompactView={view === "compact"}
-                      isSelected={selected.includes(task.id)}
-                    />
-                  );
-                })}
+              tasks.map((task, i) => {
+                return (
+                  <Card
+                    key={i}
+                    task={task}
+                    showDesktopView={showDesktopView}
+                    isCompactView={view === "compact"}
+                    isSelected={selected.includes(task.id)}
+                  />
+                );
+              })}
           </div>
         )}
         <Pagination page={filters.page} />
