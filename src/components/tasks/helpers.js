@@ -8,6 +8,8 @@ export const queryBuilder = (filters) => {
     query: {},
     userId: "616620c0df1f010009ea4a94", // need to get this from redux store
     allPatients: false, // is this always false?
+    page: 0,
+    limit: 10,
   };
   const queries = ["priority", "ownerId", "status", "tags", "dueDate"];
 
