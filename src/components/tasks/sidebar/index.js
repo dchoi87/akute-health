@@ -1,8 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import Overview from "./overview";
-import Filters from "./filters";
+import Presets from "./presets";
 import Priority from "./priority";
 import Owner from "./owner";
 import Status from "./status";
@@ -20,8 +19,7 @@ const SideBar = ({ sidebar }) => {
         [styles.open]: sidebar,
       })}
     >
-      <Overview dispatch={dispatch} />
-      <Filters dispatch={dispatch} />
+      <Presets dispatch={dispatch} />
       <Priority dispatch={dispatch} />
       <Owner dispatch={dispatch} />
       <Status dispatch={dispatch} />

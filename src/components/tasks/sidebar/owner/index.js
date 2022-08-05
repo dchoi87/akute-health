@@ -64,9 +64,7 @@ const Owner = ({ dispatch }) => {
               );
             })}
         </div>
-        <div>
-          <Button type="more">Show More</Button>
-        </div>
+        <Button type="more">Show More</Button>
       </div>
     </Section>
   );

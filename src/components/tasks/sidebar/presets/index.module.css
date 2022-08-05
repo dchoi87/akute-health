@@ -1,0 +1,30 @@
+.container {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 30px;
+  padding-bottom: 20px;
+}
+.label {
+  font-size: 14px;
+  letter-spacing: .25px;
+  margin: 0 0 5px 5px;
+}
+.input {
+  display: flex;
+}
+.section {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+}
+.header {
+  font-size: 11px;
+  letter-spacing: .25px;
+  text-transform: uppercase;
+}
+.radios {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+  padding: 0 10px;
+}
