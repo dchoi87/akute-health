@@ -39,7 +39,11 @@ const Content = ({ sidebar, setSidebar }) => {
         />
         {!!selected.length && <SelectionBar selectedCount={selected.length} />}
         {view === "table" ? (
-          <Table tasks={tasks} selectedItems={selected} limit={filters.limit} />
+          <Table
+            tasks={tasks.data}
+            selectedItems={selected}
+            limit={filters.limit}
+          />
         ) : (
           <div
             className={classNames(styles.cards, {
@@ -47,7 +51,7 @@ const Content = ({ sidebar, setSidebar }) => {
             })}
           >
             {tasks &&
-              tasks.map((task, i) => {
+              tasks.data.map((task, i) => {
                 return (
                   <Card
                     key={i}
@@ -60,7 +64,7 @@ const Content = ({ sidebar, setSidebar }) => {
               })}
           </div>
         )}
-        <Pagination page={filters.page} />
+        <Pagination page={filters.page} count={tasks && tasks.count} />
       </div>
     </div>
   );

@@ -52,23 +52,26 @@ export const useTagsData = () => {
 const fetchTasks = async (data, filters) => {
   const url = "http://localhost:3001/tasks";
   const config = queryBuilder(filters);
-  console.log("config", config.params);
   const response = await axios.get(url, config);
-  return response.data.map((el, i) => {
-    return {
-      id: el._id,
-      title: el.task,
-      description: el.comments,
-      owner: data.owners[el.ownerId] || "N/A",
-      patient: data.patients[el.patientId] || "N/A",
-      duedate: el.dueDate || "N/A",
-      tags: el.tags && el.tags.length ? el.tags : null,
-      priority: el.priority,
-      state: "N/A",
-      attachment: el.attachments ? !!el.attachments.length : false,
-      status: el.status,
-    };
-  });
+  console.log("config", config.params);
+  return {
+    data: response.data.map((el, i) => {
+      return {
+        id: el._id,
+        title: el.task,
+        description: el.comments,
+        owner: data.owners[el.ownerId] || "N/A",
+        patient: data.patients[el.patientId] || "N/A",
+        duedate: el.dueDate || "N/A",
+        tags: el.tags && el.tags.length ? el.tags : null,
+        priority: el.priority,
+        state: "N/A",
+        attachment: el.attachments ? !!el.attachments.length : false,
+        status: el.status,
+      };
+    }),
+    count: response.headers["x-total-count"],
+  };
 };
 
 export const useTasksData = (filters) => {

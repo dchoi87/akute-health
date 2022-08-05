@@ -8,7 +8,7 @@ import { cardsPerPage } from "../constants";
 
 import styles from "./index.module.css";
 
-const Pagination = ({ page }) => {
+const Pagination = ({ page, count }) => {
   const [filters, dispatch] = useFiltersContext();
 
   const handlePageLimit = ({ value }) => {
@@ -31,7 +31,9 @@ const Pagination = ({ page }) => {
             onChange={handlePageLimit}
           />
         </div>
-        <div className={styles.page}>Page {page + 1} of 48</div>
+        <div className={styles.page}>
+          Page {page + 1} of {count}
+        </div>
         <div className={styles.navigation}>
           <Button
             type="pagination"
