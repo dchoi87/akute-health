@@ -62,7 +62,7 @@ const Table = ({ tasks, selectedItems, limit }) => {
         </thead>
         <tbody>
           {tasks &&
-            tasks.map((item, i) => {
+            tasks.data.map((item, i) => {
               return (
                 <Row
                   key={i}

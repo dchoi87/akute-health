@@ -39,11 +39,7 @@ const Content = ({ sidebar, setSidebar }) => {
         />
         {!!selected.length && <SelectionBar selectedCount={selected.length} />}
         {view === "table" ? (
-          <Table
-            tasks={tasks.data}
-            selectedItems={selected}
-            limit={filters.limit}
-          />
+          <Table tasks={tasks} selectedItems={selected} limit={filters.limit} />
         ) : (
           <div
             className={classNames(styles.cards, {

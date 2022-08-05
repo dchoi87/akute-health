@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { ArrowClockwise, CloudArrowUp } from "react-bootstrap-icons";
 
@@ -14,6 +14,7 @@ import styles from "./index.module.css";
 
 const Presets = ({ dispatch }) => {
   const { data: presets } = usePresetsData();
+  const [selected, setSelected] = useState("today");
 
   const handleFilters = ({ target }) => {
     switch (target.dataset.id) {
@@ -38,7 +39,10 @@ const Presets = ({ dispatch }) => {
         break;
       }
     }
+    setSelected(target.dataset.id);
   };
+
+  const handleUpdateFilter = () => {};
 
   return (
     <Section title="Presets" id="presets">
@@ -57,8 +61,13 @@ const Presets = ({ dispatch }) => {
                   name="presets"
                   onChange={handleFilters}
                 >
-                  {false && (
-                    <Button>
+                  {/* should show for admin only */}
+                  {selected === item.id && (
+                    <Button
+                      type="update"
+                      onClick={handleUpdateFilter}
+                      disabled={true}
+                    >
                       <ArrowClockwise />
                     </Button>
                   )}
@@ -82,8 +91,13 @@ const Presets = ({ dispatch }) => {
                     name="presets"
                     onChange={handleFilters}
                   >
-                    {true && (
-                      <Button type="update">
+                    {/* should show when filter has been updated */}
+                    {selected === item.value && (
+                      <Button
+                        type="update"
+                        onClick={handleUpdateFilter}
+                        disabled={true}
+                      >
                         <ArrowClockwise />
                       </Button>
                     )}

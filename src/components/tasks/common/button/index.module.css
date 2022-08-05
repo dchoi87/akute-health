@@ -215,6 +215,9 @@
   padding: 0;
   margin-left: 10px;
 }
+.update:disabled {
+  color: #ccc;
+}
 .update svg {
   display: block;
   width: 15px;
