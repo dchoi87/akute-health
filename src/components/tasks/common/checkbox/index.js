@@ -1,14 +1,13 @@
 import React from "react";
 import classNames from "classnames";
-import { CircleFill, Collection } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
 
 const Checkbox = ({
+  children,
   label,
   id,
   dataId,
-  section,
   onChange,
   checked,
   className,
@@ -28,7 +27,7 @@ const Checkbox = ({
         onChange={onChange}
         checked={checked}
       />
-      {section === "priority" && <CircleFill />}
+      {children}
       <label
         htmlFor={id}
         className={classNames({
@@ -37,7 +36,6 @@ const Checkbox = ({
       >
         {label}
       </label>
-      {section === "group" && <Collection />}
     </div>
   );
 };

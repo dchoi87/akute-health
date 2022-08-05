@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Collection } from "react-bootstrap-icons";
+import { Star } from "react-bootstrap-icons";
 
 import Section from "../section";
 import Button from "../../common/button";
@@ -33,7 +33,7 @@ const Owner = ({ dispatch }) => {
             onClick={handleGroup}
             isActive={showGroup}
           >
-            <Collection />
+            <Star />
           </Button>
         </div>
         <div className={styles.owners}>

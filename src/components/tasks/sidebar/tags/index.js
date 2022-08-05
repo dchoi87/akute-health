@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Collection } from "react-bootstrap-icons";
+import { Star } from "react-bootstrap-icons";
 import classNames from "classnames";
 
 import Section from "../section";
@@ -34,7 +34,7 @@ const Tags = ({ dispatch }) => {
             onClick={handleGroup}
             isActive={showGroup}
           >
-            <Collection />
+            <Star />
           </Button>
         </div>
         <div className={styles.tags}>

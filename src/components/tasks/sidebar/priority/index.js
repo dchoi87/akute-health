@@ -1,4 +1,5 @@
 import React from "react";
+import { CircleFill } from "react-bootstrap-icons";
 
 import Section from "../section";
 import Checkbox from "../../common/checkbox";
@@ -24,7 +25,9 @@ const Priority = ({ dispatch }) => {
               label={item.label}
               section="priority"
               onChange={handleFilter}
-            />
+            >
+              <CircleFill />
+            </Checkbox>
           );
         })}
       </div>

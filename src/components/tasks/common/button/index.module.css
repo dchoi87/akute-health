@@ -8,6 +8,7 @@
   position: relative;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background: transparent;
 }
 .add {
   padding: 15px;
@@ -186,9 +187,8 @@
   margin-left: 10px;
   padding: 5px;
   border-radius: 5px;
-  color: #4e4e4e;
-  background: #fff;
-  box-shadow: 0px 5px 10px 2px #efefef73;
+  color: #fff;
+  background: #61b47b;
   width: 32px;
   height: 32px;
 }
@@ -196,22 +196,29 @@
 .overwrite:hover,
 .collection:hover,
 .collection.active {
-  background: #4e4e4e;
-  color: #fff;
-}
-.collection.active:hover {
-  background: #4e4e4e;
+  background: #437d56;
 }
 .save svg,
 .overwrite svg {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 .collection svg {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
+}
+.update {
+  color: #494949;
+  border-radius: 5px;
+  padding: 0;
+  margin-left: 10px;
+}
+.update svg {
+  display: block;
+  width: 15px;
+  height: 15px;
 }
 /* modifiers */
 .active {

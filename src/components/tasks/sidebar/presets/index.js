@@ -82,8 +82,8 @@ const Presets = ({ dispatch }) => {
                     name="presets"
                     onChange={handleFilters}
                   >
-                    {false && (
-                      <Button>
+                    {true && (
+                      <Button type="update">
                         <ArrowClockwise />
                       </Button>
                     )}
