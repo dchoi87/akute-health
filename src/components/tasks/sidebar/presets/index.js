@@ -44,14 +44,14 @@ const Presets = ({ dispatch }) => {
     <Section title="Presets" id="presets">
       <div className={styles.container}>
         <div className={styles.section}>
-          <div className={styles.header}>Clinic Wide</div>
+          <div className={styles.header}>Clinic Wide Filters</div>
           <div className={styles.radios}>
             {overview.map((item, i) => {
               return (
                 <Radio
                   key={i}
                   idx={i}
-                  id={`presets-${i}`}
+                  id={`presets-${item.id}`}
                   dataId={item.id}
                   label={item.label}
                   name="presets"
@@ -68,7 +68,7 @@ const Presets = ({ dispatch }) => {
           </div>
         </div>
         <div className={styles.section}>
-          <div className={styles.header}>Custom</div>
+          <div className={styles.header}>Custom Filters</div>
           <div className={styles.radios}>
             {presets &&
               presets.map((item, i) => {
@@ -76,7 +76,7 @@ const Presets = ({ dispatch }) => {
                   <Radio
                     key={i}
                     idx={i}
-                    id={`presets-${i}`}
+                    id={`presets-${item.value}`}
                     dataId={item.value}
                     label={item.label}
                     name="presets"
