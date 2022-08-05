@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./index.module.css";
 
-const Radio = ({ label, id, name, idx, dataId, onChange }) => {
+const Radio = ({ children, label, id, name, idx, dataId, onChange }) => {
   return (
     <div className={styles.container}>
       <input
@@ -15,6 +15,7 @@ const Radio = ({ label, id, name, idx, dataId, onChange }) => {
         onChange={onChange}
       />
       <label htmlFor={id}>{label}</label>
+      {children}
     </div>
   );
 };

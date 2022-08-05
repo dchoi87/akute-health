@@ -56,7 +56,13 @@ const Presets = ({ dispatch }) => {
                   label={item.label}
                   name="presets"
                   onChange={handleFilters}
-                />
+                >
+                  {false && (
+                    <Button>
+                      <ArrowClockwise />
+                    </Button>
+                  )}
+                </Radio>
               );
             })}
           </div>
@@ -75,7 +81,13 @@ const Presets = ({ dispatch }) => {
                     label={item.label}
                     name="presets"
                     onChange={handleFilters}
-                  />
+                  >
+                    {false && (
+                      <Button>
+                        <ArrowClockwise />
+                      </Button>
+                    )}
+                  </Radio>
                 );
               })}
           </div>
