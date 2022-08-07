@@ -33,7 +33,7 @@ const Presets = ({ dispatch }) => {
       }
       case "incomplete":
       case "complete": {
-        dispatch({ type: "FILTER_STATUS", payload: id });
+        dispatch({ type: "FILTER_PRESET", payload: id });
         break;
       }
     }

@@ -29,6 +29,12 @@ export const queryBuilder = (filters) => {
           }
         }
       }
+    } else if (key === "preset") {
+      const isComplete = filters[key] === "complete";
+
+      if (!filters.status.length) {
+        params.query.status = isComplete ? "complete" : { $ne: "complete" };
+      }
     } else {
       if (filters[key] || key === "page") {
         params[key === "sort" ? "sort[]" : key] = filters[key];

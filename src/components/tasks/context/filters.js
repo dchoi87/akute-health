@@ -7,6 +7,7 @@ const FiltersContext = createContext();
 
 const filters = {
   state: {
+    preset: "incomplete",
     priority: [],
     ownerId: [],
     status: [],
@@ -36,6 +37,9 @@ const filters = {
       }
       case "FILTER_DATES": {
         return { ...state, dueDate: action.payload };
+      }
+      case "FILTER_PRESET": {
+        return { ...state, preset: action.payload };
       }
       case "CHANGE_PAGE": {
         return { ...state, page: action.payload };
