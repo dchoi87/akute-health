@@ -17,29 +17,28 @@ const Presets = ({ dispatch }) => {
   const [selected, setSelected] = useState("today");
 
   const handleFilters = ({ target }) => {
-    switch (target.dataset.id) {
-      case "today": {
-        dispatch({
-          type: "FILTER_DATES",
-          payload: moment().format("YYYY-MM-DD"),
-        });
-        break;
-      }
+    const id = target.dataset.id;
+
+    switch (id) {
+      case "today":
       case "next-5-days": {
         dispatch({
           type: "FILTER_DATES",
-          payload: moment().add(5, "days").format("YYYY-MM-DD"),
+          payload:
+            id === "today"
+              ? moment().format("YYYY-MM-DD")
+              : moment().add(5, "days").format("YYYY-MM-DD"),
         });
         break;
       }
-      case "incomplete": {
-        break;
-      }
+      case "incomplete":
       case "complete": {
+        dispatch({ type: "FILTER_STATUS", payload: id });
         break;
       }
     }
-    setSelected(target.dataset.id);
+
+    setSelected(id);
   };
 
   const handleUpdateFilter = () => {};
