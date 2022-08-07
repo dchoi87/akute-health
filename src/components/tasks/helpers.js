@@ -4,14 +4,12 @@
  * @returns config query
  */
 export const queryBuilder = (filters) => {
-  const params = {
-    query: {},
-    userId: "616620c0df1f010009ea4a94", // need to get this from redux store
-    allPatients: false, // is this always false?
-    page: 0,
-    limit: 10,
-  };
+  const params = { query: {} };
   const queries = ["priority", "ownerId", "status", "tags", "dueDate"];
+
+  // from redux store; remove after
+  params.userId = "616620c0df1f010009ea4a94";
+  params.allPatients = false;
 
   for (let key in filters) {
     if (queries.includes(key)) {
@@ -32,7 +30,7 @@ export const queryBuilder = (filters) => {
         }
       }
     } else {
-      if (filters[key]) {
+      if (filters[key] || key === "page") {
         params[key === "sort" ? "sort[]" : key] = filters[key];
       }
     }

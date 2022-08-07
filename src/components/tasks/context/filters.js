@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useMemo } from "react";
+import moment from "moment";
 
 import { addRemoveFromArray } from "../helpers";
 
@@ -10,7 +11,7 @@ const filters = {
     ownerId: [],
     status: [],
     tags: [],
-    dueDate: "",
+    dueDate: moment().format("YYYY-MM-DD"),
     page: 0,
     limit: 10,
     sort: null,
