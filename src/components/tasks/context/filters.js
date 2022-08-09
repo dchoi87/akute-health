@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer, useMemo } from "react";
-import moment from "moment";
 
 import { addRemoveFromArray } from "../helpers";
 
@@ -7,39 +6,45 @@ const FiltersContext = createContext();
 
 const filters = {
   state: {
-    preset: "incomplete",
-    priority: [],
-    ownerId: [],
-    status: [],
-    tags: [],
-    dueDate: moment().format("YYYY-MM-DD"),
+    preset: { value: "complete", action: "$ne" },
+    priority: { value: [], action: "$in" },
+    ownerId: { value: [], action: null },
+    status: { value: [], action: "$in" },
+    tags: { value: [], action: "$in" },
+    dueDate: { value: "", action: "$lte" },
     page: 0,
     limit: 10,
-    sort: null,
+    sort: { priority: "desc" },
   },
   reducer: function (state, action) {
     switch (action.type) {
       case "FILTER_PRIORITY": {
-        const value = addRemoveFromArray(state.priority, action.payload);
-        return { ...state, priority: value };
+        const value = addRemoveFromArray(state.priority.value, action.payload);
+        return { ...state, priority: { ...state.priority, value } };
       }
       case "FILTER_OWNER": {
-        const value = addRemoveFromArray(state.ownerId, action.payload);
-        return { ...state, ownerId: value };
+        const value = addRemoveFromArray(state.ownerId.value, action.payload);
+        return { ...state, ownerId: { ...state.ownerId, value } };
       }
       case "FILTER_STATUS": {
-        const value = addRemoveFromArray(state.status, action.payload);
-        return { ...state, status: value };
+        const value = addRemoveFromArray(state.status.value, action.payload);
+        return { ...state, status: { ...state.status, value } };
       }
       case "FILTER_TAGS": {
-        const value = addRemoveFromArray(state.tags, action.payload);
-        return { ...state, tags: value };
+        const value = addRemoveFromArray(state.tags.value, action.payload);
+        return { ...state, tags: { ...state.tags, value } };
       }
       case "FILTER_DATES": {
-        return { ...state, dueDate: action.payload };
+        return {
+          ...state,
+          dueDate: { ...state.dueDate, value: action.payload },
+        };
       }
       case "FILTER_PRESET": {
-        return { ...state, preset: action.payload };
+        return {
+          ...state,
+          preset: { ...state.preset, action: action.payload },
+        };
       }
       case "CHANGE_PAGE": {
         return { ...state, page: action.payload };

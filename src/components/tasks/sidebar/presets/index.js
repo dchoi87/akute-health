@@ -18,26 +18,16 @@ const Presets = ({ dispatch }) => {
 
   const handleFilters = ({ target }) => {
     const id = target.dataset.id;
-
-    switch (id) {
-      case "today":
-      case "next-5-days": {
-        dispatch({
-          type: "FILTER_DATES",
-          payload:
-            id === "today"
-              ? moment().format("YYYY-MM-DD")
-              : moment().add(5, "days").format("YYYY-MM-DD"),
-        });
-        break;
-      }
-      case "incomplete":
-      case "complete": {
-        dispatch({ type: "FILTER_PRESET", payload: id });
-        break;
-      }
-    }
-
+    const map = {
+      today: { type: "FILTER_DATES", payload: moment().format("YYYY-MM-DD") },
+      "next-5-days": {
+        type: "FILTER_DATES",
+        payload: moment().add(5, "days").format("YYYY-MM-DD"),
+      },
+      incomplete: { type: "FILTER_PRESET", payload: "$ne" },
+      complete: { type: "FILTER_PRESET", payload: null },
+    };
+    dispatch({ type: map[id].type, payload: map[id].payload });
     setSelected(id);
   };
 
@@ -58,6 +48,7 @@ const Presets = ({ dispatch }) => {
                   dataId={item.id}
                   label={item.label}
                   name="presets"
+                  defaultChecked={item.id === "incomplete"}
                   onChange={handleFilters}
                 >
                   {/* should show for admin only */}

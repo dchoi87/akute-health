@@ -3,46 +3,49 @@
  * @param {obj} filters
  * @returns config query
  */
-export const queryBuilder = (filters) => {
-  const params = { query: {} };
-  const queries = ["priority", "ownerId", "status", "tags", "dueDate"];
+export const queryBuilder = {
+  params: { query: {} },
+  get: function (filters) {
+    // from redux store; remove after
+    this.params.userId = "616620c0df1f010009ea4a94";
+    this.params.allPatients = false;
 
-  // from redux store; remove after
-  params.userId = "616620c0df1f010009ea4a94";
-  params.allPatients = false;
-
-  for (let key in filters) {
-    if (queries.includes(key)) {
-      if (filters[key].length) {
-        switch (key) {
-          case "ownerId": {
-            params.query[key] = filters[key];
-            break;
-          }
-          case "dueDate": {
-            params.query[key] = { $lte: filters[key] };
-            break;
-          }
-          default: {
-            params.query[key] = { $in: filters[key] };
-            break;
-          }
+    for (let key in filters) {
+      if (this.isQuery(key)) {
+        if (key === "preset" && !filters.status.length) {
+          this.params.query.status = this.value(filters[key]);
+          continue;
         }
-      }
-    } else if (key === "preset") {
-      const isComplete = filters[key] === "complete";
 
-      if (!filters.status.length) {
-        params.query.status = isComplete ? "complete" : { $ne: "complete" };
-      }
-    } else {
-      if (filters[key] || key === "page") {
-        params[key === "sort" ? "sort[]" : key] = filters[key];
+        if (filters[key].value.length) {
+          this.params.query[key] = this.value(filters[key]);
+        }
+      } else {
+        if (key === "sort") {
+          this.params["sort[]"] = filters[key];
+          continue;
+        }
+
+        this.params[key] = filters[key];
       }
     }
-  }
 
-  return { params };
+    return { params: this.params };
+  },
+  value: function (filter) {
+    return filter.action ? { [filter.action]: filter.value } : filter.value;
+  },
+  isQuery: function (key) {
+    const queries = [
+      "priority",
+      "ownerId",
+      "status",
+      "tags",
+      "dueDate",
+      "preset",
+    ];
+    return queries.includes(key);
+  },
 };
 
 /**
