@@ -14,20 +14,40 @@ import styles from "./index.module.css";
 
 const Presets = ({ dispatch }) => {
   const { data: presets } = usePresetsData();
-  const [selected, setSelected] = useState("today");
+  const [selected, setSelected] = useState("incomplete");
 
   const handleFilters = ({ target }) => {
     const id = target.dataset.id;
-    const map = {
-      today: { type: "FILTER_DATES", payload: moment().format("YYYY-MM-DD") },
-      "next-5-days": {
-        type: "FILTER_DATES",
-        payload: moment().add(5, "days").format("YYYY-MM-DD"),
-      },
-      incomplete: { type: "FILTER_PRESET", payload: "$ne" },
-      complete: { type: "FILTER_PRESET", payload: null },
-    };
-    dispatch({ type: map[id].type, payload: map[id].payload });
+
+    switch (id) {
+      case "today": {
+        dispatch({
+          type: "FILTER_DATES",
+          payload: moment().format("YYYY-MM-DD"),
+        });
+        dispatch({ type: "FILTER_PRESET", payload: "$ne" });
+        break;
+      }
+      case "next-5-days": {
+        dispatch({
+          type: "FILTER_DATES",
+          payload: moment().add(5, "days").format("YYYY-MM-DD"),
+        });
+        dispatch({ type: "FILTER_PRESET", payload: "$ne" });
+        break;
+      }
+      case "incomplete": {
+        dispatch({ type: "FILTER_DATES", payload: "" });
+        dispatch({ type: "FILTER_PRESET", payload: "$ne" });
+        break;
+      }
+      case "complete": {
+        dispatch({ type: "FILTER_DATES", payload: "" });
+        dispatch({ type: "FILTER_PRESET", payload: null });
+        break;
+      }
+    }
+
     setSelected(id);
   };
 

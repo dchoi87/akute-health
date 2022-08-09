@@ -4,33 +4,36 @@
  * @returns config query
  */
 export const queryBuilder = {
-  params: { query: {} },
   get: function (filters) {
+    const params = { query: {} };
+
     // from redux store; remove after
-    this.params.userId = "616620c0df1f010009ea4a94";
-    this.params.allPatients = false;
+    params.userId = "616620c0df1f010009ea4a94";
+    params.allPatients = false;
 
     for (let key in filters) {
       if (this.isQuery(key)) {
+        // preset
         if (key === "preset" && !filters.status.length) {
-          this.params.query.status = this.value(filters[key]);
+          params.query.status = this.value(filters[key]);
           continue;
         }
-
+        // priority, ownerId, status, tags, dueDate
         if (filters[key].value.length) {
-          this.params.query[key] = this.value(filters[key]);
+          params.query[key] = this.value(filters[key]);
         }
       } else {
+        // sort
         if (key === "sort") {
-          this.params["sort[]"] = filters[key];
+          params["sort[]"] = filters[key];
           continue;
         }
-
-        this.params[key] = filters[key];
+        // page, limit
+        params[key] = filters[key];
       }
     }
 
-    return { params: this.params };
+    return { params: params };
   },
   value: function (filter) {
     return filter.action ? { [filter.action]: filter.value } : filter.value;
