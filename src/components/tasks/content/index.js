@@ -14,9 +14,6 @@ import { useTasksData } from "../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-// for pre - remove later
-import { queryBuilder } from "../helpers";
-
 const Content = ({ sidebar, setSidebar }) => {
   const [filters, dispatch] = useFiltersContext();
   const [{ selected }] = useTasksContext();
@@ -32,11 +29,6 @@ const Content = ({ sidebar, setSidebar }) => {
       })}
       ref={taskRef}
     >
-      {/* dev only - remove later */}
-      <pre className={styles.dev}>
-        {filters && JSON.stringify(queryBuilder.get(filters).params, null, 2)}
-      </pre>
-      {/* end dev only */}
       <div className={styles.content}>
         <Header
           view={view}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import SideBar from "./sidebar";
 import Content from "./content";
+import QueryHelper from "../query-helper";
 
 import { TasksProvider } from "./context/tasks";
 
@@ -16,6 +17,7 @@ const Tasks = () => {
       <TasksProvider>
         <Content sidebar={sidebar} setSidebar={setSidebar} />
       </TasksProvider>
+      <QueryHelper />
     </div>
   );
 };
