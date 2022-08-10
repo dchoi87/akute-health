@@ -23,12 +23,7 @@ export const queryBuilder = {
           params.query[key] = this.value(filters[key]);
         }
       } else {
-        // sort
-        if (key === "sort") {
-          params["sort[]"] = filters[key];
-          continue;
-        }
-        // page, limit
+        // sort, page, limit
         params[key] = filters[key];
       }
     }

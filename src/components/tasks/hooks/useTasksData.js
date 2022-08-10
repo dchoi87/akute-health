@@ -53,7 +53,7 @@ const fetchTasks = async (data, filters) => {
   const url = "http://localhost:3001/tasks";
   const config = queryBuilder.get(filters);
   const response = await axios.get(url, config);
-  console.log("config", config.params);
+  // console.log("config", config.params);
   return {
     data: response.data.map((el, i) => {
       return {

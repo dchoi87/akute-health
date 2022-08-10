@@ -14,7 +14,7 @@ const filters = {
     dueDate: { value: "", action: "$lte" },
     page: 0,
     limit: 10,
-    sort: { priority: "desc" },
+    sort: [{ priority: "desc" }],
   },
   reducer: function (state, action) {
     switch (action.type) {
@@ -53,7 +53,7 @@ const filters = {
         return { ...state, limit: action.payload };
       }
       case "CHANGE_SORT": {
-        return { ...state, sort: action.payload };
+        return { ...state, sort: [action.payload] };
       }
       default: {
         return state;
