@@ -24,7 +24,8 @@ const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
     dispatch({ type: "CHANGE_SORT", payload: payload });
   };
 
-  const handleSortPriority = ({ value }) => {
+  const handleSortType = ({ value }) => {
+    // object assign to switch key order
     const payload = Object.assign({ [value]: sort[value] || "desc" }, sort);
 
     setSort(payload);
@@ -55,7 +56,7 @@ const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
               <Select
                 options={sortOptions}
                 placeholder="Sort By"
-                onChange={handleSortPriority}
+                onChange={handleSortType}
               />
               <Button type="sort" onClick={handleSortOrder}>
                 {sort[type] === "desc" ? <SortDown /> : <SortUp />}
