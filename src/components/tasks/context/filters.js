@@ -53,7 +53,10 @@ const filters = {
         return { ...state, limit: action.payload };
       }
       case "CHANGE_SORT": {
-        return { ...state, sort: [action.payload] };
+        const payload = Object.keys(action.payload).map((key) => {
+          return { [key]: action.payload[key] };
+        });
+        return { ...state, sort: payload };
       }
       default: {
         return state;

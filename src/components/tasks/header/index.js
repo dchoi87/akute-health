@@ -9,7 +9,7 @@ import { viewOptions, sortOptions } from "../constants";
 import styles from "./index.module.css";
 
 const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
-  const [sort, setSort] = useState("desc");
+  const [sort, setSort] = useState({ priority: "desc" });
   const [type, setType] = useState("priority");
 
   const handleView = (value) => {
@@ -17,14 +17,19 @@ const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
   };
 
   const handleSortOrder = () => {
-    const value = sort === "desc" ? "asc" : "desc";
-    setSort(value);
-    dispatch({ type: "CHANGE_SORT", payload: { [type]: value } });
+    const value = sort[type] === "asc" ? "desc" : "asc";
+    const payload = { ...sort, [type]: value };
+
+    setSort(payload);
+    dispatch({ type: "CHANGE_SORT", payload: payload });
   };
 
   const handleSortPriority = ({ value }) => {
+    const payload = Object.assign({ [value]: sort[value] || "desc" }, sort);
+
+    setSort(payload);
     setType(value);
-    dispatch({ type: "CHANGE_SORT", payload: { [value]: sort } });
+    dispatch({ type: "CHANGE_SORT", payload: payload });
   };
 
   const handleFilterMenu = () => {
@@ -53,7 +58,7 @@ const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
                 onChange={handleSortPriority}
               />
               <Button type="sort" onClick={handleSortOrder}>
-                {sort === "desc" ? <SortDown /> : <SortUp />}
+                {sort[type] === "desc" ? <SortDown /> : <SortUp />}
               </Button>
             </div>
           )}
