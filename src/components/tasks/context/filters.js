@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useMemo } from "react";
+import moment from "moment";
 
 import { addRemoveFromArray } from "../helpers";
 
@@ -6,12 +7,11 @@ const FiltersContext = createContext();
 
 const filters = {
   state: {
-    preset: { value: "complete", action: "$ne" },
-    priority: { value: [], action: "$in" },
-    ownerId: { value: [], action: null },
-    status: { value: [], action: "$in" },
-    tags: { value: [], action: "$in" },
-    dueDate: { value: "", action: "$lte" },
+    priority: [],
+    ownerId: [],
+    status: ["not-started", "in-progress", ""],
+    tags: [],
+    dueDate: moment().format("YYYY-MM-DD"),
     page: 0,
     limit: 10,
     sort: [{ priority: "desc" }],
@@ -19,32 +19,27 @@ const filters = {
   reducer: function (state, action) {
     switch (action.type) {
       case "FILTER_PRIORITY": {
-        const value = addRemoveFromArray(state.priority.value, action.payload);
-        return { ...state, priority: { ...state.priority, value } };
+        const value = addRemoveFromArray(state.priority, action.payload);
+        return { ...state, priority: value };
       }
       case "FILTER_OWNER": {
-        const value = addRemoveFromArray(state.ownerId.value, action.payload);
-        return { ...state, ownerId: { ...state.ownerId, value } };
+        const value = addRemoveFromArray(state.ownerId, action.payload);
+        return { ...state, ownerId: value };
       }
       case "FILTER_STATUS": {
-        const value = addRemoveFromArray(state.status.value, action.payload);
-        return { ...state, status: { ...state.status, value } };
+        // note: might need to refactor this depending on
+        // how we handle preset + status logic
+        let value = action.source
+          ? action.payload
+          : addRemoveFromArray(state.status, action.payload);
+        return { ...state, status: value };
       }
       case "FILTER_TAGS": {
-        const value = addRemoveFromArray(state.tags.value, action.payload);
-        return { ...state, tags: { ...state.tags, value } };
+        const value = addRemoveFromArray(state.tags, action.payload);
+        return { ...state, tags: value };
       }
       case "FILTER_DATES": {
-        return {
-          ...state,
-          dueDate: { ...state.dueDate, value: action.payload },
-        };
-      }
-      case "FILTER_PRESET": {
-        return {
-          ...state,
-          preset: { ...state.preset, action: action.payload },
-        };
+        return { ...state, dueDate: action.payload };
       }
       case "CHANGE_PAGE": {
         return { ...state, page: action.payload };

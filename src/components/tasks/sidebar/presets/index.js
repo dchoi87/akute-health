@@ -25,7 +25,6 @@ const Presets = ({ dispatch }) => {
           type: "FILTER_DATES",
           payload: moment().format("YYYY-MM-DD"),
         });
-        dispatch({ type: "FILTER_PRESET", payload: "$ne" });
         break;
       }
       case "next-5-days": {
@@ -33,17 +32,24 @@ const Presets = ({ dispatch }) => {
           type: "FILTER_DATES",
           payload: moment().add(5, "days").format("YYYY-MM-DD"),
         });
-        dispatch({ type: "FILTER_PRESET", payload: "$ne" });
         break;
       }
       case "incomplete": {
         dispatch({ type: "FILTER_DATES", payload: "" });
-        dispatch({ type: "FILTER_PRESET", payload: "$ne" });
+        dispatch({
+          type: "FILTER_STATUS",
+          payload: ["not-started", "in-progress", ""],
+          source: "preset",
+        });
         break;
       }
       case "complete": {
         dispatch({ type: "FILTER_DATES", payload: "" });
-        dispatch({ type: "FILTER_PRESET", payload: null });
+        dispatch({
+          type: "FILTER_STATUS",
+          payload: ["complete"],
+          source: "preset",
+        });
         break;
       }
     }
@@ -68,7 +74,7 @@ const Presets = ({ dispatch }) => {
                   dataId={item.id}
                   label={item.label}
                   name="presets"
-                  defaultChecked={item.id === "incomplete"}
+                  defaultChecked={item.id === "today"}
                   onChange={handleFilters}
                 >
                   {/* should show for admin only */}

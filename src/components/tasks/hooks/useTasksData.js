@@ -51,7 +51,7 @@ export const useTagsData = () => {
 // tasks
 const fetchTasks = async (data, filters) => {
   const url = "http://localhost:3001/tasks";
-  const config = queryBuilder.get(filters);
+  const config = queryBuilder(filters);
   const response = await axios.get(url, config);
   // console.log("config", config.params);
   return {

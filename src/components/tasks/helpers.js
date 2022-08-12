@@ -3,47 +3,25 @@
  * @param {obj} filters
  * @returns config query
  */
-export const queryBuilder = {
-  get: function (filters) {
-    const params = { query: {} };
+export const queryBuilder = (filters) => {
+  const params = { query: {} };
+  const queries = ["priority", "ownerId", "status", "tags", "dueDate"];
 
-    // from redux store; remove after
-    params.userId = "616620c0df1f010009ea4a94";
-    params.allPatients = false;
+  // from redux store; remove after
+  params.userId = "616620c0df1f010009ea4a94";
+  params.allPatients = false;
 
-    for (let key in filters) {
-      if (this.isQuery(key)) {
-        // preset
-        if (key === "preset" && !filters.status.length) {
-          params.query.status = this.value(filters[key]);
-          continue;
-        }
-        // priority, ownerId, status, tags, dueDate
-        if (filters[key].value.length) {
-          params.query[key] = this.value(filters[key]);
-        }
-      } else {
-        // sort, page, limit
-        params[key] = filters[key];
+  for (let key in filters) {
+    if (queries.includes(key)) {
+      if (filters[key].length) {
+        params.query[key] = filters[key];
       }
+      continue;
     }
+    params[key] = filters[key];
+  }
 
-    return { params: params };
-  },
-  value: function (filter) {
-    return filter.action ? { [filter.action]: filter.value } : filter.value;
-  },
-  isQuery: function (key) {
-    const queries = [
-      "priority",
-      "ownerId",
-      "status",
-      "tags",
-      "dueDate",
-      "preset",
-    ];
-    return queries.includes(key);
-  },
+  return { params };
 };
 
 /**

@@ -49,7 +49,7 @@ const syntaxHighlight = (json) => {
 
 const QueryHelper = () => {
   const [filters] = useFiltersContext();
-  const json = syntaxHighlight(queryBuilder.get(filters).params);
+  const json = syntaxHighlight(queryBuilder(filters).params);
 
   return (
     <>
