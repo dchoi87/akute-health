@@ -8,7 +8,7 @@ import { priority } from "../../constants";
 
 import styles from "./index.module.css";
 
-const Priority = ({ dispatch }) => {
+const Priority = ({ filters, dispatch }) => {
   const handleFilter = ({ target }) => {
     dispatch({ type: "FILTER_PRIORITY", payload: target.dataset.id });
   };
@@ -25,6 +25,7 @@ const Priority = ({ dispatch }) => {
               label={item.label}
               section="priority"
               onChange={handleFilter}
+              checked={filters.priority.includes(item.id)}
             >
               <CircleFill />
             </Checkbox>

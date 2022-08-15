@@ -18,6 +18,11 @@ const Presets = ({ dispatch }) => {
 
   const handleFilters = ({ target }) => {
     const id = target.dataset.id;
+    const preset = presets.find((presets) => presets.value === id);
+
+    if (preset) {
+      dispatch({ type: "FILTER_PRESETS", payload: preset.selections });
+    }
 
     switch (id) {
       case "today": {
@@ -35,7 +40,6 @@ const Presets = ({ dispatch }) => {
         break;
       }
       case "incomplete": {
-        dispatch({ type: "FILTER_DATES", payload: "" });
         dispatch({
           type: "FILTER_STATUS",
           payload: ["not-started", "in-progress", ""],
@@ -44,7 +48,6 @@ const Presets = ({ dispatch }) => {
         break;
       }
       case "complete": {
-        dispatch({ type: "FILTER_DATES", payload: "" });
         dispatch({
           type: "FILTER_STATUS",
           payload: ["complete"],

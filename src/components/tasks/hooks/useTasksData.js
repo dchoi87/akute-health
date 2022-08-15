@@ -88,7 +88,7 @@ export const useTasksData = (filters) => {
 
 // saved filters
 const fetchPresets = async () => {
-  const url = "http://localhost:3001/filters";
+  const url = "http://localhost:3001/presets";
   const response = await axios.get(url);
   return response.data;
 };

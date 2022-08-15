@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 
 import { status } from "../../constants";
 
-const Status = ({ dispatch }) => {
+const Status = ({ filters, dispatch }) => {
   const handleFilter = ({ target }) => {
     dispatch({ type: "FILTER_STATUS", payload: target.dataset.id });
   };
@@ -23,6 +23,7 @@ const Status = ({ dispatch }) => {
               dataId={item.id}
               label={item.label}
               onChange={handleFilter}
+              checked={filters.status.includes(item.id)}
             />
           );
         })}

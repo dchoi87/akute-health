@@ -18,6 +18,16 @@ const filters = {
   },
   reducer: function (state, action) {
     switch (action.type) {
+      case "FILTER_PRESETS": {
+        return {
+          ...state,
+          priority: [],
+          ownerId: [],
+          status: [],
+          tags: [],
+          ...action.payload,
+        };
+      }
       case "FILTER_PRIORITY": {
         const value = addRemoveFromArray(state.priority, action.payload);
         return { ...state, priority: value };
@@ -27,12 +37,16 @@ const filters = {
         return { ...state, ownerId: value };
       }
       case "FILTER_STATUS": {
-        // note: might need to refactor this depending on
-        // how we handle preset + status logic
-        let value = action.source
-          ? action.payload
-          : addRemoveFromArray(state.status, action.payload);
-        return { ...state, status: value };
+        if (action.source) {
+          return {
+            ...state,
+            dueDate: "",
+            status: action.payload,
+          };
+        } else {
+          const value = addRemoveFromArray(state.status, action.payload);
+          return { ...state, status: value };
+        }
       }
       case "FILTER_TAGS": {
         const value = addRemoveFromArray(state.tags, action.payload);

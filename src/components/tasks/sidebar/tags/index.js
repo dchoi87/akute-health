@@ -11,7 +11,7 @@ import { useTagsData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Tags = ({ dispatch }) => {
+const Tags = ({ filters, dispatch }) => {
   const { data: tags } = useTagsData();
   const [showGroup, setGroup] = useState(false);
 
@@ -61,6 +61,7 @@ const Tags = ({ dispatch }) => {
                   label={item}
                   onChange={handleFilter}
                   className={styles.tag}
+                  checked={filters.tags.includes(item)}
                 />
               );
             })}

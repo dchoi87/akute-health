@@ -10,7 +10,7 @@ import { useOwnersData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Owner = ({ dispatch }) => {
+const Owner = ({ filters, dispatch }) => {
   const { data: owners } = useOwnersData();
   const [showGroup, setGroup] = useState(false);
 
@@ -60,6 +60,7 @@ const Owner = ({ dispatch }) => {
                   dataId={owner}
                   label={owners[owner]}
                   onChange={handleFilter}
+                  checked={filters.ownerId.includes(owner)}
                 />
               );
             })}
