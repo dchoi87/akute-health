@@ -1,3 +1,4 @@
+import moment from "moment";
 import { ViewList, ViewStacked, Table } from "react-bootstrap-icons";
 
 export const priority = [
@@ -32,9 +33,19 @@ export const sortOptions = [
   { value: "dueDate", label: "Due Date" },
 ];
 
-export const overview = [
+export const presetRadios = [
   { id: "today", label: "today" },
   { id: "next-5-days", label: "next 5 days" },
   { id: "incomplete", label: "incomplete" },
   { id: "complete", label: "complete" },
 ];
+
+export const presetPayload = {
+  today: { payload: moment().format("YYYY-MM-DD"), source: "dueDate" },
+  "next-5-days": {
+    payload: moment().add(5, "days").format("YYYY-MM-DD"),
+    source: "dueDate",
+  },
+  incomplete: { payload: ["not-started", "in-progress", ""], source: "status" },
+  complete: { payload: ["complete"], source: "status" },
+};

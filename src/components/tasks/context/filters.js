@@ -19,14 +19,23 @@ const filters = {
   reducer: function (state, action) {
     switch (action.type) {
       case "FILTER_PRESETS": {
-        return {
+        const reset = {
           ...state,
           priority: [],
           ownerId: [],
-          status: [],
+          status:
+            action.source === "dueDate"
+              ? ["not-started", "in-progress", ""]
+              : [],
           tags: [],
-          ...action.payload,
+          dueDate: "",
         };
+
+        if (action.source) {
+          return { ...reset, [action.source]: action.payload };
+        }
+
+        return { ...reset, ...action.payload };
       }
       case "FILTER_PRIORITY": {
         const value = addRemoveFromArray(state.priority, action.payload);
@@ -37,23 +46,12 @@ const filters = {
         return { ...state, ownerId: value };
       }
       case "FILTER_STATUS": {
-        if (action.source) {
-          return {
-            ...state,
-            dueDate: "",
-            status: action.payload,
-          };
-        } else {
-          const value = addRemoveFromArray(state.status, action.payload);
-          return { ...state, status: value };
-        }
+        const value = addRemoveFromArray(state.status, action.payload);
+        return { ...state, status: value };
       }
       case "FILTER_TAGS": {
         const value = addRemoveFromArray(state.tags, action.payload);
         return { ...state, tags: value };
-      }
-      case "FILTER_DATES": {
-        return { ...state, dueDate: action.payload };
       }
       case "CHANGE_PAGE": {
         return { ...state, page: action.payload };

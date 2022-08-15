@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import moment from "moment";
 import { ArrowClockwise, CloudArrowUp } from "react-bootstrap-icons";
 
 import Section from "../section";
@@ -8,7 +7,7 @@ import Button from "../../common/button";
 import Input from "../../common/input";
 
 import { usePresetsData } from "../../hooks/useTasksData";
-import { overview } from "../../constants";
+import { presetRadios, presetPayload } from "../../constants";
 
 import styles from "./index.module.css";
 
@@ -18,43 +17,16 @@ const Presets = ({ dispatch }) => {
 
   const handleFilters = ({ target }) => {
     const id = target.dataset.id;
-    const preset = presets.find((presets) => presets.value === id);
+    const custom = presets.find((presets) => presets.value === id);
 
-    if (preset) {
-      dispatch({ type: "FILTER_PRESETS", payload: preset.selections });
-    }
-
-    switch (id) {
-      case "today": {
-        dispatch({
-          type: "FILTER_DATES",
-          payload: moment().format("YYYY-MM-DD"),
-        });
-        break;
-      }
-      case "next-5-days": {
-        dispatch({
-          type: "FILTER_DATES",
-          payload: moment().add(5, "days").format("YYYY-MM-DD"),
-        });
-        break;
-      }
-      case "incomplete": {
-        dispatch({
-          type: "FILTER_STATUS",
-          payload: ["not-started", "in-progress", ""],
-          source: "preset",
-        });
-        break;
-      }
-      case "complete": {
-        dispatch({
-          type: "FILTER_STATUS",
-          payload: ["complete"],
-          source: "preset",
-        });
-        break;
-      }
+    if (custom) {
+      dispatch({ type: "FILTER_PRESETS", payload: custom.selections });
+    } else {
+      dispatch({
+        type: "FILTER_PRESETS",
+        payload: presetPayload[id].payload,
+        source: presetPayload[id].source,
+      });
     }
 
     setSelected(id);
@@ -68,7 +40,7 @@ const Presets = ({ dispatch }) => {
         <div className={styles.section}>
           <div className={styles.header}>Clinic Wide Filters</div>
           <div className={styles.radios}>
-            {overview.map((item, i) => {
+            {presetRadios.map((item, i) => {
               return (
                 <Radio
                   key={i}
