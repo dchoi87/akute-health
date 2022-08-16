@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 
 import { queryBuilder } from "../helpers";
 
@@ -13,13 +13,6 @@ const fetchPatients = async () => {
   }, {});
 };
 
-export const usePatientsData = () => {
-  return useQuery("patients", fetchPatients, {
-    refetchOnWindowFocus: false,
-  });
-};
-
-// owners
 const fetchOwners = async () => {
   const url = "http://localhost:3001/.netlify/functions/user/getTeam";
   const response = await axios.get(url);
@@ -29,26 +22,24 @@ const fetchOwners = async () => {
   }, {});
 };
 
-export const useOwnersData = () => {
-  return useQuery("owners", fetchOwners, {
-    refetchOnWindowFocus: false,
-  });
-};
-
-// tags
 const fetchTags = async () => {
   const url = "http://localhost:3001/tag/all";
   const response = await axios.get(url);
   return response.data;
 };
 
-export const useTagsData = () => {
-  return useQuery("tags", fetchTags, {
-    refetchOnWindowFocus: false,
-  });
+const fetchPresets = async () => {
+  const url = "http://localhost:4000/presets";
+  const response = await axios.get(url);
+  return response.data;
 };
 
-// tasks
+const addPresets = (data) => {
+  const url = "http://localhost:4000/presets";
+  console.log("data", data);
+  return axios.post(url, data);
+};
+
 const fetchTasks = async (data, filters) => {
   const url = "http://localhost:3001/tasks";
   const config = queryBuilder(filters);
@@ -74,6 +65,24 @@ const fetchTasks = async (data, filters) => {
   };
 };
 
+export const usePatientsData = () => {
+  return useQuery("patients", fetchPatients, {
+    refetchOnWindowFocus: false,
+  });
+};
+
+export const useOwnersData = () => {
+  return useQuery("owners", fetchOwners, {
+    refetchOnWindowFocus: false,
+  });
+};
+
+export const useTagsData = () => {
+  return useQuery("tags", fetchTags, {
+    refetchOnWindowFocus: false,
+  });
+};
+
 export const useTasksData = (filters) => {
   const { data: patients } = usePatientsData();
   const { data: owners } = useOwnersData();
@@ -86,15 +95,21 @@ export const useTasksData = (filters) => {
   });
 };
 
-// saved filters
-const fetchPresets = async () => {
-  const url = "http://localhost:3001/presets";
-  const response = await axios.get(url);
-  return response.data;
-};
-
 export const usePresetsData = () => {
   return useQuery("presets", fetchPresets, {
     refetchOnWindowFocus: false,
+  });
+};
+
+export const useAddPresetsData = () => {
+  const queryClient = useQueryClient();
+  return useMutation(addPresets, {
+    onSuccess: (data) => {
+      // we're handling mutation response here to automatically
+      // show POST response; that way we save a network call
+      queryClient.setQueryData("presets", (oldQueryData) => {
+        return [...oldQueryData, data.data];
+      });
+    },
   });
 };

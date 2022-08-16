@@ -1,0 +1,115 @@
+{
+  "presets": [
+    {
+      "id": "filter1",
+      "label": "saved filter 1",
+      "selections": {
+        "priority": [
+          "p1",
+          "p2"
+        ],
+        "ownerId": [
+          "5d50e5cd3560d100085664e7",
+          "5e35ef3e7c213e47b9d2c6c7"
+        ],
+        "status": [
+          "not-started"
+        ],
+        "tags": [
+          "doc review",
+          "health maintenance",
+          "assessments"
+        ]
+      }
+    },
+    {
+      "id": "filter2",
+      "label": "my custom filter",
+      "selections": {
+        "priority": [
+          ""
+        ],
+        "ownerId": [
+          "616620c0df1f010009ea4a94",
+          "605a7556adb81500075b0de8"
+        ],
+        "status": [
+          "not-started",
+          ""
+        ],
+        "tags": [
+          "test"
+        ]
+      }
+    },
+    {
+      "id": "filter3",
+      "label": "some filter name",
+      "selections": {
+        "priority": [
+          "p3",
+          "p2"
+        ],
+        "status": [
+          "in-progress"
+        ]
+      }
+    },
+    {
+      "id": "filter-Test",
+      "label": "Test",
+      "selections": {
+        "priority": [
+          "p1",
+          "p2"
+        ],
+        "ownerId": [
+          "5d50e5cd3560d100085664e7",
+          "5e35ef3e7c213e47b9d2c6c7",
+          "5e4e6d9e96c4740007c9a4ea",
+          "5f14cdb3f5046e207747d579"
+        ],
+        "status": [
+          "in-progress",
+          "not-started"
+        ],
+        "tags": [
+          "assessments",
+          "doc review",
+          "health maintenance"
+        ]
+      }
+    },
+    {
+      "id": "filter-Ram's-House",
+      "label": "Ram's House",
+      "selections": {
+        "priority": [
+          "",
+          "p1",
+          "p2",
+          "p3"
+        ],
+        "ownerId": [
+          "5d50e5cd3560d100085664e7",
+          "5e35ef3e7c213e47b9d2c6c7",
+          "5e4e6d9e96c4740007c9a4ea",
+          "5f14cdb3f5046e207747d579",
+          "605a7556adb81500075b0de8",
+          "616620c0df1f010009ea4a94"
+        ],
+        "status": [
+          "",
+          "complete",
+          "in-progress",
+          "not-started"
+        ],
+        "tags": [
+          "assessments",
+          "doc review",
+          "health maintenance"
+        ]
+      }
+    }
+  ]
+}

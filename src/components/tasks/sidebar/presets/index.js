@@ -7,14 +7,16 @@ import Radio from "../../common/radio";
 import Button from "../../common/button";
 import Input from "../../common/input";
 
-import { usePresetsData } from "../../hooks/useTasksData";
+import { usePresetsData, useAddPresetsData } from "../../hooks/useTasksData";
 import { clinicWideFilters, presetPayload } from "../../constants";
 
 import styles from "./index.module.css";
 
 const Presets = ({ filters, dispatch }) => {
   const { data: presets } = usePresetsData();
+  const { mutate } = useAddPresetsData();
   const [selected, setSelected] = useState("today");
+  const [inputValue, setInputValue] = useState("");
   // need logic for this
   const isAdmin = false;
 
@@ -63,6 +65,25 @@ const Presets = ({ filters, dispatch }) => {
     }
 
     setSelected(id);
+  };
+
+  const onSubmit = (e) => {
+    const queries = ["priority", "ownerId", "status", "tags"];
+    // grab selections
+    const selections = queries.reduce((acc, curr) => {
+      if (filters[curr].length) {
+        acc[curr] = filters[curr];
+      }
+      return acc;
+    }, {});
+    // pass to query hook and kick off mutation
+    mutate({
+      id: `filter-${inputValue.replace(" ", "-")}`,
+      label: inputValue,
+      selections: selections,
+    });
+    // prevent form submission
+    e.preventDefault();
   };
 
   const handleUpdateFilter = () => {};
@@ -132,12 +153,17 @@ const Presets = ({ filters, dispatch }) => {
         </div>
         <div className={styles.section}>
           <div className={styles.header}>Create a New Filter</div>
-          <div className={styles.input}>
-            <Input type="text" id="create-filter" placeholder="Filter Name" />
+          <form className={styles.input} onSubmit={onSubmit}>
+            <Input
+              type="text"
+              id="create-filter"
+              placeholder="Filter Name"
+              onChange={({ target }) => setInputValue(target.value)}
+            />
             <Button type="save" id="filters-save">
               <CloudArrowUp />
             </Button>
-          </div>
+          </form>
         </div>
       </div>
     </Section>
