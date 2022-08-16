@@ -217,6 +217,7 @@
 }
 .update:disabled {
   color: #ccc;
+  cursor: default;
 }
 .update svg {
   display: block;

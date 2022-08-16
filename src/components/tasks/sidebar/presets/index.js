@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ArrowClockwise, CloudArrowUp } from "react-bootstrap-icons";
+import isEqual from "react-fast-compare";
 
 import Section from "../section";
 import Radio from "../../common/radio";
@@ -11,13 +12,39 @@ import { presetRadios, presetPayload } from "../../constants";
 
 import styles from "./index.module.css";
 
-const Presets = ({ dispatch }) => {
+const Presets = ({ filters, dispatch }) => {
   const { data: presets } = usePresetsData();
-  const [selected, setSelected] = useState("incomplete");
+  const [selected, setSelected] = useState("today");
+  // need logic for this
+  const isAdmin = false;
+
+  const getCustomSelections = (arr, id) => {
+    return arr.find((el) => el.id === id);
+  };
+
+  const compare = {
+    clinic: function (id) {
+      // logic
+      return true;
+    },
+    custom: function (id) {
+      const state = {};
+      const selections = getCustomSelections(presets, id).selections;
+
+      for (let key in selections) {
+        // sort selections for comparison
+        selections[key].sort();
+        // set and sort comparison object
+        state[key] = filters[key].sort();
+      }
+
+      return isEqual(selections, state);
+    },
+  };
 
   const handleFilters = ({ target }) => {
     const id = target.dataset.id;
-    const custom = presets.find((presets) => presets.value === id);
+    const custom = getCustomSelections(presets, id);
 
     if (custom) {
       dispatch({ type: "FILTER_PRESETS", payload: custom.selections });
@@ -53,11 +80,11 @@ const Presets = ({ dispatch }) => {
                   onChange={handleFilters}
                 >
                   {/* should show for admin only */}
-                  {selected === item.id && (
+                  {isAdmin && selected === item.id && (
                     <Button
                       type="update"
                       onClick={handleUpdateFilter}
-                      disabled={true}
+                      disabled={compare.clinic(item.id)}
                     >
                       <ArrowClockwise />
                     </Button>
@@ -76,18 +103,17 @@ const Presets = ({ dispatch }) => {
                   <Radio
                     key={i}
                     idx={i}
-                    id={`presets-${item.value}`}
-                    dataId={item.value}
+                    id={`presets-${item.id}`}
+                    dataId={item.id}
                     label={item.label}
                     name="presets"
                     onChange={handleFilters}
                   >
-                    {/* should show when filter has been updated */}
-                    {selected === item.value && (
+                    {selected === item.id && (
                       <Button
                         type="update"
                         onClick={handleUpdateFilter}
-                        disabled={true}
+                        disabled={compare.custom(item.id)}
                       >
                         <ArrowClockwise />
                       </Button>

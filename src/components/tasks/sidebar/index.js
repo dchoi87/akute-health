@@ -20,7 +20,7 @@ const SideBar = ({ sidebar }) => {
         [styles.open]: sidebar,
       })}
     >
-      <Presets dispatch={dispatch} />
+      <Presets filters={filters} dispatch={dispatch} />
       <Priority filters={filters} dispatch={dispatch} />
       <Owner filters={filters} dispatch={dispatch} />
       <Status filters={filters} dispatch={dispatch} />
