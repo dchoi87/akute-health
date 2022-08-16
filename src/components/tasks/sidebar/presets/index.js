@@ -8,7 +8,7 @@ import Button from "../../common/button";
 import Input from "../../common/input";
 
 import { usePresetsData } from "../../hooks/useTasksData";
-import { presetRadios, presetPayload } from "../../constants";
+import { clinicWideFilters, presetPayload } from "../../constants";
 
 import styles from "./index.module.css";
 
@@ -73,7 +73,7 @@ const Presets = ({ filters, dispatch }) => {
         <div className={styles.section}>
           <div className={styles.header}>Clinic Wide Filters</div>
           <div className={styles.radios}>
-            {presetRadios.map((item, i) => {
+            {clinicWideFilters.map((item, i) => {
               return (
                 <Radio
                   key={i}

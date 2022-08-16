@@ -33,7 +33,7 @@ export const sortOptions = [
   { value: "dueDate", label: "Due Date" },
 ];
 
-export const presetRadios = [
+export const clinicWideFilters = [
   { id: "today", label: "today" },
   { id: "next-5-days", label: "next 5 days" },
   { id: "incomplete", label: "incomplete" },
