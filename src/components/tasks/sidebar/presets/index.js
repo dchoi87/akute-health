@@ -30,12 +30,18 @@ const Presets = ({ filters, dispatch }) => {
     custom: function (id) {
       const state = {};
       const selections = getCustomSelections(presets, id).selections;
+      const queries = ["priority", "ownerId", "status", "tags"];
 
+      // sort selections for comparison
       for (let key in selections) {
-        // sort selections for comparison
         selections[key].sort();
-        // set and sort comparison object
-        state[key] = filters[key].sort();
+      }
+
+      // set and sort comparison object
+      for (let key of queries) {
+        if (filters[key].length) {
+          state[key] = filters[key].sort();
+        }
       }
 
       return isEqual(selections, state);
