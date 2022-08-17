@@ -88,6 +88,10 @@ const Presets = ({ filters, dispatch }) => {
       label: inputValue,
       selections: selections,
     });
+    // select radio button
+    setSelected({ id: `filter-${presets.length + 1}`, value: inputValue });
+    // reset form
+    e.target.reset();
     // prevent form submission
     e.preventDefault();
   };
@@ -124,7 +128,7 @@ const Presets = ({ filters, dispatch }) => {
                   dataId={item.id}
                   label={item.label}
                   name="presets"
-                  defaultChecked={item.id === "today"}
+                  checked={item.id === selected.id}
                   onChange={handleFilters}
                 >
                   {/* should show for admin only */}
@@ -155,6 +159,7 @@ const Presets = ({ filters, dispatch }) => {
                     dataId={item.id}
                     label={item.label}
                     name="presets"
+                    checked={item.id === selected.id}
                     onChange={handleFilters}
                   >
                     {selected.id === item.id && (
@@ -181,7 +186,7 @@ const Presets = ({ filters, dispatch }) => {
               placeholder="Filter Name"
               onChange={({ target }) => setInputValue(target.value)}
             />
-            <Button type="save" id="filters-save">
+            <Button type="save" id="filters-save" disabled={!inputValue}>
               <CloudArrowUp />
             </Button>
           </form>

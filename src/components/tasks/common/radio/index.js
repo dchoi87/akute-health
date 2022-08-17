@@ -2,15 +2,7 @@ import React from "react";
 
 import styles from "./index.module.css";
 
-const Radio = ({
-  children,
-  label,
-  id,
-  name,
-  dataId,
-  onChange,
-  defaultChecked,
-}) => {
+const Radio = ({ children, label, id, name, dataId, onChange, checked }) => {
   return (
     <div className={styles.container}>
       <input
@@ -18,7 +10,7 @@ const Radio = ({
         id={id}
         name={name}
         value={label}
-        defaultChecked={defaultChecked}
+        checked={checked}
         data-id={dataId}
         onChange={onChange}
       />

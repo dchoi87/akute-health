@@ -13,6 +13,7 @@ const Input = ({ type, id, placeholder, onChange }) => {
         className={styles[type]}
         placeholder={placeholder}
         onChange={onChange}
+        autoComplete="off"
       />
     </div>
   );

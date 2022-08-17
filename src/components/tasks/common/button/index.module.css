@@ -204,6 +204,10 @@
   width: 20px;
   height: 20px;
 }
+.save:disabled {
+  background: #ccc;
+  cursor: default;
+}
 .collection svg {
   display: block;
   width: 15px;
