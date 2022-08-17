@@ -36,8 +36,12 @@ const fetchPresets = async () => {
 
 const addPresets = (data) => {
   const url = "http://localhost:4000/presets";
-  console.log("data", data);
   return axios.post(url, data);
+};
+
+const updatePresets = (data) => {
+  const url = `http://localhost:4000/presets/${data.id}`;
+  return axios.put(url, data);
 };
 
 const fetchTasks = async (data, filters) => {
@@ -109,6 +113,23 @@ export const useAddPresetsData = () => {
       // show POST response; that way we save a network call
       queryClient.setQueryData("presets", (oldQueryData) => {
         return [...oldQueryData, data.data];
+      });
+    },
+  });
+};
+
+export const useUpdatePresetsData = () => {
+  const queryClient = useQueryClient();
+  return useMutation(updatePresets, {
+    onSuccess: (data) => {
+      // we update `selections` only
+      queryClient.setQueryData("presets", (oldQueryData) => {
+        return oldQueryData.map((el) => {
+          if (el.id === data.data.id) {
+            el.selections = data.data.selections;
+          }
+          return el;
+        });
       });
     },
   });

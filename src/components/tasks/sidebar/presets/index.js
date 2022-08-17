@@ -7,15 +7,20 @@ import Radio from "../../common/radio";
 import Button from "../../common/button";
 import Input from "../../common/input";
 
-import { usePresetsData, useAddPresetsData } from "../../hooks/useTasksData";
+import {
+  usePresetsData,
+  useAddPresetsData,
+  useUpdatePresetsData,
+} from "../../hooks/useTasksData";
 import { clinicWideFilters, presetPayload } from "../../constants";
 
 import styles from "./index.module.css";
 
 const Presets = ({ filters, dispatch }) => {
   const { data: presets } = usePresetsData();
-  const { mutate } = useAddPresetsData();
-  const [selected, setSelected] = useState("today");
+  const { mutate: addPreset } = useAddPresetsData();
+  const { mutate: updatePreset } = useUpdatePresetsData();
+  const [selected, setSelected] = useState({ id: "today", value: "today" });
   const [inputValue, setInputValue] = useState("");
   // need logic for this
   const isAdmin = false;
@@ -52,6 +57,7 @@ const Presets = ({ filters, dispatch }) => {
 
   const handleFilters = ({ target }) => {
     const id = target.dataset.id;
+    const value = target.value;
     const custom = getCustomSelections(presets, id);
 
     if (custom) {
@@ -64,7 +70,7 @@ const Presets = ({ filters, dispatch }) => {
       });
     }
 
-    setSelected(id);
+    setSelected({ id, value });
   };
 
   const onSubmit = (e) => {
@@ -77,8 +83,8 @@ const Presets = ({ filters, dispatch }) => {
       return acc;
     }, {});
     // pass to query hook and kick off mutation
-    mutate({
-      id: `filter-${inputValue.replace(" ", "-")}`,
+    addPreset({
+      id: `filter-${presets.length + 1}`,
       label: inputValue,
       selections: selections,
     });
@@ -86,7 +92,22 @@ const Presets = ({ filters, dispatch }) => {
     e.preventDefault();
   };
 
-  const handleUpdateFilter = () => {};
+  const handleUpdateFilter = () => {
+    const queries = ["priority", "ownerId", "status", "tags"];
+    // grab selections
+    const selections = queries.reduce((acc, curr) => {
+      if (filters[curr].length) {
+        acc[curr] = filters[curr];
+      }
+      return acc;
+    }, {});
+    // pass to query hook and kick off mutation
+    updatePreset({
+      id: selected.id,
+      label: selected.value,
+      selections: selections,
+    });
+  };
 
   return (
     <Section title="Presets" id="presets">
@@ -107,7 +128,7 @@ const Presets = ({ filters, dispatch }) => {
                   onChange={handleFilters}
                 >
                   {/* should show for admin only */}
-                  {isAdmin && selected === item.id && (
+                  {isAdmin && selected.id === item.id && (
                     <Button
                       type="update"
                       onClick={handleUpdateFilter}
@@ -136,7 +157,7 @@ const Presets = ({ filters, dispatch }) => {
                     name="presets"
                     onChange={handleFilters}
                   >
-                    {selected === item.id && (
+                    {selected.id === item.id && (
                       <Button
                         type="update"
                         onClick={handleUpdateFilter}
