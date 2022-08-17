@@ -3,7 +3,6 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 
 import { queryBuilder } from "../helpers";
 
-// patients
 const fetchPatients = async () => {
   const url = "http://localhost:3001/3_0_1/patient";
   const response = await axios.get(url);

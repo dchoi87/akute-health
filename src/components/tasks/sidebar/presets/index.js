@@ -25,6 +25,9 @@ const Presets = ({ filters, dispatch }) => {
   // need logic for this
   const isAdmin = false;
 
+  // TODO: massive DRYing needed for:
+  // `getCustomSelections`, `compare`, `onSubmit`, `handleUpdateFilter`
+
   const getCustomSelections = (arr, id) => {
     return arr.find((el) => el.id === id);
   };
@@ -55,7 +58,7 @@ const Presets = ({ filters, dispatch }) => {
     },
   };
 
-  const handleFilters = ({ target }) => {
+  const handleSelectFilter = ({ target }) => {
     const id = target.dataset.id;
     const value = target.value;
     const custom = getCustomSelections(presets, id);
@@ -129,7 +132,7 @@ const Presets = ({ filters, dispatch }) => {
                   label={item.label}
                   name="presets"
                   checked={item.id === selected.id}
-                  onChange={handleFilters}
+                  onChange={handleSelectFilter}
                 >
                   {/* should show for admin only */}
                   {isAdmin && selected.id === item.id && (
@@ -160,7 +163,7 @@ const Presets = ({ filters, dispatch }) => {
                     label={item.label}
                     name="presets"
                     checked={item.id === selected.id}
-                    onChange={handleFilters}
+                    onChange={handleSelectFilter}
                   >
                     {selected.id === item.id && (
                       <Button
