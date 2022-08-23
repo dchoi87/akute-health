@@ -28,18 +28,18 @@ const fetchTags = async () => {
 };
 
 const fetchPresets = async () => {
-  const url = "http://localhost:4000/presets";
+  const url = "http://localhost:4000/taskPreset";
   const response = await axios.get(url);
   return response.data;
 };
 
 const addPresets = (data) => {
-  const url = "http://localhost:4000/presets";
+  const url = "http://localhost:4000/taskPreset";
   return axios.post(url, data);
 };
 
 const updatePresets = (data) => {
-  const url = `http://localhost:4000/presets/${data.id}`;
+  const url = `http://localhost:4000/taskPreset/${data.id}`;
   return axios.put(url, data);
 };
 

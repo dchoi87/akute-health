@@ -1,8 +1,12 @@
 {
-  "presets": [
+  "taskPreset": [
     {
       "id": "filter-1",
       "label": "saved filter 1",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 1,
       "selections": {
         "priority": [
           "",
@@ -11,7 +15,8 @@
         ],
         "ownerId": [
           "5d50e5cd3560d100085664e7",
-          "5e35ef3e7c213e47b9d2c6c7"
+          "5e35ef3e7c213e47b9d2c6c7",
+          "5e4e6d9e96c4740007c9a4ea"
         ],
         "status": [
           "not-started"
@@ -26,6 +31,10 @@
     {
       "id": "filter-2",
       "label": "my custom filter",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 2,
       "selections": {
         "priority": [
           ""
@@ -46,6 +55,10 @@
     {
       "id": "filter-3",
       "label": "some filter name",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 3,
       "selections": {
         "priority": [
           "p3",
@@ -59,6 +72,10 @@
     {
       "id": "filter-4",
       "label": "Hello World",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 4,
       "selections": {
         "priority": [
           "p1"
@@ -74,6 +91,28 @@
         "tags": [
           "doc review",
           "new1"
+        ]
+      }
+    },
+    {
+      "id": "filter-5",
+      "label": "All Priority & Status",
+      "ownerId": null,
+      "clinicWide": true,
+      "_tenant": "",
+      "order": 5,
+      "selections": {
+        "priority": [
+          "",
+          "p1",
+          "p2",
+          "p3"
+        ],
+        "status": [
+          "",
+          "complete",
+          "in-progress",
+          "not-started"
         ]
       }
     }
