@@ -3,117 +3,88 @@
     {
       "id": "filter-1",
       "label": "saved filter 1",
-      "ownerId": "616620c0df1f010009ea4a94",
-      "clinicWide": false,
-      "_tenant": "",
-      "order": 1,
       "selections": {
-        "priority": [
-          "",
-          "p1",
-          "p2"
-        ],
-        "ownerId": [
-          "5d50e5cd3560d100085664e7",
-          "5e35ef3e7c213e47b9d2c6c7",
-          "5e4e6d9e96c4740007c9a4ea"
-        ],
-        "status": [
-          "not-started"
-        ],
-        "tags": [
-          "assessments",
-          "doc review",
-          "health maintenance"
-        ]
+        "priority": {
+          "query": [
+            "",
+            "p1",
+            "p2"
+          ]
+        },
+        "ownerId": {
+          "query": [
+            "5d50e5cd3560d100085664e7",
+            "5e35ef3e7c213e47b9d2c6c7",
+            "5e4e6d9e96c4740007c9a4ea",
+            "5f14cdb3f5046e207747d579"
+          ]
+        },
+        "status": {
+          "query": [
+            "not-started"
+          ]
+        },
+        "tags": {
+          "query": [
+            "assessments",
+            "doc review",
+            "health maintenance"
+          ]
+        }
       }
     },
     {
       "id": "filter-2",
-      "label": "my custom filter",
-      "ownerId": "616620c0df1f010009ea4a94",
-      "clinicWide": false,
-      "_tenant": "",
-      "order": 2,
-      "selections": {
-        "priority": [
-          ""
-        ],
-        "ownerId": [
-          "616620c0df1f010009ea4a94",
-          "605a7556adb81500075b0de8"
-        ],
-        "status": [
-          "not-started",
-          ""
-        ],
-        "tags": [
-          "test"
-        ]
-      }
-    },
-    {
-      "id": "filter-3",
-      "label": "some filter name",
-      "ownerId": "616620c0df1f010009ea4a94",
-      "clinicWide": false,
-      "_tenant": "",
-      "order": 3,
-      "selections": {
-        "priority": [
-          "p3",
-          "p2"
-        ],
-        "status": [
-          "in-progress"
-        ]
-      }
-    },
-    {
-      "id": "filter-4",
-      "label": "Hello World",
-      "ownerId": "616620c0df1f010009ea4a94",
-      "clinicWide": false,
-      "_tenant": "",
-      "order": 4,
-      "selections": {
-        "priority": [
-          "p1"
-        ],
-        "ownerId": [
-          "616620c0df1f010009ea4a94"
-        ],
-        "status": [
-          "",
-          "in-progress",
-          "not-started"
-        ],
-        "tags": [
-          "doc review",
-          "new1"
-        ]
-      }
-    },
-    {
-      "id": "filter-5",
       "label": "All Priority & Status",
       "ownerId": null,
       "clinicWide": true,
       "_tenant": "",
-      "order": 5,
+      "order": 2,
       "selections": {
-        "priority": [
-          "",
-          "p1",
-          "p2",
-          "p3"
-        ],
-        "status": [
-          "",
-          "complete",
-          "in-progress",
-          "not-started"
-        ]
+        "priority": {
+          "query": [
+            "",
+            "p1",
+            "p2",
+            "p3"
+          ]
+        },
+        "status": {
+          "query": [
+            "",
+            "complete",
+            "in-progress",
+            "not-started"
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter-3",
+      "label": "dddd",
+      "ownerId": null,
+      "clinicWide": true,
+      "_tenant": "",
+      "order": 3,
+      "selections": {
+        "priority": {
+          "query": [
+            "",
+            "p1"
+          ]
+        },
+        "ownerId": {
+          "query": [
+            "616620c0df1f010009ea4a94"
+          ]
+        },
+        "status": {
+          "query": [
+            "",
+            "in-progress",
+            "not-started"
+          ]
+        }
       }
     }
   ]
