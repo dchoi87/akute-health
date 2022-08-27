@@ -22,7 +22,7 @@ const Presets = ({ filters, dispatch }) => {
   const { mutate: updatePreset } = useUpdatePresetsData();
   const [selected, setSelected] = useState({ id: "today", value: "today" });
   const [inputValue, setInputValue] = useState("");
-  const isAdmin = false; // TODO: logic
+  const isAdmin = true; // TODO: logic
 
   // get selections obj from matching custom preset
   const getCustomSelections = (arr, id) => {
@@ -143,49 +143,68 @@ const Presets = ({ filters, dispatch }) => {
                   name="presets"
                   checked={item.id === selected.id}
                   onChange={handleSelectPreset}
-                >
-                  {isAdmin && selected.id === item.id && (
-                    <Button
-                      type="update"
-                      onClick={handleUpdatePreset}
-                      disabled={true} // TODO: logic
-                    >
-                      <ArrowClockwise />
-                    </Button>
-                  )}
-                </Radio>
+                />
               );
             })}
+            {presets &&
+              presets
+                .filter((item) => item.clinicWide)
+                .map((item, i) => {
+                  return (
+                    <Radio
+                      key={i}
+                      idx={i}
+                      id={`presets-${item.id}`}
+                      dataId={item.id}
+                      label={item.label}
+                      name="presets"
+                      checked={item.id === selected.id}
+                      onChange={handleSelectPreset}
+                    >
+                      {isAdmin && selected.id === item.id && (
+                        <Button
+                          type="update"
+                          onClick={handleUpdatePreset}
+                          disabled={true} // TODO: logic
+                        >
+                          <ArrowClockwise />
+                        </Button>
+                      )}
+                    </Radio>
+                  );
+                })}
           </div>
         </div>
         <div className={styles.section}>
           <div className={styles.header}>Custom Filters</div>
           <div className={styles.radios}>
             {presets &&
-              presets.map((item, i) => {
-                return (
-                  <Radio
-                    key={i}
-                    idx={i}
-                    id={`presets-${item.id}`}
-                    dataId={item.id}
-                    label={item.label}
-                    name="presets"
-                    checked={item.id === selected.id}
-                    onChange={handleSelectPreset}
-                  >
-                    {selected.id === item.id && (
-                      <Button
-                        type="update"
-                        onClick={handleUpdatePreset}
-                        disabled={compareSelections(item.id)}
-                      >
-                        <ArrowClockwise />
-                      </Button>
-                    )}
-                  </Radio>
-                );
-              })}
+              presets
+                .filter((item) => !item.clinicWide)
+                .map((item, i) => {
+                  return (
+                    <Radio
+                      key={i}
+                      idx={i}
+                      id={`presets-${item.id}`}
+                      dataId={item.id}
+                      label={item.label}
+                      name="presets"
+                      checked={item.id === selected.id}
+                      onChange={handleSelectPreset}
+                    >
+                      {selected.id === item.id && (
+                        <Button
+                          type="update"
+                          onClick={handleUpdatePreset}
+                          disabled={compareSelections(item.id)}
+                        >
+                          <ArrowClockwise />
+                        </Button>
+                      )}
+                    </Radio>
+                  );
+                })}
           </div>
           <Button type="more">Show More</Button>
         </div>
