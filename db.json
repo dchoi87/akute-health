@@ -10,18 +10,18 @@
       "selections": {
         "priority": {
           "query": [
-            "p1",
-            "p3",
             "",
-            "p2"
+            "p1",
+            "p2",
+            "p3"
           ]
         },
         "status": {
           "query": [
-            "not-started",
-            "in-progress",
             "",
-            "complete"
+            "complete",
+            "in-progress",
+            "not-started"
           ]
         }
       }
@@ -107,6 +107,44 @@
         "tags": {
           "query": [
             "health maintenance"
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter-5",
+      "label": "My Tasks",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 5,
+      "selections": {
+        "priority": {
+          "query": [
+            "",
+            "p1",
+            "p2",
+            "p3"
+          ]
+        },
+        "ownerId": {
+          "query": [
+            "616620c0df1f010009ea4a94"
+          ]
+        },
+        "status": {
+          "query": [
+            "",
+            "complete",
+            "in-progress",
+            "not-started"
+          ]
+        },
+        "tags": {
+          "query": [
+            "assessments",
+            "doc review",
+            "test"
           ]
         }
       }

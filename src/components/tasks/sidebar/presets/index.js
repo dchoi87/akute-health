@@ -75,8 +75,10 @@ const Presets = ({ filters, dispatch }) => {
     return {
       id: isSubmit ? `filter-${presets.length + 1}` : selected.id,
       label: isSubmit ? inputValue : selected.value,
-      ownerId: null, // TODO: grab from redux store
-      clinicWide: false, // TODO: logic
+      ownerId: "616620c0df1f010009ea4a94", // TODO: grab from redux store
+      clinicWide: isSubmit
+        ? false
+        : presets.find((el) => el.id === selected.id).clinicWide,
       _tenant: "", // TODO: ???
       order: isSubmit
         ? presets.length + 1
@@ -165,7 +167,7 @@ const Presets = ({ filters, dispatch }) => {
                         <Button
                           type="update"
                           onClick={handleUpdatePreset}
-                          disabled={true} // TODO: logic
+                          disabled={compareSelections(item.id)}
                         >
                           <ArrowClockwise />
                         </Button>
