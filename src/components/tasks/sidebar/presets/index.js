@@ -22,17 +22,8 @@ const Presets = ({ filters, dispatch }) => {
   const { mutate: updatePreset } = useUpdatePresetsData();
   const [selected, setSelected] = useState({ id: "today", value: "today" });
   const [inputValue, setInputValue] = useState("");
-  // TODO: need logic for this
-  const isAdmin = false;
+  const isAdmin = false; // TODO: logic
 
-  const helpers = {
-    getCustomSelections: function () {},
-    getPresetPayload: function () {},
-    compareCustomSelections: function () {},
-    compareClinicWideSelections: function () {},
-  };
-
-  // TODO: massive DRYing needed for logic
   const getCustomSelections = (arr, id) => {
     const custom = arr.find((el) => el.id === id);
 
@@ -45,6 +36,26 @@ const Presets = ({ filters, dispatch }) => {
     }
 
     return null;
+  };
+
+  const compareSelections = (id) => {
+    const state = {};
+    const selections = getCustomSelections(presets, id);
+    const queries = ["priority", "ownerId", "status", "tags"];
+
+    // sort selections for comparison
+    for (let key in selections) {
+      selections[key].sort();
+    }
+
+    // set and sort comparison object
+    for (let key of queries) {
+      if (filters[key].length) {
+        state[key] = filters[key].sort();
+      }
+    }
+
+    return isEqual(selections, state);
   };
 
   const getPresetPayload = (event) => {
@@ -69,32 +80,6 @@ const Presets = ({ filters, dispatch }) => {
         : presets.find((el) => el.id === selected.id).order,
       selections: selections,
     };
-  };
-
-  const compare = {
-    clinic: function (id) {
-      // TODO: logic
-      return true;
-    },
-    custom: function (id) {
-      const state = {};
-      const selections = getCustomSelections(presets, id);
-      const queries = ["priority", "ownerId", "status", "tags"];
-
-      // sort selections for comparison
-      for (let key in selections) {
-        selections[key].sort();
-      }
-
-      // set and sort comparison object
-      for (let key of queries) {
-        if (filters[key].length) {
-          state[key] = filters[key].sort();
-        }
-      }
-
-      return isEqual(selections, state);
-    },
   };
 
   const handleSelectFilter = ({ target }) => {
@@ -157,7 +142,7 @@ const Presets = ({ filters, dispatch }) => {
                     <Button
                       type="update"
                       onClick={handleUpdateFilter}
-                      disabled={compare.clinic(item.id)}
+                      disabled={true} // TODO: logic
                     >
                       <ArrowClockwise />
                     </Button>
@@ -187,7 +172,7 @@ const Presets = ({ filters, dispatch }) => {
                       <Button
                         type="update"
                         onClick={handleUpdateFilter}
-                        disabled={compare.custom(item.id)}
+                        disabled={compareSelections(item.id)}
                       >
                         <ArrowClockwise />
                       </Button>
