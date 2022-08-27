@@ -73,7 +73,7 @@ const Presets = ({ filters, dispatch }) => {
       id: isSubmit ? `filter-${presets.length + 1}` : selected.id,
       label: isSubmit ? inputValue : selected.value,
       ownerId: null, // TODO: grab from redux store
-      clinicWide: true, // TODO: logic
+      clinicWide: false, // TODO: logic
       _tenant: "", // TODO: ???
       order: isSubmit
         ? presets.length + 1

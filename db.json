@@ -2,75 +2,66 @@
   "taskPreset": [
     {
       "id": "filter-1",
-      "label": "saved filter 1",
+      "label": "All Priority / All Status",
+      "ownerId": null,
+      "clinicWide": true,
+      "_tenant": "",
+      "order": 1,
       "selections": {
         "priority": {
           "query": [
-            "",
             "p1",
+            "p3",
+            "",
             "p2"
-          ]
-        },
-        "ownerId": {
-          "query": [
-            "5d50e5cd3560d100085664e7",
-            "5e35ef3e7c213e47b9d2c6c7",
-            "5e4e6d9e96c4740007c9a4ea",
-            "5f14cdb3f5046e207747d579"
           ]
         },
         "status": {
           "query": [
-            "not-started"
-          ]
-        },
-        "tags": {
-          "query": [
-            "assessments",
-            "doc review",
-            "health maintenance"
+            "not-started",
+            "in-progress",
+            "",
+            "complete"
           ]
         }
       }
     },
     {
       "id": "filter-2",
-      "label": "All Priority & Status",
+      "label": "Doc Review / Assessments",
       "ownerId": null,
       "clinicWide": true,
       "_tenant": "",
       "order": 2,
       "selections": {
-        "priority": {
-          "query": [
-            "",
-            "p1",
-            "p2",
-            "p3"
-          ]
-        },
         "status": {
           "query": [
             "",
-            "complete",
             "in-progress",
             "not-started"
+          ]
+        },
+        "tags": {
+          "query": [
+            "assessments",
+            "doc review"
           ]
         }
       }
     },
     {
       "id": "filter-3",
-      "label": "dddd",
-      "ownerId": null,
-      "clinicWide": true,
+      "label": "My Custom Filter",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
       "_tenant": "",
       "order": 3,
       "selections": {
         "priority": {
           "query": [
-            "",
-            "p1"
+            "p1",
+            "p2",
+            "p3"
           ]
         },
         "ownerId": {
@@ -83,6 +74,39 @@
             "",
             "in-progress",
             "not-started"
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter-4",
+      "label": "Ramily",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 4,
+      "selections": {
+        "priority": {
+          "query": [
+            "p1"
+          ]
+        },
+        "ownerId": {
+          "query": [
+            "5d50e5cd3560d100085664e7",
+            "605a7556adb81500075b0de8",
+            "616620c0df1f010009ea4a94",
+            "61dc7338a3e8fb00093c6ed3"
+          ]
+        },
+        "status": {
+          "query": [
+            "complete"
+          ]
+        },
+        "tags": {
+          "query": [
+            "health maintenance"
           ]
         }
       }
