@@ -24,6 +24,7 @@ const Presets = ({ filters, dispatch }) => {
   const [inputValue, setInputValue] = useState("");
   const isAdmin = false; // TODO: logic
 
+  // get selections obj from matching custom preset
   const getCustomSelections = (arr, id) => {
     const custom = arr.find((el) => el.id === id);
 
@@ -38,6 +39,7 @@ const Presets = ({ filters, dispatch }) => {
     return null;
   };
 
+  // compare logic for update disabled state
   const compareSelections = (id) => {
     const state = {};
     const selections = getCustomSelections(presets, id);
@@ -58,6 +60,7 @@ const Presets = ({ filters, dispatch }) => {
     return isEqual(selections, state);
   };
 
+  // prep payload for POST/PUT
   const getPresetPayload = (event) => {
     const isSubmit = event === "submit";
     const queries = ["priority", "ownerId", "status", "tags"];
@@ -82,7 +85,8 @@ const Presets = ({ filters, dispatch }) => {
     };
   };
 
-  const handleSelectFilter = ({ target }) => {
+  // event handler for selecting preset
+  const handleSelectPreset = ({ target }) => {
     const id = target.dataset.id;
     const value = target.value;
     const custom = getCustomSelections(presets, id);
@@ -100,13 +104,15 @@ const Presets = ({ filters, dispatch }) => {
     setSelected({ id, value });
   };
 
-  const handleUpdateFilter = () => {
+  // event handler for updating custom preset
+  const handleUpdatePreset = () => {
     const event = "update";
     const payload = getPresetPayload(event);
     // pass to query hook and kick off mutation
     updatePreset(payload);
   };
 
+  // event handler for creating new preset
   const onSubmit = (e) => {
     const event = "submit";
     const payload = getPresetPayload(event);
@@ -136,12 +142,12 @@ const Presets = ({ filters, dispatch }) => {
                   label={item.label}
                   name="presets"
                   checked={item.id === selected.id}
-                  onChange={handleSelectFilter}
+                  onChange={handleSelectPreset}
                 >
                   {isAdmin && selected.id === item.id && (
                     <Button
                       type="update"
-                      onClick={handleUpdateFilter}
+                      onClick={handleUpdatePreset}
                       disabled={true} // TODO: logic
                     >
                       <ArrowClockwise />
@@ -166,12 +172,12 @@ const Presets = ({ filters, dispatch }) => {
                     label={item.label}
                     name="presets"
                     checked={item.id === selected.id}
-                    onChange={handleSelectFilter}
+                    onChange={handleSelectPreset}
                   >
                     {selected.id === item.id && (
                       <Button
                         type="update"
-                        onClick={handleUpdateFilter}
+                        onClick={handleUpdatePreset}
                         disabled={compareSelections(item.id)}
                       >
                         <ArrowClockwise />
