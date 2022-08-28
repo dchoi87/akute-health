@@ -22,6 +22,8 @@ const Presets = ({ filters, dispatch }) => {
   const { mutate: updatePreset } = useUpdatePresetsData();
   const [selected, setSelected] = useState({ id: "today", value: "today" });
   const [inputValue, setInputValue] = useState("");
+  const [showMoreClinic, setShowMoreClinic] = useState(false);
+  const [showMoreCustom, setShowMoreCustom] = useState(false);
   const isAdmin = true; // TODO: logic
 
   // get selections obj from matching custom preset
@@ -152,30 +154,40 @@ const Presets = ({ filters, dispatch }) => {
               presets
                 .filter((item) => item.clinicWide)
                 .map((item, i) => {
-                  return (
-                    <Radio
-                      key={i}
-                      idx={i}
-                      id={`presets-${item.id}`}
-                      dataId={item.id}
-                      label={item.label}
-                      name="presets"
-                      checked={item.id === selected.id}
-                      onChange={handleSelectPreset}
-                    >
-                      {isAdmin && selected.id === item.id && (
-                        <Button
-                          type="update"
-                          onClick={handleUpdatePreset}
-                          disabled={compareSelections(item.id)}
-                        >
-                          <ArrowClockwise />
-                        </Button>
-                      )}
-                    </Radio>
-                  );
+                  if (showMoreClinic || i < 2) {
+                    return (
+                      <Radio
+                        key={i}
+                        idx={i}
+                        id={`presets-${item.id}`}
+                        dataId={item.id}
+                        label={item.label}
+                        name="presets"
+                        checked={item.id === selected.id}
+                        onChange={handleSelectPreset}
+                      >
+                        {isAdmin && selected.id === item.id && (
+                          <Button
+                            type="update"
+                            onClick={handleUpdatePreset}
+                            disabled={compareSelections(item.id)}
+                          >
+                            <ArrowClockwise />
+                          </Button>
+                        )}
+                      </Radio>
+                    );
+                  }
                 })}
           </div>
+          {presets && presets.filter((item) => item.clinicWide).length > 2 && (
+            <Button
+              type="more"
+              onClick={() => setShowMoreClinic(!showMoreClinic)}
+            >
+              Show {showMoreClinic ? "Less" : "More"}
+            </Button>
+          )}
         </div>
         <div className={styles.section}>
           <div className={styles.header}>Custom Filters</div>
@@ -184,31 +196,40 @@ const Presets = ({ filters, dispatch }) => {
               presets
                 .filter((item) => !item.clinicWide)
                 .map((item, i) => {
-                  return (
-                    <Radio
-                      key={i}
-                      idx={i}
-                      id={`presets-${item.id}`}
-                      dataId={item.id}
-                      label={item.label}
-                      name="presets"
-                      checked={item.id === selected.id}
-                      onChange={handleSelectPreset}
-                    >
-                      {selected.id === item.id && (
-                        <Button
-                          type="update"
-                          onClick={handleUpdatePreset}
-                          disabled={compareSelections(item.id)}
-                        >
-                          <ArrowClockwise />
-                        </Button>
-                      )}
-                    </Radio>
-                  );
+                  if (showMoreCustom || i < 6) {
+                    return (
+                      <Radio
+                        key={i}
+                        idx={i}
+                        id={`presets-${item.id}`}
+                        dataId={item.id}
+                        label={item.label}
+                        name="presets"
+                        checked={item.id === selected.id}
+                        onChange={handleSelectPreset}
+                      >
+                        {selected.id === item.id && (
+                          <Button
+                            type="update"
+                            onClick={handleUpdatePreset}
+                            disabled={compareSelections(item.id)}
+                          >
+                            <ArrowClockwise />
+                          </Button>
+                        )}
+                      </Radio>
+                    );
+                  }
                 })}
           </div>
-          <Button type="more">Show More</Button>
+          {presets && presets.filter((item) => !item.clinicWide).length > 6 && (
+            <Button
+              type="more"
+              onClick={() => setShowMoreCustom(!showMoreCustom)}
+            >
+              Show {showMoreCustom ? "Less" : "More"}
+            </Button>
+          )}
         </div>
         <div className={styles.section}>
           <div className={styles.header}>Create a New Filter</div>

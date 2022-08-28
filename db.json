@@ -148,6 +148,162 @@
           ]
         }
       }
+    },
+    {
+      "id": "filter-6",
+      "label": "Test",
+      "ownerId": null,
+      "clinicWide": true,
+      "_tenant": "",
+      "order": 6,
+      "selections": {
+        "tags": {
+          "query": [
+            "assessments",
+            "doc review"
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter-7",
+      "label": "Test",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 7,
+      "selections": {
+        "ownerId": {
+          "query": [
+            "616620c0df1f010009ea4a94"
+          ]
+        },
+        "status": {
+          "query": [
+            "not-started",
+            "in-progress",
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter-8",
+      "label": "Another One",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 8,
+      "selections": {
+        "priority": {
+          "query": [
+            "p1"
+          ]
+        },
+        "ownerId": {
+          "query": [
+            "616620c0df1f010009ea4a94"
+          ]
+        },
+        "status": {
+          "query": [
+            "",
+            "in-progress",
+            "not-started"
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter-9",
+      "label": "And Another One",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 9,
+      "selections": {
+        "priority": {
+          "query": [
+            "",
+            "p1"
+          ]
+        },
+        "ownerId": {
+          "query": [
+            "616620c0df1f010009ea4a94"
+          ]
+        },
+        "status": {
+          "query": [
+            "",
+            "complete",
+            "in-progress",
+            "not-started"
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter-10",
+      "label": "Uno Mas",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 10,
+      "selections": {
+        "priority": {
+          "query": [
+            "",
+            "p1"
+          ]
+        },
+        "ownerId": {
+          "query": [
+            "5d50e5cd3560d100085664e7",
+            "605a7556adb81500075b0de8",
+            "616620c0df1f010009ea4a94"
+          ]
+        },
+        "status": {
+          "query": [
+            "",
+            "complete",
+            "in-progress",
+            "not-started"
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter-11",
+      "label": "More Test",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 11,
+      "selections": {
+        "priority": {
+          "query": [
+            "",
+            "p1",
+            "p2"
+          ]
+        },
+        "ownerId": {
+          "query": [
+            "605a7556adb81500075b0de8",
+            "616620c0df1f010009ea4a94"
+          ]
+        },
+        "status": {
+          "query": [
+            "",
+            "complete",
+            "in-progress",
+            "not-started"
+          ]
+        }
+      }
     }
   ]
 }
