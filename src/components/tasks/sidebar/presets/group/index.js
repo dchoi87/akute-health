@@ -58,15 +58,16 @@ const Group = ({
                     checked={item.id === selected.id}
                     onChange={handleSelectPreset}
                   >
-                    {isAdmin && selected.id === item.id && (
-                      <Button
-                        type="update"
-                        onClick={handleUpdatePreset}
-                        disabled={compareSelections(item.id)}
-                      >
-                        <ArrowClockwise />
-                      </Button>
-                    )}
+                    {((isClinicWide && isAdmin) || !isClinicWide) &&
+                      selected.id === item.id && (
+                        <Button
+                          type="update"
+                          onClick={handleUpdatePreset}
+                          disabled={compareSelections(item.id)}
+                        >
+                          <ArrowClockwise />
+                        </Button>
+                      )}
                   </Radio>
                 );
               }
