@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CloudArrowUp } from "react-bootstrap-icons";
 import isEqual from "react-fast-compare";
 
@@ -22,7 +22,17 @@ const Presets = ({ filters, dispatch }) => {
   const { mutate: updatePreset } = useUpdatePresetsData();
   const [selected, setSelected] = useState({ id: "today", value: "today" });
   const [inputValue, setInputValue] = useState("");
+  const [data, setData] = useState({ custom: [], clinicWide: [] });
   const isAdmin = true; // TODO: logic
+
+  useEffect(() => {
+    if (presets) {
+      setData({
+        custom: presets.filter((item) => !item.clinicWide),
+        clinicWide: presets.filter((item) => item.clinicWide),
+      });
+    }
+  }, [presets]);
 
   // get selections obj from matching custom preset
   const getCustomSelections = (arr, id) => {
@@ -135,7 +145,8 @@ const Presets = ({ filters, dispatch }) => {
           <Group
             title="Clinic Wide Filters"
             isClinicWide={true}
-            presets={presets}
+            presets={data.clinicWide}
+            showCount={2}
             selected={selected}
             isAdmin={isAdmin}
             handleSelectPreset={handleSelectPreset}
@@ -143,17 +154,20 @@ const Presets = ({ filters, dispatch }) => {
             compareSelections={compareSelections}
           />
         </div>
-        <div className={styles.section}>
-          <Group
-            title="Custom Filters"
-            isClinicWide={false}
-            presets={presets}
-            selected={selected}
-            handleSelectPreset={handleSelectPreset}
-            handleUpdatePreset={handleUpdatePreset}
-            compareSelections={compareSelections}
-          />
-        </div>
+        {!!data.custom.length && (
+          <div className={styles.section}>
+            <Group
+              title="Custom Filters"
+              isClinicWide={false}
+              presets={data.custom}
+              showCount={6}
+              selected={selected}
+              handleSelectPreset={handleSelectPreset}
+              handleUpdatePreset={handleUpdatePreset}
+              compareSelections={compareSelections}
+            />
+          </div>
+        )}
         <div className={styles.section}>
           <div className={styles.header}>Create a New Filter</div>
           <form className={styles.input} onSubmit={onSubmit}>
