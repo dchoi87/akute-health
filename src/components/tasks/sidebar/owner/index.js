@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Star } from "react-bootstrap-icons";
 
 import Section from "../section";
@@ -13,6 +13,21 @@ import styles from "./index.module.css";
 const Owner = ({ filters, dispatch }) => {
   const { data: owners } = useOwnersData();
   const [showGroup, setGroup] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const [keyword, setKeyword] = useState("");
+  const [data, setData] = useState([]);
+  const showCount = 6;
+
+  useEffect(() => {
+    if (owners) {
+      const filtered = Object.keys(owners).filter((owner) => {
+        const pattern = keyword.toLowerCase();
+        const regex = new RegExp(pattern, "g");
+        return owners[owner].toLowerCase().match(regex);
+      });
+      setData(filtered);
+    }
+  }, [owners, keyword]);
 
   const handleFilter = ({ target }) => {
     dispatch({ type: "FILTER_OWNER", payload: target.dataset.id });
@@ -22,11 +37,20 @@ const Owner = ({ filters, dispatch }) => {
     setGroup(!showGroup);
   };
 
+  const handleSearch = ({ target }) => {
+    setKeyword(target.value);
+  };
+
   return (
     <Section title="Owner" id="owner">
       <div className={styles.container}>
         <div className={styles.toolbar}>
-          <Input type="search" id="owner-search" placeholder="Search Owner" />
+          <Input
+            type="search"
+            id="owner-search"
+            placeholder="Search Owner"
+            onChange={handleSearch}
+          />
           <Button
             type="collection"
             id="owner-group"
@@ -51,8 +75,8 @@ const Owner = ({ filters, dispatch }) => {
                   />
                 );
               })}
-          {owners &&
-            Object.keys(owners).map((owner, i) => {
+          {data.map((owner, i) => {
+            if (showMore || i < showCount) {
               return (
                 <Checkbox
                   key={i}
@@ -63,9 +87,14 @@ const Owner = ({ filters, dispatch }) => {
                   checked={filters.ownerId.includes(owner)}
                 />
               );
-            })}
+            }
+          })}
         </div>
-        <Button type="more">Show More</Button>
+        {data.length > showCount && (
+          <Button type="more" onClick={() => setShowMore(!showMore)}>
+            Show {showMore ? "Less" : "More"}
+          </Button>
+        )}
       </div>
     </Section>
   );
