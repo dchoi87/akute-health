@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Star } from "react-bootstrap-icons";
 import classNames from "classnames";
 
@@ -14,6 +14,21 @@ import styles from "./index.module.css";
 const Tags = ({ filters, dispatch }) => {
   const { data: tags } = useTagsData();
   const [showGroup, setGroup] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const [keyword, setKeyword] = useState("");
+  const [data, setData] = useState([]);
+  const showCount = 10;
+
+  useEffect(() => {
+    if (tags) {
+      const filtered = tags.tasks.filter((tag) => {
+        const pattern = keyword.toLowerCase();
+        const regex = new RegExp(pattern, "g");
+        return tag.toLowerCase().match(regex);
+      });
+      setData(filtered);
+    }
+  }, [tags, keyword]);
 
   const handleFilter = ({ target }) => {
     dispatch({ type: "FILTER_TAGS", payload: target.dataset.id });
@@ -23,11 +38,20 @@ const Tags = ({ filters, dispatch }) => {
     setGroup(!showGroup);
   };
 
+  const handleSearch = ({ target }) => {
+    setKeyword(target.value);
+  };
+
   return (
     <Section title="Tags" id="tags">
       <div className={styles.container}>
         <div className={styles.toolbar}>
-          <Input type="search" id="tags-search" placeholder="Search Tags" />
+          <Input
+            type="search"
+            id="tags-search"
+            placeholder="Search Tags"
+            onChange={handleSearch}
+          />
           <Button
             type="collection"
             id="tag-group"
@@ -51,8 +75,8 @@ const Tags = ({ filters, dispatch }) => {
                 />
               );
             })}
-          {tags &&
-            tags.tasks.map((item, i) => {
+          {data.map((item, i) => {
+            if (showMore || i < showCount) {
               return (
                 <Checkbox
                   key={i}
@@ -64,9 +88,14 @@ const Tags = ({ filters, dispatch }) => {
                   checked={filters.tags.includes(item)}
                 />
               );
-            })}
+            }
+          })}
         </div>
-        <Button type="more">Show More</Button>
+        {data.length > showCount && (
+          <Button type="more" onClick={() => setShowMore(!showMore)}>
+            Show {showMore ? "Less" : "More"}
+          </Button>
+        )}
       </div>
     </Section>
   );
