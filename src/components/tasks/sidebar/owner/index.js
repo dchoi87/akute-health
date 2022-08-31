@@ -19,8 +19,6 @@ const Owner = ({ filters, dispatch }) => {
   const [data, setData] = useState([]);
   const showCount = 6;
 
-  if (groups) console.log("user groups", groups.userGroups);
-
   useEffect(() => {
     if (owners) {
       const filtered = Object.keys(owners).filter((owner) => {
@@ -71,9 +69,12 @@ const Owner = ({ filters, dispatch }) => {
                 <Checkbox
                   key={i}
                   id={`owner-group-${i}`}
+                  dataId={item._id}
                   label={item.groupName}
+                  onChange={handleFilter}
                   className={styles.group}
                   section="group"
+                  checked={filters.ownerId.includes(item._id)}
                 />
               );
             })}
