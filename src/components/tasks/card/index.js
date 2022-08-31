@@ -23,7 +23,14 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
   const [, dispatch] = useTasksContext();
   const isPastDue = task.duedate === "03-25-22";
 
-  const handleClick = () => {
+  const handleOpen = ({ target }) => {
+    if (target.className.includes("card_checkbox")) {
+      return;
+    }
+    alert("open task");
+  };
+
+  const handleSelect = (e) => {
     dispatch({ type: "SELECT_TASK", payload: task.id });
   };
 
@@ -33,10 +40,10 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
         [styles.compact]: isCompactView,
         [styles.selected]: isSelected,
       })}
-      onClick={handleClick}
+      onClick={handleOpen}
       data-id={task.id}
     >
-      <div className={styles.select}>
+      <div className={styles.checkbox} onClick={handleSelect}>
         {isSelected ? <CheckSquareFill /> : <Square />}
       </div>
       <div className={styles.content}>
