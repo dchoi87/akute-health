@@ -6,17 +6,20 @@ import Button from "../../common/button";
 import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
-import { useOwnersData } from "../../hooks/useTasksData";
+import { useOwnersData, useGroupsData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
 const Owner = ({ filters, dispatch }) => {
   const { data: owners } = useOwnersData();
+  const { data: groups } = useGroupsData();
   const [showGroup, setGroup] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [keyword, setKeyword] = useState("");
   const [data, setData] = useState([]);
   const showCount = 6;
+
+  if (groups) console.log("user groups", groups.userGroups);
 
   useEffect(() => {
     if (owners) {
@@ -62,19 +65,18 @@ const Owner = ({ filters, dispatch }) => {
         </div>
         <div className={styles.owners}>
           {showGroup &&
-            Array(2)
-              .fill()
-              .map((item, i) => {
-                return (
-                  <Checkbox
-                    key={i}
-                    id={`owner-group-${i}`}
-                    label={`owner group ${i + 1}`}
-                    className={styles.group}
-                    section="group"
-                  />
-                );
-              })}
+            groups &&
+            groups.userGroups.map((item, i) => {
+              return (
+                <Checkbox
+                  key={i}
+                  id={`owner-group-${i}`}
+                  label={item.groupName}
+                  className={styles.group}
+                  section="group"
+                />
+              );
+            })}
           {data.map((owner, i) => {
             if (showMore || i < showCount) {
               return (

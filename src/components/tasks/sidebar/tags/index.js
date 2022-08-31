@@ -7,17 +7,20 @@ import Button from "../../common/button";
 import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
-import { useTagsData } from "../../hooks/useTasksData";
+import { useTagsData, useGroupsData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
 const Tags = ({ filters, dispatch }) => {
   const { data: tags } = useTagsData();
+  const { data: groups } = useGroupsData();
   const [showGroup, setGroup] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [keyword, setKeyword] = useState("");
   const [data, setData] = useState([]);
   const showCount = 10;
+
+  // if (groups) console.log("tag groups", groups.groups);
 
   useEffect(() => {
     if (tags) {
@@ -63,13 +66,13 @@ const Tags = ({ filters, dispatch }) => {
         </div>
         <div className={styles.tags}>
           {showGroup &&
-            ["Some Group", "Another Group"].map((item, i) => {
+            groups &&
+            groups.groups.map((item, i) => {
               return (
                 <Checkbox
                   key={i}
                   id={`tags-group-${i}`}
-                  dataId={item}
-                  label={item}
+                  label={item.groupName}
                   onChange={handleFilter}
                   className={classNames(styles.tag, styles.group)}
                 />

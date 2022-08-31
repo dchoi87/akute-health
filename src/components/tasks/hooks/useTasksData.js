@@ -27,6 +27,12 @@ const fetchTags = async () => {
   return response.data;
 };
 
+const fetchGroups = async () => {
+  const url = "http://localhost:3001/.netlify/functions/group";
+  const response = await axios.get(url);
+  return response.data;
+};
+
 const fetchPresets = async () => {
   const url = "http://localhost:4000/taskPreset";
   const response = await axios.get(url);
@@ -82,6 +88,12 @@ export const useOwnersData = () => {
 
 export const useTagsData = () => {
   return useQuery("tags", fetchTags, {
+    refetchOnWindowFocus: false,
+  });
+};
+
+export const useGroupsData = () => {
+  return useQuery("groups", fetchGroups, {
     refetchOnWindowFocus: false,
   });
 };
