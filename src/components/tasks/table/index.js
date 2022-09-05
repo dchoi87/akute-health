@@ -7,11 +7,13 @@ import Row from "./row";
 
 import { useWindowHeight } from "../hooks/useResize";
 import { useFiltersContext } from "../context/filters";
+import { useTasksContext } from "../context/tasks";
 
 import styles from "./index.module.css";
 
 const Table = ({ tasks, selectedItems, limit }) => {
-  const [, dispatch] = useFiltersContext();
+  const [, filtersDispatch] = useFiltersContext();
+  const [, tasksDispatch] = useTasksContext();
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
   const [sort, setSort] = useState({ priority: "desc" });
   const [type, setType] = useState("priority");
@@ -20,8 +22,7 @@ const Table = ({ tasks, selectedItems, limit }) => {
     const id = target.dataset.id;
     const type = id === "all" ? "SELECT_ALL" : "SELECT_TASK";
     const payload = id === "all" ? tasks : id;
-
-    dispatch({ type, payload });
+    tasksDispatch({ type, payload });
   };
 
   const handleSort = ({ currentTarget }) => {
@@ -39,7 +40,7 @@ const Table = ({ tasks, selectedItems, limit }) => {
     }
 
     setSort(payload);
-    dispatch({ type: "CHANGE_SORT", payload: payload });
+    filtersDispatch({ type: "CHANGE_SORT", payload: payload });
   };
 
   return (
