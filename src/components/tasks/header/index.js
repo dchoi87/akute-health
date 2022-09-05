@@ -16,20 +16,21 @@ const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
     setView(value);
   };
 
-  const handleSortOrder = () => {
-    const value = sort[type] === "asc" ? "desc" : "asc";
-    const payload = { ...sort, [type]: value };
+  const handleSort = ({ value, target }) => {
+    const _value = value || target.id;
+    let payload;
+
+    if (_value === "sortOrder") {
+      // set order
+      const order = sort[type] === "asc" ? "desc" : "asc";
+      payload = { ...sort, [type]: order };
+    } else {
+      // change type & order
+      payload = Object.assign({ [_value]: sort[_value] || "desc" }, sort);
+      setType(_value);
+    }
 
     setSort(payload);
-    dispatch({ type: "CHANGE_SORT", payload: payload });
-  };
-
-  const handleSortType = ({ value }) => {
-    // object assign to switch key order
-    const payload = Object.assign({ [value]: sort[value] || "desc" }, sort);
-
-    setSort(payload);
-    setType(value);
     dispatch({ type: "CHANGE_SORT", payload: payload });
   };
 
@@ -56,9 +57,9 @@ const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
               <Select
                 options={sortOptions}
                 placeholder="Sort By"
-                onChange={handleSortType}
+                onChange={handleSort}
               />
-              <Button type="sort" onClick={handleSortOrder}>
+              <Button type="sort" id="sortOrder" onClick={handleSort}>
                 {sort[type] === "desc" ? <SortDown /> : <SortUp />}
               </Button>
             </div>

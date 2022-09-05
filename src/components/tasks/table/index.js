@@ -13,7 +13,6 @@ import styles from "./index.module.css";
 const Table = ({ tasks, selectedItems, limit }) => {
   const [, dispatch] = useFiltersContext();
   const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
-  // NOTE: initial state: pull from context or custom hook so that we can unify logic
   const [sort, setSort] = useState({ priority: "desc" });
   const [type, setType] = useState("priority");
 
@@ -31,8 +30,8 @@ const Table = ({ tasks, selectedItems, limit }) => {
 
     if (type === target) {
       // set order
-      const order = sort[target] === "asc" ? "desc" : "asc";
-      payload = { ...sort, [target]: order };
+      const order = sort[type] === "asc" ? "desc" : "asc";
+      payload = { ...sort, [type]: order };
     } else {
       // change type & order
       payload = Object.assign({ [target]: sort[target] || "desc" }, sort);
