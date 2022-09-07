@@ -35,11 +35,11 @@ const Content = ({ sidebar, setSidebar }) => {
           setView={setView}
           sidebar={sidebar}
           setSidebar={setSidebar}
-          dispatch={dispatch}
+          filtersDispatch={dispatch}
         />
         {!!selected.length && <SelectionBar selectedCount={selected.length} />}
         {view === "table" ? (
-          <Table tasks={tasks} selectedItems={selected} limit={filters.limit} />
+          <Table tasks={tasks} limit={filters.limit} />
         ) : (
           <div
             className={classNames(styles.cards, {

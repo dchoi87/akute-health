@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { PlusLg, Filter, SortDown, SortUp } from "react-bootstrap-icons";
 
 import Button from "../common/button";
 import Select from "../common/select";
 
+import { useTasksContext } from "../context/tasks";
 import { viewOptions, sortOptions } from "../constants";
 
 import styles from "./index.module.css";
 
-const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
-  const [sort, setSort] = useState({ priority: "desc" });
-  const [type, setType] = useState("priority");
+const Header = ({ view, setView, sidebar, setSidebar, filtersDispatch }) => {
+  const [{ sort, type }, tasksDispatch] = useTasksContext();
 
   const handleView = (value) => {
     setView(value);
@@ -27,11 +27,11 @@ const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
     } else {
       // change type & order
       payload = Object.assign({ [_value]: sort[_value] || "desc" }, sort);
-      setType(_value);
+      tasksDispatch({ type: "SET_SORT_TYPE", payload: _value });
     }
 
-    setSort(payload);
-    dispatch({ type: "CHANGE_SORT", payload: payload });
+    tasksDispatch({ type: "SET_SORT_OBJECT", payload: payload });
+    filtersDispatch({ type: "CHANGE_SORT", payload: payload });
   };
 
   const handleFilterMenu = () => {
@@ -58,6 +58,9 @@ const Header = ({ view, setView, sidebar, setSidebar, dispatch }) => {
                 options={sortOptions}
                 placeholder="Sort By"
                 onChange={handleSort}
+                defaultValue={sortOptions.find(
+                  (option) => option.value === type
+                )}
               />
               <Button type="sort" id="sortOrder" onClick={handleSort}>
                 {sort[type] === "desc" ? <SortDown /> : <SortUp />}

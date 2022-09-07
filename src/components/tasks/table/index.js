@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import { ArrowDownShort, ArrowUpShort } from "react-bootstrap-icons";
 
@@ -11,12 +11,10 @@ import { useTasksContext } from "../context/tasks";
 
 import styles from "./index.module.css";
 
-const Table = ({ tasks, selectedItems, limit }) => {
+const Table = ({ tasks, limit }) => {
   const [, filtersDispatch] = useFiltersContext();
-  const [, tasksDispatch] = useTasksContext();
-  const tableHeight = useWindowHeight() - 147 - (selectedItems.length ? 62 : 0);
-  const [sort, setSort] = useState({ priority: "desc" });
-  const [type, setType] = useState("priority");
+  const [{ selected, sort, type }, tasksDispatch] = useTasksContext();
+  const tableHeight = useWindowHeight() - 147 - (selected.length ? 62 : 0);
 
   const handleClick = ({ target }) => {
     const id = target.dataset.id;
@@ -36,10 +34,10 @@ const Table = ({ tasks, selectedItems, limit }) => {
     } else {
       // change type & order
       payload = Object.assign({ [target]: sort[target] || "desc" }, sort);
-      setType(target);
+      tasksDispatch({ type: "SET_SORT_TYPE", payload: target });
     }
 
-    setSort(payload);
+    tasksDispatch({ type: "SET_SORT_OBJECT", payload: payload });
     filtersDispatch({ type: "CHANGE_SORT", payload: payload });
   };
 
@@ -54,7 +52,7 @@ const Table = ({ tasks, selectedItems, limit }) => {
                 label=""
                 dataId="all"
                 onChange={handleClick}
-                checked={selectedItems.length === limit}
+                checked={selected.length === limit}
               />
             </th>
             <th className={styles.title}>
@@ -112,7 +110,7 @@ const Table = ({ tasks, selectedItems, limit }) => {
                   key={i}
                   idx={i}
                   item={item}
-                  isSelected={selectedItems.includes(item.id)}
+                  isSelected={selected.includes(item.id)}
                   handleClick={handleClick}
                 />
               );

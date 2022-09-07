@@ -29,8 +29,8 @@ export const viewOptions = [
 ];
 
 export const sortOptions = [
-  { value: "priority", label: "Priority" },
-  { value: "dueDate", label: "Due Date" },
+  { value: "priority", label: "Sort by Priority" },
+  { value: "dueDate", label: "Sort by Due Date" },
 ];
 
 export const defaultPresets = [
