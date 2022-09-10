@@ -12,7 +12,7 @@ import { useFiltersContext } from "../context/filters";
 import styles from "./index.module.css";
 
 const SideBar = ({ sidebar }) => {
-  const [filters, dispatch] = useFiltersContext();
+  const [filters, dispatch_f] = useFiltersContext();
 
   return (
     <div
@@ -20,11 +20,11 @@ const SideBar = ({ sidebar }) => {
         [styles.open]: sidebar,
       })}
     >
-      <Presets filters={filters} dispatch={dispatch} />
-      <Priority filters={filters} dispatch={dispatch} />
-      <Owner filters={filters} dispatch={dispatch} />
-      <Status filters={filters} dispatch={dispatch} />
-      <Tags filters={filters} dispatch={dispatch} />
+      <Presets filters={filters} dispatch_f={dispatch_f} />
+      <Priority filters={filters} dispatch_f={dispatch_f} />
+      <Owner filters={filters} dispatch_f={dispatch_f} />
+      <Status filters={filters} dispatch_f={dispatch_f} />
+      <Tags filters={filters} dispatch_f={dispatch_f} />
     </div>
   );
 };

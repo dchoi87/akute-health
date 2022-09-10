@@ -20,7 +20,7 @@ import { useTasksContext } from "../context/tasks";
 import styles from "./index.module.css";
 
 const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
-  const [, dispatch] = useTasksContext();
+  const [, dispatch_t] = useTasksContext();
   const isPastDue = task.duedate === "03-25-22";
 
   const handleOpen = ({ target }) => {
@@ -31,7 +31,7 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
   };
 
   const handleSelect = (e) => {
-    dispatch({ type: "SELECT_TASK", payload: task.id });
+    dispatch_t({ type: "SELECT_TASK", payload: task.id });
   };
 
   return (

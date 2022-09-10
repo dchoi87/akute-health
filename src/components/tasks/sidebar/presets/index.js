@@ -16,7 +16,7 @@ import { presetPayload } from "../../constants";
 
 import styles from "./index.module.css";
 
-const Presets = ({ filters, dispatch }) => {
+const Presets = ({ filters, dispatch_f }) => {
   const { data: presets } = usePresetsData();
   const { mutate: addPreset } = useAddPresetsData();
   const { mutate: updatePreset } = useUpdatePresetsData();
@@ -104,9 +104,9 @@ const Presets = ({ filters, dispatch }) => {
     const custom = getCustomSelections(presets, id);
 
     if (custom) {
-      dispatch({ type: "FILTER_PRESETS", payload: custom });
+      dispatch_f({ type: "FILTER_PRESETS", payload: custom });
     } else {
-      dispatch({
+      dispatch_f({
         type: "FILTER_PRESETS",
         payload: presetPayload[id].payload,
         source: presetPayload[id].source,

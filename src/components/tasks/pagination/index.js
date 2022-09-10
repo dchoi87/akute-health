@@ -9,14 +9,14 @@ import { cardsPerPage } from "../constants";
 import styles from "./index.module.css";
 
 const Pagination = ({ page, count }) => {
-  const [filters, dispatch] = useFiltersContext();
+  const [filters, dispatch_f] = useFiltersContext();
 
   const handlePageLimit = ({ value }) => {
-    dispatch({ type: "CHANGE_LIMIT", payload: value });
+    dispatch_f({ type: "CHANGE_LIMIT", payload: value });
   };
 
   const handleChangePage = (value) => {
-    dispatch({ type: "CHANGE_PAGE", payload: filters.page + value });
+    dispatch_f({ type: "CHANGE_PAGE", payload: filters.page + value });
   };
 
   return (

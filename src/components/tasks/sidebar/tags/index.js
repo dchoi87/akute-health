@@ -11,7 +11,7 @@ import { useTagsData, useGroupsData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Tags = ({ filters, dispatch }) => {
+const Tags = ({ filters, dispatch_f }) => {
   const { data: tags } = useTagsData();
   const { data: groups } = useGroupsData();
   const [showGroup, setGroup] = useState(false);
@@ -34,7 +34,7 @@ const Tags = ({ filters, dispatch }) => {
   }, [tags, keyword]);
 
   const handleFilter = ({ target }) => {
-    dispatch({ type: "FILTER_TAGS", payload: target.dataset.id });
+    dispatch_f({ type: "FILTER_TAGS", payload: target.dataset.id });
   };
 
   const handleGroup = () => {

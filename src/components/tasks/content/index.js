@@ -15,7 +15,7 @@ import { useTasksData } from "../hooks/useTasksData";
 import styles from "./index.module.css";
 
 const Content = ({ sidebar, setSidebar }) => {
-  const [filters, dispatch] = useFiltersContext();
+  const [filters] = useFiltersContext();
   const [{ selected }] = useTasksContext();
   const { data: tasks } = useTasksData(filters);
   const [view, setView] = useState("comfortable");

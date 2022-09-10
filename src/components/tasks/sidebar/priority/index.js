@@ -8,9 +8,9 @@ import { priority } from "../../constants";
 
 import styles from "./index.module.css";
 
-const Priority = ({ filters, dispatch }) => {
+const Priority = ({ filters, dispatch_f }) => {
   const handleFilter = ({ target }) => {
-    dispatch({ type: "FILTER_PRIORITY", payload: target.dataset.id });
+    dispatch_f({ type: "FILTER_PRIORITY", payload: target.dataset.id });
   };
 
   return (

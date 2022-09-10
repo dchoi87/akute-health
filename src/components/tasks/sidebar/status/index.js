@@ -7,9 +7,9 @@ import styles from "./index.module.css";
 
 import { status } from "../../constants";
 
-const Status = ({ filters, dispatch }) => {
+const Status = ({ filters, dispatch_f }) => {
   const handleFilter = ({ target }) => {
-    dispatch({ type: "FILTER_STATUS", payload: target.dataset.id });
+    dispatch_f({ type: "FILTER_STATUS", payload: target.dataset.id });
   };
 
   return (

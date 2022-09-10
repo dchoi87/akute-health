@@ -10,7 +10,7 @@ import { useOwnersData, useGroupsData } from "../../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Owner = ({ filters, dispatch }) => {
+const Owner = ({ filters, dispatch_f }) => {
   const { data: owners } = useOwnersData();
   const { data: groups } = useGroupsData();
   const [showGroup, setGroup] = useState(false);
@@ -31,7 +31,7 @@ const Owner = ({ filters, dispatch }) => {
   }, [owners, keyword]);
 
   const handleFilter = ({ target }) => {
-    dispatch({ type: "FILTER_OWNER", payload: target.dataset.id });
+    dispatch_f({ type: "FILTER_OWNER", payload: target.dataset.id });
   };
 
   const handleGroup = () => {
