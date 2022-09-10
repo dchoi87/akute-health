@@ -6,39 +6,23 @@ import Checkbox from "../common/checkbox";
 import Row from "./row";
 
 import { useWindowHeight } from "../hooks/useResize";
+import { useSort } from "../hooks/useSort";
 import { useFiltersContext } from "../context/filters";
 import { useTasksContext } from "../context/tasks";
 
 import styles from "./index.module.css";
 
 const Table = ({ tasks, limit }) => {
-  const [, filtersDispatch] = useFiltersContext();
-  const [{ selected, sort, type }, tasksDispatch] = useTasksContext();
+  const [, dispatch_f] = useFiltersContext();
+  const [{ selected }, dispatch_t] = useTasksContext();
+  const [sort, handleSort] = useSort(dispatch_f);
   const tableHeight = useWindowHeight() - 147 - (selected.length ? 62 : 0);
 
   const handleClick = ({ target }) => {
     const id = target.dataset.id;
     const type = id === "all" ? "SELECT_ALL" : "SELECT_TASK";
     const payload = id === "all" ? tasks : id;
-    tasksDispatch({ type, payload });
-  };
-
-  const handleSort = ({ currentTarget }) => {
-    const target = currentTarget.dataset.id;
-    let payload;
-
-    if (type === target) {
-      // set order
-      const order = sort[type] === "asc" ? "desc" : "asc";
-      payload = { ...sort, [type]: order };
-    } else {
-      // change type & order
-      payload = Object.assign({ [target]: sort[target] || "desc" }, sort);
-      tasksDispatch({ type: "SET_SORT_TYPE", payload: target });
-    }
-
-    tasksDispatch({ type: "SET_SORT_OBJECT", payload: payload });
-    filtersDispatch({ type: "CHANGE_SORT", payload: payload });
+    dispatch_t({ type, payload });
   };
 
   return (
@@ -60,36 +44,28 @@ const Table = ({ tasks, limit }) => {
             </th>
             <th
               className={classNames(styles.sort, {
-                [styles.selected]: type === "priority",
+                [styles.selected]: sort.type === "priority",
               })}
               data-id="priority"
-              onClick={handleSort}
+              onClick={() => handleSort("priority")}
             >
               <span>Priority</span>
-              {type === "priority" &&
-                (sort["priority"] === "desc" ? (
-                  <ArrowDownShort />
-                ) : (
-                  <ArrowUpShort />
-                ))}
+              {sort.type === "priority" &&
+                (sort.order === "desc" ? <ArrowDownShort /> : <ArrowUpShort />)}
             </th>
             <th>
               <span>Owner</span>
             </th>
             <th
               className={classNames(styles.sort, {
-                [styles.selected]: type === "dueDate",
+                [styles.selected]: sort.type === "dueDate",
               })}
               data-id="dueDate"
-              onClick={handleSort}
+              onClick={() => handleSort("dueDate")}
             >
               <span>Due Date</span>
-              {type === "dueDate" &&
-                (!sort["dueDate"] || sort["dueDate"] === "desc" ? (
-                  <ArrowDownShort />
-                ) : (
-                  <ArrowUpShort />
-                ))}
+              {sort.type === "dueDate" &&
+                (sort.order === "desc" ? <ArrowDownShort /> : <ArrowUpShort />)}
             </th>
             <th>
               <span>Patient</span>

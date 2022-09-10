@@ -4,34 +4,18 @@ import { PlusLg, Filter, SortDown, SortUp } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Select from "../common/select";
 
-import { useTasksContext } from "../context/tasks";
+import { useFiltersContext } from "../context/filters";
+import { useSort } from "../hooks/useSort";
 import { viewOptions, sortOptions } from "../constants";
 
 import styles from "./index.module.css";
 
-const Header = ({ view, setView, sidebar, setSidebar, filtersDispatch }) => {
-  const [{ sort, type }, tasksDispatch] = useTasksContext();
+const Header = ({ view, setView, sidebar, setSidebar }) => {
+  const [, dispatch_f] = useFiltersContext();
+  const [sort, handleSort] = useSort(dispatch_f);
 
   const handleView = (value) => {
     setView(value);
-  };
-
-  const handleSort = ({ value, target }) => {
-    const _value = value || target.id;
-    let payload;
-
-    if (_value === "sortOrder") {
-      // set order
-      const order = sort[type] === "asc" ? "desc" : "asc";
-      payload = { ...sort, [type]: order };
-    } else {
-      // change type & order
-      payload = Object.assign({ [_value]: sort[_value] || "desc" }, sort);
-      tasksDispatch({ type: "SET_SORT_TYPE", payload: _value });
-    }
-
-    tasksDispatch({ type: "SET_SORT_OBJECT", payload: payload });
-    filtersDispatch({ type: "CHANGE_SORT", payload: payload });
   };
 
   const handleFilterMenu = () => {
@@ -59,11 +43,15 @@ const Header = ({ view, setView, sidebar, setSidebar, filtersDispatch }) => {
                 placeholder="Sort By"
                 onChange={handleSort}
                 defaultValue={sortOptions.find(
-                  (option) => option.value === type
+                  (option) => option.value === sort.type
                 )}
               />
-              <Button type="sort" id="sortOrder" onClick={handleSort}>
-                {sort[type] === "desc" ? <SortDown /> : <SortUp />}
+              <Button
+                type="sort"
+                id="sortOrder"
+                onClick={() => handleSort(sort.type)}
+              >
+                {sort.order === "desc" ? <SortDown /> : <SortUp />}
               </Button>
             </div>
           )}

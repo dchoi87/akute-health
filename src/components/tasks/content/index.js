@@ -35,7 +35,6 @@ const Content = ({ sidebar, setSidebar }) => {
           setView={setView}
           sidebar={sidebar}
           setSidebar={setSidebar}
-          filtersDispatch={dispatch}
         />
         {!!selected.length && <SelectionBar selectedCount={selected.length} />}
         {view === "table" ? (

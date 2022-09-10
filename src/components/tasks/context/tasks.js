@@ -22,12 +22,6 @@ const tasks = {
 
         return { ...state, selected: tasks };
       }
-      case "SET_SORT_OBJECT": {
-        return { ...state, sort: action.payload };
-      }
-      case "SET_SORT_TYPE": {
-        return { ...state, type: action.payload };
-      }
       default: {
         return state;
       }

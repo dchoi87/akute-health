@@ -19,22 +19,18 @@ const filters = {
   reducer: function (state, action) {
     switch (action.type) {
       case "FILTER_PRESETS": {
+        const isDueDate = action.source === "dueDate";
         const reset = {
           ...state,
           priority: [],
           ownerId: [],
-          status:
-            action.source === "dueDate"
-              ? ["not-started", "in-progress", ""]
-              : [],
+          status: isDueDate ? ["not-started", "in-progress", ""] : [],
           tags: [],
           dueDate: "",
         };
-
         if (action.source) {
           return { ...reset, [action.source]: action.payload };
         }
-
         return { ...reset, ...action.payload };
       }
       case "FILTER_PRIORITY": {
@@ -60,10 +56,7 @@ const filters = {
         return { ...state, limit: action.payload };
       }
       case "CHANGE_SORT": {
-        const payload = Object.keys(action.payload).map((key) => {
-          return { [key]: action.payload[key] };
-        });
-        return { ...state, sort: payload };
+        return { ...state, sort: action.payload };
       }
       default: {
         return state;
