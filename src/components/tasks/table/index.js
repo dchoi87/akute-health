@@ -1,9 +1,8 @@
 import React from "react";
-import classNames from "classnames";
-import { ArrowDownShort, ArrowUpShort } from "react-bootstrap-icons";
 
 import Checkbox from "../common/checkbox";
 import Row from "./row";
+import TH from "./th";
 
 import { useWindowHeight } from "../hooks/useResize";
 import { useSort } from "../hooks/useSort";
@@ -39,43 +38,25 @@ const Table = ({ tasks, limit }) => {
                 checked={selected.length === limit}
               />
             </th>
-            <th className={styles.title}>
-              <span>Task</span>
-            </th>
-            <th
-              className={classNames(styles.sort, {
-                [styles.selected]: sort.type === "priority",
-              })}
-              data-id="priority"
+            <TH className={styles.title} label="Task" />
+            <TH
+              className={styles.sort}
+              label="Priority"
+              type="priority"
+              sort={sort}
               onClick={() => handleSort("priority")}
-            >
-              <span>Priority</span>
-              {sort.type === "priority" &&
-                (sort.order === "desc" ? <ArrowDownShort /> : <ArrowUpShort />)}
-            </th>
-            <th>
-              <span>Owner</span>
-            </th>
-            <th
-              className={classNames(styles.sort, {
-                [styles.selected]: sort.type === "dueDate",
-              })}
-              data-id="dueDate"
+            />
+            <TH label="Owner" />
+            <TH
+              className={styles.sort}
+              label="Due Date"
+              type="dueDate"
+              sort={sort}
               onClick={() => handleSort("dueDate")}
-            >
-              <span>Due Date</span>
-              {sort.type === "dueDate" &&
-                (sort.order === "desc" ? <ArrowDownShort /> : <ArrowUpShort />)}
-            </th>
-            <th>
-              <span>Patient</span>
-            </th>
-            <th>
-              <span>Tags</span>
-            </th>
-            <th>
-              <span>State</span>
-            </th>
+            />
+            <TH label="Patient" />
+            <TH label="Tags" />
+            <TH label="State" />
           </tr>
         </thead>
         <tbody>
