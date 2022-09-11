@@ -53,7 +53,7 @@ const Presets = ({ filters, dispatch_f }) => {
   const compareSelections = (id) => {
     const state = {};
     const selections = getCustomSelections(presets, id);
-    const queries = ["priority", "ownerId", "status", "tags"];
+    const queries = ["priority", "ownerId", "status", "tags", "tagGroups"];
 
     // sort selections for comparison
     for (let key in selections) {
@@ -73,7 +73,7 @@ const Presets = ({ filters, dispatch_f }) => {
   // prep payload for POST/PUT
   const getPresetPayload = (event) => {
     const isSubmit = event === "submit";
-    const queries = ["priority", "ownerId", "status", "tags"];
+    const queries = ["priority", "ownerId", "status", "tags", "tagGroups"];
     // grab selections
     const selections = queries.reduce((acc, curr) => {
       if (filters[curr].length) {

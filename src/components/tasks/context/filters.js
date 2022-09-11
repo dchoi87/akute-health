@@ -11,6 +11,7 @@ const filters = {
     ownerId: [],
     status: ["not-started", "in-progress", ""],
     tags: [],
+    tagGroups: [],
     dueDate: moment().format("YYYY-MM-DD"),
     page: 0,
     limit: 10,
@@ -26,6 +27,7 @@ const filters = {
           ownerId: [],
           status: isDueDate ? ["not-started", "in-progress", ""] : [],
           tags: [],
+          tagGroups: [],
           dueDate: "",
         };
         if (action.source) {
@@ -48,6 +50,10 @@ const filters = {
       case "FILTER_TAGS": {
         const value = addRemoveFromArray(state.tags, action.payload);
         return { ...state, tags: value };
+      }
+      case "FILTER_TAG_GROUP": {
+        const value = addRemoveFromArray(state.tagGroups, action.payload);
+        return { ...state, tagGroups: value };
       }
       case "CHANGE_PAGE": {
         return { ...state, page: action.payload };

@@ -304,6 +304,35 @@
           ]
         }
       }
+    },
+    {
+      "id": "filter-12",
+      "label": "Groups",
+      "ownerId": "616620c0df1f010009ea4a94",
+      "clinicWide": false,
+      "_tenant": "",
+      "order": 12,
+      "selections": {
+        "ownerId": {
+          "query": [
+            "614bfe84634f650009533b70",
+            "614c1c890b013c00092cf15c"
+          ]
+        },
+        "status": {
+          "query": [
+            "not-started",
+            "in-progress",
+            ""
+          ]
+        },
+        "tagGroups": {
+          "query": [
+            "5feccfc1ead10c0007f863ce",
+            "5fecd0d9ead10c0007f863d2"
+          ]
+        }
+      }
     }
   ]
 }

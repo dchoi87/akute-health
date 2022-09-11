@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Star } from "react-bootstrap-icons";
 import classNames from "classnames";
 
 import Section from "../section";
@@ -14,13 +13,10 @@ import styles from "./index.module.css";
 const Tags = ({ filters, dispatch_f }) => {
   const { data: tags } = useTagsData();
   const { data: groups } = useGroupsData();
-  const [showGroup, setGroup] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [keyword, setKeyword] = useState("");
   const [data, setData] = useState([]);
   const showCount = 10;
-
-  // if (groups) console.log("tag groups", groups.groups);
 
   useEffect(() => {
     if (tags) {
@@ -37,8 +33,8 @@ const Tags = ({ filters, dispatch_f }) => {
     dispatch_f({ type: "FILTER_TAGS", payload: target.dataset.id });
   };
 
-  const handleGroup = () => {
-    setGroup(!showGroup);
+  const handleGroup = ({ target }) => {
+    dispatch_f({ type: "FILTER_TAG_GROUP", payload: target.dataset.id });
   };
 
   const handleSearch = ({ target }) => {
@@ -55,31 +51,24 @@ const Tags = ({ filters, dispatch_f }) => {
             placeholder="Search Tags"
             onChange={handleSearch}
           />
-          <Button
-            type="collection"
-            id="tag-group"
-            onClick={handleGroup}
-            isActive={showGroup}
-          >
-            <Star />
-          </Button>
         </div>
         <div className={styles.tags}>
-          {showGroup &&
-            groups &&
+          {groups &&
             groups.groups.map((item, i) => {
               return (
                 <Checkbox
                   key={i}
                   id={`tags-group-${i}`}
+                  dataId={item._id}
                   label={item.groupName}
-                  onChange={handleFilter}
+                  onChange={handleGroup}
                   className={classNames(styles.tag, styles.group)}
+                  checked={filters.tagGroups.includes(item._id)}
                 />
               );
             })}
           {data.map((item, i) => {
-            if (showMore || i < showCount) {
+            if (showMore || i < showCount - groups.groups.length) {
               return (
                 <Checkbox
                   key={i}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Star } from "react-bootstrap-icons";
 
 import Section from "../section";
 import Button from "../../common/button";
@@ -13,7 +12,6 @@ import styles from "./index.module.css";
 const Owner = ({ filters, dispatch_f }) => {
   const { data: owners } = useOwnersData();
   const { data: groups } = useGroupsData();
-  const [showGroup, setGroup] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [keyword, setKeyword] = useState("");
   const [data, setData] = useState([]);
@@ -34,10 +32,6 @@ const Owner = ({ filters, dispatch_f }) => {
     dispatch_f({ type: "FILTER_OWNER", payload: target.dataset.id });
   };
 
-  const handleGroup = () => {
-    setGroup(!showGroup);
-  };
-
   const handleSearch = ({ target }) => {
     setKeyword(target.value);
   };
@@ -52,18 +46,9 @@ const Owner = ({ filters, dispatch_f }) => {
             placeholder="Search Owner"
             onChange={handleSearch}
           />
-          <Button
-            type="collection"
-            id="owner-group"
-            onClick={handleGroup}
-            isActive={showGroup}
-          >
-            <Star />
-          </Button>
         </div>
         <div className={styles.owners}>
-          {showGroup &&
-            groups &&
+          {groups &&
             groups.userGroups.map((item, i) => {
               return (
                 <Checkbox
@@ -79,7 +64,7 @@ const Owner = ({ filters, dispatch_f }) => {
               );
             })}
           {data.map((owner, i) => {
-            if (showMore || i < showCount) {
+            if (showMore || i < showCount - groups.userGroups.length) {
               return (
                 <Checkbox
                   key={i}

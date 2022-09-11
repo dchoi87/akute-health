@@ -5,7 +5,14 @@
  */
 export const queryBuilder = (filters) => {
   const params = { query: {} };
-  const queries = ["priority", "ownerId", "status", "tags", "dueDate"];
+  const queries = [
+    "priority",
+    "ownerId",
+    "status",
+    "tags",
+    "dueDate",
+    "tagGroups",
+  ];
 
   // from redux store; remove after
   params.userId = "616620c0df1f010009ea4a94";

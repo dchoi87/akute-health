@@ -178,7 +178,6 @@
   width: 21px;
   height: 21px;
 }
-.collection,
 .save,
 .overwrite {
   display: flex;
@@ -193,9 +192,7 @@
   height: 32px;
 }
 .save:hover,
-.overwrite:hover,
-.collection:hover,
-.collection.active {
+.overwrite:hover {
   background: #437d56;
 }
 .save svg,
@@ -207,11 +204,6 @@
 .save:disabled {
   background: #ccc;
   cursor: default;
-}
-.collection svg {
-  display: block;
-  width: 15px;
-  height: 15px;
 }
 .update {
   color: #494949;
