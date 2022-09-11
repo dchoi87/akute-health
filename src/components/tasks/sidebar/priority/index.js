@@ -23,7 +23,6 @@ const Priority = ({ filters, dispatch_f }) => {
               id={`priority-${i}`}
               dataId={item.id}
               label={item.label}
-              section="priority"
               onChange={handleFilter}
               checked={filters.priority.includes(item.id)}
             >

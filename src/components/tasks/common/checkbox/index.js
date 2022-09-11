@@ -8,6 +8,7 @@ const Checkbox = ({
   label,
   id,
   dataId,
+  dataGroup,
   onChange,
   checked,
   className,
@@ -24,6 +25,7 @@ const Checkbox = ({
         type="checkbox"
         id={id}
         data-id={dataId}
+        data-group={dataGroup}
         onChange={onChange}
         checked={checked}
       />

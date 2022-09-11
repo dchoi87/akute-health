@@ -19,22 +19,30 @@ const Tags = ({ filters, dispatch_f }) => {
   const showCount = 10;
 
   useEffect(() => {
-    if (tags) {
-      const filtered = tags.tasks.filter((tag) => {
+    if (tags && groups) {
+      // massage data
+      const _tags = tags.tasks.map((tag) => {
+        return { id: tag, name: tag };
+      });
+      const _groups = groups.groups.map((group) => {
+        return { id: group._id, name: group.groupName, isGroup: true };
+      });
+      const combined = [..._groups, ..._tags];
+      // filter by regex pattern and return array
+      const filtered = combined.filter((tag) => {
         const pattern = keyword.toLowerCase();
         const regex = new RegExp(pattern, "g");
-        return tag.toLowerCase().match(regex);
+        return tag.name.toLowerCase().match(regex);
       });
+      // set iterable
       setData(filtered);
     }
-  }, [tags, keyword]);
+  }, [tags, groups, keyword]);
 
   const handleFilter = ({ target }) => {
-    dispatch_f({ type: "FILTER_TAGS", payload: target.dataset.id });
-  };
-
-  const handleGroup = ({ target }) => {
-    dispatch_f({ type: "FILTER_TAG_GROUP", payload: target.dataset.id });
+    const { id, group } = target.dataset;
+    const type = group ? "FILTER_TAG_GROUP" : "FILTER_TAGS";
+    dispatch_f({ type: type, payload: id });
   };
 
   const handleSearch = ({ target }) => {
@@ -53,31 +61,23 @@ const Tags = ({ filters, dispatch_f }) => {
           />
         </div>
         <div className={styles.tags}>
-          {groups &&
-            groups.groups.map((item, i) => {
+          {data.map((tag, i) => {
+            if (showMore || i < showCount) {
               return (
                 <Checkbox
                   key={i}
-                  id={`tags-group-${i}`}
-                  dataId={item._id}
-                  label={item.groupName}
-                  onChange={handleGroup}
-                  className={classNames(styles.tag, styles.group)}
-                  checked={filters.tagGroups.includes(item._id)}
-                />
-              );
-            })}
-          {data.map((item, i) => {
-            if (showMore || i < showCount - groups.groups.length) {
-              return (
-                <Checkbox
-                  key={i}
+                  className={classNames(styles.tag, {
+                    [styles.group]: tag.isGroup,
+                  })}
                   id={`tags-${i}`}
-                  dataId={item}
-                  label={item}
+                  dataId={tag.id}
+                  dataGroup={tag.isGroup}
+                  label={tag.name}
                   onChange={handleFilter}
-                  className={styles.tag}
-                  checked={filters.tags.includes(item)}
+                  checked={
+                    filters.tags.includes(tag.id) ||
+                    filters.tagGroups.includes(tag.id)
+                  }
                 />
               );
             }

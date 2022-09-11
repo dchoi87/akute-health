@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import classNames from "classnames";
 
 import Section from "../section";
 import Button from "../../common/button";
@@ -18,15 +19,25 @@ const Owner = ({ filters, dispatch_f }) => {
   const showCount = 6;
 
   useEffect(() => {
-    if (owners) {
-      const filtered = Object.keys(owners).filter((owner) => {
+    if (owners && groups) {
+      // massage data
+      const _owners = Object.keys(owners).map((owner) => {
+        return { id: owner, name: owners[owner] };
+      });
+      const _groups = groups.userGroups.map((group) => {
+        return { id: group._id, name: group.groupName, isGroup: true };
+      });
+      const combined = [..._groups, ..._owners];
+      // filter by regex pattern and return array
+      const filtered = combined.filter((owner) => {
         const pattern = keyword.toLowerCase();
         const regex = new RegExp(pattern, "g");
-        return owners[owner].toLowerCase().match(regex);
+        return owner.name.toLowerCase().match(regex);
       });
+      // set interable
       setData(filtered);
     }
-  }, [owners, keyword]);
+  }, [owners, groups, keyword]);
 
   const handleFilter = ({ target }) => {
     dispatch_f({ type: "FILTER_OWNER", payload: target.dataset.id });
@@ -48,31 +59,17 @@ const Owner = ({ filters, dispatch_f }) => {
           />
         </div>
         <div className={styles.owners}>
-          {groups &&
-            groups.userGroups.map((item, i) => {
-              return (
-                <Checkbox
-                  key={i}
-                  id={`owner-group-${i}`}
-                  dataId={item._id}
-                  label={item.groupName}
-                  onChange={handleFilter}
-                  className={styles.group}
-                  section="group"
-                  checked={filters.ownerId.includes(item._id)}
-                />
-              );
-            })}
           {data.map((owner, i) => {
-            if (showMore || i < showCount - groups.userGroups.length) {
+            if (showMore || i < showCount) {
               return (
                 <Checkbox
                   key={i}
+                  className={classNames({ [styles.group]: owner.isGroup })}
                   id={`owner-${i}`}
-                  dataId={owner}
-                  label={owners[owner]}
+                  dataId={owner.id}
+                  label={owner.name}
                   onChange={handleFilter}
-                  checked={filters.ownerId.includes(owner)}
+                  checked={filters.ownerId.includes(owner.id)}
                 />
               );
             }
