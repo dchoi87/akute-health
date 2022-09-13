@@ -6,7 +6,7 @@ import Checkbox from "../../common/checkbox";
 
 import styles from "./index.module.css";
 
-const Row = ({ item, idx, isSelected, handleClick }) => {
+const Row = ({ item, idx, isSelected, handleSelect }) => {
   const isPastDue = item.duedate === "03-25-22";
 
   return (
@@ -19,7 +19,7 @@ const Row = ({ item, idx, isSelected, handleClick }) => {
         <Checkbox
           id={`row-${idx}`}
           dataId={item.id}
-          onChange={handleClick}
+          onChange={handleSelect}
           checked={isSelected}
         />
       </td>

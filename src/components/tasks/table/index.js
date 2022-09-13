@@ -17,11 +17,13 @@ const Table = ({ tasks, limit }) => {
   const [sort, handleSort] = useSort(dispatch_f);
   const tableHeight = useWindowHeight() - 147 - (selected.length ? 62 : 0);
 
-  const handleClick = ({ target }) => {
+  const handleSelectAll = () => {
+    dispatch_t({ type: "SELECT_ALL", payload: tasks });
+  };
+
+  const handleSelect = ({ target }) => {
     const id = target.dataset.id;
-    const type = id === "all" ? "SELECT_ALL" : "SELECT_TASK";
-    const payload = id === "all" ? tasks : id;
-    dispatch_t({ type, payload });
+    dispatch_t({ type: "SELECT_TASK", payload: id });
   };
 
   return (
@@ -33,8 +35,7 @@ const Table = ({ tasks, limit }) => {
               <Checkbox
                 id="row-all"
                 label=""
-                dataId="all"
-                onChange={handleClick}
+                onChange={handleSelectAll}
                 checked={selected.length === limit}
               />
             </th>
@@ -68,7 +69,7 @@ const Table = ({ tasks, limit }) => {
                   idx={i}
                   item={item}
                   isSelected={selected.includes(item.id)}
-                  handleClick={handleClick}
+                  handleSelect={handleSelect}
                 />
               );
             })}

@@ -36,7 +36,14 @@ const Content = ({ sidebar, setSidebar }) => {
           sidebar={sidebar}
           setSidebar={setSidebar}
         />
-        {!!selected.length && <SelectionBar selectedCount={selected.length} />}
+        {!!selected.length && (
+          <SelectionBar
+            tasks={tasks}
+            selectedCount={selected.length}
+            isTableView={view === "table"}
+            limit={filters.limit}
+          />
+        )}
         {view === "table" ? (
           <Table tasks={tasks} limit={filters.limit} />
         ) : (
