@@ -18,14 +18,9 @@
   box-shadow: 0px 5px 10px 2px #efefef73;
   font-size: 14px;
   font-weight: 500;
-  border-radius: 15px;
+  border-radius: 10px;
   background: #fff;
   margin: 15px;
-}
-.container svg {
-  display: block;
-  width: 15px;
-  height: 15px;
 }
 .container table {
   display: grid;
@@ -82,4 +77,12 @@
 .container .title {
   padding-left: 0;
   white-space: normal;
+}
+.sort {
+  cursor: pointer;
+}
+.sort svg {
+  display: block;
+  width: 17px;
+  height: 17px;
 }

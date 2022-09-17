@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./index.module.css";
 
-const Input = ({ type, id, placeholder }) => {
+const Input = ({ type, id, placeholder, onChange }) => {
   return (
     <div className={styles.container}>
       <label htmlFor={id}>{placeholder}</label>
@@ -12,6 +12,8 @@ const Input = ({ type, id, placeholder }) => {
         id={id}
         className={styles[type]}
         placeholder={placeholder}
+        onChange={onChange}
+        autoComplete="off"
       />
     </div>
   );

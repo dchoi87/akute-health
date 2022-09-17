@@ -15,16 +15,23 @@ import {
 
 import Tags from "./tags";
 
-import { useTasks } from "../context/tasks";
+import { useTasksContext } from "../context/tasks";
 
 import styles from "./index.module.css";
 
 const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
-  const [, dispatch] = useTasks();
+  const [, dispatch_t] = useTasksContext();
   const isPastDue = task.duedate === "03-25-22";
 
-  const handleClick = () => {
-    dispatch({ type: "SELECT_TASK", payload: task.id });
+  const handleOpen = ({ target }) => {
+    if (target.className.includes("card_checkbox")) {
+      return;
+    }
+    alert("open task");
+  };
+
+  const handleSelect = (e) => {
+    dispatch_t({ type: "SELECT_TASK", payload: task.id });
   };
 
   return (
@@ -33,10 +40,10 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
         [styles.compact]: isCompactView,
         [styles.selected]: isSelected,
       })}
-      onClick={handleClick}
+      onClick={handleOpen}
       data-id={task.id}
     >
-      <div className={styles.select}>
+      <div className={styles.checkbox} onClick={handleSelect}>
         {isSelected ? <CheckSquareFill /> : <Square />}
       </div>
       <div className={styles.content}>
@@ -56,7 +63,9 @@ const Cards = ({ task, showDesktopView, isCompactView, isSelected }) => {
                 <div
                   className={classNames(styles.priority, styles[task.priority])}
                 >
-                  {task.priority}
+                  {task.priority === "p1"
+                    ? "urgent"
+                    : task.priority || "no priority"}
                 </div>
               )}
               <span>{task.title}</span>

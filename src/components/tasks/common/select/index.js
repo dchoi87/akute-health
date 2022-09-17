@@ -10,12 +10,11 @@ const SelectContainer = ({
   placeholder,
   menuPlacement,
   defaultValue,
-  customClass,
+  className,
+  onChange,
 }) => {
   return (
-    <div
-      className={classNames("select", styles.container, styles[customClass])}
-    >
+    <div className={classNames("select", styles.container, className)}>
       <Select
         options={options}
         className="tasks-select-container"
@@ -24,6 +23,7 @@ const SelectContainer = ({
         isSearchable={false}
         menuPlacement={menuPlacement || "auto"}
         defaultValue={defaultValue}
+        onChange={onChange}
       />
     </div>
   );

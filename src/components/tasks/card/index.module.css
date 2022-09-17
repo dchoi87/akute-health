@@ -11,15 +11,19 @@
   padding: 20px;
   color: #494949;
   background: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0px 5px 10px 2px #efefef73;
   font-weight: 300;
 }
-.select {
+.container * {
+  pointer-events: none;
+}
+.checkbox {
   margin: 3px 15px 0 0;
   color: #c1c1c1;
+  pointer-events: auto;
 }
-.select svg {
+.checkbox svg {
   width: 16px;
   height: 16px;
 }
@@ -99,7 +103,7 @@
   background: #4e4e4e;
   color: #fff;
 }
-.urgent {
+.p1 {
   color: #fff;
   background: #ca0000;
 }
@@ -120,7 +124,7 @@
   width: 10px;
   height: 10px;
 }
-.priorityCompact.urgent {
+.priorityCompact.p1 {
   color: #ca0000;
 }
 .priorityCompact.p2 {
@@ -162,16 +166,8 @@
 .compact.container {
   padding: 15px 20px;
 }
-.compact.container:first-child {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-.compact.container:last-child {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
 .compact {
-  border-radius: 0;
+  border-radius: 7px;
 }
 .compact .subHeading {
   font-size: 12px;
@@ -189,24 +185,15 @@
   gap: 7px;
 }
 .selected.container {
-  background: #f1f1f1;
-  box-shadow: 0 0 0 1px #dedede;
-}
-.selected.container.compact:first-child {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-.selected.container.compact:last-child {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  box-shadow: 0 0 0 2px #61b47b;
 }
 .selected .owner div {
   background: #fff;
   color: #494949;
   box-shadow: 0 0 0 1px #ccc;
 }
-.selected .select {
-  color: #494949;
+.selected .checkbox {
+  color: #61b47b;
 }
 .selected .sectionTop {
   border-color: #e0e0e0;

@@ -2,18 +2,20 @@ import React from "react";
 
 import styles from "./index.module.css";
 
-const Radio = ({ label, id, name, idx }) => {
-  const _id = `radio-${id.toLowerCase().replace(" ", "-")}`;
+const Radio = ({ children, label, id, name, dataId, onChange, checked }) => {
   return (
     <div className={styles.container}>
       <input
         type="radio"
-        id={_id}
+        id={id}
         name={name}
         value={label}
-        defaultChecked={idx === 0}
+        checked={checked}
+        data-id={dataId}
+        onChange={onChange}
       />
-      <label htmlFor={_id}>{label}</label>
+      <label htmlFor={id}>{label}</label>
+      {children}
     </div>
   );
 };

@@ -1,17 +1,25 @@
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 import Tasks from "./tasks";
 
-import { GlobalProvider } from "./tasks/context/global";
+import { FiltersProvider } from "./tasks/context/filters";
 
 import "./App.css";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <div className="app">
       <div className="nav">Navigation</div>
       <div className="container">
-        <GlobalProvider>
-          <Tasks />
-        </GlobalProvider>
+        <QueryClientProvider client={queryClient}>
+          <FiltersProvider>
+            <Tasks />
+          </FiltersProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </div>
     </div>
   );

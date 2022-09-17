@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   font-size: 14px;
   text-transform: capitalize;
   color: #4e4e4e;

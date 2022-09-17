@@ -7,15 +7,18 @@ import Card from "../card";
 import Pagination from "../pagination";
 import Table from "../table";
 
-import { useTasks } from "../context/tasks";
-import { useContainerQuery } from "../hooks";
+import { useFiltersContext } from "../context/filters";
+import { useTasksContext } from "../context/tasks";
+import { useContainerQuery } from "../hooks/useResize";
+import { useTasksData } from "../hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Content = ({ tasks, sidebar, setSidebar }) => {
-  const [state] = useTasks();
+const Content = ({ sidebar, setSidebar }) => {
+  const [filters] = useFiltersContext();
+  const [{ selected }] = useTasksContext();
+  const { data: tasks } = useTasksData(filters);
   const [view, setView] = useState("comfortable");
-  const [sort, setSort] = useState("desc");
   const taskRef = useRef(null);
   const showDesktopView = useContainerQuery(taskRef);
 
@@ -30,36 +33,40 @@ const Content = ({ tasks, sidebar, setSidebar }) => {
         <Header
           view={view}
           setView={setView}
-          sort={sort}
-          setSort={setSort}
           sidebar={sidebar}
           setSidebar={setSidebar}
         />
-        {!!state.selected.length && (
-          <SelectionBar selectedCount={state.selected.length} />
+        {!!selected.length && (
+          <SelectionBar
+            tasks={tasks}
+            selectedCount={selected.length}
+            isTableView={view === "table"}
+            limit={filters.limit}
+          />
         )}
         {view === "table" ? (
-          <Table tasks={tasks} selectedItems={state.selected} />
+          <Table tasks={tasks} limit={filters.limit} />
         ) : (
           <div
             className={classNames(styles.cards, {
               [styles.compact]: view === "compact",
             })}
           >
-            {tasks.map((task, i) => {
-              return (
-                <Card
-                  key={i}
-                  task={task}
-                  showDesktopView={showDesktopView}
-                  isCompactView={view === "compact"}
-                  isSelected={state.selected.includes(task.id)}
-                />
-              );
-            })}
+            {tasks &&
+              tasks.data.map((task, i) => {
+                return (
+                  <Card
+                    key={i}
+                    task={task}
+                    showDesktopView={showDesktopView}
+                    isCompactView={view === "compact"}
+                    isSelected={selected.includes(task.id)}
+                  />
+                );
+              })}
           </div>
         )}
-        <Pagination />
+        <Pagination page={filters.page} count={tasks && tasks.count} />
       </div>
     </div>
   );

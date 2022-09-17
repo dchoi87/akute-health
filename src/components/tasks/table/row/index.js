@@ -6,7 +6,7 @@ import Checkbox from "../../common/checkbox";
 
 import styles from "./index.module.css";
 
-const Row = ({ item, idx, isSelected, handleClick }) => {
+const Row = ({ item, idx, isSelected, handleSelect }) => {
   const isPastDue = item.duedate === "03-25-22";
 
   return (
@@ -17,17 +17,18 @@ const Row = ({ item, idx, isSelected, handleClick }) => {
     >
       <td className={styles.checkbox}>
         <Checkbox
-          id={`row-${idx + 1}`}
+          id={`row-${idx}`}
           dataId={item.id}
-          label=""
-          onChange={handleClick}
+          onChange={handleSelect}
           checked={isSelected}
         />
       </td>
       <td className={styles.title}>{item.title}</td>
       <td className={styles.priority}>
         <CircleFill />
-        <span>{item.priority}</span>
+        <span>
+          {item.priority === "p1" ? "urgent" : item.priority || "no priority"}
+        </span>
       </td>
       <td className={styles.owner}>{item.owner}</td>
       <td

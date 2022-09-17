@@ -3,7 +3,7 @@ import React, { createContext, useContext, useReducer, useMemo } from "react";
 const TasksContext = createContext();
 
 const tasks = {
-  state: { selected: [] },
+  state: { selected: [], sort: { priority: "desc" }, type: "priority" },
   reducer: function (state, action) {
     switch (action.type) {
       case "SELECT_TASK": {
@@ -15,8 +15,10 @@ const tasks = {
         return { ...state, selected: tasks };
       }
       case "SELECT_ALL": {
-        const isSelected = state.selected.length !== action.payload.length;
-        const tasks = isSelected ? action.payload.map((task) => task.id) : [];
+        const isSelected = state.selected.length !== action.payload.data.length;
+        const tasks = isSelected
+          ? action.payload.data.map((task) => task.id)
+          : [];
 
         return { ...state, selected: tasks };
       }
@@ -35,12 +37,12 @@ const TasksProvider = ({ children }) => {
   );
 };
 
-const useTasks = () => {
+const useTasksContext = () => {
   const context = useContext(TasksContext);
   if (context === undefined) {
-    throw new Error("useTasks must be used within a TasksProvider");
+    throw new Error("useTasksContext must be used within a TasksProvider");
   }
   return context;
 };
 
-export { TasksProvider, useTasks };
+export { TasksProvider, useTasksContext };

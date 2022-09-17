@@ -1,44 +1,43 @@
 import React from "react";
 import classNames from "classnames";
-import { CircleFill, Collection } from "react-bootstrap-icons";
 
 import styles from "./index.module.css";
 
 const Checkbox = ({
+  children,
   label,
   id,
   dataId,
-  section,
-  customClass,
+  dataGroup,
   onChange,
   checked,
+  className,
 }) => {
-  const _id = `checkbox-${id.toLowerCase().replace(" ", "-")}`;
   return (
     <div
       className={classNames(
         styles.container,
-        styles[label.toLowerCase()],
-        styles[customClass]
+        styles[label && label.toLowerCase()],
+        className
       )}
     >
       <input
         type="checkbox"
-        id={_id}
+        id={id}
         data-id={dataId}
+        data-group={dataGroup}
         onChange={onChange}
         checked={checked}
       />
-      {section === "priority" && <CircleFill />}
+      {children}
       <label
-        htmlFor={_id}
+        htmlFor={id}
         className={classNames({
           [styles.visuallyhidden]: !label,
         })}
       >
         {label}
       </label>
-      {customClass === "group" && <Collection />}
     </div>
   );
 };
