@@ -4,7 +4,7 @@ import { CardChecklist, CheckLg, Trash } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Checkbox from "../common/checkbox";
 
-import { useTasksContext } from "../context/tasks";
+import { useTasksContext } from "../_context/tasks";
 
 import styles from "./index.module.css";
 

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { useFiltersContext } from "../tasks/context/filters";
-import { queryBuilder } from "../tasks/helpers";
+import { useFiltersContext } from "../_context/filters";
+import { queryBuilder } from "../helpers";
 
 import styles from "./index.module.css";
 

@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 import Tasks from "./tasks";
 
-import { FiltersProvider } from "./tasks/context/filters";
+import { FiltersProvider } from "./tasks/_context/filters";
 
 import "./App.css";
 

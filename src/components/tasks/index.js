@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import SideBar from "./sidebar";
 import Content from "./content";
-import QueryHelper from "../query-helper";
+import QueryHelper from "./_query-helper";
 
-import { TasksProvider } from "./context/tasks";
+import { TasksProvider } from "./_context/tasks";
 
 import styles from "./index.module.css";
 

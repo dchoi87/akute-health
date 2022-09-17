@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 import Button from "../common/button";
 import Select from "../common/select";
 
-import { useFiltersContext } from "../context/filters";
+import { useFiltersContext } from "../_context/filters";
 import { cardsPerPage } from "../constants";
 
 import styles from "./index.module.css";

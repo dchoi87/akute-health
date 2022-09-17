@@ -7,7 +7,7 @@ import Owner from "./owner";
 import Status from "./status";
 import Tags from "./tags";
 
-import { useFiltersContext } from "../context/filters";
+import { useFiltersContext } from "../_context/filters";
 
 import styles from "./index.module.css";
 

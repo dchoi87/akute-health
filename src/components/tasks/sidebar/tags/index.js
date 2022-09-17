@@ -6,7 +6,7 @@ import Button from "../../common/button";
 import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
-import { useTagsData, useGroupsData } from "../../hooks/useTasksData";
+import { useTagsData, useGroupsData } from "../../_hooks/useTasksData";
 
 import styles from "./index.module.css";
 

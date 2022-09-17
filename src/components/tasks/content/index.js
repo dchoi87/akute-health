@@ -7,10 +7,10 @@ import Card from "../card";
 import Pagination from "../pagination";
 import Table from "../table";
 
-import { useFiltersContext } from "../context/filters";
-import { useTasksContext } from "../context/tasks";
-import { useContainerQuery } from "../hooks/useResize";
-import { useTasksData } from "../hooks/useTasksData";
+import { useFiltersContext } from "../_context/filters";
+import { useTasksContext } from "../_context/tasks";
+import { useContainerQuery } from "../_hooks/useResize";
+import { useTasksData } from "../_hooks/useTasksData";
 
 import styles from "./index.module.css";
 

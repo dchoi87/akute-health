@@ -4,10 +4,10 @@ import Checkbox from "../common/checkbox";
 import Row from "./row";
 import TH from "./th";
 
-import { useWindowHeight } from "../hooks/useResize";
-import { useSort } from "../hooks/useSort";
-import { useFiltersContext } from "../context/filters";
-import { useTasksContext } from "../context/tasks";
+import { useWindowHeight } from "../_hooks/useResize";
+import { useSort } from "../_hooks/useSort";
+import { useFiltersContext } from "../_context/filters";
+import { useTasksContext } from "../_context/tasks";
 
 import styles from "./index.module.css";
 
