@@ -41,8 +41,8 @@ const Group = ({
             );
           })}
         {presets.map((item, i) => {
-          if (showMore || i < showCount) {
-            return (
+          return (
+            (showMore || i < showCount) && (
               <Radio
                 key={i}
                 idx={i}
@@ -64,8 +64,8 @@ const Group = ({
                     </Button>
                   )}
               </Radio>
-            );
-          }
+            )
+          );
         })}
       </div>
       {presets.length > showCount && (

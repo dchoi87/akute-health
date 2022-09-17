@@ -3,11 +3,14 @@ import React from "react";
 import Section from "../section";
 import Checkbox from "../../common/checkbox";
 
-import styles from "./index.module.css";
-
+import { useFiltersContext } from "../../_context/filters";
 import { status } from "../../constants";
 
-const Status = ({ filters, dispatch_f }) => {
+import styles from "./index.module.css";
+
+const Status = () => {
+  const [filters, dispatch_f] = useFiltersContext();
+
   const handleFilter = ({ target }) => {
     dispatch_f({ type: "FILTER_STATUS", payload: target.dataset.id });
   };

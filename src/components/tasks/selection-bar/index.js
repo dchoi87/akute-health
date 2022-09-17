@@ -8,7 +8,7 @@ import { useTasksContext } from "../_context/tasks";
 
 import styles from "./index.module.css";
 
-const SelectionBar = ({ tasks, selectedCount, isTableView, limit }) => {
+const SelectionBar = ({ tasks, isTableView, limit }) => {
   const [{ selected }, dispatch_t] = useTasksContext();
 
   const handleSelectAll = () => {
@@ -30,8 +30,8 @@ const SelectionBar = ({ tasks, selectedCount, isTableView, limit }) => {
           />
         )}
         <span>
-          {selectedCount} Task
-          {selectedCount > 1 && "s"} Selected
+          {selected.length} Task
+          {selected.length > 1 && "s"} Selected
         </span>
       </div>
       <div className={styles.buttons}>

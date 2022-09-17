@@ -12,11 +12,13 @@ import {
   useAddPresetsData,
   useUpdatePresetsData,
 } from "../../_hooks/useTasksData";
+import { useFiltersContext } from "../../_context/filters";
 import { presetPayload } from "../../constants";
 
 import styles from "./index.module.css";
 
-const Presets = ({ filters, dispatch_f }) => {
+const Presets = () => {
+  const [filters, dispatch_f] = useFiltersContext();
   const { data: presets } = usePresetsData();
   const { mutate: addPreset } = useAddPresetsData();
   const { mutate: updatePreset } = useUpdatePresetsData();

@@ -6,11 +6,13 @@ import Button from "../../common/button";
 import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
+import { useFiltersContext } from "../../_context/filters";
 import { useTagsData, useGroupsData } from "../../_hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Tags = ({ filters, dispatch_f }) => {
+const Tags = () => {
+  const [filters, dispatch_f] = useFiltersContext();
   const { data: tags } = useTagsData();
   const { data: groups } = useGroupsData();
   const [showMore, setShowMore] = useState(false);
@@ -62,8 +64,8 @@ const Tags = ({ filters, dispatch_f }) => {
         </div>
         <div className={styles.tags}>
           {data.map((tag, i) => {
-            if (showMore || i < showCount) {
-              return (
+            return (
+              (showMore || i < showCount) && (
                 <Checkbox
                   key={i}
                   className={classNames(styles.tag, {
@@ -79,8 +81,8 @@ const Tags = ({ filters, dispatch_f }) => {
                     filters.tagGroups.includes(tag.id)
                   }
                 />
-              );
-            }
+              )
+            );
           })}
         </div>
         {data.length > showCount && (

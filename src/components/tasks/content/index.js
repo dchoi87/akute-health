@@ -39,13 +39,12 @@ const Content = ({ sidebar, setSidebar }) => {
         {!!selected.length && (
           <SelectionBar
             tasks={tasks}
-            selectedCount={selected.length}
             isTableView={view === "table"}
             limit={filters.limit}
           />
         )}
         {view === "table" ? (
-          <Table tasks={tasks} limit={filters.limit} />
+          <Table />
         ) : (
           <div
             className={classNames(styles.cards, {
@@ -66,7 +65,7 @@ const Content = ({ sidebar, setSidebar }) => {
               })}
           </div>
         )}
-        <Pagination page={filters.page} count={tasks && tasks.count} />
+        <Pagination />
       </div>
     </div>
   );

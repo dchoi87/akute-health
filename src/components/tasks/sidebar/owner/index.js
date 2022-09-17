@@ -6,11 +6,13 @@ import Button from "../../common/button";
 import Checkbox from "../../common/checkbox";
 import Input from "../../common/input";
 
+import { useFiltersContext } from "../../_context/filters";
 import { useOwnersData, useGroupsData } from "../../_hooks/useTasksData";
 
 import styles from "./index.module.css";
 
-const Owner = ({ filters, dispatch_f }) => {
+const Owner = () => {
+  const [filters, dispatch_f] = useFiltersContext();
   const { data: owners } = useOwnersData();
   const { data: groups } = useGroupsData();
   const [showMore, setShowMore] = useState(false);
@@ -60,8 +62,8 @@ const Owner = ({ filters, dispatch_f }) => {
         </div>
         <div className={styles.owners}>
           {data.map((owner, i) => {
-            if (showMore || i < showCount) {
-              return (
+            return (
+              (showMore || i < showCount) && (
                 <Checkbox
                   key={i}
                   className={classNames({ [styles.group]: owner.isGroup })}
@@ -71,8 +73,8 @@ const Owner = ({ filters, dispatch_f }) => {
                   onChange={handleFilter}
                   checked={filters.ownerId.includes(owner.id)}
                 />
-              );
-            }
+              )
+            );
           })}
         </div>
         {data.length > showCount && (

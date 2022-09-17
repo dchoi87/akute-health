@@ -6,14 +6,16 @@ import TH from "./th";
 
 import { useWindowHeight } from "../_hooks/useResize";
 import { useSort } from "../_hooks/useSort";
+import { useTasksData } from "../_hooks/useTasksData";
 import { useFiltersContext } from "../_context/filters";
 import { useTasksContext } from "../_context/tasks";
 
 import styles from "./index.module.css";
 
-const Table = ({ tasks, limit }) => {
-  const [, dispatch_f] = useFiltersContext();
+const Table = () => {
+  const [filters, dispatch_f] = useFiltersContext();
   const [{ selected }, dispatch_t] = useTasksContext();
+  const { data: tasks } = useTasksData(filters);
   const [sort, handleSort] = useSort(dispatch_f);
   const tableHeight = useWindowHeight() - 147 - (selected.length ? 62 : 0);
 
@@ -36,7 +38,7 @@ const Table = ({ tasks, limit }) => {
                 id="row-all"
                 label=""
                 onChange={handleSelectAll}
-                checked={selected.length === limit}
+                checked={selected.length === filters.limit}
               />
             </th>
             <TH className={styles.title} label="Task" />

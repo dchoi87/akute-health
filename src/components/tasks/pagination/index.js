@@ -4,12 +4,14 @@ import Button from "../common/button";
 import Select from "../common/select";
 
 import { useFiltersContext } from "../_context/filters";
+import { useTasksData } from "../_hooks/useTasksData";
 import { cardsPerPage } from "../constants";
 
 import styles from "./index.module.css";
 
-const Pagination = ({ page, count }) => {
+const Pagination = () => {
   const [filters, dispatch_f] = useFiltersContext();
+  const { data: tasks } = useTasksData(filters);
 
   const handlePageLimit = ({ value }) => {
     dispatch_f({ type: "CHANGE_LIMIT", payload: value });
@@ -32,7 +34,7 @@ const Pagination = ({ page, count }) => {
           />
         </div>
         <div className={styles.page}>
-          Page {page + 1} of {count}
+          Page {filters.page + 1} of {tasks && tasks.count}
         </div>
         <div className={styles.navigation}>
           <Button
@@ -47,7 +49,7 @@ const Pagination = ({ page, count }) => {
             type="pagination"
             id="next"
             onClick={() => handleChangePage(1)}
-            disabled={false} // TODO
+            disabled={false} // TODO: logic
           >
             <ChevronRight />
           </Button>

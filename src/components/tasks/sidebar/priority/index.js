@@ -4,11 +4,14 @@ import { CircleFill } from "react-bootstrap-icons";
 import Section from "../section";
 import Checkbox from "../../common/checkbox";
 
+import { useFiltersContext } from "../../_context/filters";
 import { priority } from "../../constants";
 
 import styles from "./index.module.css";
 
-const Priority = ({ filters, dispatch_f }) => {
+const Priority = () => {
+  const [filters, dispatch_f] = useFiltersContext();
+
   const handleFilter = ({ target }) => {
     dispatch_f({ type: "FILTER_PRIORITY", payload: target.dataset.id });
   };
