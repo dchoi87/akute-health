@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import { queryBuilder } from "../helpers";
 
 const fetchPatients = async () => {
-  const url = "http://localhost:3001/3_0_1/patient";
+  const url = "http://localhost:3004/3_0_1/patient";
   const response = await axios.get(url);
   return response.data.entry.reduce((acc, curr) => {
     acc[curr.resource.id] = curr.resource.name[0].text;
@@ -13,7 +13,7 @@ const fetchPatients = async () => {
 };
 
 const fetchOwners = async () => {
-  const url = "http://localhost:3001/.netlify/functions/user/getTeam";
+  const url = "http://localhost:3004/.netlify/functions/user/getTeam";
   const response = await axios.get(url);
   return response.data.reduce((acc, curr) => {
     acc[curr._id] = `${curr.firstName} ${curr.lastName}`;
@@ -22,13 +22,13 @@ const fetchOwners = async () => {
 };
 
 const fetchTags = async () => {
-  const url = "http://localhost:3001/tag/all";
+  const url = "http://localhost:3004/tag/all";
   const response = await axios.get(url);
   return response.data;
 };
 
 const fetchGroups = async () => {
-  const url = "http://localhost:3001/.netlify/functions/group";
+  const url = "http://localhost:3004/.netlify/functions/group";
   const response = await axios.get(url);
   return response.data;
 };
@@ -50,7 +50,7 @@ const updatePresets = (data) => {
 };
 
 const fetchTasks = async (data, filters) => {
-  const url = "http://localhost:3001/tasks";
+  const url = "http://localhost:3004/tasks";
   const config = queryBuilder(filters);
   const response = await axios.get(url, config);
   // console.log("config", config.params);
